@@ -1,0 +1,135 @@
+以下のように「 5 問に答えるだけ→あなた専用の持ち物リスト 」を出す“選択式”モデルを組むと、年齢や家族構成（＝子どもの法定代理手続など）による違いを一度で確認できます。
+
+---
+
+## ❶ まず把握すべき「条件」
+
+| カテゴリ      | 分岐と主な影響                                                                                                      | 根拠                                                                              |
+| --------- | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------- |
+| **年齢**    | **‐15歳未満**…必ず法定代理人が来庁。戸籍謄本など関係証明＋代理人本人確認書類が要る。<br>**15–17歳**…本人来庁可だが未成年。代理手続なら委任状が追加。<br>**18歳以上**…原則本人のみで可。 | ([city.kyoto.lg.jp][1], [kojinbango-card.go.jp][2], [city.katsushika.lg.jp][3]) |
+| **来庁者**   | 本人／法定代理人（親権者・成年後見人）／任意代理人。代理の場合は委任状または資格証明＋代理人の本人確認書類。                                                       | ([kojinbango-card.go.jp][4], [city.osaka.lg.jp][5])                             |
+| **カード状態** | 所持／紛失（盗難・焼失）／破損。紛失時は警察届番号など証明が要る。                                                                            | ([city.osaka.lg.jp][5])                                                         |
+| **手続**    | 有効期限更新／電子証明書のみ更新／再発行／氏名・住所変更…手数料や写真の要否が変わる。                                                                  | ([kojinbango-card.go.jp][4])                                                    |
+| **暗証番号**  | 不明・ロックなら初期化書類が追加。                                                                                            | 総務省 FAQ より（同上）                                                                  |
+
+---
+
+## ❷ 最少質問セット（サンプル）
+
+```json
+[
+  {"id":"age","text":"申請者の年齢を選んでください","options":[
+    {"v":"u15","label":"15歳未満"},
+    {"v":"u18","label":"15〜17歳"},
+    {"v":"adult","label":"18歳以上"}]},
+  {"id":"actor","text":"窓口に行く人は？","options":[
+    {"v":"self","label":"本人"},
+    {"v":"legal","label":"法定代理人（親／成年後見人）"},
+    {"v":"proxy","label":"任意代理人"}]},
+  {"id":"proc","text":"手続の種類","options":[
+    {"v":"renew","label":"有効期限更新"},
+    {"v":"cert","label":"電子証明書のみ更新"},
+    {"v":"reissue","label":"再発行（紛失・破損）"},
+    {"v":"change","label":"氏名・住所変更"}]},
+  {"id":"card","text":"いまカードは？","options":[
+    {"v":"have","label":"手元にある"},
+    {"v":"lost","label":"なくした／盗難"},
+    {"v":"broken","label":"破損・汚損"}]},
+  {"id":"pin","text":"暗証番号は？","options":[
+    {"v":"ok","label":"覚えている"},
+    {"v":"ng","label":"不明・ロック中"}]}
+]
+```
+
+---
+
+## ❸ ルールエンジン（例：TypeScript）
+
+```ts
+type Answer = {[k:string]:string};
+
+const RULES = [
+  // 15歳未満・法定代理人
+  {cond:{age:"u15"}, add:["child_card","notice","parent_ID","family_cert"]},
+  // 15–17歳 本人来庁
+  {cond:{age:"u18",actor:"self"}, add:["card","notice","own_ID"]},
+  // 任意代理更新
+  {cond:{actor:"proxy",proc:"renew"}, add:["card","notice","reply_form","proxy_ID"]},
+  // 紛失再発行
+  {cond:{proc:"reissue",card:"lost"}, add:["ID_set","lost_report","fee"]},
+  // 暗証番号不明
+  {cond:{pin:"ng"}, add:["ID_set","pin_reset_app"]},
+  // デフォルト（カード更新・本人）
+  {cond:{proc:"renew",actor:"self"}, add:["card","notice","pin"]}
+] as const;
+
+function resolveItems(ans:Answer){
+  const common:{[k:string]:string[]}={
+    "card":["カード本体"],
+    "notice":["有効期限通知書（無くても可）"],
+    "pin":["暗証番号"],
+    "own_ID":["顔写真付き本人確認書類1点"],
+    "parent_ID":["法定代理人の本人確認書類1点"],
+    "family_cert":["戸籍謄本など親子関係証明"],
+    "reply_form":["照会書兼回答書（封入済）"],
+    "proxy_ID":["代理人本人確認書類1点"],
+    "ID_set":["本人確認書類（A欄1点又はB欄2点）"],
+    "lost_report":["遺失届受理番号控え"],
+    "fee":["再発行手数料（1,000円目安）"],
+    "pin_reset_app":["暗証番号再設定申請書"]
+  };
+  const list = new Set<string>();
+  // 最初にマッチしたルールを採用
+  for(const r of RULES){
+    const ok = Object.entries(r.cond).every(([k,v])=>ans[k]===v);
+    if(ok){ r.add.forEach(it=>list.add(it)); break; }
+  }
+  return [...list].map(k=>common[k]);
+}
+```
+
+### 使い方
+
+1. **5 問**の回答を `answers` に格納。
+2. `resolveItems(answers)` が **日本語のチェックリスト配列** を返す。
+3. 画面にはアイコン付きカードで横並び表示＋「PDF／印刷」ボタン。
+4. 下部ヘルプに「※自治体で異なる場合があります」と注記。
+
+---
+
+## ❹ UIイメージ
+
+* **1画面1質問**のウィザード（スマホ親指操作前提）。
+* 結果ページは
+
+  * ✅チェックアイコン＋項目名（大文字1.2行で視認性確保）
+  * 補足が要る場合だけ折畳みで説明。
+* **再入力ストレスを減らす**ため、結果画面に「回答を修正」→直ちに再計算するサイドパネルを付けると二度手間が解消。
+
+---
+
+## ❺ 公式根拠をシステムに同梱
+
+* 年齢別／代理手続の必要書類 … J-LIS・デジタル庁・京都市・葛飾区 ([kojinbango-card.go.jp][4], [city.kyoto.lg.jp][1], [digital.go.jp][6], [city.katsushika.lg.jp][3])
+* 紛失再発行時 … 大阪市鶴見区・総務省FAQ ([city.osaka.lg.jp][5], [kojinbango-card.go.jp][7])
+
+JSONファイルにタイトル・URL・最終更新日を保持し、UIの「根拠を見る」リンクでモーダル表示すれば信頼性も担保できます。
+
+---
+
+### まとめ
+
+* **質問は5つだけ**で十分に分岐を網羅。
+* ルールは **JSONテーブル** なので非エンジニアでも編集可。
+* 結果は **チェックリスト＋印刷** に徹して読み飛ばし可。
+* 根拠リンクを付け、自治体差分にも備えれば二度手間ゼロ。
+
+この構成で「要件を入力すれば“あなたはこれだけ持って行けばOK”と一目で分かる」Webシステムが実現できます。
+
+[1]: https://www.city.kyoto.lg.jp/bunshi/page/0000294072.html?utm_source=chatgpt.com "本人がお越しになれない場合のマイナンバーカードの受取について"
+[2]: https://www.kojinbango-card.go.jp/faq_facial_attorney2/?utm_source=chatgpt.com "15歳以上18歳未満の利用者が顔認証マイナンバーカードへの切替を ..."
+[3]: https://www.city.katsushika.lg.jp/kurashi/1000046/1001402/1022133.html?utm_source=chatgpt.com "申請時に未成年だった方のマイナンバー（個人番号）カードの更新 ..."
+[4]: https://www.kojinbango-card.go.jp/card/renewal/?utm_source=chatgpt.com "更新手続きについて – マイナンバーカード総合サイト"
+[5]: https://www.city.osaka.lg.jp/tsurumi/page/0000614396.html?utm_source=chatgpt.com "マイナンバーカード（個人番号カード）の紛失と再交付について"
+[6]: https://www.digital.go.jp/policies/mynumber/expiration-date?utm_source=chatgpt.com "マイナンバーカードおよび電子証明書の有効期限・更新 - デジタル庁"
+[7]: https://www.kojinbango-card.go.jp/faq_lost_found1/?utm_source=chatgpt.com "マイナンバーカード及び個 番号通知書、通知カードを紛失して ..."
