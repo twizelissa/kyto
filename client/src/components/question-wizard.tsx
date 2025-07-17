@@ -14,8 +14,13 @@ export default function QuestionWizard({ onComplete }: QuestionWizardProps) {
   const [answers, setAnswers] = useState<Answer>({});
   const [selectedOption, setSelectedOption] = useState<string>("");
 
-  const question = QUESTIONS[currentQuestion];
-  const progress = ((currentQuestion + 1) / QUESTIONS.length) * 100;
+  // Filter questions based on current answers
+  const relevantQuestions = QUESTIONS.filter(q => 
+    !q.showWhen || q.showWhen(answers)
+  );
+
+  const question = relevantQuestions[currentQuestion];
+  const progress = ((currentQuestion + 1) / relevantQuestions.length) * 100;
 
   const handleOptionSelect = (value: string) => {
     setSelectedOption(value);
@@ -24,9 +29,9 @@ export default function QuestionWizard({ onComplete }: QuestionWizardProps) {
   };
 
   const handleNext = () => {
-    if (currentQuestion < QUESTIONS.length - 1) {
+    if (currentQuestion < relevantQuestions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
-      setSelectedOption(answers[QUESTIONS[currentQuestion + 1].id] || "");
+      setSelectedOption(answers[relevantQuestions[currentQuestion + 1].id] || "");
     } else {
       onComplete(answers);
     }
@@ -35,7 +40,7 @@ export default function QuestionWizard({ onComplete }: QuestionWizardProps) {
   const handlePrev = () => {
     if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1);
-      setSelectedOption(answers[QUESTIONS[currentQuestion - 1].id] || "");
+      setSelectedOption(answers[relevantQuestions[currentQuestion - 1].id] || "");
     }
   };
 
@@ -45,7 +50,7 @@ export default function QuestionWizard({ onComplete }: QuestionWizardProps) {
       <div className="mb-8">
         <div className="flex items-center justify-between mb-2">
           <span className="text-sm text-slate-600">
-            質問 {currentQuestion + 1} / {QUESTIONS.length}
+            質問 {currentQuestion + 1} / {relevantQuestions.length}
           </span>
           <span className="text-sm text-slate-600">{Math.round(progress)}%</span>
         </div>
@@ -91,7 +96,7 @@ export default function QuestionWizard({ onComplete }: QuestionWizardProps) {
           disabled={!selectedOption}
           className="bg-gov-blue hover:bg-blue-700"
         >
-          {currentQuestion === QUESTIONS.length - 1 ? "結果を見る" : "次の質問"}
+          {currentQuestion === relevantQuestions.length - 1 ? "結果を見る" : "次の質問"}
           <i className="fas fa-chevron-right ml-2"></i>
         </Button>
       </div>

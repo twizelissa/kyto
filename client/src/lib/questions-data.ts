@@ -8,9 +8,23 @@ export interface Question {
   id: string;
   text: string;
   options: QuestionOption[];
+  showWhen?: (answers: Record<string, string>) => boolean;
 }
 
 export const QUESTIONS: Question[] = [
+  {
+    "id": "procedure",
+    "text": "手続きの種類を選んでください",
+    "options": [
+      {"v": "new_application", "label": "新規申請・カード交付", "icon": "fas fa-id-card"},
+      {"v": "card_renewal", "label": "カード更新", "icon": "fas fa-sync-alt"},
+      {"v": "cert_renewal", "label": "電子証明書更新", "icon": "fas fa-certificate"},
+      {"v": "pin_reset", "label": "暗証番号初期化・変更・ロック解除", "icon": "fas fa-key"},
+      {"v": "info_change", "label": "住所・氏名変更等に伴うカード券面変更", "icon": "fas fa-edit"},
+      {"v": "suspension_release", "label": "一時停止の解除", "icon": "fas fa-play-circle"},
+      {"v": "card_return", "label": "カード返納", "icon": "fas fa-minus-circle"}
+    ]
+  },
   {
     "id": "age",
     "text": "申請者の年齢を選んでください",
@@ -21,40 +35,43 @@ export const QUESTIONS: Question[] = [
     ]
   },
   {
-    "id": "actor",
+    "id": "visitor",
     "text": "窓口に行く人は？",
     "options": [
       {"v": "self", "label": "本人", "icon": "fas fa-user-check"},
-      {"v": "legal", "label": "法定代理人（親／成年後見人）", "icon": "fas fa-user-shield"},
+      {"v": "legal", "label": "法定代理人（親権者・成年後見人）", "icon": "fas fa-user-shield"},
       {"v": "proxy", "label": "任意代理人", "icon": "fas fa-user-friends"}
     ]
   },
   {
-    "id": "proc",
-    "text": "手続の種類",
-    "options": [
-      {"v": "renew", "label": "有効期限更新", "icon": "fas fa-sync-alt"},
-      {"v": "cert", "label": "電子証明書のみ更新", "icon": "fas fa-certificate"},
-      {"v": "reissue", "label": "再発行（紛失・破損）", "icon": "fas fa-exclamation-triangle"},
-      {"v": "change", "label": "氏名・住所変更", "icon": "fas fa-edit"}
-    ]
-  },
-  {
-    "id": "card",
-    "text": "いまカードは？",
+    "id": "card_status",
+    "text": "現在のカードの状況は？",
     "options": [
       {"v": "have", "label": "手元にある", "icon": "fas fa-check-circle"},
-      {"v": "lost", "label": "なくした／盗難", "icon": "fas fa-times-circle"},
-      {"v": "broken", "label": "破損・汚損", "icon": "fas fa-exclamation-circle"}
-    ]
+      {"v": "lost", "label": "紛失・盗難", "icon": "fas fa-times-circle"},
+      {"v": "broken", "label": "破損・汚損", "icon": "fas fa-exclamation-circle"},
+      {"v": "none", "label": "持っていない（新規申請）", "icon": "fas fa-question-circle"}
+    ],
+    "showWhen": (answers) => answers.procedure !== "new_application"
   },
   {
-    "id": "pin",
-    "text": "暗証番号は？",
+    "id": "pin_status",
+    "text": "暗証番号の状況は？",
     "options": [
-      {"v": "ok", "label": "覚えている", "icon": "fas fa-lock"},
-      {"v": "ng", "label": "不明・ロック中", "icon": "fas fa-lock-open"}
-    ]
+      {"v": "ok", "label": "覚えている・問題なし", "icon": "fas fa-lock"},
+      {"v": "forgot", "label": "忘れた・不明", "icon": "fas fa-lock-open"},
+      {"v": "locked", "label": "ロックされている", "icon": "fas fa-times-circle"}
+    ],
+    "showWhen": (answers) => ["cert_renewal", "pin_reset", "info_change"].includes(answers.procedure)
+  },
+  {
+    "id": "notification",
+    "text": "交付通知書（はがき）はありますか？",
+    "options": [
+      {"v": "have", "label": "手元にある", "icon": "fas fa-envelope"},
+      {"v": "lost", "label": "なくした・届いていない", "icon": "fas fa-envelope-open"}
+    ],
+    "showWhen": (answers) => answers.procedure === "new_application"
   }
 ];
 
@@ -64,19 +81,38 @@ export interface RequiredItem {
 }
 
 export const ITEMS: Record<string, RequiredItem> = {
-  "card": {name: "マイナンバーカード本体", icon: "fas fa-id-card"},
-  "notice": {name: "有効期限通知書（無くても可）", icon: "fas fa-envelope"},
-  "pin": {name: "暗証番号", icon: "fas fa-key"},
-  "own_ID": {name: "顔写真付き本人確認書類1点", icon: "fas fa-id-badge"},
-  "parent_ID": {name: "法定代理人の本人確認書類1点", icon: "fas fa-user-shield"},
-  "family_cert": {name: "戸籍謄本など親子関係証明", icon: "fas fa-file-alt"},
-  "reply_form": {name: "照会書兼回答書（封入済）", icon: "fas fa-envelope-open"},
-  "proxy_ID": {name: "代理人本人確認書類1点", icon: "fas fa-user-friends"},
-  "ID_set": {name: "本人確認書類（A欄1点又はB欄2点）", icon: "fas fa-id-card-alt"},
+  // 基本書類
+  "mynumber_card": {name: "マイナンバーカード本体", icon: "fas fa-id-card"},
+  "notification_card": {name: "交付通知書（はがき）", icon: "fas fa-envelope"},
+  "pin_number": {name: "暗証番号（4桁数字）", icon: "fas fa-key"},
+  
+  // 本人確認書類
+  "self_id_a1": {name: "本人確認書類（A欄から1点）", icon: "fas fa-id-badge"},
+  "self_id_a2": {name: "本人確認書類（A欄から2点）", icon: "fas fa-id-badge"},
+  "self_id_a1_b1": {name: "本人確認書類（A欄1点＋B欄1点）", icon: "fas fa-id-badge"},
+  "self_id_b2": {name: "本人確認書類（B欄から2点）", icon: "fas fa-id-badge"},
+  "self_id_b3_with_photo": {name: "本人確認書類（B欄3点、うち1点は顔写真付き）", icon: "fas fa-id-badge"},
+  
+  // 法定代理人関連書類
+  "legal_rep_id_a1": {name: "法定代理人の本人確認書類（A欄から1点）", icon: "fas fa-user-shield"},
+  "legal_rep_id_a2": {name: "法定代理人の本人確認書類（A欄から2点）", icon: "fas fa-user-shield"},
+  "legal_rep_id_a1_b1": {name: "法定代理人の本人確認書類（A欄1点＋B欄1点）", icon: "fas fa-user-shield"},
+  "legal_authority_proof": {name: "法定代理権を証明する書類（戸籍謄本等）", icon: "fas fa-file-alt"},
+  "guardian_cert": {name: "成年後見登記事項証明書", icon: "fas fa-file-certificate"},
+  
+  // 任意代理人関連書類
+  "proxy_id_a1": {name: "任意代理人の本人確認書類（A欄から1点）", icon: "fas fa-user-friends"},
+  "proxy_id_a2": {name: "任意代理人の本人確認書類（A欄から2点）", icon: "fas fa-user-friends"},
+  "proxy_id_a1_b1": {name: "任意代理人の本人確認書類（A欄1点＋B欄1点）", icon: "fas fa-user-friends"},
+  "inquiry_response": {name: "照会書兼回答書（封入・封緘済み）", icon: "fas fa-envelope-open"},
+  "power_of_attorney": {name: "委任状", icon: "fas fa-file-signature"},
+  "reason_certificate": {name: "来庁できない理由を証明する書類", icon: "fas fa-file-medical"},
+  
+  // 特殊な書類
   "lost_report": {name: "遺失届受理番号控え", icon: "fas fa-file-signature"},
-  "fee": {name: "再発行手数料（1,000円目安）", icon: "fas fa-yen-sign"},
-  "pin_reset_app": {name: "暗証番号再設定申請書", icon: "fas fa-file-contract"},
-  "child_card": {name: "お子様のマイナンバーカード", icon: "fas fa-id-card"},
-  "change_docs": {name: "変更内容を証明する書類", icon: "fas fa-file-text"},
-  "broken_card": {name: "破損したマイナンバーカード", icon: "fas fa-id-card"}
+  "reissue_fee": {name: "再発行手数料（1,000円）", icon: "fas fa-yen-sign"},
+  "broken_card": {name: "破損したマイナンバーカード", icon: "fas fa-id-card"},
+  "old_card": {name: "旧マイナンバーカード（返納用）", icon: "fas fa-id-card"},
+  "temp_stop_release_form": {name: "個人番号カード一時停止解除届", icon: "fas fa-play-circle"},
+  "return_form": {name: "個人番号カード紛失・廃止・返納届", icon: "fas fa-minus-circle"}
 };
