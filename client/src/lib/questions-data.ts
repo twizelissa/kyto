@@ -43,24 +43,6 @@ export const QUESTIONS: Question[] = [
     "showWhen": (answers) => answers.procedure === "card_application"
   },
   {
-    "id": "age",
-    "text": "申請者の年齢を選んでください",
-    "options": [
-      {"v": "adult", "label": "成人", "icon": "fas fa-user"},
-      {"v": "minor", "label": "未成年者", "icon": "fas fa-child"}
-    ]
-  },
-  {
-    "id": "minor_age",
-    "text": "未成年者の詳細な年齢を選んでください",
-    "options": [
-      {"v": "u15", "label": "15歳未満", "icon": "fas fa-baby"},
-      {"v": "legal_representative", "label": "法定代理人", "icon": "fas fa-user-shield"},
-      {"v": "any_representative", "label": "任意代理人", "icon": "fas fa-user-friends"}
-    ],
-    "showWhen": (answers) => answers.age === "minor"
-  },
-  {
     "id": "visitor",
     "text": "窓口に行く人は？",
     "options": [
@@ -68,6 +50,34 @@ export const QUESTIONS: Question[] = [
       {"v": "legal", "label": "法定代理人（親権者・成年後見人）", "icon": "fas fa-user-shield"},
       {"v": "proxy", "label": "任意代理人", "icon": "fas fa-user-friends"}
     ]
+  },
+  {
+    "id": "age",
+    "text": "申請者の年齢を選んでください",
+    "options": [
+      {"v": "adult", "label": "成人", "icon": "fas fa-user"},
+      {"v": "minor", "label": "未成年者", "icon": "fas fa-child"}
+    ],
+    "showWhen": (answers) => answers.visitor === "self"
+  },
+  {
+    "id": "minor_details",
+    "text": "未成年者の詳細を選んでください",
+    "options": [
+      {"v": "u15", "label": "15歳未満", "icon": "fas fa-baby"},
+      {"v": "legal_rep", "label": "法定代理人", "icon": "fas fa-user-shield"},
+      {"v": "any_rep", "label": "任意代理人", "icon": "fas fa-user-friends"}
+    ],
+    "showWhen": (answers) => answers.visitor === "legal"
+  },
+  {
+    "id": "minor_sub_details",
+    "text": "該当する項目を選んでください",
+    "options": [
+      {"v": "parent", "label": "親権者・後見人", "icon": "fas fa-user-shield"},
+      {"v": "other", "label": "それ以外", "icon": "fas fa-user-friends"}
+    ],
+    "showWhen": (answers) => answers.visitor === "legal" && answers.minor_details === "legal_rep"
   },
   {
     "id": "card_status",
