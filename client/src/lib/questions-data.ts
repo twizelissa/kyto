@@ -34,6 +34,15 @@ export const QUESTIONS: Question[] = [
     "showWhen": (answers) => answers.procedure === "card_application"
   },
   {
+    "id": "card_process",
+    "text": "手続きの種類を選んでください",
+    "options": [
+      {"v": "application", "label": "カード申請", "icon": "fas fa-file-alt"},
+      {"v": "issuance", "label": "カード交付", "icon": "fas fa-id-card"}
+    ],
+    "showWhen": (answers) => answers.procedure === "card_application"
+  },
+  {
     "id": "age",
     "text": "申請者の年齢を選んでください",
     "options": [

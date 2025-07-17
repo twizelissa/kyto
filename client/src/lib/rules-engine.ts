@@ -10,34 +10,44 @@ interface Rule {
 const RULES: Rule[] = [
   // ①カード申請・交付
   {
-    cond: {procedure: "card_application", card_number: "first", age: "adult", visitor: "self"},
+    cond: {procedure: "card_application", card_number: "first", card_process: "application", age: "adult", visitor: "self"},
     add: ["notification_card", "self_id_a1_b1"],
-    description: "成人による初回カード申請・交付"
+    description: "成人による初回カード申請"
   },
   {
-    cond: {procedure: "card_application", card_number: "first", age: "minor", minor_age: "u15", visitor: "legal"},
+    cond: {procedure: "card_application", card_number: "first", card_process: "issuance", age: "adult", visitor: "self"},
+    add: ["notification_card", "self_id_a1_b1"],
+    description: "成人による初回カード交付"
+  },
+  {
+    cond: {procedure: "card_application", card_number: "first", card_process: "application", age: "minor", minor_age: "u15", visitor: "legal"},
     add: ["notification_card", "self_id_a1_b1", "legal_rep_id_a1", "legal_authority_proof"],
     description: "15歳未満の方の初回カード申請（法定代理人）"
   },
   {
-    cond: {procedure: "card_application", card_number: "first", age: "minor", minor_age: "legal_representative", visitor: "legal"},
+    cond: {procedure: "card_application", card_number: "first", card_process: "issuance", age: "minor", minor_age: "u15", visitor: "legal"},
     add: ["notification_card", "self_id_a1_b1", "legal_rep_id_a1", "legal_authority_proof"],
-    description: "未成年者の初回カード申請（法定代理人）"
+    description: "15歳未満の方の初回カード交付（法定代理人）"
   },
   {
-    cond: {procedure: "card_application", card_number: "first", visitor: "proxy"},
-    add: ["notification_card", "self_id_a2", "proxy_id_a1_b1", "power_of_attorney", "reason_certificate"],
-    description: "任意代理人による初回カード申請・交付"
-  },
-  {
-    cond: {procedure: "card_application", card_number: "second_plus", age: "adult", visitor: "self"},
+    cond: {procedure: "card_application", card_number: "second_plus", card_process: "application", age: "adult", visitor: "self"},
     add: ["mynumber_card", "self_id_a1_b1"],
-    description: "成人による2枚目以降のカード申請・交付"
+    description: "成人による2枚目以降のカード申請"
   },
   {
-    cond: {procedure: "card_application", card_number: "second_plus", age: "minor", visitor: "legal"},
+    cond: {procedure: "card_application", card_number: "second_plus", card_process: "issuance", age: "adult", visitor: "self"},
+    add: ["mynumber_card", "self_id_a1_b1"],
+    description: "成人による2枚目以降のカード交付"
+  },
+  {
+    cond: {procedure: "card_application", card_number: "second_plus", card_process: "application", age: "minor", visitor: "legal"},
     add: ["mynumber_card", "self_id_a1_b1", "legal_rep_id_a1", "legal_authority_proof"],
     description: "未成年者の2枚目以降のカード申請（法定代理人）"
+  },
+  {
+    cond: {procedure: "card_application", card_number: "second_plus", card_process: "issuance", age: "minor", visitor: "legal"},
+    add: ["mynumber_card", "self_id_a1_b1", "legal_rep_id_a1", "legal_authority_proof"],
+    description: "未成年者の2枚目以降のカード交付（法定代理人）"
   },
 
   // ②カード・電子証明書更新
