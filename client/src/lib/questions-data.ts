@@ -16,23 +16,40 @@ export const QUESTIONS: Question[] = [
     "id": "procedure",
     "text": "手続きの種類を選んでください",
     "options": [
-      {"v": "new_application", "label": "新規申請・カード交付", "icon": "fas fa-id-card"},
-      {"v": "card_renewal", "label": "カード更新", "icon": "fas fa-sync-alt"},
-      {"v": "cert_renewal", "label": "電子証明書更新", "icon": "fas fa-certificate"},
-      {"v": "pin_reset", "label": "暗証番号初期化・変更・ロック解除", "icon": "fas fa-key"},
-      {"v": "info_change", "label": "住所・氏名変更等に伴うカード券面変更", "icon": "fas fa-edit"},
-      {"v": "suspension_release", "label": "一時停止の解除", "icon": "fas fa-play-circle"},
-      {"v": "card_return", "label": "カード返納", "icon": "fas fa-minus-circle"}
+      {"v": "card_application", "label": "①カード申請・交付", "icon": "fas fa-id-card"},
+      {"v": "card_renewal", "label": "②カード・電子証明書更新", "icon": "fas fa-sync-alt"},
+      {"v": "info_change", "label": "③情報変更（引越し・氏名・ログイン解除）", "icon": "fas fa-edit"},
+      {"v": "address_name_change", "label": "④住所・氏名変更に伴うカード券面更新", "icon": "fas fa-address-card"},
+      {"v": "time_deletion", "label": "⑤カード紛失等による一時停止の解除", "icon": "fas fa-play-circle"},
+      {"v": "card_return", "label": "⑥カード返納", "icon": "fas fa-minus-circle"}
     ]
+  },
+  {
+    "id": "card_number",
+    "text": "カードの申請は何枚目ですか？",
+    "options": [
+      {"v": "first", "label": "1枚目", "icon": "fas fa-star"},
+      {"v": "second_plus", "label": "2枚目以降", "icon": "fas fa-redo"}
+    ],
+    "showWhen": (answers) => answers.procedure === "card_application"
   },
   {
     "id": "age",
     "text": "申請者の年齢を選んでください",
     "options": [
-      {"v": "u15", "label": "15歳未満", "icon": "fas fa-child"},
-      {"v": "u18", "label": "15〜17歳", "icon": "fas fa-user-graduate"},
-      {"v": "adult", "label": "18歳以上", "icon": "fas fa-user"}
+      {"v": "adult", "label": "成人", "icon": "fas fa-user"},
+      {"v": "minor", "label": "未成年者", "icon": "fas fa-child"}
     ]
+  },
+  {
+    "id": "minor_age",
+    "text": "未成年者の詳細な年齢を選んでください",
+    "options": [
+      {"v": "u15", "label": "15歳未満", "icon": "fas fa-baby"},
+      {"v": "legal_representative", "label": "法定代理人", "icon": "fas fa-user-shield"},
+      {"v": "any_representative", "label": "任意代理人", "icon": "fas fa-user-friends"}
+    ],
+    "showWhen": (answers) => answers.age === "minor"
   },
   {
     "id": "visitor",

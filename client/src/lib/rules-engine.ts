@@ -10,68 +10,99 @@ interface Rule {
 const RULES: Rule[] = [
   // ①カード申請・交付
   {
-    cond: {procedure: "new_application", age: "u15", visitor: "legal"},
-    add: ["notification_card", "self_id_a1_b1", "legal_rep_id_a1", "legal_authority_proof"],
-    description: "15歳未満の方の新規申請（法定代理人）"
-  },
-  {
-    cond: {procedure: "new_application", age: "u15", visitor: "self"},
-    add: ["notification_card", "self_id_a1_b1", "legal_rep_id_a1", "legal_authority_proof"],
-    description: "15歳未満の方は法定代理人の同伴が必要"
-  },
-  {
-    cond: {procedure: "new_application", visitor: "self", notification: "have"},
+    cond: {procedure: "card_application", card_number: "first", age: "adult", visitor: "self"},
     add: ["notification_card", "self_id_a1_b1"],
-    description: "本人による新規申請・交付"
+    description: "成人による初回カード申請・交付"
   },
   {
-    cond: {procedure: "new_application", visitor: "self", notification: "lost"},
-    add: ["self_id_a2", "self_id_a1_b1"],
-    description: "交付通知書なしの新規申請"
+    cond: {procedure: "card_application", card_number: "first", age: "minor", minor_age: "u15", visitor: "legal"},
+    add: ["notification_card", "self_id_a1_b1", "legal_rep_id_a1", "legal_authority_proof"],
+    description: "15歳未満の方の初回カード申請（法定代理人）"
   },
   {
-    cond: {procedure: "new_application", visitor: "proxy"},
+    cond: {procedure: "card_application", card_number: "first", age: "minor", minor_age: "legal_representative", visitor: "legal"},
+    add: ["notification_card", "self_id_a1_b1", "legal_rep_id_a1", "legal_authority_proof"],
+    description: "未成年者の初回カード申請（法定代理人）"
+  },
+  {
+    cond: {procedure: "card_application", card_number: "first", visitor: "proxy"},
     add: ["notification_card", "self_id_a2", "proxy_id_a1_b1", "power_of_attorney", "reason_certificate"],
-    description: "任意代理人による新規申請・交付"
+    description: "任意代理人による初回カード申請・交付"
+  },
+  {
+    cond: {procedure: "card_application", card_number: "second_plus", age: "adult", visitor: "self"},
+    add: ["mynumber_card", "self_id_a1_b1"],
+    description: "成人による2枚目以降のカード申請・交付"
+  },
+  {
+    cond: {procedure: "card_application", card_number: "second_plus", age: "minor", visitor: "legal"},
+    add: ["mynumber_card", "self_id_a1_b1", "legal_rep_id_a1", "legal_authority_proof"],
+    description: "未成年者の2枚目以降のカード申請（法定代理人）"
   },
 
   // ②カード・電子証明書更新
   {
-    cond: {procedure: "card_renewal", visitor: "self"},
-    add: ["mynumber_card", "old_card"],
-    description: "本人によるカード更新"
+    cond: {procedure: "card_renewal", age: "adult", visitor: "self"},
+    add: ["mynumber_card"],
+    description: "成人本人によるカード・電子証明書更新"
   },
   {
-    cond: {procedure: "card_renewal", age: "u15", visitor: "legal"},
+    cond: {procedure: "card_renewal", age: "minor", visitor: "legal"},
     add: ["mynumber_card", "legal_rep_id_a1", "legal_authority_proof"],
-    description: "15歳未満の方のカード更新（法定代理人）"
+    description: "未成年者のカード・電子証明書更新（法定代理人）"
   },
   {
     cond: {procedure: "card_renewal", visitor: "proxy"},
     add: ["mynumber_card", "proxy_id_a1", "inquiry_response"],
-    description: "任意代理人によるカード更新"
-  },
-  {
-    cond: {procedure: "cert_renewal", visitor: "self"},
-    add: ["mynumber_card", "pin_number"],
-    description: "本人による電子証明書更新"
-  },
-  {
-    cond: {procedure: "cert_renewal", age: "u15", visitor: "legal"},
-    add: ["mynumber_card", "legal_rep_id_a1", "legal_authority_proof"],
-    description: "15歳未満の方の電子証明書更新（法定代理人）"
-  },
-  {
-    cond: {procedure: "cert_renewal", visitor: "proxy"},
-    add: ["mynumber_card", "proxy_id_a1", "inquiry_response"],
-    description: "任意代理人による電子証明書更新"
+    description: "任意代理人によるカード・電子証明書更新"
   },
 
-  // ③暗証番号初期化・変更・ロック解除
+  // ③情報変更（引越し・氏名・ログイン解除）
   {
-    cond: {procedure: "pin_reset", visitor: "self"},
+    cond: {procedure: "info_change", age: "adult", visitor: "self"},
     add: ["mynumber_card", "self_id_a1_b1"],
-    description: "本人による暗証番号初期化"
+    description: "成人本人による情報変更"
+  },
+  {
+    cond: {procedure: "info_change", age: "minor", visitor: "legal"},
+    add: ["mynumber_card", "legal_rep_id_a1", "legal_authority_proof"],
+    description: "未成年者の情報変更（法定代理人）"
+  },
+
+  // ④住所・氏名変更に伴うカード券面更新
+  {
+    cond: {procedure: "address_name_change", age: "adult", visitor: "self"},
+    add: ["mynumber_card", "self_id_a1_b1"],
+    description: "成人本人による住所・氏名変更に伴うカード券面更新"
+  },
+  {
+    cond: {procedure: "address_name_change", age: "minor", visitor: "legal"},
+    add: ["mynumber_card", "legal_rep_id_a1", "legal_authority_proof"],
+    description: "未成年者の住所・氏名変更に伴うカード券面更新（法定代理人）"
+  },
+
+  // ⑤カード紛失等による一時停止の解除
+  {
+    cond: {procedure: "time_deletion", age: "adult", visitor: "self"},
+    add: ["mynumber_card", "self_id_a1_b1"],
+    description: "成人本人による一時停止の解除"
+  },
+  {
+    cond: {procedure: "time_deletion", age: "minor", visitor: "legal"},
+    add: ["mynumber_card", "legal_rep_id_a1", "legal_authority_proof"],
+    description: "未成年者の一時停止の解除（法定代理人）"
+  },
+
+  // ⑥カード返納
+  {
+    cond: {procedure: "card_return", age: "adult", visitor: "self"},
+    add: ["mynumber_card"],
+    description: "成人本人によるカード返納"
+  },
+  {
+    cond: {procedure: "card_return", age: "minor", visitor: "legal"},
+    add: ["mynumber_card", "legal_rep_id_a1", "legal_authority_proof"],
+    description: "未成年者のカード返納（法定代理人）"
   },
   {
     cond: {procedure: "pin_reset", age: "u15", visitor: "legal"},
