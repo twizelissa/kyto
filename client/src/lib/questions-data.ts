@@ -43,41 +43,70 @@ export const QUESTIONS: Question[] = [
     "showWhen": (answers) => answers.procedure === "card_application"
   },
   {
+    "id": "renewal_type",
+    "text": "更新の種類を選んでください",
+    "options": [
+      {"v": "card_renewal", "label": "カード更新", "icon": "fas fa-id-card"},
+      {"v": "cert_renewal", "label": "電子証明書更新", "icon": "fas fa-certificate"}
+    ],
+    "showWhen": (answers) => answers.procedure === "card_renewal"
+  },
+  {
+    "id": "renewal_process",
+    "text": "手続きの種類を選んでください",
+    "options": [
+      {"v": "application", "label": "カード申請", "icon": "fas fa-file-alt"},
+      {"v": "issuance", "label": "カード交付", "icon": "fas fa-id-card"}
+    ],
+    "showWhen": (answers) => answers.procedure === "card_renewal"
+  },
+  {
     "id": "visitor",
     "text": "窓口に行く人は？",
     "options": [
-      {"v": "self", "label": "本人", "icon": "fas fa-user-check"},
-      {"v": "legal", "label": "法定代理人（親権者・成年後見人）", "icon": "fas fa-user-shield"},
-      {"v": "proxy", "label": "任意代理人", "icon": "fas fa-user-friends"}
+      {"v": "self", "label": "a 本人", "icon": "fas fa-user-check"},
+      {"v": "legal", "label": "b 法定代理人（親権者・成年後見人）", "icon": "fas fa-user-shield"},
+      {"v": "proxy", "label": "c 任意代理人", "icon": "fas fa-user-friends"}
     ]
   },
   {
-    "id": "age",
-    "text": "申請者の年齢を選んでください",
-    "options": [
-      {"v": "adult", "label": "成人", "icon": "fas fa-user"},
-      {"v": "minor", "label": "未成年者", "icon": "fas fa-child"}
-    ],
-    "showWhen": (answers) => answers.visitor === "self"
-  },
-  {
-    "id": "minor_details",
-    "text": "未成年者の詳細を選んでください",
+    "id": "legal_details",
+    "text": "該当する項目を選んでください",
     "options": [
       {"v": "u15", "label": "15歳未満", "icon": "fas fa-baby"},
-      {"v": "legal_rep", "label": "法定代理人", "icon": "fas fa-user-shield"},
-      {"v": "any_rep", "label": "任意代理人", "icon": "fas fa-user-friends"}
+      {"v": "adult_guardian", "label": "成年被後見人", "icon": "fas fa-user-shield"}
     ],
     "showWhen": (answers) => answers.visitor === "legal"
   },
   {
-    "id": "minor_sub_details",
+    "id": "minor_residence",
+    "text": "居住状況を選んでください",
+    "options": [
+      {"v": "same", "label": "同居", "icon": "fas fa-home"},
+      {"v": "separate", "label": "非同居", "icon": "fas fa-home"}
+    ],
+    "showWhen": (answers) => answers.visitor === "legal" && answers.legal_details === "u15"
+  },
+  {
+    "id": "proxy_details",
     "text": "該当する項目を選んでください",
     "options": [
-      {"v": "parent", "label": "親権者・後見人", "icon": "fas fa-user-shield"},
+      {"v": "guardian", "label": "被保佐人・被補助人", "icon": "fas fa-user-shield"},
       {"v": "other", "label": "それ以外", "icon": "fas fa-user-friends"}
     ],
-    "showWhen": (answers) => answers.visitor === "legal" && answers.minor_details === "legal_rep"
+    "showWhen": (answers) => answers.visitor === "proxy"
+  },
+  {
+    "id": "id_document",
+    "text": "本人確認書類の有無を選んでください",
+    "options": [
+      {"v": "photo_id", "label": "顔写真付本人確認書類あり", "icon": "fas fa-id-card"},
+      {"v": "no_photo_id", "label": "顔写真付本人確認書類なし", "icon": "fas fa-file-alt"}
+    ],
+    "showWhen": (answers) => 
+      answers.visitor === "self" || 
+      (answers.visitor === "legal" && (answers.legal_details === "adult_guardian" || answers.minor_residence)) ||
+      (answers.visitor === "proxy" && answers.proxy_details)
   },
   {
     "id": "card_status",
