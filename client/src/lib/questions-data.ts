@@ -105,39 +105,10 @@ export const QUESTIONS: Question[] = [
     ],
     "showWhen": (answers) => 
       answers.visitor === "self" || 
-      (answers.visitor === "legal" && (answers.legal_details === "adult_guardian" || answers.minor_residence)) ||
-      (answers.visitor === "proxy" && answers.proxy_details)
+      (answers.visitor === "legal" && (answers.legal_details === "adult_guardian" || Boolean(answers.minor_residence))) ||
+      (answers.visitor === "proxy" && Boolean(answers.proxy_details))
   },
-  {
-    "id": "card_status",
-    "text": "現在のカードの状況は？",
-    "options": [
-      {"v": "have", "label": "手元にある", "icon": "fas fa-check-circle"},
-      {"v": "lost", "label": "紛失・盗難", "icon": "fas fa-times-circle"},
-      {"v": "broken", "label": "破損・汚損", "icon": "fas fa-exclamation-circle"},
-      {"v": "none", "label": "持っていない（新規申請）", "icon": "fas fa-question-circle"}
-    ],
-    "showWhen": (answers) => answers.procedure !== "new_application"
-  },
-  {
-    "id": "pin_status",
-    "text": "暗証番号の状況は？",
-    "options": [
-      {"v": "ok", "label": "覚えている・問題なし", "icon": "fas fa-lock"},
-      {"v": "forgot", "label": "忘れた・不明", "icon": "fas fa-lock-open"},
-      {"v": "locked", "label": "ロックされている", "icon": "fas fa-times-circle"}
-    ],
-    "showWhen": (answers) => ["cert_renewal", "pin_reset", "info_change"].includes(answers.procedure)
-  },
-  {
-    "id": "notification",
-    "text": "交付通知書（はがき）はありますか？",
-    "options": [
-      {"v": "have", "label": "手元にある", "icon": "fas fa-envelope"},
-      {"v": "lost", "label": "なくした・届いていない", "icon": "fas fa-envelope-open"}
-    ],
-    "showWhen": (answers) => answers.procedure === "new_application"
-  }
+
 ];
 
 export interface RequiredItem {
@@ -149,12 +120,15 @@ export const ITEMS: Record<string, RequiredItem> = {
   // 基本書類
   "mynumber_card": {name: "マイナンバーカード本体", icon: "fas fa-id-card"},
   "notification_card": {name: "交付通知書（はがき）", icon: "fas fa-envelope"},
+  "mynumber_notification_card": {name: "マイナンバー通知カード（お持ちの方は返納していただきます。）", icon: "fas fa-id-card-alt"},
+  "resident_card": {name: "住民基本台帳カード（お持ちの方は返納していただきます。）", icon: "fas fa-id-card"},
+  "current_mynumber_card": {name: "現在お持ちのマイナンバーカード（マイナンバーカード再交付申請の方は、現在お持ちのマイナンバーカードを返納してください。返納がない場合、再交付手数料として1,000円頂戴します。）", icon: "fas fa-id-card"},
   "pin_number": {name: "暗証番号（4桁数字）", icon: "fas fa-key"},
   
   // 本人確認書類
   "self_id_a1": {name: "本人確認書類（A欄から1点）", icon: "fas fa-id-badge"},
   "self_id_a2": {name: "本人確認書類（A欄から2点）", icon: "fas fa-id-badge"},
-  "self_id_a1_b1": {name: "本人確認書類（A欄1点＋B欄1点）", icon: "fas fa-id-badge"},
+  "self_id_a1_b1": {name: "本人確認書類（下表（本人確認書類一覧）のA欄から1点又はB欄から2点）※　交付通知書（はがき）をお持ちでない場合は、下表のA欄2点又はA欄1点＋B欄1点が必要になります。（例：運転免許証＋パスポート　又は　運転免許証＋資格確認書（健康保険証）　等）", icon: "fas fa-id-badge"},
   "self_id_b2": {name: "本人確認書類（B欄から2点）", icon: "fas fa-id-badge"},
   "self_id_b3_with_photo": {name: "本人確認書類（B欄3点、うち1点は顔写真付き）", icon: "fas fa-id-badge"},
   

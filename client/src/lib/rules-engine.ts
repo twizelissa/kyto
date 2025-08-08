@@ -11,7 +11,7 @@ const RULES: Rule[] = [
   // ①カード申請・交付 - a本人
   {
     cond: {procedure: "card_application", card_number: "first", card_process: "application", visitor: "self", id_document: "photo_id"},
-    add: ["notification_card", "self_id_a1_b1"],
+    add: ["notification_card", "mynumber_notification_card", "self_id_a1_b1", "resident_card", "current_mynumber_card"],
     description: "本人による初回カード申請（顔写真付ID有）"
   },
   {
