@@ -106,10 +106,7 @@ function WelcomeScreen({ onStart }: { onStart: () => void }) {
         </CardContent>
       </Card>
 
-      <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-sm text-red-800">
-        <i className="fas fa-info-circle mr-2"></i>
-        <strong>ご注意：</strong>自治体により必要書類が異なる場合があります。詳細は各自治体の窓口にご確認ください。
-      </div>
+
     </div>
   );
 }

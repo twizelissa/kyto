@@ -58,22 +58,22 @@ export default function QuestionWizard({ onComplete }: QuestionWizardProps) {
       </div>
 
       {/* Question Card */}
-      <Card className="rounded-xl shadow-lg p-8 mb-6">
+      <Card className="kyoto-card rounded-lg shadow-lg p-8 mb-6">
         <CardContent className="space-y-6">
-          <h2 className="text-2xl font-bold text-slate-800 mb-6">{question.text}</h2>
+          <h2 className="text-2xl font-bold text-kyoto-purple-dark mb-6">{question.text}</h2>
           <div className="space-y-4">
             {question.options.map((option) => (
               <div
                 key={option.v}
                 className={`option-card p-4 border-2 rounded-lg cursor-pointer transition-all ${
                   selectedOption === option.v
-                    ? "border-gov-blue bg-blue-50"
-                    : "border-slate-200 hover:border-gov-blue hover:bg-blue-50"
+                    ? "border-kyoto-purple bg-kyoto-purple-light"
+                    : "border-gray-200 hover:border-kyoto-purple hover:bg-kyoto-purple-light"
                 }`}
                 onClick={() => handleOptionSelect(option.v)}
               >
                 <div className="flex items-center space-x-4">
-                  <i className={`${option.icon} text-gov-blue text-xl`}></i>
+                  <i className={`${option.icon} text-kyoto-purple text-xl`}></i>
                   <span className="font-medium text-slate-800">{option.label}</span>
                 </div>
               </div>
@@ -94,7 +94,7 @@ export default function QuestionWizard({ onComplete }: QuestionWizardProps) {
         <Button
           onClick={handleNext}
           disabled={!selectedOption}
-          className="bg-gov-blue hover:bg-blue-700"
+          className="kyoto-button"
         >
           {currentQuestion === relevantQuestions.length - 1 ? "結果を見る" : "次の質問"}
           <i className="fas fa-chevron-right ml-2"></i>
