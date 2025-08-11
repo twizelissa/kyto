@@ -67,6 +67,116 @@ export const QUESTIONS: Question[] = [
       {"v": "handwritten_form", "label": "手書き交付申請書による申請", "icon": "fas fa-pen"}
     ],
     "showWhen": (answers) => answers.application_method === "mail"
+  },
+  // カードの交付（受け取り）の質問
+  {
+    "id": "issuance_type",
+    "text": "お手続きの種類をお選びください",
+    "options": [
+      {"v": "new", "label": "新規", "icon": "fas fa-plus"},
+      {"v": "renewal", "label": "更新", "icon": "fas fa-sync-alt"},
+      {"v": "lost_reissue", "label": "紛失による再発行", "icon": "fas fa-exclamation-triangle"},
+      {"v": "other_reissue", "label": "紛失以外の理由による再発行", "icon": "fas fa-redo"}
+    ],
+    "showWhen": (answers) => answers.procedure === "card_issuance"
+  },
+  {
+    "id": "notification_card",
+    "text": "交付通知書を持っていますか",
+    "options": [
+      {"v": "yes", "label": "持っている", "icon": "fas fa-check"},
+      {"v": "no", "label": "持っていない", "icon": "fas fa-times"}
+    ],
+    "showWhen": (answers) => answers.procedure === "card_issuance" && Boolean(answers.issuance_type)
+  },
+  {
+    "id": "basic_resident_card",
+    "text": "住民基本台帳カードを持っていますか",
+    "options": [
+      {"v": "yes", "label": "持っている", "icon": "fas fa-id-card"},
+      {"v": "no", "label": "持っていない", "icon": "fas fa-times"}
+    ],
+    "showWhen": (answers) => answers.procedure === "card_issuance" && answers.issuance_type === "new" && Boolean(answers.notification_card)
+  },
+  {
+    "id": "mynumber_notification",
+    "text": "マイナンバー通知カード又は個人番号通知書を持っていますか",
+    "options": [
+      {"v": "yes", "label": "持っている", "icon": "fas fa-check"},
+      {"v": "no", "label": "持っていない", "icon": "fas fa-times"}
+    ],
+    "showWhen": (answers) => answers.procedure === "card_issuance" && answers.issuance_type === "new" && Boolean(answers.basic_resident_card)
+  },
+  {
+    "id": "visitor_type",
+    "text": "手続きに来られる方をお選びください",
+    "options": [
+      {"v": "self", "label": "本人", "icon": "fas fa-user"},
+      {"v": "proxy", "label": "代理人", "icon": "fas fa-user-friends"}
+    ],
+    "showWhen": (answers) => {
+      if (answers.procedure !== "card_issuance") return false;
+      if (answers.issuance_type === "new") {
+        return answers.mynumber_notification !== undefined;
+      } else {
+        return answers.notification_card !== undefined;
+      }
+    }
+  },
+  {
+    "id": "applicant_age",
+    "text": "申請者の年齢をお選びください",
+    "options": [
+      {"v": "15_over", "label": "15歳以上", "icon": "fas fa-user"},
+      {"v": "under_15", "label": "15歳未満", "icon": "fas fa-child"}
+    ],
+    "showWhen": (answers) => answers.procedure === "card_issuance" && answers.visitor_type === "proxy"
+  },
+  {
+    "id": "guardian_reason_15_over",
+    "text": "下記の中から理由を選択してください",
+    "options": [
+      {"v": "adult_guardian", "label": "成年被後見人", "icon": "fas fa-shield-alt"},
+      {"v": "conservatee", "label": "被保佐人", "icon": "fas fa-shield-alt"},
+      {"v": "assisted_person", "label": "被補助人", "icon": "fas fa-shield-alt"},
+      {"v": "voluntary_guardian", "label": "任意被後見人", "icon": "fas fa-shield-alt"},
+      {"v": "other", "label": "それ以外", "icon": "fas fa-ellipsis-h"}
+    ],
+    "showWhen": (answers) => answers.procedure === "card_issuance" && answers.applicant_age === "15_over"
+  },
+  {
+    "id": "specific_reason",
+    "text": "下記の中から理由を選択してください",
+    "options": [
+      {"v": "over_75", "label": "75歳以上", "icon": "fas fa-user-clock"},
+      {"v": "disabled", "label": "障害者", "icon": "fas fa-wheelchair"},
+      {"v": "hospitalized", "label": "長期で入院されている", "icon": "fas fa-hospital"},
+      {"v": "facility_resident", "label": "施設に入所されている", "icon": "fas fa-building"},
+      {"v": "care_certified", "label": "要介護・要支援認定者", "icon": "fas fa-hands-helping"},
+      {"v": "pregnant", "label": "妊婦", "icon": "fas fa-baby"},
+      {"v": "study_abroad", "label": "海外留学", "icon": "fas fa-plane"},
+      {"v": "student", "label": "中学生・高校生・高専生", "icon": "fas fa-graduation-cap"},
+      {"v": "hikikomori", "label": "社会的参加を回避し長期にわたって概ね家庭にとどまり続けている状態である", "icon": "fas fa-home"}
+    ],
+    "showWhen": (answers) => answers.procedure === "card_issuance" && answers.guardian_reason_15_over === "other"
+  },
+  {
+    "id": "cohabitation_status",
+    "text": "申請者と代理人の同居の有無をお選びください",
+    "options": [
+      {"v": "cohabiting", "label": "同居", "icon": "fas fa-home"},
+      {"v": "not_cohabiting", "label": "非同居", "icon": "fas fa-exchange-alt"}
+    ],
+    "showWhen": (answers) => answers.procedure === "card_issuance" && answers.applicant_age === "under_15"
+  },
+  {
+    "id": "koseki_location",
+    "text": "申請者の方の本籍地についてお選びください",
+    "options": [
+      {"v": "kyoto_city", "label": "京都市内", "icon": "fas fa-map-marker-alt"},
+      {"v": "other", "label": "それ以外", "icon": "fas fa-map"}
+    ],
+    "showWhen": (answers) => answers.procedure === "card_issuance" && answers.cohabitation_status === "not_cohabiting"
   }
 
 ];
@@ -80,7 +190,7 @@ export const ITEMS: Record<string, RequiredItem> = {
   // 基本書類
   "mynumber_card": {name: "マイナンバーカード本体", icon: "fas fa-id-card"},
   "notification_card": {name: "交付通知書（はがき）", icon: "fas fa-envelope"},
-  "mynumber_notification_card": {name: "マイナンバー通知カード（お持ちの方は返納していただきます。）", icon: "fas fa-id-card-alt"},
+  "mynumber_notification_card_old": {name: "マイナンバー通知カード（お持ちの方は返納していただきます。）", icon: "fas fa-id-card-alt"},
   "resident_card": {name: "住民基本台帳カード（お持ちの方は返納していただきます。）", icon: "fas fa-id-card"},
   "current_mynumber_card": {name: "現在お持ちのマイナンバーカード（マイナンバーカード再交付申請の方は、現在お持ちのマイナンバーカードを返納してください。返納がない場合、再交付手数料として1,000円頂戴します。）", icon: "fas fa-id-card"},
   "pin_number": {name: "暗証番号（4桁数字）", icon: "fas fa-key"},
@@ -113,5 +223,15 @@ export const ITEMS: Record<string, RequiredItem> = {
   "broken_card": {name: "破損したマイナンバーカード", icon: "fas fa-id-card"},
   "old_card": {name: "旧マイナンバーカード（返納用）", icon: "fas fa-id-card"},
   "temp_stop_release_form": {name: "個人番号カード一時停止解除届", icon: "fas fa-play-circle"},
-  "return_form": {name: "個人番号カード紛失・廃止・返納届", icon: "fas fa-minus-circle"}
+  "return_form": {name: "個人番号カード紛失・廃止・返納届", icon: "fas fa-minus-circle"},
+  
+  // カードの交付（受け取り）用書類
+  "mynumber_card_notification": {name: "交付通知書（はがき）", icon: "fas fa-envelope"},
+  "identity_document": {name: "本人確認書類", icon: "fas fa-id-badge"},
+  "basic_resident_card": {name: "住民基本台帳カード（返納用）", icon: "fas fa-id-card"},
+  "mynumber_notification_card": {name: "マイナンバー通知カード（返納用）", icon: "fas fa-id-card-alt"},
+  "proxy_identity": {name: "代理人の本人確認書類", icon: "fas fa-user-friends"},
+  "guardianship_document": {name: "後見等に関する登記事項証明書", icon: "fas fa-file-certificate"},
+  "family_register": {name: "戸籍謄本等（申請者と代理人の関係が分かるもの）", icon: "fas fa-file-alt"},
+  "family_register_outside_kyoto": {name: "戸籍謄本等（京都市外のもの）", icon: "fas fa-file-alt"}
 };

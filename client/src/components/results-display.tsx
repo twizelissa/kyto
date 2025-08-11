@@ -233,7 +233,53 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                 <p className="text-lg text-gray-600">以下の書類をご準備ください</p>
               </div>
 
+              <div className="space-y-4 mb-8">
+                {requiredItems.map((itemKey, index) => {
+                  const item = getItemDetails(itemKey);
+                  if (!item) return null;
+                  
+                  return (
+                    <div key={itemKey} className="flex items-start space-x-4 p-4 border rounded-lg hover:bg-kyoto-purple-light transition-colors">
+                      <Checkbox
+                        id={`item-${index}`}
+                        checked={checkedItems[itemKey] || false}
+                        onCheckedChange={(checked) => handleItemCheck(itemKey, checked as boolean)}
+                        className="mt-1"
+                      />
+                      <div className="flex-1">
+                        <label htmlFor={`item-${index}`} className="flex items-center space-x-3 cursor-pointer">
+                          <i className={`${item.icon} text-kyoto-purple text-lg`}></i>
+                          <span className="text-sm font-medium text-gray-800">{item.name}</span>
+                        </label>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
 
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                <Button
+                  onClick={() => printResults()}
+                  variant="outline"
+                  className="kyoto-button-outline"
+                >
+                  <i className="fas fa-print mr-2"></i>印刷する
+                </Button>
+                <Button
+                  onClick={handleGeneratePDF}
+                  variant="outline"
+                  className="kyoto-button-outline"
+                >
+                  <i className="fas fa-file-pdf mr-2"></i>PDFで保存
+                </Button>
+                <Button
+                  onClick={() => setShowQRCode(true)}
+                  variant="outline"
+                  className="kyoto-button-outline"
+                >
+                  <i className="fas fa-qrcode mr-2"></i>QRコード表示
+                </Button>
+              </div>
             </>
           )}
 
