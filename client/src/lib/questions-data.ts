@@ -50,7 +50,7 @@ export const QUESTIONS: Question[] = [
       {"v": "photo_booth", "label": "まちなかの写真機から申請する", "icon": "fas fa-camera"},
       {"v": "mail", "label": "郵送で申請する", "icon": "fas fa-envelope"},
       {"v": "center", "label": "マイナンバーカードセンターで申請する", "icon": "fas fa-building"},
-      {"v": "mobile_service", "label": "出張申請窓口又は出張申請サポートで申請する", "icon": "fas fa-truck"},
+      {"v": "mobile_service", "label": "出張申請窓口又は出張申請サポートを利用する", "icon": "fas fa-truck"},
       {"v": "office_support", "label": "区役所・支所の窓口での申請サポートを受ける", "icon": "fas fa-hands-helping"}
     ],
     "showWhen": (answers) => 
