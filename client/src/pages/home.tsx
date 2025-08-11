@@ -68,7 +68,7 @@ function WelcomeScreen({ onStart }: { onStart: () => void }) {
       <Card className="kyoto-card rounded-lg shadow-lg p-4 sm:p-8 mb-8">
         <CardContent className="space-y-6">
           <div className="mb-6">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-black mb-4 px-2">手続きの方法を確認しましょう</h2>
+            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-black mb-4 px-2">手続きの方法を確認しましょう</h2>
             <p className="text-sm sm:text-base md:text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed mb-4 px-2">
               質問にお答えいただくと、あなたに必要な情報をご案内いたします。
             </p>
