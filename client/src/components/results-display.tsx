@@ -121,15 +121,38 @@ export default function ResultsDisplay({ answers, onRestart }: ResultsDisplayPro
         title: "マイナンバーカードセンターでの申請について",
         content: (
           <div className="space-y-4">
-            <p>マイナンバーカードセンターで申請できます。申請時に顔写真の撮影も無料で行います。</p>
-            <p>手続きには事前予約が必要です。</p>
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
-              <h4 className="font-bold mb-2">京都市マイナンバーカードセンター</h4>
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <h4 className="font-bold mb-3">開庁時間</h4>
+              <p className="text-sm mb-2">※事前予約制ですので、事前にこちらからご予約のうえお越しください。</p>
               <div className="text-sm space-y-1">
-                <p>住所：〒600-8009　京都市下京区四条通室町東入函谷鉾町78番地　京都経済センター SUINA室町3階</p>
-                <p>営業時間：平日・土日祝　午前9時～午後5時（年末年始を除く）</p>
-                <p>TEL：075-585-5503</p>
-                <p>予約サイト：オンライン予約システムをご利用ください</p>
+                <p><strong>月・水曜日：</strong>午前9時～午後7時</p>
+                <p><strong>その他：</strong>午前9時～午後5時</p>
+                <p>※年末年始（12月29日～1月3日）・祝休日・システム停止日は除きます。</p>
+                <p>※上記システム停止日について、詳細はこちらをご覧ください。</p>
+              </div>
+            </div>
+            
+            <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+              <h4 className="font-bold mb-3">所在地</h4>
+              <div className="text-sm space-y-1">
+                <p>京都市下京区西洞院通塩小路上る東塩小路町608番地の8</p>
+                <p>下京区総合庁舎内（平日9時～17時は3階、月・水曜日17時～19時及び土日は1階）</p>
+              </div>
+              <div className="mt-3">
+                <img 
+                  src="https://www.city.kyoto.lg.jp/bunshi/cmsfiles/contents/0000287/287997/kuyakusyo_annnai_zu.gif" 
+                  alt="下京区総合庁舎案内図" 
+                  className="w-full max-w-md mx-auto border border-gray-300 rounded"
+                />
+              </div>
+            </div>
+            
+            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+              <h4 className="font-bold mb-3">アクセス</h4>
+              <div className="text-sm space-y-1">
+                <p>※駐輪場には数に限りがあります。また、一般用駐車場はありませんので、公共交通機関をご利用のうえお越しください。</p>
+                <p>※平日9時～17時は南側、月・水曜日17時～19時及び土日は北側の入り口からお入りください。</p>
+                <p className="mt-2"><strong>センター電話番号：075-746-6855</strong></p>
               </div>
             </div>
           </div>
@@ -142,15 +165,22 @@ export default function ResultsDisplay({ answers, onRestart }: ResultsDisplayPro
         title: "出張申請窓口・出張申請サポートについて",
         content: (
           <div className="space-y-4">
-            <p>定期的に市内各所で開催される出張申請窓口や出張申請サポートをご利用いただけます。</p>
-            <p>申請時に顔写真の撮影も無料で行います。</p>
-            <p>開催日程や場所については京都市ホームページでご確認いただくか、お問い合わせください。</p>
-            <div className="bg-green-50 border border-green-200 rounded-lg p-4 mt-4">
-              <h4 className="font-bold mb-2">出張申請について</h4>
-              <div className="text-sm space-y-1">
-                <p>・事前予約が必要な場合があります</p>
-                <p>・開催場所：公民館、図書館、商業施設など</p>
-                <p>・最新の開催情報は京都市ホームページをご確認ください</p>
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <h4 className="font-bold mb-3">出張申請窓口</h4>
+              <div className="text-sm space-y-2">
+                <p>商業施設等において、本人確認のうえ申請を受け付けるブースを開設します。京都市民の方については、カードができあがりましたら、原則としてカードをご自宅へ郵送します。</p>
+                <p>※事前予約優先。今後の実施予定や予約方法など、詳しくはこちらのホームページをご確認ください。</p>
+                <p>※マイナンバー通知カードや本人確認書類（運転免許証やパスポート等）のご持参が必要です。</p>
+              </div>
+            </div>
+            
+            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+              <h4 className="font-bold mb-3">出張申請サポート</h4>
+              <div className="text-sm space-y-2">
+                <p>商業施設等において、申請のサポート（交付申請書の記入補助、顔写真の無料撮影）を行うブースを開設します。</p>
+                <p>※予約不要。今後の実施予定など、詳しくはこちらのページをご確認ください。</p>
+                <p>※当日は本人確認書類のご持参は不要ですが、できる限りマイナンバー通知カード等のマイナンバーが分かるものをお持ちください。（メモなどでも結構です。）</p>
+                <p>※申請書はご自身で投函していただきます。また、カードはマイナンバーカードセンター等へ受け取りに来庁していただく必要があります。</p>
               </div>
             </div>
           </div>
@@ -163,15 +193,10 @@ export default function ResultsDisplay({ answers, onRestart }: ResultsDisplayPro
         title: "区役所・支所での申請サポートについて",
         content: (
           <div className="space-y-4">
-            <p>各区役所・支所の窓口で申請サポートを受けることができます。</p>
-            <p>職員がオンライン申請のお手伝いをいたします。申請時に顔写真の撮影も無料で行います。</p>
-            <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mt-4">
-              <h4 className="font-bold mb-2">申請サポート窓口</h4>
-              <div className="text-sm space-y-1">
-                <p>・各区役所・支所の市民窓口課</p>
-                <p>・営業時間：平日　午前8時45分～午後5時30分</p>
-                <p>・土日祝日は休業（一部の区役所で土曜開庁あり）</p>
-                <p>・事前予約をおすすめします</p>
+            <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
+              <div className="text-sm space-y-2">
+                <p>区役所・支所の窓口（マイナンバーカードセンター交付コーナー）で、申請のサポート（交付申請書の記入補助、顔写真の無料撮影）を行っており、交付申請書はご自身で投函していただいております。</p>
+                <p>なお、予約制によるマイナンバーカードの交付業務を優先するため、お待ちいただく場合がありますので御了承ください。</p>
               </div>
             </div>
           </div>
