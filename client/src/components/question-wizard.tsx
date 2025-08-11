@@ -43,7 +43,8 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
   });
   const [lostCheckboxes, setLostCheckboxes] = useState({
     callCenter: false,
-    policeReport: false
+    policeReport: false,
+    centerReport: false
   });
 
   // Filter questions based on current answers
@@ -106,7 +107,7 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
     }
   };
 
-  const handleLostCheckboxChange = (checkboxType: 'callCenter' | 'policeReport') => {
+  const handleLostCheckboxChange = (checkboxType: 'callCenter' | 'policeReport' | 'centerReport') => {
     setLostCheckboxes(prev => ({
       ...prev,
       [checkboxType]: !prev[checkboxType]
@@ -114,7 +115,7 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
   };
 
   const handleLostProceedNext = () => {
-    if (lostCheckboxes.callCenter && lostCheckboxes.policeReport) {
+    if (lostCheckboxes.callCenter && lostCheckboxes.policeReport && lostCheckboxes.centerReport) {
       const newAnswers = { ...answers, lost_check_complete: "true" };
       setAnswers(newAnswers);
       setCurrentQuestion(currentQuestion + 1);
@@ -127,7 +128,8 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
     setSelectedOption("");
     setLostCheckboxes({
       callCenter: false,
-      policeReport: false
+      policeReport: false,
+      centerReport: false
     });
   };
 
@@ -183,9 +185,20 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
                     警察に遺失届を出し、受理番号を控えている
                   </label>
                 </div>
+                
+                <div className="flex items-center space-x-3">
+                  <Checkbox 
+                    id="centerReport"
+                    checked={lostCheckboxes.centerReport}
+                    onCheckedChange={() => handleLostCheckboxChange('centerReport')}
+                  />
+                  <label htmlFor="centerReport" className="text-sm font-medium text-gray-800">
+                    京都市マイナンバーカードセンターへ届け出た
+                  </label>
+                </div>
               </div>
               
-              {lostCheckboxes.callCenter && lostCheckboxes.policeReport && (
+              {lostCheckboxes.callCenter && lostCheckboxes.policeReport && lostCheckboxes.centerReport && (
                 <Button 
                   onClick={handleLostProceedNext}
                   className="kyoto-button w-full mt-4 text-center justify-center"
