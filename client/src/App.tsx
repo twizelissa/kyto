@@ -24,7 +24,7 @@ function KyotoHeader({ onHomeClick }: { onHomeClick?: () => void }) {
           </div>
           <div className="text-left">
             <h1 className="text-sm sm:text-base md:text-lg font-bold mb-0 text-black">京都市マイナンバーカード手続きガイド</h1>
-            <p className="text-xs sm:text-sm text-black">必要書類確認システム</p>
+            <p className="text-xs sm:text-sm text-black">必要書類等確認システム</p>
           </div>
         </div>
       </div>
