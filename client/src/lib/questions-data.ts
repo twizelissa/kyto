@@ -360,6 +360,17 @@ export const QUESTIONS: Question[] = [
       {"v": "other", "label": "それ以外", "icon": "fas fa-map"}
     ],
     "showWhen": (answers) => answers.procedure === "info_change" && answers.info_cohabitation_status === "not_cohabiting"
+  },
+  
+  // カードの紛失の質問
+  {
+    "id": "lost_situation",
+    "text": "該当する状況をお選びください",
+    "options": [
+      {"v": "lost", "label": "紛失した", "icon": "fas fa-exclamation-triangle"},
+      {"v": "found", "label": "紛失したカードを発見した", "icon": "fas fa-search"}
+    ],
+    "showWhen": (answers) => answers.procedure === "card_lost"
   }
 
 ];
