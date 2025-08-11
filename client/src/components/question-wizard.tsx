@@ -9,12 +9,38 @@ import { QUESTIONS } from "@/lib/questions-data";
 interface QuestionWizardProps {
   onComplete: (answers: Answer) => void;
   onBack?: () => void;
+  initialAnswers?: Answer;
 }
 
-export default function QuestionWizard({ onComplete, onBack }: QuestionWizardProps) {
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [answers, setAnswers] = useState<Answer>({});
-  const [selectedOption, setSelectedOption] = useState<string>("");
+export default function QuestionWizard({ onComplete, onBack, initialAnswers = {} }: QuestionWizardProps) {
+  // Initialize with existing answers and find the appropriate starting question
+  const initializeQuestionPosition = () => {
+    const relevantQuestions = QUESTIONS.filter(q => 
+      !q.showWhen || q.showWhen(initialAnswers)
+    );
+    
+    // Find the last answered question
+    let lastAnsweredIndex = -1;
+    for (let i = relevantQuestions.length - 1; i >= 0; i--) {
+      if (initialAnswers[relevantQuestions[i].id]) {
+        lastAnsweredIndex = i;
+        break;
+      }
+    }
+    
+    // Start from the last answered question (or 0 if none answered)
+    return Math.max(0, lastAnsweredIndex);
+  };
+
+  const [currentQuestion, setCurrentQuestion] = useState(initializeQuestionPosition());
+  const [answers, setAnswers] = useState<Answer>(initialAnswers);
+  const [selectedOption, setSelectedOption] = useState<string>(() => {
+    const relevantQuestions = QUESTIONS.filter(q => 
+      !q.showWhen || q.showWhen(initialAnswers)
+    );
+    const currentQ = relevantQuestions[initializeQuestionPosition()];
+    return initialAnswers[currentQ?.id] || "";
+  });
   const [lostCheckboxes, setLostCheckboxes] = useState({
     callCenter: false,
     policeReport: false

@@ -39,6 +39,7 @@ export default function Home() {
           <QuestionWizard 
             onComplete={handleQuestionsComplete} 
             onBack={() => setCurrentState('welcome')}
+            initialAnswers={answers}
           />
         )}
 
