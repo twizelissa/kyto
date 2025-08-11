@@ -54,10 +54,38 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
 
   const question = relevantQuestions[currentQuestion];
   
-  // Calculate progress based on answered questions vs maximum possible questions
+  // Calculate maximum possible questions for current flow
+  const calculateMaxPossibleQuestions = (currentAnswers: Answer) => {
+    // Simulate answering all possible questions to find maximum path
+    let maxQuestions = 0;
+    
+    // Test different answer combinations to find the longest path
+    const testPaths = [
+      // Card application -> lost reissue path (longest)
+      { procedure: "card_application", application_type: "lost_reissue" },
+      // Card issuance -> proxy -> under_15 -> not_cohabiting path
+      { procedure: "card_issuance", issuance_type: "new", visitor_type: "proxy", applicant_age: "under_15", cohabitation_status: "not_cohabiting" },
+      // Digital cert -> proxy -> under_15 -> not_cohabiting path
+      { procedure: "digital_cert", cert_type: "issuance", cert_visitor_type: "proxy", cert_proxy_reason: "under_15", cert_cohabitation_status: "not_cohabiting" },
+      // PIN change -> proxy -> under_15 -> not_cohabiting path  
+      { procedure: "pin_change", pin_type: "change", pin_visitor_type: "proxy", pin_proxy_reason: "under_15", pin_cohabitation_status: "not_cohabiting" },
+      // Info change -> proxy -> under_15 -> not_cohabiting path
+      { procedure: "info_change", info_visitor_type: "proxy", info_proxy_reason: "under_15", info_cohabitation_status: "not_cohabiting" }
+    ];
+    
+    for (const testAnswers of testPaths) {
+      const mergedAnswers = { ...currentAnswers, ...testAnswers };
+      const testQuestions = QUESTIONS.filter(q => !q.showWhen || q.showWhen(mergedAnswers));
+      maxQuestions = Math.max(maxQuestions, testQuestions.length);
+    }
+    
+    return Math.max(maxQuestions, relevantQuestions.length);
+  };
+
+  // Calculate progress based on answered questions vs maximum possible questions for current flow
   const calculateProgress = () => {
-    const MAX_EXPECTED_QUESTIONS = 10; // Maximum expected questions in any flow
     const answeredQuestionsCount = Object.keys(answers).length;
+    const maxPossibleQuestions = calculateMaxPossibleQuestions(answers);
     
     // If no questions answered yet, show 0%
     if (answeredQuestionsCount === 0) return 0;
@@ -67,8 +95,8 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
       return 100;
     }
     
-    // Calculate progress based on answered questions
-    const progressPercentage = (answeredQuestionsCount / MAX_EXPECTED_QUESTIONS) * 100;
+    // Calculate progress based on answered questions vs max possible
+    const progressPercentage = (answeredQuestionsCount / maxPossibleQuestions) * 100;
     return Math.min(95, Math.max(5, progressPercentage)); // Between 5% and 95%
   };
   
