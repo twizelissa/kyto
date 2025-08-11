@@ -221,8 +221,8 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
       </Card>
 
       {/* Navigation Buttons */}
-      <div className="flex flex-wrap justify-between items-center gap-4">
-        <div className="flex gap-4">
+      <div className="relative">
+        <div className="flex justify-start">
           {currentQuestion === 0 && onBack && (
             <Button
               onClick={onBack}
@@ -244,11 +244,11 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
         </div>
         
         {currentQuestion > 0 && (
-          <div className="flex justify-center flex-1">
+          <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
             <Button
               onClick={handleRestart}
               variant="outline"
-              className="kyoto-button-outline"
+              className="kyoto-button-outline pointer-events-auto"
             >
               <i className="fas fa-redo mr-2"></i>最初からやり直す
             </Button>
