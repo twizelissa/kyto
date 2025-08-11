@@ -10,7 +10,7 @@ import NotFound from "@/pages/not-found";
 function KyotoHeader({ onHomeClick }: { onHomeClick?: () => void }) {
   return (
     <header className="bg-white border-b-8 border-kyoto-purple shadow-sm">
-      <div className="container mx-auto px-2 sm:px-4 py-4">
+      <div className="px-2 sm:px-4 py-4">
         <div 
           className="flex items-center cursor-pointer hover:opacity-80 transition-opacity"
           onClick={onHomeClick}
