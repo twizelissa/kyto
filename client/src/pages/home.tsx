@@ -28,7 +28,7 @@ export default function Home() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-4xl">
+    <div className="container mx-auto px-2 sm:px-4 py-8 max-w-4xl">
 
 
         {currentState === 'welcome' && (
@@ -57,7 +57,7 @@ export default function Home() {
 function WelcomeScreen({ onStart }: { onStart: () => void }) {
   return (
     <div className="text-center">
-      <Card className="kyoto-card rounded-lg shadow-lg p-8 mb-8">
+      <Card className="kyoto-card rounded-lg shadow-lg p-4 sm:p-8 mb-8">
         <CardContent className="space-y-6">
           <div className="mb-6">
             <h2 className="text-3xl font-bold text-kyoto-purple-dark mb-4">手続きの方法を確認しましょう</h2>
@@ -72,7 +72,7 @@ function WelcomeScreen({ onStart }: { onStart: () => void }) {
             </div>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-4 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
             <div className="bg-kyoto-purple-light rounded-lg p-4 border border-purple-100">
               <i className="fas fa-clock text-kyoto-purple text-2xl mb-2"></i>
               <h3 className="font-semibold text-kyoto-purple-dark">約1分で完了</h3>

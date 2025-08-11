@@ -9,7 +9,7 @@ import NotFound from "@/pages/not-found";
 function KyotoHeader() {
   return (
     <header className="kyoto-header text-white">
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-2 sm:px-4 py-4">
         <Link href="/">
           <div className="text-left cursor-pointer">
             <h1 className="text-lg font-bold mb-0 hover:opacity-80 transition-opacity">京都市マイナンバーカード手続きガイド</h1>
