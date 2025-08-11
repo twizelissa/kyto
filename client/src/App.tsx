@@ -11,7 +11,13 @@ function KyotoHeader() {
     <header className="kyoto-header text-white">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <div></div>
+          <div className="flex items-center">
+            <img 
+              src="/attached_assets/京都市ロゴマーク-1024x395-1_1754880022844.webp" 
+              alt="京都市ロゴ" 
+              className="h-8 w-auto object-contain"
+            />
+          </div>
           <div className="text-right">
             <p className="text-sm opacity-90">必要書類確認システム</p>
           </div>
