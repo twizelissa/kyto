@@ -14,7 +14,7 @@ export interface Question {
 export const QUESTIONS: Question[] = [
   {
     "id": "procedure",
-    "text": "お手続きの種類を選んでください",
+    "text": "お手続きの種類をお選びください",
     "options": [
       {"v": "card_application", "label": "カードの申請・更新", "icon": "fas fa-id-card"},
       {"v": "card_issuance", "label": "カードの交付（受け取り）", "icon": "fas fa-hand-holding"},
@@ -27,12 +27,46 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": "application_type",
-    "text": "申請の種類を選んでください",
+    "text": "お手続きの種類をお選びください",
     "options": [
-      {"v": "new_application", "label": "新規申請", "icon": "fas fa-plus"},
-      {"v": "renewal", "label": "更新", "icon": "fas fa-sync-alt"}
+      {"v": "new", "label": "新規", "icon": "fas fa-plus"},
+      {"v": "renewal", "label": "更新", "icon": "fas fa-sync-alt"},
+      {"v": "lost_reissue", "label": "紛失による再発行", "icon": "fas fa-exclamation-triangle"},
+      {"v": "other_reissue", "label": "紛失以外の理由による再発行", "icon": "fas fa-redo"}
     ],
     "showWhen": (answers) => answers.procedure === "card_application"
+  },
+  {
+    "id": "lost_procedures",
+    "text": "紛失手続きの確認",
+    "options": [],
+    "showWhen": (answers) => answers.procedure === "card_application" && answers.application_type === "lost_reissue"
+  },
+  {
+    "id": "application_method",
+    "text": "申請方法をお選びください",
+    "options": [
+      {"v": "online", "label": "オンライン（スマートフォンやパソコン）で申請する", "icon": "fas fa-laptop"},
+      {"v": "photo_booth", "label": "まちなかの写真機から申請する", "icon": "fas fa-camera"},
+      {"v": "mail", "label": "郵送で申請する", "icon": "fas fa-envelope"},
+      {"v": "center", "label": "マイナンバーカードセンターで申請する", "icon": "fas fa-building"},
+      {"v": "mobile_service", "label": "出張申請窓口又は出張申請サポートで申請する", "icon": "fas fa-truck"},
+      {"v": "office_support", "label": "区役所・支所の窓口での申請サポートを受ける", "icon": "fas fa-hands-helping"}
+    ],
+    "showWhen": (answers) => 
+      answers.procedure === "card_application" && 
+      answers.application_type && 
+      answers.application_type !== "lost_reissue" || 
+      (answers.application_type === "lost_reissue" && answers.lost_check_complete === "true")
+  },
+  {
+    "id": "mail_type",
+    "text": "郵送申請の種類をお選びください",
+    "options": [
+      {"v": "notification_form", "label": "通知カード又は個人番号通知書に同封されているマイナンバーカード交付申請書による申請", "icon": "fas fa-file-alt"},
+      {"v": "handwritten_form", "label": "手書き交付申請書による申請", "icon": "fas fa-pen"}
+    ],
+    "showWhen": (answers) => answers.application_method === "mail"
   },
   {
     "id": "visitor",
