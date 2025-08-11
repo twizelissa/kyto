@@ -38,16 +38,7 @@ export default function Home() {
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
-        {/* Kyoto Logo Header - Always visible */}
-        <div className="flex justify-center mb-8">
-          <div className="bg-white rounded-lg p-4 shadow-sm">
-            <img 
-              src="/attached_assets/京都市ロゴマーク-1024x395-1_1754879640654.webp" 
-              alt="京都市ロゴ" 
-              className="h-12 md:h-16 object-contain"
-            />
-          </div>
-        </div>
+
 
         {currentState === 'welcome' && (
           <WelcomeScreen onStart={handleStartQuiz} />
