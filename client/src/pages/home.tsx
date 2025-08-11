@@ -64,11 +64,11 @@ function WelcomeScreen({ onStart }: { onStart: () => void }) {
             <p className="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed mb-4">
               簡単な質問にお答えいただくと、あなたに必要な情報をご案内いたします。
             </p>
-            <div className="flex flex-wrap justify-center gap-4 text-sm text-kyoto-purple-dark font-medium">
-              <span className="flex items-center"><i className="fas fa-check text-green-600 mr-1"></i>持ち物</span>
-              <span className="flex items-center"><i className="fas fa-check text-green-600 mr-1"></i>場所</span>
-              <span className="flex items-center"><i className="fas fa-check text-green-600 mr-1"></i>申請方法</span>
-              <span className="flex items-center"><i className="fas fa-check text-green-600 mr-1"></i>予約方法</span>
+            <div className="flex flex-wrap justify-center gap-6 text-base text-kyoto-purple-dark font-medium">
+              <span className="flex items-center"><i className="fas fa-check-circle text-green-500 text-lg mr-2"></i>持ち物</span>
+              <span className="flex items-center"><i className="fas fa-check-circle text-green-500 text-lg mr-2"></i>場所</span>
+              <span className="flex items-center"><i className="fas fa-check-circle text-green-500 text-lg mr-2"></i>申請方法</span>
+              <span className="flex items-center"><i className="fas fa-check-circle text-green-500 text-lg mr-2"></i>予約方法</span>
             </div>
           </div>
           
