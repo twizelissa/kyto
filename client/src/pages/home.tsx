@@ -81,7 +81,7 @@ function WelcomeScreen({ onStart }: { onStart: () => void }) {
             <div className="bg-kyoto-purple-light rounded-lg p-4 border border-purple-100">
               <i className="fas fa-list-check text-kyoto-purple text-2xl mb-2"></i>
               <h3 className="font-semibold text-kyoto-purple-dark">チェックリストの自動作成</h3>
-              <p className="text-sm text-gray-600">QRコード付きPDFの作成やLINE/SMSへの送信が可能</p>
+              <p className="text-sm text-gray-600">必要な項目を整理</p>
             </div>
             <div className="bg-kyoto-purple-light rounded-lg p-4 border border-purple-100">
               <i className="fas fa-qrcode text-kyoto-purple text-2xl mb-2"></i>
