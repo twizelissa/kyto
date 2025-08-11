@@ -20,8 +20,22 @@ export default function QuestionWizard({ onComplete }: QuestionWizardProps) {
   );
 
   const question = relevantQuestions[currentQuestion];
-  // Calculate progress based on relevant questions for this flow, ensuring 100% at the end
-  const progress = ((currentQuestion + 1) / relevantQuestions.length) * 100;
+  
+  // Calculate progress based on dynamic maximum possible questions
+  // Page 1 (Question 0): 0% - haven't answered anything yet
+  // Page 2 (Question 1): Calculate based on remaining possible questions
+  const calculateProgress = () => {
+    if (currentQuestion === 0) return 0; // First page is always 0%
+    
+    // Calculate maximum possible remaining questions based on current answers
+    const maxPossibleTotal = QUESTIONS.filter(q => 
+      !q.showWhen || q.showWhen(answers)
+    ).length;
+    
+    return (currentQuestion / maxPossibleTotal) * 100;
+  };
+  
+  const progress = calculateProgress();
 
   const handleOptionSelect = (value: string) => {
     setSelectedOption(value);

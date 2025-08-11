@@ -40,15 +40,12 @@ export default function Home() {
     <div className="container mx-auto px-4 py-8 max-w-4xl">
         {/* Kyoto Logo Header - Always visible */}
         <div className="flex justify-center mb-8">
-          <div className="h-16 md:h-20 flex items-center justify-center">
-            {/* Kyoto Logo SVG */}
-            <svg width="120" height="46" viewBox="0 0 120 46" fill="none" xmlns="http://www.w3.org/2000/svg" className="kyoto-logo">
-              <circle cx="60" cy="23" r="20" fill="var(--kyoto-purple)" opacity="0.1"/>
-              <path d="M60 8 L72 23 L60 38 L48 23 Z" fill="var(--kyoto-purple)"/>
-              <circle cx="60" cy="23" r="3" fill="white"/>
-              <path d="M55 18 Q60 15 65 18" stroke="var(--kyoto-purple)" strokeWidth="2" fill="none"/>
-              <path d="M55 28 Q60 31 65 28" stroke="var(--kyoto-purple)" strokeWidth="2" fill="none"/>
-            </svg>
+          <div className="bg-white rounded-lg p-4 shadow-sm">
+            <img 
+              src="/attached_assets/京都市ロゴマーク-1024x395-1_1754879042342.webp" 
+              alt="京都市ロゴ" 
+              className="h-12 md:h-16 object-contain"
+            />
           </div>
         </div>
 
@@ -86,7 +83,6 @@ function WelcomeScreen({ onStart }: { onStart: () => void }) {
       <Card className="kyoto-card rounded-lg shadow-lg p-8 mb-8">
         <CardContent className="space-y-6">
           <div className="mb-6">
-            <i className="fas fa-clipboard-check text-kyoto-purple text-6xl mb-4"></i>
             <h2 className="text-3xl font-bold text-kyoto-purple-dark mb-4">必要書類を確認しましょう</h2>
             <p className="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed">
               簡単な質問にお答えいただくと、あなたの状況に応じた必要書類のリストを作成します。
