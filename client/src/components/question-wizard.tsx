@@ -60,17 +60,17 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
     let maxQuestions = 0;
     
     // Test different answer combinations to find the longest path
-    const testPaths = [
+    const testPaths: Record<string, string>[] = [
       // Card application -> lost reissue path (longest)
-      { procedure: "card_application", application_type: "lost_reissue" },
+      { procedure: "card_application", application_type: "lost_reissue", lost_check_complete: "true" },
       // Card issuance -> proxy -> under_15 -> not_cohabiting path
-      { procedure: "card_issuance", issuance_type: "new", visitor_type: "proxy", applicant_age: "under_15", cohabitation_status: "not_cohabiting" },
+      { procedure: "card_issuance", issuance_type: "new", notification_card: "yes", basic_resident_card: "yes", mynumber_notification: "yes", visitor_type: "proxy", applicant_age: "under_15", cohabitation_status: "not_cohabiting", koseki_location: "other" },
       // Digital cert -> proxy -> under_15 -> not_cohabiting path
-      { procedure: "digital_cert", cert_type: "issuance", cert_visitor_type: "proxy", cert_proxy_reason: "under_15", cert_cohabitation_status: "not_cohabiting" },
+      { procedure: "digital_cert", cert_type: "issuance", cert_visitor_type: "proxy", cert_proxy_reason: "under_15", cert_cohabitation_status: "not_cohabiting", cert_koseki_location: "other" },
       // PIN change -> proxy -> under_15 -> not_cohabiting path  
-      { procedure: "pin_change", pin_type: "change", pin_visitor_type: "proxy", pin_proxy_reason: "under_15", pin_cohabitation_status: "not_cohabiting" },
+      { procedure: "pin_change", pin_type: "change", pin_visitor_type: "proxy", pin_proxy_reason: "under_15", pin_cohabitation_status: "not_cohabiting", pin_koseki_location: "other", pin_knowledge: "know" },
       // Info change -> proxy -> under_15 -> not_cohabiting path
-      { procedure: "info_change", info_visitor_type: "proxy", info_proxy_reason: "under_15", info_cohabitation_status: "not_cohabiting" }
+      { procedure: "info_change", info_visitor_type: "proxy", info_proxy_reason: "under_15", info_cohabitation_status: "not_cohabiting", info_koseki_location: "other" }
     ];
     
     for (const testAnswers of testPaths) {
