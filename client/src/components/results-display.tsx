@@ -256,13 +256,6 @@ export default function ResultsDisplay({ answers, onRestart, onModify }: Results
                   <i className="fas fa-share-alt mr-2"></i>共有
                 </Button>
                 <Button
-                  onClick={onModify}
-                  variant="outline"
-                  className="border-slate-600 text-slate-600 hover:bg-slate-600 hover:text-white"
-                >
-                  <i className="fas fa-edit mr-2"></i>回答を修正
-                </Button>
-                <Button
                   onClick={onRestart}
                   className="bg-gov-blue hover:bg-blue-700"
                 >
