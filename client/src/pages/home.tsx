@@ -8,7 +8,7 @@ import ResultsDisplay from "@/components/results-display";
 
 type AppState = 'welcome' | 'questions' | 'results';
 
-export default function Home() {
+export default function Home({ onHomeClick }: { onHomeClick?: () => void }) {
   const [currentState, setCurrentState] = useState<AppState>('welcome');
   const [answers, setAnswers] = useState<Answer>({});
 
@@ -27,6 +27,14 @@ export default function Home() {
     setAnswers({});
   };
 
+  const handleHomeClickInternal = () => {
+    setCurrentState('welcome');
+    setAnswers({});
+    if (onHomeClick) {
+      onHomeClick();
+    }
+  };
+
   return (
     <div className="container mx-auto px-2 sm:px-4 py-8 max-w-4xl">
 
@@ -38,7 +46,7 @@ export default function Home() {
         {currentState === 'questions' && (
           <QuestionWizard 
             onComplete={handleQuestionsComplete} 
-            onBack={() => setCurrentState('welcome')}
+            onBack={handleHomeClickInternal}
             initialAnswers={answers}
           />
         )}
