@@ -7,9 +7,10 @@ import { QUESTIONS } from "@/lib/questions-data";
 
 interface QuestionWizardProps {
   onComplete: (answers: Answer) => void;
+  onBack?: () => void;
 }
 
-export default function QuestionWizard({ onComplete }: QuestionWizardProps) {
+export default function QuestionWizard({ onComplete, onBack }: QuestionWizardProps) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Answer>({});
   const [selectedOption, setSelectedOption] = useState<string>("");
@@ -113,8 +114,17 @@ export default function QuestionWizard({ onComplete }: QuestionWizardProps) {
         </CardContent>
       </Card>
 
-      {/* Previous Button Only */}
-      <div className="flex justify-start">
+      {/* Navigation Buttons */}
+      <div className="flex justify-start space-x-4">
+        {currentQuestion === 0 && onBack && (
+          <Button
+            onClick={onBack}
+            variant="outline"
+            className="kyoto-button-outline"
+          >
+            <i className="fas fa-home mr-2"></i>ホームに戻る
+          </Button>
+        )}
         {currentQuestion > 0 && (
           <Button
             onClick={handlePrev}

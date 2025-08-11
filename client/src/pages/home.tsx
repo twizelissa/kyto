@@ -45,7 +45,10 @@ export default function Home() {
         )}
 
         {currentState === 'questions' && (
-          <QuestionWizard onComplete={handleQuestionsComplete} />
+          <QuestionWizard 
+            onComplete={handleQuestionsComplete} 
+            onBack={() => setCurrentState('welcome')}
+          />
         )}
 
         {currentState === 'results' && (
