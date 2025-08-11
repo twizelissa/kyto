@@ -55,47 +55,25 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
   const question = relevantQuestions[currentQuestion];
   
   // Calculate maximum possible questions for current flow
-  const calculateMaxPossibleQuestions = (currentAnswers: Answer) => {
-    // Simulate answering all possible questions to find maximum path
-    let maxQuestions = 0;
-    
-    // Test different answer combinations to find the longest path
-    const testPaths: Record<string, string>[] = [
-      // Card application -> lost reissue path (longest)
-      { procedure: "card_application", application_type: "lost_reissue", lost_check_complete: "true" },
-      // Card issuance -> proxy -> under_15 -> not_cohabiting path
-      { procedure: "card_issuance", issuance_type: "new", notification_card: "yes", basic_resident_card: "yes", mynumber_notification: "yes", visitor_type: "proxy", applicant_age: "under_15", cohabitation_status: "not_cohabiting", koseki_location: "other" },
-      // Digital cert -> proxy -> under_15 -> not_cohabiting path
-      { procedure: "digital_cert", cert_type: "issuance", cert_visitor_type: "proxy", cert_proxy_reason: "under_15", cert_cohabitation_status: "not_cohabiting", cert_koseki_location: "other" },
-      // PIN change -> proxy -> under_15 -> not_cohabiting path  
-      { procedure: "pin_change", pin_type: "change", pin_visitor_type: "proxy", pin_proxy_reason: "under_15", pin_cohabitation_status: "not_cohabiting", pin_koseki_location: "other", pin_knowledge: "know" },
-      // Info change -> proxy -> under_15 -> not_cohabiting path
-      { procedure: "info_change", info_visitor_type: "proxy", info_proxy_reason: "under_15", info_cohabitation_status: "not_cohabiting", info_koseki_location: "other" }
-    ];
-    
-    for (const testAnswers of testPaths) {
-      const mergedAnswers = { ...currentAnswers, ...testAnswers };
-      const testQuestions = QUESTIONS.filter(q => !q.showWhen || q.showWhen(mergedAnswers));
-      maxQuestions = Math.max(maxQuestions, testQuestions.length);
-    }
-    
-    return Math.max(maxQuestions, relevantQuestions.length);
+  // Calculate the total number of questions for the current flow
+  const calculateTotalQuestionsForCurrentFlow = (currentAnswers: Answer) => {
+    // Find questions that would appear with current answers
+    return QUESTIONS.filter(q => !q.showWhen || q.showWhen(currentAnswers)).length;
   };
 
-  // Calculate progress based on answered questions vs maximum possible questions for current flow
+  // Calculate progress based on current question position in the flow
   const calculateProgress = () => {
-    const answeredQuestionsCount = Object.keys(answers).length;
-    const maxPossibleQuestions = calculateMaxPossibleQuestions(answers);
+    const totalQuestions = calculateTotalQuestionsForCurrentFlow(answers);
     
-    // If no questions answered yet, show 0%
-    if (answeredQuestionsCount === 0) return 0;
+    // If no questions in flow, show 0%
+    if (totalQuestions === 0) return 0;
     
-    // Calculate progress based on answered questions vs max possible
-    // Never show 100% during questions - only on final results page
-    const progressPercentage = (answeredQuestionsCount / maxPossibleQuestions) * 100;
+    // Progress is based on current question position + 1 (since we're on question currentQuestion)
+    // For example: question 0 of 3 total = 1/3 = 33%
+    const progressPercentage = ((currentQuestion + 1) / totalQuestions) * 100;
     
-    // Cap at 95% during question phase, 100% is reserved for completion
-    return Math.min(95, Math.max(5, progressPercentage));
+    // Cap at 95% during question phase
+    return Math.min(95, progressPercentage);
   };
   
   const progress = calculateProgress();

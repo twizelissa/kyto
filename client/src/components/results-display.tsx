@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Progress } from "@/components/ui/progress";
 import { Answer } from "@shared/schema";
 import { resolveItems, getItemDetails } from "@/lib/rules-engine";
 import { printResults, generatePDF } from "@/lib/print-utils";
@@ -214,15 +213,6 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-      {/* Progress bar at 100% completion */}
-      <div className="mb-6">
-        <div className="flex justify-between text-sm text-gray-600 mb-2">
-          <span>進捗状況</span>
-          <span>100%</span>
-        </div>
-        <Progress value={100} className="w-full h-3" />
-      </div>
-
       <Card className="rounded-xl shadow-lg p-8 mb-6">
         <CardContent className="space-y-8">
           {isApplicationMethodResult ? (
