@@ -121,6 +121,16 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
     }
   };
 
+  const handleRestart = () => {
+    setCurrentQuestion(0);
+    setAnswers({});
+    setSelectedOption("");
+    setLostCheckboxes({
+      callCenter: false,
+      policeReport: false
+    });
+  };
+
   return (
     <div>
       {/* Progress Bar */}
@@ -211,7 +221,7 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
       </Card>
 
       {/* Navigation Buttons */}
-      <div className="flex justify-start space-x-4">
+      <div className="flex flex-wrap justify-start items-center gap-4">
         {currentQuestion === 0 && onBack && (
           <Button
             onClick={onBack}
@@ -228,6 +238,15 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
             className="kyoto-button-outline"
           >
             <i className="fas fa-chevron-left mr-2"></i>前の質問
+          </Button>
+        )}
+        {currentQuestion > 0 && (
+          <Button
+            onClick={handleRestart}
+            variant="outline"
+            className="kyoto-button-outline"
+          >
+            <i className="fas fa-redo mr-2"></i>最初からやり直す
           </Button>
         )}
       </div>
