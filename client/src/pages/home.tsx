@@ -59,46 +59,36 @@ function WelcomeScreen({ onStart }: { onStart: () => void }) {
     <div className="text-center">
       <Card className="kyoto-card rounded-lg shadow-lg p-8 mb-8">
         <CardContent className="space-y-6">
-          <div className="mb-8">
-            <h2 className="text-4xl font-bold text-kyoto-purple-dark mb-6">マイナンバーカード申請ガイド</h2>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed mb-8">
-              あなたに最適な申請方法と必要書類を自動判定。<br />
-              <span className="text-kyoto-purple font-semibold">チェックリスト付きPDFで手続きがスムーズに。</span>
+          <div className="mb-6">
+            <h2 className="text-3xl font-bold text-kyoto-purple-dark mb-4">申請方法を確認しましょう</h2>
+            <p className="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed">
+              簡単な質問にお答えいただくと、あなたの状況に応じた申請方法をご案内します。
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8 mb-10">
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 border border-blue-200 shadow-sm hover:shadow-md transition-shadow">
-              <div className="flex items-center justify-center w-12 h-12 bg-blue-500 rounded-lg mb-4">
-                <i className="fas fa-clock text-white text-xl"></i>
-              </div>
-              <h3 className="text-lg font-bold text-gray-800 mb-2">約1分で完了</h3>
-              <p className="text-sm text-gray-600">簡単な質問に答えるだけで最適な申請方法を案内</p>
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
+            <div className="bg-kyoto-purple-light rounded-lg p-4 border border-purple-100">
+              <i className="fas fa-clock text-kyoto-purple text-2xl mb-2"></i>
+              <h3 className="font-semibold text-kyoto-purple-dark">約1分で完了</h3>
+              <p className="text-sm text-gray-600">簡単な質問に答えるだけ</p>
             </div>
-            
-            <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 border border-green-200 shadow-sm hover:shadow-md transition-shadow">
-              <div className="flex items-center justify-center w-12 h-12 bg-green-500 rounded-lg mb-4">
-                <i className="fas fa-file-pdf text-white text-xl"></i>
-              </div>
-              <h3 className="text-lg font-bold text-gray-800 mb-2">PDF自動生成</h3>
-              <p className="text-sm text-gray-600">必要書類・持ち物・予約方法をチェックリスト付きPDFで出力</p>
+            <div className="bg-kyoto-purple-light rounded-lg p-4 border border-purple-100">
+              <i className="fas fa-mobile-alt text-kyoto-purple text-2xl mb-2"></i>
+              <h3 className="font-semibold text-kyoto-purple-dark">スマホ対応</h3>
+              <p className="text-sm text-gray-600">どこでも手軽にチェック</p>
             </div>
-            
-            <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6 border border-purple-200 shadow-sm hover:shadow-md transition-shadow">
-              <div className="flex items-center justify-center w-12 h-12 bg-purple-500 rounded-lg mb-4">
-                <i className="fas fa-share-alt text-white text-xl"></i>
-              </div>
-              <h3 className="text-lg font-bold text-gray-800 mb-2">簡単共有</h3>
-              <p className="text-sm text-gray-600">QRコード付きで家族や友人との共有も簡単</p>
+            <div className="bg-kyoto-purple-light rounded-lg p-4 border border-purple-100">
+              <i className="fas fa-info-circle text-kyoto-purple text-2xl mb-2"></i>
+              <h3 className="font-semibold text-kyoto-purple-dark">詳細案内</h3>
+              <p className="text-sm text-gray-600">申請方法を詳しく説明</p>
             </div>
           </div>
 
           <Button 
             onClick={onStart}
-            className="kyoto-button px-10 py-5 rounded-xl text-xl shadow-xl font-bold hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+            className="kyoto-button px-8 py-4 rounded-lg text-lg shadow-lg font-semibold"
             size="lg"
           >
-            <i className="fas fa-play mr-3"></i>
             質問を始める
           </Button>
         </CardContent>
