@@ -73,14 +73,14 @@ function WelcomeScreen({ onStart }: { onStart: () => void }) {
               <p className="text-sm text-gray-600">簡単な質問に答えるだけ</p>
             </div>
             <div className="bg-kyoto-purple-light rounded-lg p-4 border border-purple-100">
-              <i className="fas fa-mobile-alt text-kyoto-purple text-2xl mb-2"></i>
-              <h3 className="font-semibold text-kyoto-purple-dark">スマホ対応</h3>
-              <p className="text-sm text-gray-600">どこでも手軽にチェック</p>
+              <i className="fas fa-list-check text-kyoto-purple text-2xl mb-2"></i>
+              <h3 className="font-semibold text-kyoto-purple-dark">必要な情報を完全案内</h3>
+              <p className="text-sm text-gray-600">持ち物・場所・申請方法・予約方法がすべてわかる</p>
             </div>
             <div className="bg-kyoto-purple-light rounded-lg p-4 border border-purple-100">
-              <i className="fas fa-info-circle text-kyoto-purple text-2xl mb-2"></i>
+              <i className="fas fa-map-marker-alt text-kyoto-purple text-2xl mb-2"></i>
               <h3 className="font-semibold text-kyoto-purple-dark">詳細案内</h3>
-              <p className="text-sm text-gray-600">申請方法を詳しく説明</p>
+              <p className="text-sm text-gray-600">申請場所から手続きまで詳しく説明</p>
             </div>
           </div>
 
