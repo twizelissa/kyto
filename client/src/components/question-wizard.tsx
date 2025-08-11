@@ -221,33 +221,38 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
       </Card>
 
       {/* Navigation Buttons */}
-      <div className="flex flex-wrap justify-start items-center gap-4">
-        {currentQuestion === 0 && onBack && (
-          <Button
-            onClick={onBack}
-            variant="outline"
-            className="kyoto-button-outline"
-          >
-            <i className="fas fa-home mr-2"></i>ホームに戻る
-          </Button>
-        )}
+      <div className="flex flex-wrap justify-between items-center gap-4">
+        <div className="flex gap-4">
+          {currentQuestion === 0 && onBack && (
+            <Button
+              onClick={onBack}
+              variant="outline"
+              className="kyoto-button-outline"
+            >
+              <i className="fas fa-home mr-2"></i>ホームに戻る
+            </Button>
+          )}
+          {currentQuestion > 0 && (
+            <Button
+              onClick={handlePrev}
+              variant="outline"
+              className="kyoto-button-outline"
+            >
+              <i className="fas fa-chevron-left mr-2"></i>前の質問
+            </Button>
+          )}
+        </div>
+        
         {currentQuestion > 0 && (
-          <Button
-            onClick={handlePrev}
-            variant="outline"
-            className="kyoto-button-outline"
-          >
-            <i className="fas fa-chevron-left mr-2"></i>前の質問
-          </Button>
-        )}
-        {currentQuestion > 0 && (
-          <Button
-            onClick={handleRestart}
-            variant="outline"
-            className="kyoto-button-outline"
-          >
-            <i className="fas fa-redo mr-2"></i>最初からやり直す
-          </Button>
+          <div className="flex justify-center flex-1">
+            <Button
+              onClick={handleRestart}
+              variant="outline"
+              className="kyoto-button-outline"
+            >
+              <i className="fas fa-redo mr-2"></i>最初からやり直す
+            </Button>
+          </div>
         )}
       </div>
     </div>
