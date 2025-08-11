@@ -55,7 +55,7 @@ function App() {
           <KyotoHeader onHomeClick={handleHomeClick} />
           <main>
             <Toaster />
-            <Router onHomeClick={handleHomeClick} />
+            <Home key={homeResetKey} onHomeClick={handleHomeClick} />
           </main>
         </div>
       </TooltipProvider>
