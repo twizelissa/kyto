@@ -241,16 +241,7 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
           )}
         </div>
         
-        {currentQuestion > 0 && (
-          <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
-            <Button
-              onClick={handleRestart}
-              className="kyoto-button px-4 py-2 rounded-lg font-semibold text-center justify-center pointer-events-auto"
-            >
-              <i className="fas fa-redo mr-2"></i>最初からやり直す
-            </Button>
-          </div>
-        )}
+
       </div>
     </div>
   );
