@@ -95,7 +95,7 @@ function WelcomeScreen({ onStart }: { onStart: () => void }) {
             className="kyoto-button px-8 py-4 rounded-lg text-lg shadow-lg font-semibold"
             size="lg"
           >
-            質問を始める
+            始める
           </Button>
         </CardContent>
       </Card>
