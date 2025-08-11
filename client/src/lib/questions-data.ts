@@ -317,6 +317,49 @@ export const QUESTIONS: Question[] = [
       
       return false;
     }
+  },
+  
+  // 住所・氏名等の変更の質問
+  {
+    "id": "info_visitor_type",
+    "text": "手続きに来られる方をお選びください",
+    "options": [
+      {"v": "self", "label": "本人", "icon": "fas fa-user"},
+      {"v": "proxy", "label": "代理人", "icon": "fas fa-user-friends"}
+    ],
+    "showWhen": (answers) => answers.procedure === "info_change"
+  },
+  {
+    "id": "info_proxy_reason",
+    "text": "下記の中から理由を選択してください",
+    "options": [
+      {"v": "adult_guardian", "label": "成年被後見人", "icon": "fas fa-shield-alt"},
+      {"v": "conservatee", "label": "被保佐人", "icon": "fas fa-shield-alt"},
+      {"v": "assisted_person", "label": "被補助人", "icon": "fas fa-shield-alt"},
+      {"v": "voluntary_guardian", "label": "任意被後見人", "icon": "fas fa-shield-alt"},
+      {"v": "under_15", "label": "15歳未満", "icon": "fas fa-child"},
+      {"v": "voluntary_proxy", "label": "任意代理人", "icon": "fas fa-user-friends"},
+      {"v": "same_household", "label": "同一世帯員（転入届又は転居届と併せて行う手続き）", "icon": "fas fa-home"}
+    ],
+    "showWhen": (answers) => answers.procedure === "info_change" && answers.info_visitor_type === "proxy"
+  },
+  {
+    "id": "info_cohabitation_status",
+    "text": "申請者と代理人の同居の有無をお選びください",
+    "options": [
+      {"v": "cohabiting", "label": "同居", "icon": "fas fa-home"},
+      {"v": "not_cohabiting", "label": "非同居", "icon": "fas fa-exchange-alt"}
+    ],
+    "showWhen": (answers) => answers.procedure === "info_change" && answers.info_proxy_reason === "under_15"
+  },
+  {
+    "id": "info_koseki_location",
+    "text": "申請者の方の本籍地についてお選びください",
+    "options": [
+      {"v": "kyoto_city", "label": "京都市内", "icon": "fas fa-map-marker-alt"},
+      {"v": "other", "label": "それ以外", "icon": "fas fa-map"}
+    ],
+    "showWhen": (answers) => answers.procedure === "info_change" && answers.info_cohabitation_status === "not_cohabiting"
   }
 
 ];
