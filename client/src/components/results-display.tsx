@@ -10,9 +10,10 @@ import QRCodeDisplay from "./qr-code-display";
 interface ResultsDisplayProps {
   answers: Answer;
   onRestart: () => void;
+  onBack: () => void;
 }
 
-export default function ResultsDisplay({ answers, onRestart }: ResultsDisplayProps) {
+export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDisplayProps) {
   const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
   const [showQRCode, setShowQRCode] = useState(false);
   
@@ -236,17 +237,22 @@ export default function ResultsDisplay({ answers, onRestart }: ResultsDisplayPro
             </>
           )}
 
-          {/* Common action buttons for application method results */}
-          {isApplicationMethodResult && (
-            <div className="flex justify-center mt-8">
-              <Button
-                onClick={onRestart}
-                className="kyoto-button"
-              >
-                <i className="fas fa-redo mr-2"></i>最初から
-              </Button>
-            </div>
-          )}
+          {/* Common action buttons for all results */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+            <Button
+              onClick={onBack}
+              variant="outline"
+              className="kyoto-button-outline"
+            >
+              <i className="fas fa-chevron-left mr-2"></i>前のページへ戻る
+            </Button>
+            <Button
+              onClick={onRestart}
+              className="kyoto-button"
+            >
+              <i className="fas fa-redo mr-2"></i>最初から
+            </Button>
+          </div>
         </CardContent>
       </Card>
       

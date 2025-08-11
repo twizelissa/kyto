@@ -46,6 +46,7 @@ export default function Home() {
           <ResultsDisplay 
             answers={answers}
             onRestart={handleRestart}
+            onBack={() => setCurrentState('questions')}
           />
         )}
     </div>
