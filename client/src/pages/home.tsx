@@ -109,15 +109,18 @@ function WelcomeScreen({ onStart }: { onStart: () => void }) {
             </div>
           </div>
 
-          <Button 
-            onClick={onStart}
-            className="kyoto-button px-8 py-4 rounded-lg text-lg shadow-lg font-semibold"
-            size="lg"
-          >
-            始める
-          </Button>
         </CardContent>
       </Card>
+
+      <div className="text-center mt-6">
+        <Button 
+          onClick={onStart}
+          className="kyoto-button px-8 py-4 rounded-lg text-lg shadow-lg font-semibold"
+          size="lg"
+        >
+          始める
+        </Button>
+      </div>
 
 
     </div>
