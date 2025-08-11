@@ -143,7 +143,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                 <img 
                   src="https://www.city.kyoto.lg.jp/bunshi/cmsfiles/contents/0000287/287997/kuyakusyo_annnai_zu.gif" 
                   alt="下京区総合庁舎案内図" 
-                  className="w-full max-w-xs mx-auto border border-gray-300 rounded"
+                  className="max-w-xs border border-gray-300 rounded"
                 />
               </div>
             </div>
