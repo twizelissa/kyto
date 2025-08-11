@@ -60,13 +60,19 @@ function WelcomeScreen({ onStart }: { onStart: () => void }) {
       <Card className="kyoto-card rounded-lg shadow-lg p-8 mb-8">
         <CardContent className="space-y-6">
           <div className="mb-6">
-            <h2 className="text-3xl font-bold text-kyoto-purple-dark mb-4">申請方法を確認しましょう</h2>
-            <p className="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed">
-              簡単な質問にお答えいただくと、あなたの状況に応じた申請方法をご案内します。
+            <h2 className="text-3xl font-bold text-kyoto-purple-dark mb-4">手続きの方法を確認しましょう</h2>
+            <p className="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed mb-4">
+              簡単な質問にお答えいただくと、あなたに必要な情報をご案内いたします。
             </p>
+            <div className="flex flex-wrap justify-center gap-4 text-sm text-kyoto-purple-dark font-medium">
+              <span className="flex items-center"><i className="fas fa-check text-green-600 mr-1"></i>持ち物</span>
+              <span className="flex items-center"><i className="fas fa-check text-green-600 mr-1"></i>場所</span>
+              <span className="flex items-center"><i className="fas fa-check text-green-600 mr-1"></i>申請方法</span>
+              <span className="flex items-center"><i className="fas fa-check text-green-600 mr-1"></i>予約方法</span>
+            </div>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
+          <div className="grid md:grid-cols-4 gap-4 mb-8">
             <div className="bg-kyoto-purple-light rounded-lg p-4 border border-purple-100">
               <i className="fas fa-clock text-kyoto-purple text-2xl mb-2"></i>
               <h3 className="font-semibold text-kyoto-purple-dark">約1分で完了</h3>
@@ -74,13 +80,18 @@ function WelcomeScreen({ onStart }: { onStart: () => void }) {
             </div>
             <div className="bg-kyoto-purple-light rounded-lg p-4 border border-purple-100">
               <i className="fas fa-list-check text-kyoto-purple text-2xl mb-2"></i>
-              <h3 className="font-semibold text-kyoto-purple-dark">必要な情報を完全案内</h3>
-              <p className="text-sm text-gray-600">持ち物・場所・申請方法・予約方法がすべてわかる</p>
+              <h3 className="font-semibold text-kyoto-purple-dark">チェックリストの作成</h3>
+              <p className="text-sm text-gray-600">必要な項目を整理</p>
             </div>
             <div className="bg-kyoto-purple-light rounded-lg p-4 border border-purple-100">
-              <i className="fas fa-map-marker-alt text-kyoto-purple text-2xl mb-2"></i>
-              <h3 className="font-semibold text-kyoto-purple-dark">詳細案内</h3>
-              <p className="text-sm text-gray-600">申請場所から手続きまで詳しく説明</p>
+              <i className="fas fa-qrcode text-kyoto-purple text-2xl mb-2"></i>
+              <h3 className="font-semibold text-kyoto-purple-dark">QRコード付きPDF</h3>
+              <p className="text-sm text-gray-600">印刷・共有が簡単</p>
+            </div>
+            <div className="bg-kyoto-purple-light rounded-lg p-4 border border-purple-100">
+              <i className="fas fa-share text-kyoto-purple text-2xl mb-2"></i>
+              <h3 className="font-semibold text-kyoto-purple-dark">LINE/SMS送信</h3>
+              <p className="text-sm text-gray-600">結果を簡単に共有</p>
             </div>
           </div>
 
