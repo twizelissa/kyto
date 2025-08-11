@@ -10,11 +10,9 @@ function KyotoHeader() {
   return (
     <header className="kyoto-header text-white">
       <div className="container mx-auto px-2 sm:px-4 py-4">
-        <Link href="/">
-          <div className="text-left cursor-pointer">
-            <h1 className="text-lg font-bold mb-0 hover:opacity-80 transition-opacity">京都市マイナンバーカード手続きガイド</h1>
-            <p className="text-sm opacity-90 hover:opacity-70 transition-opacity">必要書類確認システム</p>
-          </div>
+        <Link href="/" className="text-left cursor-pointer block hover:opacity-80 transition-opacity">
+          <h1 className="text-lg font-bold mb-0">京都市マイナンバーカード手続きガイド</h1>
+          <p className="text-sm opacity-90">必要書類確認システム</p>
         </Link>
       </div>
     </header>
