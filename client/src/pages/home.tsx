@@ -35,6 +35,11 @@ export default function Home({ onHomeClick }: { onHomeClick?: () => void }) {
     }
   };
 
+  // Handle header click to always return to welcome state
+  const handleHeaderClick = () => {
+    handleHomeClickInternal();
+  };
+
   return (
     <div className="container mx-auto px-2 sm:px-4 py-8 max-w-4xl">
 
