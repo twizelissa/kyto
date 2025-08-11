@@ -68,15 +68,15 @@ function WelcomeScreen({ onStart }: { onStart: () => void }) {
       <Card className="kyoto-card rounded-lg shadow-lg p-4 sm:p-8 mb-8">
         <CardContent className="space-y-6">
           <div className="mb-6">
-            <h2 className="text-3xl font-bold text-kyoto-purple-dark mb-4">手続きの方法を確認しましょう</h2>
+            <h2 className="text-3xl font-bold text-black mb-4">手続きの方法を確認しましょう</h2>
             <p className="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed mb-4">
               質問にお答えいただくと、あなたに必要な情報をご案内いたします。
             </p>
-            <div className="flex flex-wrap justify-center gap-6 text-base text-kyoto-purple-dark font-medium">
-              <span className="flex items-center"><span className="text-2xl mr-2 text-kyoto-purple">✓</span> 持ち物</span>
-              <span className="flex items-center"><span className="text-2xl mr-2 text-kyoto-purple">✓</span> 場所</span>
-              <span className="flex items-center"><span className="text-2xl mr-2 text-kyoto-purple">✓</span> 申請方法</span>
-              <span className="flex items-center"><span className="text-2xl mr-2 text-kyoto-purple">✓</span> 予約方法</span>
+            <div className="flex flex-wrap justify-center gap-6 text-base text-black font-medium">
+              <span className="flex items-center"><span className="text-2xl mr-2 text-black">✓</span> 持ち物</span>
+              <span className="flex items-center"><span className="text-2xl mr-2 text-black">✓</span> 場所</span>
+              <span className="flex items-center"><span className="text-2xl mr-2 text-black">✓</span> 申請方法</span>
+              <span className="flex items-center"><span className="text-2xl mr-2 text-black">✓</span> 予約方法</span>
             </div>
           </div>
           
