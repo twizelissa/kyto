@@ -149,7 +149,7 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
         <CardContent className="space-y-6">
           {question.id === "lost_procedures" ? (
             <>
-              <h2 className="text-2xl font-bold text-kyoto-purple-dark mb-6">紛失手続きの確認</h2>
+              <h2 className="text-2xl font-bold text-black mb-6">紛失手続きの確認</h2>
               <div className="bg-kyoto-purple-light border border-purple-200 rounded-lg p-4 sm:p-6 mb-6">
                 <div className="text-gray-800 leading-relaxed">
                   <p className="mb-4">
@@ -196,7 +196,7 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
             </>
           ) : (
             <>
-              <h2 className="text-2xl font-bold text-kyoto-purple-dark mb-6">{question.text}</h2>
+              <h2 className="text-2xl font-bold text-black mb-6">{question.text}</h2>
               <div className="space-y-4">
                 {question.options.map((option) => (
                   <div
@@ -210,7 +210,7 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
                   >
                     <div className="flex items-center space-x-4">
                       <i className={`${option.icon} text-kyoto-purple text-xl`}></i>
-                      <span className="font-medium text-kyoto-purple-dark">{option.label}</span>
+                      <span className="font-medium text-black">{option.label}</span>
                     </div>
                   </div>
                 ))}
