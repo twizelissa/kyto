@@ -62,13 +62,13 @@ function WelcomeScreen({ onStart }: { onStart: () => void }) {
           <div className="mb-6">
             <h2 className="text-3xl font-bold text-kyoto-purple-dark mb-4">手続きの方法を確認しましょう</h2>
             <p className="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed mb-4">
-              簡単な質問にお答えいただくと、あなたに必要な情報をご案内いたします。
+              質問にお答えいただくと、あなたに必要な情報をご案内いたします。
             </p>
             <div className="flex flex-wrap justify-center gap-6 text-base text-kyoto-purple-dark font-medium">
-              <span className="flex items-center"><i className="fas fa-check-circle text-green-500 text-lg mr-2"></i>持ち物</span>
-              <span className="flex items-center"><i className="fas fa-check-circle text-green-500 text-lg mr-2"></i>場所</span>
-              <span className="flex items-center"><i className="fas fa-check-circle text-green-500 text-lg mr-2"></i>申請方法</span>
-              <span className="flex items-center"><i className="fas fa-check-circle text-green-500 text-lg mr-2"></i>予約方法</span>
+              <span className="flex items-center">✓ 持ち物</span>
+              <span className="flex items-center">✓ 場所</span>
+              <span className="flex items-center">✓ 申請方法</span>
+              <span className="flex items-center">✓ 予約方法</span>
             </div>
           </div>
           
@@ -80,7 +80,7 @@ function WelcomeScreen({ onStart }: { onStart: () => void }) {
             </div>
             <div className="bg-kyoto-purple-light rounded-lg p-4 border border-purple-100">
               <i className="fas fa-list-check text-kyoto-purple text-2xl mb-2"></i>
-              <h3 className="font-semibold text-kyoto-purple-dark">チェックリストの作成</h3>
+              <h3 className="font-semibold text-kyoto-purple-dark">チェックリストの自動作成</h3>
               <p className="text-sm text-gray-600">必要な項目を整理</p>
             </div>
             <div className="bg-kyoto-purple-light rounded-lg p-4 border border-purple-100">
