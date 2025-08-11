@@ -20,7 +20,9 @@ export default function QuestionWizard({ onComplete }: QuestionWizardProps) {
   );
 
   const question = relevantQuestions[currentQuestion];
-  const progress = ((currentQuestion + 1) / relevantQuestions.length) * 100;
+  // Calculate progress based on maximum possible questions (10) as 100%
+  const maxPossibleQuestions = 10;
+  const progress = ((currentQuestion + 1) / maxPossibleQuestions) * 100;
 
   const handleOptionSelect = (value: string) => {
     setSelectedOption(value);
@@ -50,7 +52,7 @@ export default function QuestionWizard({ onComplete }: QuestionWizardProps) {
       <div className="mb-8">
         <div className="flex items-center justify-between mb-2">
           <span className="text-sm text-slate-600">
-            質問 {currentQuestion + 1} / {relevantQuestions.length}
+            質問 {currentQuestion + 1}
           </span>
           <span className="text-sm text-slate-600">{Math.round(progress)}%</span>
         </div>
