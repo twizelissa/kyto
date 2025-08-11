@@ -61,16 +61,20 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
     return QUESTIONS.filter(q => !q.showWhen || q.showWhen(currentAnswers)).length;
   };
 
-  // Calculate progress based on current question position in the flow
+  // Calculate progress based on answered questions
   const calculateProgress = () => {
     const totalQuestions = calculateTotalQuestionsForCurrentFlow(answers);
+    const answeredQuestions = Object.keys(answers).length;
     
     // If no questions in flow, show 0%
     if (totalQuestions === 0) return 0;
     
-    // Progress is based on current question position + 1 (since we're on question currentQuestion)
-    // For example: question 0 of 3 total = 1/3 = 33%
-    const progressPercentage = ((currentQuestion + 1) / totalQuestions) * 100;
+    // If no answers yet, show 0%
+    if (answeredQuestions === 0) return 0;
+    
+    // Progress is based on answered questions
+    // For example: 1 answer of 3 total = 1/3 = 33%
+    const progressPercentage = (answeredQuestions / totalQuestions) * 100;
     
     // Cap at 95% during question phase
     return Math.min(95, progressPercentage);
