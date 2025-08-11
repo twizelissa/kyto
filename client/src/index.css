@@ -139,6 +139,24 @@
     transform: translateY(-1px);
     box-shadow: 0 2px 8px rgba(102, 51, 153, 0.2);
   }
+  
+  .kyoto-button-outline {
+    background: transparent;
+    border: 2px solid var(--kyoto-purple);
+    color: var(--kyoto-purple);
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+  
+  .kyoto-button-outline:hover {
+    background: var(--kyoto-purple);
+    color: white;
+    transform: translateY(-1px);
+  }
+  
+  .kyoto-logo {
+    filter: drop-shadow(0 2px 4px rgba(102, 51, 153, 0.1));
+  }
 }
 
 @media print {

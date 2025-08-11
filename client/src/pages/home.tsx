@@ -7,6 +7,7 @@ import QuestionWizard from "@/components/question-wizard";
 import ResultsDisplay from "@/components/results-display";
 import ModifyAnswers from "@/components/modify-answers";
 
+
 type AppState = 'welcome' | 'questions' | 'results';
 
 export default function Home() {
@@ -37,6 +38,20 @@ export default function Home() {
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
+        {/* Kyoto Logo Header - Always visible */}
+        <div className="flex justify-center mb-8">
+          <div className="h-16 md:h-20 flex items-center justify-center">
+            {/* Kyoto Logo SVG */}
+            <svg width="120" height="46" viewBox="0 0 120 46" fill="none" xmlns="http://www.w3.org/2000/svg" className="kyoto-logo">
+              <circle cx="60" cy="23" r="20" fill="var(--kyoto-purple)" opacity="0.1"/>
+              <path d="M60 8 L72 23 L60 38 L48 23 Z" fill="var(--kyoto-purple)"/>
+              <circle cx="60" cy="23" r="3" fill="white"/>
+              <path d="M55 18 Q60 15 65 18" stroke="var(--kyoto-purple)" strokeWidth="2" fill="none"/>
+              <path d="M55 28 Q60 31 65 28" stroke="var(--kyoto-purple)" strokeWidth="2" fill="none"/>
+            </svg>
+          </div>
+        </div>
+
         {currentState === 'welcome' && (
           <WelcomeScreen onStart={handleStartQuiz} />
         )}

@@ -20,14 +20,29 @@ export default function QuestionWizard({ onComplete }: QuestionWizardProps) {
   );
 
   const question = relevantQuestions[currentQuestion];
-  // Calculate progress based on maximum possible questions (10) as 100%
-  const maxPossibleQuestions = 10;
-  const progress = ((currentQuestion + 1) / maxPossibleQuestions) * 100;
+  // Calculate progress based on relevant questions for this flow, ensuring 100% at the end
+  const progress = ((currentQuestion + 1) / relevantQuestions.length) * 100;
 
   const handleOptionSelect = (value: string) => {
     setSelectedOption(value);
     const newAnswers = { ...answers, [question.id]: value };
     setAnswers(newAnswers);
+    
+    // Auto-advance after selection with slight delay for better UX
+    setTimeout(() => {
+      // Recalculate relevant questions with new answers
+      const updatedRelevantQuestions = QUESTIONS.filter(q => 
+        !q.showWhen || q.showWhen(newAnswers)
+      );
+      
+      if (currentQuestion < updatedRelevantQuestions.length - 1) {
+        setCurrentQuestion(currentQuestion + 1);
+        const nextQuestion = updatedRelevantQuestions[currentQuestion + 1];
+        setSelectedOption(newAnswers[nextQuestion?.id] || "");
+      } else {
+        onComplete(newAnswers);
+      }
+    }, 300);
   };
 
   const handleNext = () => {
@@ -84,23 +99,17 @@ export default function QuestionWizard({ onComplete }: QuestionWizardProps) {
         </CardContent>
       </Card>
 
-      {/* Navigation Buttons */}
-      <div className="flex justify-between">
-        <Button
-          onClick={handlePrev}
-          variant="outline"
-          className={`${currentQuestion === 0 ? "invisible" : ""}`}
-        >
-          <i className="fas fa-chevron-left mr-2"></i>前の質問
-        </Button>
-        <Button
-          onClick={handleNext}
-          disabled={!selectedOption}
-          className="kyoto-button"
-        >
-          {currentQuestion === relevantQuestions.length - 1 ? "結果を見る" : "次の質問"}
-          <i className="fas fa-chevron-right ml-2"></i>
-        </Button>
+      {/* Previous Button Only */}
+      <div className="flex justify-start">
+        {currentQuestion > 0 && (
+          <Button
+            onClick={handlePrev}
+            variant="outline"
+            className="kyoto-button-outline"
+          >
+            <i className="fas fa-chevron-left mr-2"></i>前の質問
+          </Button>
+        )}
       </div>
     </div>
   );
