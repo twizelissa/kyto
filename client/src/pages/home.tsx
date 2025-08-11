@@ -86,7 +86,7 @@ function WelcomeScreen({ onStart }: { onStart: () => void }) {
             <div className="bg-kyoto-purple-light rounded-lg p-4 border border-purple-100">
               <i className="fas fa-share text-kyoto-purple text-2xl mb-2"></i>
               <h3 className="font-semibold text-kyoto-purple-dark">簡単に印刷・共有可能</h3>
-              <p className="text-sm text-gray-600">QRコード付きPDFを作成して、LINEやSMSで送れます</p>
+              <p className="text-sm text-gray-600">・QRコード付きPDFの作成<br/>・LINE/SMSに送信</p>
             </div>
           </div>
 
