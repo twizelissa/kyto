@@ -117,6 +117,69 @@ export default function ResultsDisplay({ answers, onRestart, onModify }: Results
       }
     }
     
+    if (method === "center") {
+      return {
+        title: "マイナンバーカードセンターでの申請について",
+        content: (
+          <div className="space-y-4">
+            <p>マイナンバーカードセンターで申請できます。申請時に顔写真の撮影も無料で行います。</p>
+            <p>手続きには事前予約が必要です。</p>
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+              <h4 className="font-bold mb-2">京都市マイナンバーカードセンター</h4>
+              <div className="text-sm space-y-1">
+                <p>住所：〒600-8009　京都市下京区四条通室町東入函谷鉾町78番地　京都経済センター SUINA室町3階</p>
+                <p>営業時間：平日・土日祝　午前9時～午後5時（年末年始を除く）</p>
+                <p>TEL：075-585-5503</p>
+                <p>予約サイト：オンライン予約システムをご利用ください</p>
+              </div>
+            </div>
+          </div>
+        )
+      };
+    }
+    
+    if (method === "mobile_service") {
+      return {
+        title: "出張申請窓口・出張申請サポートについて",
+        content: (
+          <div className="space-y-4">
+            <p>定期的に市内各所で開催される出張申請窓口や出張申請サポートをご利用いただけます。</p>
+            <p>申請時に顔写真の撮影も無料で行います。</p>
+            <p>開催日程や場所については京都市ホームページでご確認いただくか、お問い合わせください。</p>
+            <div className="bg-green-50 border border-green-200 rounded-lg p-4 mt-4">
+              <h4 className="font-bold mb-2">出張申請について</h4>
+              <div className="text-sm space-y-1">
+                <p>・事前予約が必要な場合があります</p>
+                <p>・開催場所：公民館、図書館、商業施設など</p>
+                <p>・最新の開催情報は京都市ホームページをご確認ください</p>
+              </div>
+            </div>
+          </div>
+        )
+      };
+    }
+    
+    if (method === "office_support") {
+      return {
+        title: "区役所・支所での申請サポートについて",
+        content: (
+          <div className="space-y-4">
+            <p>各区役所・支所の窓口で申請サポートを受けることができます。</p>
+            <p>職員がオンライン申請のお手伝いをいたします。申請時に顔写真の撮影も無料で行います。</p>
+            <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mt-4">
+              <h4 className="font-bold mb-2">申請サポート窓口</h4>
+              <div className="text-sm space-y-1">
+                <p>・各区役所・支所の市民窓口課</p>
+                <p>・営業時間：平日　午前8時45分～午後5時30分</p>
+                <p>・土日祝日は休業（一部の区役所で土曜開庁あり）</p>
+                <p>・事前予約をおすすめします</p>
+              </div>
+            </div>
+          </div>
+        )
+      };
+    }
+    
     return {
       title: "申請方法について",
       content: <p>選択された申請方法の詳細情報を準備中です。</p>

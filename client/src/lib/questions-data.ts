@@ -67,55 +67,7 @@ export const QUESTIONS: Question[] = [
       {"v": "handwritten_form", "label": "手書き交付申請書による申請", "icon": "fas fa-pen"}
     ],
     "showWhen": (answers) => answers.application_method === "mail"
-  },
-  {
-    "id": "visitor",
-    "text": "窓口に行く人は？",
-    "options": [
-      {"v": "self", "label": "a 本人", "icon": "fas fa-user-check"},
-      {"v": "legal", "label": "b 法定代理人（親権者・成年後見人）", "icon": "fas fa-user-shield"},
-      {"v": "proxy", "label": "c 任意代理人", "icon": "fas fa-user-friends"}
-    ]
-  },
-  {
-    "id": "legal_details",
-    "text": "該当する項目を選んでください",
-    "options": [
-      {"v": "u15", "label": "15歳未満", "icon": "fas fa-baby"},
-      {"v": "adult_guardian", "label": "成年被後見人", "icon": "fas fa-user-shield"}
-    ],
-    "showWhen": (answers) => answers.visitor === "legal"
-  },
-  {
-    "id": "minor_residence",
-    "text": "居住状況を選んでください",
-    "options": [
-      {"v": "same", "label": "同居", "icon": "fas fa-home"},
-      {"v": "separate", "label": "非同居", "icon": "fas fa-home"}
-    ],
-    "showWhen": (answers) => answers.visitor === "legal" && answers.legal_details === "u15"
-  },
-  {
-    "id": "proxy_details",
-    "text": "該当する項目を選んでください",
-    "options": [
-      {"v": "guardian", "label": "被保佐人・被補助人", "icon": "fas fa-user-shield"},
-      {"v": "other", "label": "それ以外", "icon": "fas fa-user-friends"}
-    ],
-    "showWhen": (answers) => answers.visitor === "proxy"
-  },
-  {
-    "id": "id_document",
-    "text": "本人確認書類の有無を選んでください",
-    "options": [
-      {"v": "photo_id", "label": "顔写真付本人確認書類あり", "icon": "fas fa-id-card"},
-      {"v": "no_photo_id", "label": "顔写真付本人確認書類なし", "icon": "fas fa-file-alt"}
-    ],
-    "showWhen": (answers) => 
-      answers.visitor === "self" || 
-      (answers.visitor === "legal" && (answers.legal_details === "adult_guardian" || Boolean(answers.minor_residence))) ||
-      (answers.visitor === "proxy" && Boolean(answers.proxy_details))
-  },
+  }
 
 ];
 
