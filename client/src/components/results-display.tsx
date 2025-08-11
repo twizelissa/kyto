@@ -208,60 +208,7 @@ export default function ResultsDisplay({ answers, onRestart, onModify }: Results
                 <p className="text-lg text-slate-600">以下の書類をご準備ください</p>
               </div>
 
-              {/* Checklist */}
-              <div className="space-y-4 mb-8">
-                {requiredItems.map((itemKey) => {
-                  const item = getItemDetails(itemKey);
-                  if (!item) return null;
 
-                  return (
-                    <div
-                      key={itemKey}
-                      className="flex items-center space-x-4 p-4 bg-slate-50 rounded-lg border border-slate-200"
-                    >
-                      <div className="flex-shrink-0">
-                        <i className={`${item.icon} text-gov-blue text-xl`}></i>
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-slate-800">{item.name}</h4>
-                      </div>
-                      <div className="flex-shrink-0">
-                        <Checkbox
-                          checked={checkedItems[itemKey] || false}
-                          onCheckedChange={(checked) => handleItemCheck(itemKey, !!checked)}
-                        />
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center no-print">
-                <Button
-                  onClick={handleGeneratePDF}
-                  className="bg-gov-red hover:bg-red-700 text-white"
-                >
-                  <i className="fas fa-file-pdf mr-2"></i>PDF生成
-                </Button>
-                <Button
-                  onClick={printResults}
-                  className="bg-gov-orange hover:bg-orange-700 text-white"
-                >
-                  <i className="fas fa-print mr-2"></i>印刷する
-                </Button>
-                <Button
-                  onClick={() => setShowQRCode(true)}
-                  className="bg-green-500 hover:bg-green-600 text-white"
-                >
-                  <i className="fas fa-share-alt mr-2"></i>共有
-                </Button>
-                <Button
-                  onClick={onRestart}
-                  className="bg-gov-blue hover:bg-blue-700"
-                >
-                  <i className="fas fa-redo mr-2"></i>最初から
-                </Button>
-              </div>
             </>
           )}
 
