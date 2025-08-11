@@ -206,7 +206,9 @@ export const QUESTIONS: Question[] = [
       {"v": "conservatee", "label": "被保佐人", "icon": "fas fa-shield-alt"},
       {"v": "assisted_person", "label": "被補助人", "icon": "fas fa-shield-alt"},
       {"v": "voluntary_guardian", "label": "任意被後見人", "icon": "fas fa-shield-alt"},
-      {"v": "under_15", "label": "15歳未満", "icon": "fas fa-child"}
+      {"v": "under_15", "label": "15歳未満", "icon": "fas fa-child"},
+      {"v": "voluntary_proxy", "label": "任意代理人", "icon": "fas fa-user-friends"},
+      {"v": "same_household", "label": "同一世帯員（転入届又は転居届と併せて行う手続き）", "icon": "fas fa-home"}
     ],
     "showWhen": (answers) => answers.procedure === "digital_cert" && answers.cert_visitor_type === "proxy"
   },
