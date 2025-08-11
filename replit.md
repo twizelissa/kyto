@@ -90,6 +90,14 @@ This is a Japanese web application that helps users determine what documents the
 
 Changelog:
 - June 17, 2025. Initial setup
+- August 11, 2025. Enhanced question flows and UI improvements:
+  - Added complete electronic certificate issuance/renewal question flow with proxy handling
+  - Added complete PIN change/reset question flow with complex branching logic
+  - Added complete address/name change question flow
+  - Added card loss/found question flow
+  - Improved responsive design for mobile devices
+  - Fixed header click navigation to properly return to home screen
+  - Updated lost procedure confirmation page with third checkbox option
 
 ## User Preferences
 
