@@ -72,7 +72,13 @@ function WelcomeScreen({ onStart }: { onStart: () => void }) {
             <p className="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed mb-4">
               質問にお答えいただくと、あなたに必要な情報をご案内いたします。
             </p>
-            <div className="flex flex-wrap justify-center gap-6 text-base text-black font-medium">
+            <div className="hidden md:flex flex-wrap justify-center gap-6 text-base text-black font-medium">
+              <span className="flex items-center"><span className="text-2xl mr-2 text-black">✓</span> 持ち物</span>
+              <span className="flex items-center"><span className="text-2xl mr-2 text-black">✓</span> 場所</span>
+              <span className="flex items-center"><span className="text-2xl mr-2 text-black">✓</span> 申請方法</span>
+              <span className="flex items-center"><span className="text-2xl mr-2 text-black">✓</span> 予約方法</span>
+            </div>
+            <div className="md:hidden flex flex-col items-center gap-3 text-base text-black font-medium">
               <span className="flex items-center"><span className="text-2xl mr-2 text-black">✓</span> 持ち物</span>
               <span className="flex items-center"><span className="text-2xl mr-2 text-black">✓</span> 場所</span>
               <span className="flex items-center"><span className="text-2xl mr-2 text-black">✓</span> 申請方法</span>
