@@ -11,11 +11,11 @@ function KyotoHeader() {
     <header className="kyoto-header text-white">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center">
-          <div className="mr-4">
+          <div className="mr-4 bg-white rounded px-2 py-1">
             <img 
               src="https://monakaya.com/wp-content/uploads/2024/12/京都市ロゴマーク-1024x395-1.webp" 
               alt="京都市ロゴ" 
-              className="h-8 w-auto object-contain"
+              className="h-6 w-auto object-contain"
             />
           </div>
           <div className="text-left">
