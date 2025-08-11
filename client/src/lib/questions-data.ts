@@ -14,51 +14,25 @@ export interface Question {
 export const QUESTIONS: Question[] = [
   {
     "id": "procedure",
-    "text": "手続きの種類を選んでください",
+    "text": "お手続きの種類を選んでください",
     "options": [
-      {"v": "card_application", "label": "①カード申請・交付", "icon": "fas fa-id-card"},
-      {"v": "card_renewal", "label": "②カード・電子証明書更新", "icon": "fas fa-sync-alt"},
-      {"v": "info_change", "label": "③情報変更（引越し・氏名・ログイン解除）", "icon": "fas fa-edit"},
-      {"v": "address_name_change", "label": "④住所・氏名変更に伴うカード券面更新", "icon": "fas fa-address-card"},
-      {"v": "time_deletion", "label": "⑤カード紛失等による一時停止の解除", "icon": "fas fa-play-circle"},
-      {"v": "card_return", "label": "⑥カード返納", "icon": "fas fa-minus-circle"}
+      {"v": "card_application", "label": "カードの申請・更新", "icon": "fas fa-id-card"},
+      {"v": "card_issuance", "label": "カードの交付（受け取り）", "icon": "fas fa-hand-holding"},
+      {"v": "digital_cert", "label": "電子証明書の発行・更新", "icon": "fas fa-certificate"},
+      {"v": "pin_change", "label": "暗証番号の変更・初期化", "icon": "fas fa-key"},
+      {"v": "info_change", "label": "住所・氏名等の変更", "icon": "fas fa-edit"},
+      {"v": "card_lost", "label": "カードの紛失", "icon": "fas fa-exclamation-triangle"},
+      {"v": "card_return", "label": "カードの返納", "icon": "fas fa-minus-circle"}
     ]
   },
   {
-    "id": "card_number",
-    "text": "カードの申請は何枚目ですか？",
+    "id": "application_type",
+    "text": "申請の種類を選んでください",
     "options": [
-      {"v": "first", "label": "1枚目", "icon": "fas fa-star"},
-      {"v": "second_plus", "label": "2枚目以降", "icon": "fas fa-redo"}
+      {"v": "new_application", "label": "新規申請", "icon": "fas fa-plus"},
+      {"v": "renewal", "label": "更新", "icon": "fas fa-sync-alt"}
     ],
     "showWhen": (answers) => answers.procedure === "card_application"
-  },
-  {
-    "id": "card_process",
-    "text": "手続きの種類を選んでください",
-    "options": [
-      {"v": "application", "label": "カード申請", "icon": "fas fa-file-alt"},
-      {"v": "issuance", "label": "カード交付", "icon": "fas fa-id-card"}
-    ],
-    "showWhen": (answers) => answers.procedure === "card_application"
-  },
-  {
-    "id": "renewal_type",
-    "text": "更新の種類を選んでください",
-    "options": [
-      {"v": "card_renewal", "label": "カード更新", "icon": "fas fa-id-card"},
-      {"v": "cert_renewal", "label": "電子証明書更新", "icon": "fas fa-certificate"}
-    ],
-    "showWhen": (answers) => answers.procedure === "card_renewal"
-  },
-  {
-    "id": "renewal_process",
-    "text": "手続きの種類を選んでください",
-    "options": [
-      {"v": "application", "label": "カード申請", "icon": "fas fa-file-alt"},
-      {"v": "issuance", "label": "カード交付", "icon": "fas fa-id-card"}
-    ],
-    "showWhen": (answers) => answers.procedure === "card_renewal"
   },
   {
     "id": "visitor",
