@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Answer } from "@shared/schema";
 import QuestionWizard from "@/components/question-wizard";
 import ResultsDisplay from "@/components/results-display";
-import ModifyAnswers from "@/components/modify-answers";
 
 
 type AppState = 'welcome' | 'questions' | 'results';
@@ -13,7 +11,6 @@ type AppState = 'welcome' | 'questions' | 'results';
 export default function Home() {
   const [currentState, setCurrentState] = useState<AppState>('welcome');
   const [answers, setAnswers] = useState<Answer>({});
-  const [showModifyPanel, setShowModifyPanel] = useState(false);
 
   const handleStartQuiz = () => {
     setCurrentState('questions');
@@ -28,12 +25,6 @@ export default function Home() {
   const handleRestart = () => {
     setCurrentState('welcome');
     setAnswers({});
-    setShowModifyPanel(false);
-  };
-
-  const handleModifyAnswers = (modifiedAnswers: Answer) => {
-    setAnswers(modifiedAnswers);
-    setShowModifyPanel(false);
   };
 
   return (
@@ -52,20 +43,10 @@ export default function Home() {
         )}
 
         {currentState === 'results' && (
-          <>
-            <ResultsDisplay 
-              answers={answers}
-              onRestart={handleRestart}
-              onModify={() => setShowModifyPanel(true)}
-            />
-            {showModifyPanel && (
-              <ModifyAnswers
-                currentAnswers={answers}
-                onApply={handleModifyAnswers}
-                onCancel={() => setShowModifyPanel(false)}
-              />
-            )}
-          </>
+          <ResultsDisplay 
+            answers={answers}
+            onRestart={handleRestart}
+          />
         )}
     </div>
   );
@@ -77,9 +58,9 @@ function WelcomeScreen({ onStart }: { onStart: () => void }) {
       <Card className="kyoto-card rounded-lg shadow-lg p-8 mb-8">
         <CardContent className="space-y-6">
           <div className="mb-6">
-            <h2 className="text-3xl font-bold text-kyoto-purple-dark mb-4">必要書類を確認しましょう</h2>
+            <h2 className="text-3xl font-bold text-kyoto-purple-dark mb-4">申請方法を確認しましょう</h2>
             <p className="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed">
-              簡単な質問にお答えいただくと、あなたの状況に応じた必要書類のリストを作成します。
+              簡単な質問にお答えいただくと、あなたの状況に応じた申請方法をご案内します。
             </p>
           </div>
           
@@ -95,9 +76,9 @@ function WelcomeScreen({ onStart }: { onStart: () => void }) {
               <p className="text-sm text-gray-600">どこでも手軽にチェック</p>
             </div>
             <div className="bg-kyoto-purple-light rounded-lg p-4 border border-purple-100">
-              <i className="fas fa-print text-kyoto-purple text-2xl mb-2"></i>
-              <h3 className="font-semibold text-kyoto-purple-dark">印刷可能</h3>
-              <p className="text-sm text-gray-600">チェックリストを持参</p>
+              <i className="fas fa-info-circle text-kyoto-purple text-2xl mb-2"></i>
+              <h3 className="font-semibold text-kyoto-purple-dark">詳細案内</h3>
+              <p className="text-sm text-gray-600">申請方法を詳しく説明</p>
             </div>
           </div>
 
