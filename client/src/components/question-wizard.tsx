@@ -90,14 +90,21 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
     // If no questions answered yet, show 0%
     if (answeredQuestionsCount === 0) return 0;
     
-    // If we're at the last question, show 100%
-    if (currentQuestion === relevantQuestions.length - 1) {
+    // Calculate progress based on answered questions vs max possible
+    const progressPercentage = (answeredQuestionsCount / maxPossibleQuestions) * 100;
+    
+    // If we're truly at the last possible question (no more questions can appear), show 100%
+    const futureRelevantQuestions = QUESTIONS.filter(q => 
+      !q.showWhen || q.showWhen({...answers, [question?.id]: selectedOption})
+    );
+    
+    if (currentQuestion === relevantQuestions.length - 1 && 
+        futureRelevantQuestions.length === relevantQuestions.length) {
       return 100;
     }
     
-    // Calculate progress based on answered questions vs max possible
-    const progressPercentage = (answeredQuestionsCount / maxPossibleQuestions) * 100;
-    return Math.min(95, Math.max(5, progressPercentage)); // Between 5% and 95%
+    // Otherwise show calculated progress, capped at 95%
+    return Math.min(95, Math.max(5, progressPercentage));
   };
   
   const progress = calculateProgress();
