@@ -260,22 +260,19 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                 <Button
                   onClick={() => printResults()}
-                  variant="outline"
-                  className="kyoto-button-outline"
+                  className="kyoto-button px-4 py-2 rounded-lg font-semibold"
                 >
                   <i className="fas fa-print mr-2"></i>印刷する
                 </Button>
                 <Button
                   onClick={handleGeneratePDF}
-                  variant="outline"
-                  className="kyoto-button-outline"
+                  className="kyoto-button px-4 py-2 rounded-lg font-semibold"
                 >
                   <i className="fas fa-file-pdf mr-2"></i>PDFで保存
                 </Button>
                 <Button
                   onClick={() => setShowQRCode(true)}
-                  variant="outline"
-                  className="kyoto-button-outline"
+                  className="kyoto-button px-4 py-2 rounded-lg font-semibold"
                 >
                   <i className="fas fa-qrcode mr-2"></i>QRコード表示
                 </Button>
@@ -287,14 +284,13 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
             <Button
               onClick={onBack}
-              variant="outline"
-              className="kyoto-button-outline"
+              className="kyoto-button px-4 py-2 rounded-lg font-semibold"
             >
               <i className="fas fa-chevron-left mr-2"></i>前のページへ戻る
             </Button>
             <Button
               onClick={onRestart}
-              className="kyoto-button"
+              className="kyoto-button px-4 py-2 rounded-lg font-semibold"
             >
               <i className="fas fa-redo mr-2"></i>最初から
             </Button>

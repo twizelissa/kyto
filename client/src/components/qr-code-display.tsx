@@ -66,14 +66,14 @@ export default function QRCodeDisplay({ answers, onClose }: QRCodeDisplayProps) 
           <div className="flex flex-col gap-3">
             <Button
               onClick={handleShareLine}
-              className="bg-green-500 hover:bg-green-600 text-white"
+              className="kyoto-button px-4 py-2 rounded-lg font-semibold"
             >
               <i className="fab fa-line mr-2"></i>LINEで共有
             </Button>
             
             <Button
               onClick={handleShareSMS}
-              className="bg-blue-500 hover:bg-blue-600 text-white"
+              className="kyoto-button px-4 py-2 rounded-lg font-semibold"
             >
               <i className="fas fa-sms mr-2"></i>SMSで共有
             </Button>
@@ -81,8 +81,7 @@ export default function QRCodeDisplay({ answers, onClose }: QRCodeDisplayProps) 
           
           <Button
             onClick={onClose}
-            variant="outline"
-            className="w-full"
+            className="kyoto-button px-4 py-2 rounded-lg font-semibold w-full"
           >
             閉じる
           </Button>
