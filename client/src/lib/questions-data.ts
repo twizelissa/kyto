@@ -21,7 +21,7 @@ export const QUESTIONS: Question[] = [
       {"v": "digital_cert", "label": "電子証明書の発行・更新", "icon": "fas fa-certificate"},
       {"v": "pin_change", "label": "暗証番号の変更・初期化", "icon": "fas fa-key"},
       {"v": "info_change", "label": "住所・氏名等の変更", "icon": "fas fa-edit"},
-      {"v": "card_lost", "label": "カードの紛失", "icon": "fas fa-exclamation-triangle"},
+      {"v": "card_lost", "label": "カードの紛失・紛失手続き後の発見", "icon": "fas fa-exclamation-triangle"},
       {"v": "card_return", "label": "カードの返納", "icon": "fas fa-minus-circle"}
     ]
   },
