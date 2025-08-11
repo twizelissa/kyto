@@ -98,6 +98,9 @@ Changelog:
   - Improved responsive design for mobile devices
   - Fixed header click navigation to properly return to home screen
   - Updated lost procedure confirmation page with third checkbox option
+  - Progress bar calculation issues identified (pending resolution):
+    - Progress calculation logic needs refinement for accurate percentage display
+    - Current implementation shows incorrect percentages during question flow
 
 ## User Preferences
 
