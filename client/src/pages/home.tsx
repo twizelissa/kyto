@@ -42,7 +42,7 @@ export default function Home() {
         <div className="flex justify-center mb-8">
           <div className="bg-white rounded-lg p-4 shadow-sm">
             <img 
-              src="/attached_assets/京都市ロゴマーク-1024x395-1_1754879042342.webp" 
+              src="/attached_assets/京都市ロゴマーク-1024x395-1_1754879640654.webp" 
               alt="京都市ロゴ" 
               className="h-12 md:h-16 object-contain"
             />
