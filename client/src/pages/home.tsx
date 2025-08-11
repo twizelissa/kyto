@@ -72,7 +72,7 @@ function WelcomeScreen({ onStart }: { onStart: () => void }) {
             </div>
           </div>
           
-          <div className="grid md:grid-cols-4 gap-4 mb-8">
+          <div className="grid md:grid-cols-3 gap-4 mb-8">
             <div className="bg-kyoto-purple-light rounded-lg p-4 border border-purple-100">
               <i className="fas fa-clock text-kyoto-purple text-2xl mb-2"></i>
               <h3 className="font-semibold text-kyoto-purple-dark">約1分で完了</h3>
@@ -84,14 +84,9 @@ function WelcomeScreen({ onStart }: { onStart: () => void }) {
               <p className="text-sm text-gray-600">必要な項目を整理</p>
             </div>
             <div className="bg-kyoto-purple-light rounded-lg p-4 border border-purple-100">
-              <i className="fas fa-qrcode text-kyoto-purple text-2xl mb-2"></i>
-              <h3 className="font-semibold text-kyoto-purple-dark">QRコード付きPDFの作成</h3>
-              <p className="text-sm text-gray-600">印刷・共有が簡単</p>
-            </div>
-            <div className="bg-kyoto-purple-light rounded-lg p-4 border border-purple-100">
               <i className="fas fa-share text-kyoto-purple text-2xl mb-2"></i>
-              <h3 className="font-semibold text-kyoto-purple-dark">LINE/SMSに送信可能</h3>
-              <p className="text-sm text-gray-600">結果を簡単に共有</p>
+              <h3 className="font-semibold text-kyoto-purple-dark">簡単に印刷・共有可能</h3>
+              <p className="text-sm text-gray-600">✓QRコード付きPDFの作成<br/>✓LINE/SMSに送信</p>
             </div>
           </div>
 
