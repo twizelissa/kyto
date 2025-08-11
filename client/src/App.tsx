@@ -11,9 +11,12 @@ function KyotoHeader() {
     <header className="kyoto-header text-white">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center">
-          <div className="bg-white rounded px-2 py-1 mr-4">
-            <span className="text-purple-800 font-bold text-lg">京都市</span>
-            <span className="text-purple-600 text-xs ml-1">CITY OF KYOTO</span>
+          <div className="mr-4">
+            <img 
+              src="https://monakaya.com/wp-content/uploads/2024/12/京都市ロゴマーク-1024x395-1.webp" 
+              alt="京都市ロゴ" 
+              className="h-8 w-auto object-contain"
+            />
           </div>
           <div className="text-left">
             <h1 className="text-lg font-bold mb-0">マイナンバーカード手続きガイド</h1>
