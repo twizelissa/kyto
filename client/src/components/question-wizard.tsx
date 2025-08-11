@@ -54,17 +54,22 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
 
   const question = relevantQuestions[currentQuestion];
   
-  // Calculate progress - ensure it reaches 100% at completion
+  // Calculate progress based on answered questions vs maximum possible questions
   const calculateProgress = () => {
-    if (currentQuestion === 0) return 0; // First page is always 0%
+    const MAX_EXPECTED_QUESTIONS = 10; // Maximum expected questions in any flow
+    const answeredQuestionsCount = Object.keys(answers).length;
     
-    // If we're at the last question, return 100%
+    // If no questions answered yet, show 0%
+    if (answeredQuestionsCount === 0) return 0;
+    
+    // If we're at the last question, show 100%
     if (currentQuestion === relevantQuestions.length - 1) {
       return 100;
     }
     
-    // Otherwise calculate proportional progress up to 95%
-    return Math.min(95, ((currentQuestion + 1) / relevantQuestions.length) * 100);
+    // Calculate progress based on answered questions
+    const progressPercentage = (answeredQuestionsCount / MAX_EXPECTED_QUESTIONS) * 100;
+    return Math.min(95, Math.max(5, progressPercentage)); // Between 5% and 95%
   };
   
   const progress = calculateProgress();
