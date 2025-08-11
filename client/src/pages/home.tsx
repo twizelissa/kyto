@@ -91,24 +91,21 @@ function WelcomeScreen({ onStart }: { onStart: () => void }) {
             </div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <div className="bg-kyoto-purple-light rounded-lg p-6 border border-purple-100">
-              <i className="fas fa-clock text-kyoto-purple text-3xl mb-3"></i>
-              <h3 className="font-semibold text-kyoto-purple-dark text-lg mb-2">約1分で完了します。</h3>
-              <div className="text-sm text-gray-700 space-y-1">
-                <p>• 質問は簡単です。</p>
-                <p>• チェックリストが自動作成されます。</p>
-                <p>• 必要な項目を整理できます。</p>
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            <div className="bg-kyoto-purple-light rounded-lg p-4 border border-purple-100">
+              <i className="fas fa-clock text-kyoto-purple text-2xl mb-2"></i>
+              <h3 className="font-semibold text-kyoto-purple-dark">約1分で完了</h3>
+              <p className="text-sm text-gray-600">簡単な質問に答えるだけ</p>
             </div>
-            <div className="bg-kyoto-purple-light rounded-lg p-6 border border-purple-100">
-              <i className="fas fa-share text-kyoto-purple text-3xl mb-3"></i>
-              <h3 className="font-semibold text-kyoto-purple-dark text-lg mb-2">簡単に印刷・共有可能です。</h3>
-              <div className="text-sm text-gray-700 space-y-1">
-                <p>• PDFの作成</p>
-                <p>• QRコードの生成</p>
-                <p>• LINE/SMSで共有</p>
-              </div>
+            <div className="bg-kyoto-purple-light rounded-lg p-4 border border-purple-100">
+              <i className="fas fa-list-check text-kyoto-purple text-2xl mb-2"></i>
+              <h3 className="font-semibold text-kyoto-purple-dark">チェックリストの自動作成</h3>
+              <p className="text-sm text-gray-600">必要な項目を整理</p>
+            </div>
+            <div className="bg-kyoto-purple-light rounded-lg p-4 border border-purple-100">
+              <i className="fas fa-share text-kyoto-purple text-2xl mb-2"></i>
+              <h3 className="font-semibold text-kyoto-purple-dark">簡単に印刷・共有可能</h3>
+              <p className="text-sm text-gray-600">・PDFの作成<br/>・QRコードの生成<br/>・LINE/SMSで共有</p>
             </div>
           </div>
 
