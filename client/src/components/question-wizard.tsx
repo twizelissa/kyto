@@ -151,7 +151,7 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
         <CardContent className="space-y-6">
           {question.id === "lost_procedures" ? (
             <>
-              <h2 className="text-2xl font-bold text-black mb-6">紛失手続きの確認</h2>
+              <h2 className="text-2xl font-bold text-black mb-6">紛失手続きについてご確認</h2>
               <div className="bg-kyoto-purple-light border border-purple-200 rounded-lg p-4 sm:p-6 mb-6">
                 <div className="text-gray-800 leading-relaxed">
                   <p className="mb-4">
