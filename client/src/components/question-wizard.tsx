@@ -188,7 +188,7 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
               {lostCheckboxes.callCenter && lostCheckboxes.policeReport && (
                 <Button 
                   onClick={handleLostProceedNext}
-                  className="kyoto-button w-full mt-4"
+                  className="kyoto-button w-full mt-4 text-center justify-center"
                 >
                   次へ進む
                 </Button>
@@ -226,7 +226,7 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
           {currentQuestion === 0 && onBack && (
             <Button
               onClick={onBack}
-              className="kyoto-button px-4 py-2 rounded-lg font-semibold"
+              className="kyoto-button px-4 py-2 rounded-lg font-semibold text-center justify-center"
             >
               <i className="fas fa-home mr-2"></i>ホームに戻る
             </Button>
@@ -234,7 +234,7 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
           {currentQuestion > 0 && (
             <Button
               onClick={handlePrev}
-              className="kyoto-button px-4 py-2 rounded-lg font-semibold"
+              className="kyoto-button px-4 py-2 rounded-lg font-semibold text-center justify-center"
             >
               <i className="fas fa-chevron-left mr-2"></i>前の質問
             </Button>
@@ -245,7 +245,7 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
           <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
             <Button
               onClick={handleRestart}
-              className="kyoto-button px-4 py-2 rounded-lg font-semibold pointer-events-auto"
+              className="kyoto-button px-4 py-2 rounded-lg font-semibold text-center justify-center pointer-events-auto"
             >
               <i className="fas fa-redo mr-2"></i>最初からやり直す
             </Button>
