@@ -276,6 +276,13 @@ export default function ResultsDisplay({ answers, onRestart, onModify }: Results
           {isApplicationMethodResult && (
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
               <Button
+                onClick={onModify}
+                variant="outline"
+                className="kyoto-button-outline"
+              >
+                <i className="fas fa-chevron-left mr-2"></i>前のページに戻る
+              </Button>
+              <Button
                 onClick={onRestart}
                 className="kyoto-button"
               >
