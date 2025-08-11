@@ -286,7 +286,7 @@ export const QUESTIONS: Question[] = [
     "text": "住民基本台帳用4桁の暗証番号がわかりますか",
     "options": [
       {"v": "know", "label": "わかる", "icon": "fas fa-check"},
-      {"v": "unknown_or_change_only", "label": "わからない又は暗証番号の変更のみ", "icon": "fas fa-question"}
+      {"v": "unknown_or_change_only", "label": "わからない（又は暗証番号の変更のみ）", "icon": "fas fa-question"}
     ],
     "showWhen": (answers) => {
       if (answers.procedure !== "pin_change") return false;
