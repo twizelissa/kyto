@@ -175,8 +175,8 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
               </div>
             </div>
             
-            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-              <h4 className="font-bold mb-3">出張申請サポート</h4>
+            <div className="bg-kyoto-purple-light border border-purple-200 rounded-lg p-4">
+              <h4 className="font-bold mb-3 text-kyoto-purple-dark">出張申請サポート</h4>
               <div className="text-sm space-y-2">
                 <p>商業施設等において、申請のサポート（交付申請書の記入補助、顔写真の無料撮影）を行うブースを開設します。</p>
                 <p>※予約不要。今後の実施予定など、詳しくはこちらのページをご確認ください。</p>
@@ -228,9 +228,9 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
           ) : (
             <>
               <div className="text-center mb-8">
-                <i className="fas fa-check-circle text-gov-green text-6xl mb-4"></i>
-                <h2 className="text-3xl font-bold text-slate-800 mb-4">必要書類リスト</h2>
-                <p className="text-lg text-slate-600">以下の書類をご準備ください</p>
+                <i className="fas fa-check-circle text-kyoto-purple text-6xl mb-4"></i>
+                <h2 className="text-3xl font-bold text-kyoto-purple-dark mb-4">必要書類リスト</h2>
+                <p className="text-lg text-gray-600">以下の書類をご準備ください</p>
               </div>
 
 
