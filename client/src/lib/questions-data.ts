@@ -453,7 +453,7 @@ export const ITEMS: Record<string, RequiredItem> = {
   
   // 来庁困難理由証明書類
   "hospitalized_cert": {name: "申請者ご本人がお越しになれないことを証する書類\n例）診断書、入院診療計画書、入院費用の領収書、診療明細書、病院長が作成する顔写真証明書", icon: "fas fa-file-medical"},
-  "disabled_cert": {name: "申請者ご本人がお越しになれないことを証する書類\n例）障害者手帳（［身体障害者手帳］［療育手帳］［精神障害者福祉手帳］）、障害者福祉サービス受給者証、施設長が作成する顔写真証明書", icon: "fas fa-file-medical"},
+  "disabled_cert": {name: "申請者ご本人がお越しになれないことを証する書類\n例）障害者手帳（［身体障害者手帳］［療育手帳］［精神障害者福祉手帳］）、障害者福祉サービス受給者証、自立支援医療受給者証", icon: "fas fa-file-medical"},
   "facility_cert": {name: "申請者ご本人がお越しになれないことを証する書類\n例）施設入所証明書、施設長が作成する顔写真証明書", icon: "fas fa-file-medical"},
   "care_cert": {name: "申請者ご本人がお越しになれないことを証する書類\n例）介護保険被保険者証、認定結果通知書、ケアマネージャー及びその所属する事業者の長が作成する顔写真証明書", icon: "fas fa-file-medical"},
   "pregnant_cert": {name: "申請者ご本人がお越しになれないことを証する書類\n例）母子健康手帳、妊婦検診を受診したことが確認できる領収書又は受診券", icon: "fas fa-file-medical"},
