@@ -381,7 +381,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                           </td>
                         </tr>
                         <tr className="border-b">
-                          <td className="px-3 py-4 font-bold bg-gray-50 align-top whitespace-nowrap">A欄</td>
+                          <td className="px-3 py-4 font-bold bg-gray-50 align-top whitespace-nowrap">A欄<br/><span className="text-xs font-normal">顔写真付きの公的機関が発行した書類</span></td>
                           <td className="px-3 py-4">
                             <div className="space-y-1 text-xs leading-relaxed">
                               <div>マイナンバーカード、住民基本台帳カード（顔写真付きに限る。）、運転免許証、</div>
@@ -392,7 +392,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                           </td>
                         </tr>
                         <tr>
-                          <td className="px-3 py-4 font-bold bg-gray-50 align-top whitespace-nowrap">B欄</td>
+                          <td className="px-3 py-4 font-bold bg-gray-50 align-top whitespace-nowrap">B欄<br/><span className="text-xs font-normal">「氏名と住所」又は「氏名と生年月日」の記載がある</span></td>
                           <td className="px-3 py-4">
                             <div className="space-y-1 text-xs leading-relaxed">
                               <div>海技免状、電気工事士免状、無線従事者免許証、動力車操縦者運転免許証、</div>
@@ -426,7 +426,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                           </td>
                         </tr>
                         <tr className="border-b">
-                          <td className="px-3 py-4 font-bold bg-gray-50 align-top text-xs w-16">A欄</td>
+                          <td className="px-3 py-4 font-bold bg-gray-50 align-top text-xs w-16">A欄<br/><span className="text-xs font-normal">顔写真付きの公的機関が発行した書類</span></td>
                           <td className="px-3 py-4">
                             <div className="space-y-1 text-xs leading-relaxed">
                               <div>マイナンバーカード、住民基本台帳カード、運転免許証、運転経歴証明書</div>
@@ -437,7 +437,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                           </td>
                         </tr>
                         <tr>
-                          <td className="px-3 py-4 font-bold bg-gray-50 align-top whitespace-nowrap w-16">B欄</td>
+                          <td className="px-3 py-4 font-bold bg-gray-50 align-top whitespace-nowrap w-16">B欄<br/><span className="text-xs font-normal">「氏名と住所」又は「氏名と生年月日」の記載がある</span></td>
                           <td className="px-3 py-4">
                             <div className="space-y-1 text-xs leading-relaxed">
                               <div>資格確認書（健康保険証）、年金手帳、社員証、学生証、医療受給者証、</div>
