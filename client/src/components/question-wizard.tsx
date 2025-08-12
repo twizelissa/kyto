@@ -305,7 +305,9 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
             <>
               <h2 className="text-2xl font-bold text-black mb-6">
                 {question.text.split('\n').map((line, index) => (
-                  <div key={index}>{line}</div>
+                  <div key={index} className={index === 1 ? "text-sm text-gray-500 font-normal mt-2" : ""}>
+                    {line}
+                  </div>
                 ))}
               </h2>
               <div className="space-y-4">
