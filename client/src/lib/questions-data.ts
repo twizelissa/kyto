@@ -138,6 +138,16 @@ export const QUESTIONS: Question[] = [
     "showWhen": (answers) => answers.procedure === "card_issuance" && answers.applicant_age === "15_over"
   },
   {
+    "id": "inquiry_response_check",
+    "text": "照会書兼回答書について",
+    "options": [],
+    "showWhen": (answers) => answers.procedure === "card_issuance" && 
+                           answers.notification_card === "no" && 
+                           answers.visitor_type === "proxy" && 
+                           answers.applicant_age === "15_over" && 
+                           answers.guardian_reason_15_over === "other"
+  },
+  {
     "id": "specific_reason",
     "text": "下記の中から理由を選択してください",
     "options": [
@@ -154,16 +164,6 @@ export const QUESTIONS: Question[] = [
     "showWhen": (answers) => answers.procedure === "card_issuance" && 
                            answers.guardian_reason_15_over === "other" && 
                            (answers.notification_card === "yes" || answers.inquiry_response_confirmed === "true")
-  },
-  {
-    "id": "inquiry_response_check",
-    "text": "照会書兼回答書について",
-    "options": [],
-    "showWhen": (answers) => answers.procedure === "card_issuance" && 
-                           answers.notification_card === "no" && 
-                           answers.visitor_type === "proxy" && 
-                           answers.applicant_age === "15_over" && 
-                           answers.guardian_reason_15_over === "other"
   },
   {
     "id": "cohabitation_status",
