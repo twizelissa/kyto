@@ -345,9 +345,9 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
                   </p>
                   
                   <div className="border border-yellow-400 bg-yellow-50 rounded-lg p-4 mb-4">
-                    <p className="mb-2">・カードの申請後からカードのお受取りのまでの間に住所や氏名の変更がある場合</p>
-                    <p className="mb-2">・在留期間の変更（更新）がある場合</p>
-                    <p className="mb-0">・カードの申請時に電子証明書の発行を希望していない方で、カードの交付時に電子証明書の発行を新たに希望される場合</p>
+                    <p className="mb-2 text-yellow-700">・カードの申請後からカードのお受取りのまでの間に住所や氏名の変更がある場合</p>
+                    <p className="mb-2 text-yellow-700">・在留期間の変更（更新）がある場合</p>
+                    <p className="mb-0 text-yellow-700">・カードの申請時に電子証明書の発行を希望していない方で、カードの交付時に電子証明書の発行を新たに希望される場合</p>
                   </div>
                   
                   <p className="mb-4">
@@ -356,7 +356,7 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
                 </div>
               </div>
               
-              <div className="space-y-4">
+              <div className="space-y-4 mt-2">
                 {question.options.map((option) => (
                   <div
                     key={option.v}
