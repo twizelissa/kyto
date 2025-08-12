@@ -22,6 +22,9 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
   
   const requiredItems = isApplicationMethodResult ? [] : resolveItems(answers);
   
+  // 手続きタイプを取得
+  const procedureType = answers.procedure_type;
+  
   // 代理人の特別案内を取得
   const proxySpecialNotice = getProxySpecialNotice(answers);
   
