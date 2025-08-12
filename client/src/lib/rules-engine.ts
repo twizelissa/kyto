@@ -101,6 +101,8 @@ function resolveIssuanceItems(answers: Answer): string[] {
 
   // 5. 代理人の場合の追加処理
   if (answers.visitor_type === "proxy") {
+    // 代理人の場合は必ず申請者本人の本人確認書類が必要
+    items.push("applicant_identity_document");
     
     // 75歳以上や特定の理由の場合
     if (answers.applicant_age === "15_over" && answers.guardian_reason_15_over === "other") {
@@ -108,10 +110,8 @@ function resolveIssuanceItems(answers: Answer): string[] {
       if (reason === "over_75" || reason === "disabled" || reason === "hospitalized" || 
           reason === "facility_resident" || reason === "care_certified" || reason === "pregnant" || 
           reason === "study_abroad" || reason === "student" || reason === "hikikomori") {
-        // 申請者本人の本人確認書類
-        items.push("identity_document_proxy_75_over");
-        // 代理人の本人確認書類
-        items.push("identity_document_proxy_other");
+        // 代理人の本人確認書類（その他の場合）
+        items.push("proxy_identity_document_other");
         
         // 来庁困難理由証明書類を追加
         switch (reason) {
@@ -141,20 +141,16 @@ function resolveIssuanceItems(answers: Answer): string[] {
             break;
         }
       } else {
-        // 申請者本人の本人確認書類
-        items.push("identity_document_proxy_75_over");
-        // 代理人の本人確認書類
-        items.push("identity_document_proxy_other");
+        // 代理人の本人確認書類（その他の場合）
+        items.push("proxy_identity_document_other");
       }
     } else if (answers.applicant_age === "15_over" && 
                answers.guardian_reason_15_over && 
                ["adult_guardian", "conservatee", "assisted_person", "voluntary_guardian"].includes(answers.guardian_reason_15_over)) {
       // 成年被後見人等の場合
       const reason = answers.guardian_reason_15_over;
-      // 申請者本人の本人確認書類
-      items.push("identity_document_proxy_75_over");
-      // 代理人の本人確認書類
-      items.push("identity_document_proxy_guardian");
+      // 代理人の本人確認書類（成年被後見人等）
+      items.push("proxy_identity_document_guardian");
       
       switch (reason) {
         case "adult_guardian":
@@ -172,10 +168,8 @@ function resolveIssuanceItems(answers: Answer): string[] {
       }
     } else if (answers.applicant_age === "under_15") {
       // 15歳未満の場合
-      // 申請者本人の本人確認書類
-      items.push("identity_document_proxy_75_over");
-      // 代理人の本人確認書類
-      items.push("identity_document_proxy_guardian");
+      // 代理人の本人確認書類（15歳未満）
+      items.push("proxy_identity_document_guardian");
       
       if (answers.cohabitation_status === "not_cohabiting" && answers.koseki_location === "other") {
         items.push("family_register_under_15");
