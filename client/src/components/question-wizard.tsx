@@ -372,9 +372,8 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
             </>
           ) : question.id === "inquiry_response_check" ? (
             <>
-              <h2 className="text-2xl font-bold text-black mb-6 text-center">照会書兼回答書について</h2>
-              <div className="bg-red-50 border border-red-200 rounded-lg p-6 mb-6">
-                <div className="text-red-800 leading-relaxed">
+              <div className="mb-6">
+                <div className="text-red-600 leading-relaxed">
                   <p className="mb-4">
                     交付通知書の提出がない場合は、マイナンバーカードのお受取ができません。
                   </p>
