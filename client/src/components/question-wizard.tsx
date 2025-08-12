@@ -431,9 +431,8 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
               
               {/* Show proxy information for card issuance visitor type question */}
               {question.id === "visitor_type" && (
-                <div className="bg-red-50 border border-red-200 rounded-lg p-4 sm:p-6 mt-6">
-                  <h3 className="font-semibold text-red-900 mb-3">代理人による受取について</h3>
-                  <div className="text-sm text-red-800 leading-relaxed">
+                <div className="mt-6">
+                  <div className="text-sm text-red-600 leading-relaxed">
                     <p className="mb-3">代理人が受取を行うことができるのは、次のような場合などに限られます。</p>
                     <ul className="list-disc pl-5 space-y-1">
                       <li>75歳以上の方や要介護・要支援認定、障害をお持ちで来庁が困難である方</li>
