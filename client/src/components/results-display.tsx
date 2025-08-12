@@ -314,201 +314,200 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
 
   return (
     <div className="max-w-none mx-auto px-1 sm:px-4 py-8">
-      <Card className="rounded-xl shadow-lg p-2 sm:p-6 mb-6">
-        <CardContent className="space-y-8">
-          {isApplicationMethodResult ? (
-            <>
-              <div className="text-center mb-8">
-                <i className="fas fa-info-circle text-kyoto-purple text-6xl mb-4"></i>
-                <h2 className="text-3xl font-bold text-kyoto-purple-dark mb-4">{getApplicationMethodContent().title}</h2>
-              </div>
-              <div className="text-gray-800 leading-relaxed">
-                {getApplicationMethodContent().content}
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="text-center mb-8">
-                <i className="fas fa-check-circle text-kyoto-purple text-6xl mb-4"></i>
-              </div>
+      {isApplicationMethodResult ? (
+        <Card className="rounded-xl shadow-lg p-2 sm:p-6 mb-6">
+          <CardContent className="space-y-8">
+            <div className="text-center mb-8">
+              <i className="fas fa-info-circle text-kyoto-purple text-6xl mb-4"></i>
+              <h2 className="text-3xl font-bold text-kyoto-purple-dark mb-4">{getApplicationMethodContent().title}</h2>
+            </div>
+            <div className="text-gray-800 leading-relaxed">
+              {getApplicationMethodContent().content}
+            </div>
+          </CardContent>
+        </Card>
+      ) : (
+        <>
+          <div className="text-center mb-8">
+            <i className="fas fa-check-circle text-kyoto-purple text-6xl mb-4"></i>
+          </div>
 
-              {/* 必要書類リスト */}
-              <div className="mb-8">
-                <div className="bg-white border border-gray-300 rounded-lg p-6">
-                  <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
-                    <i className="fas fa-clipboard-list mr-2"></i>必要書類リスト
-                  </h3>
-                  <div className="space-y-4 mb-6">
-                  {requiredItems.map((itemKey, index) => {
-                    const item = getItemDetails(itemKey);
-                    if (!item) return null;
-                    
-                    return (
-                      <div key={itemKey} className="flex items-start space-x-3 p-3 border rounded-lg hover:bg-kyoto-purple-light transition-colors">
-                        <Checkbox
-                          id={`item-${index}`}
-                          checked={checkedItems[itemKey] || false}
-                          onCheckedChange={(checked) => handleItemCheck(itemKey, checked as boolean)}
-                          className="mt-1"
-                        />
-                        <div className="flex-1">
-                          <label htmlFor={`item-${index}`} className="flex items-start space-x-3 cursor-pointer">
-                            <i className={`${item.icon} text-kyoto-purple text-lg mt-1`}></i>
-                            <div className="text-sm font-medium text-gray-800 whitespace-pre-line leading-relaxed">
-                              {item.name}
-                            </div>
-                          </label>
+
+
+
+
+          {/* 必要書類リスト */}
+          <Card className="shadow-lg border-gray-200 mb-8">
+            <CardContent className="p-2 sm:p-6">
+              <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
+                <i className="fas fa-clipboard-list mr-2"></i>必要書類リスト
+              </h3>
+              <div className="space-y-4 mb-6">
+              {requiredItems.map((itemKey, index) => {
+                const item = getItemDetails(itemKey);
+                if (!item) return null;
+                
+                return (
+                  <div key={itemKey} className="flex items-start space-x-3 p-3 border rounded-lg hover:bg-kyoto-purple-light transition-colors">
+                    <Checkbox
+                      id={`item-${index}`}
+                      checked={checkedItems[itemKey] || false}
+                      onCheckedChange={(checked) => handleItemCheck(itemKey, checked as boolean)}
+                      className="mt-1"
+                    />
+                    <div className="flex-1">
+                      <label htmlFor={`item-${index}`} className="flex items-start space-x-3 cursor-pointer">
+                        <i className={`${item.icon} text-kyoto-purple text-lg mt-1`}></i>
+                        <div className="text-sm font-medium text-gray-800 whitespace-pre-line leading-relaxed">
+                          {item.name}
                         </div>
-                      </div>
-                    );
-                  })}
+                      </label>
+                    </div>
                   </div>
+                );
+              })}
+              </div>
 
-                  {/* 本人確認書類一覧表（特定条件で表示） */}
-                  {shouldShowIdentityDocTable() && (
-                    <div className="mb-6">
-                      <div className="bg-white border rounded-lg overflow-hidden">
-                        <table className="w-full text-sm">
-                          <tbody>
-                            <tr>
-                              <td colSpan={2} className="px-3 py-3 font-bold bg-kyoto-purple text-white text-center">
-                                本人確認書類一覧（有効期限内のもの）
-                              </td>
-                            </tr>
-                            <tr className="border-b">
-                              <td className="px-3 py-4 font-bold bg-gray-50 align-top whitespace-nowrap">A欄</td>
-                              <td className="px-3 py-4">
-                                <div className="space-y-1 text-xs leading-relaxed">
-                                  <div>マイナンバーカード、住民基本台帳カード（顔写真付きに限る。）、運転免許証、</div>
-                                  <div>運転経歴証明書（平成24年4月1日以降の交付日のものに限る。）、旅券、</div>
-                                  <div>身体障害者手帳、精神障害者保健福祉手帳、療育手帳、在留カード、</div>
-                                  <div>特別永住者証明書、一時庇護許可書、仮滞在許可証</div>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td className="px-3 py-4 font-bold bg-gray-50 align-top whitespace-nowrap">B欄</td>
-                              <td className="px-3 py-4">
-                                <div className="space-y-1 text-xs leading-relaxed">
-                                  <div>海技免状、電気工事士免状、無線従事者免許証、動力車操縦者運転免許証、</div>
-                                  <div>運行管理者技能検定合格証、猟銃・空気銃所持許可証、</div>
-                                  <div>戦傷病者手帳、宅地建物取引士証、教習資格認定証、船員手帳、海技免許証、耐空検査員の証、</div>
-                                  <div>航空従事者技能証明書、宅地建物取引士証、船員手帳、戦傷病者手帳、</div>
-                                  <div>教習資格認定証、官公署がその職員に対して発行した身分証明書、</div>
-                                  <div>Aの書類が更新中の場合に交付される仮証明書や引換証類、</div>
-                                  <div>地方公共団体が交付する敬老手帳、生活保護受給証明書、</div>
-                                  <div>資格確認書（健康保険証）、介護保険証、医療受給者証、各種年金証書、</div>
-                                  <div>児童扶養手当証書、母子健康手帳（出生届出済証明書欄に証明があり、現在の氏名と一致するものに限り、子の本人確認書類として有効）　等</div>
-                                  <div>社員証、学生証、学校で発行された在籍証明書（「氏名・生年月日」又は「氏名・住所」が記載されているものに限る）　等</div>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  )}
+              {/* 本人確認書類一覧表（特定条件で表示） */}
+              {shouldShowIdentityDocTable() && (
+                <div className="mb-6">
+                  <div className="bg-white border rounded-lg overflow-hidden">
+                    <table className="w-full text-sm">
+                      <tbody>
+                        <tr>
+                          <td colSpan={2} className="px-3 py-3 font-bold bg-kyoto-purple text-white text-center">
+                            本人確認書類一覧（有効期限内のもの）
+                          </td>
+                        </tr>
+                        <tr className="border-b">
+                          <td className="px-3 py-4 font-bold bg-gray-50 align-top whitespace-nowrap">A欄</td>
+                          <td className="px-3 py-4">
+                            <div className="space-y-1 text-xs leading-relaxed">
+                              <div>マイナンバーカード、住民基本台帳カード（顔写真付きに限る。）、運転免許証、</div>
+                              <div>運転経歴証明書（平成24年4月1日以降の交付日のものに限る。）、旅券、</div>
+                              <div>身体障害者手帳、精神障害者保健福祉手帳、療育手帳、在留カード、</div>
+                              <div>特別永住者証明書、一時庇護許可書、仮滞在許可証</div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="px-3 py-4 font-bold bg-gray-50 align-top whitespace-nowrap">B欄</td>
+                          <td className="px-3 py-4">
+                            <div className="space-y-1 text-xs leading-relaxed">
+                              <div>海技免状、電気工事士免状、無線従事者免許証、動力車操縦者運転免許証、</div>
+                              <div>運行管理者技能検定合格証、猟銃・空気銃所持許可証、</div>
+                              <div>戦傷病者手帳、宅地建物取引士証、教習資格認定証、船員手帳、海技免許証、耐空検査員の証、</div>
+                              <div>航空従事者技能証明書、宅地建物取引士証、船員手帳、戦傷病者手帳、</div>
+                              <div>教習資格認定証、官公署がその職員に対して発行した身分証明書、</div>
+                              <div>Aの書類が更新中の場合に交付される仮証明書や引換証類、</div>
+                              <div>地方公共団体が交付する敬老手帳、生活保護受給証明書、</div>
+                              <div>資格確認書（健康保険証）、介護保険証、医療受給者証、各種年金証書、</div>
+                              <div>児童扶養手当証書、母子健康手帳（出生届出済証明書欄に証明があり、現在の氏名と一致するものに限り、子の本人確認書類として有効）　等</div>
+                              <div>社員証、学生証、学校で発行された在籍証明書（「氏名・生年月日」又は「氏名・住所」が記載されているものに限る）　等</div>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )}
 
-                  {/* 代理人（その他理由）の本人確認書類一覧表 */}
-                  {shouldShowProxyOtherDocTable() && (
-                    <div className="mb-6">
-                      <div className="bg-white border rounded-lg overflow-hidden">
-                        <table className="w-full text-sm">
-                          <tbody>
-                            <tr>
-                              <td colSpan={2} className="px-3 py-3 font-bold bg-kyoto-purple text-white text-center">
-                                本人確認書類一覧（必ず原本をお持ちください。）
-                              </td>
-                            </tr>
-                            <tr className="border-b">
-                              <td className="px-3 py-4 font-bold bg-gray-50 align-top text-xs w-16">A欄</td>
-                              <td className="px-3 py-4">
-                                <div className="space-y-1 text-xs leading-relaxed">
-                                  <div>マイナンバーカード、住民基本台帳カード、運転免許証、運転経歴証明書</div>
-                                  <div>（平成24年4月1日以降の交付年月日のものに限る。）、旅券（パスポート）、</div>
-                                  <div>障害者手帳（身体障害者手帳、精神障害者保健福祉手帳、療育手帳）、</div>
-                                  <div>在留カード、特別永住者証明書、一時庇護許可証、仮滞在許可証　等</div>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td className="px-3 py-4 font-bold bg-gray-50 align-top whitespace-nowrap w-16">B欄</td>
-                              <td className="px-3 py-4">
-                                <div className="space-y-1 text-xs leading-relaxed">
-                                  <div>資格確認書（健康保険証）、年金手帳、社員証、学生証、医療受給者証、</div>
-                                  <div>母子健康手帳（出生届済証明書欄に証明があり、現在の氏名と一致するものに限</div>
-                                  <div>り、子の本人確認書類として有効）、敬老乗車証（氏名、生年月日の記載がある</div>
-                                  <div>「フリーパス証」に限る。「敬老バス回数券」不可）、介護保険被保険者証、生活</div>
-                                  <div>保護受給証明書、顔写真証明書（施設等入所者用・在宅で保健医療サービス等を</div>
-                                  <div>受けている方・未成年及び成年被後見人の方用・社会的参加（義務教育を含む就</div>
-                                  <div>学、非常勤職を含む就労、家庭外での交遊など）を回避し長期にわたって概ね家</div>
-                                  <div>庭にとどまり続けている状態である方用）　等</div>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  )}
+              {/* 代理人（その他理由）の本人確認書類一覧表 */}
+              {shouldShowProxyOtherDocTable() && (
+                <div className="mb-6">
+                  <div className="bg-white border rounded-lg overflow-hidden">
+                    <table className="w-full text-sm">
+                      <tbody>
+                        <tr>
+                          <td colSpan={2} className="px-3 py-3 font-bold bg-kyoto-purple text-white text-center">
+                            本人確認書類一覧（必ず原本をお持ちください。）
+                          </td>
+                        </tr>
+                        <tr className="border-b">
+                          <td className="px-3 py-4 font-bold bg-gray-50 align-top text-xs w-16">A欄</td>
+                          <td className="px-3 py-4">
+                            <div className="space-y-1 text-xs leading-relaxed">
+                              <div>マイナンバーカード、住民基本台帳カード、運転免許証、運転経歴証明書</div>
+                              <div>（平成24年4月1日以降の交付年月日のものに限る。）、旅券（パスポート）、</div>
+                              <div>障害者手帳（身体障害者手帳、精神障害者保健福祉手帳、療育手帳）、</div>
+                              <div>在留カード、特別永住者証明書、一時庇護許可証、仮滞在許可証　等</div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="px-3 py-4 font-bold bg-gray-50 align-top whitespace-nowrap w-16">B欄</td>
+                          <td className="px-3 py-4">
+                            <div className="space-y-1 text-xs leading-relaxed">
+                              <div>資格確認書（健康保険証）、年金手帳、社員証、学生証、医療受給者証、</div>
+                              <div>母子健康手帳（出生届済証明書欄に証明があり、現在の氏名と一致するものに限</div>
+                              <div>り、子の本人確認書類として有効）、敬老乗車証（氏名、生年月日の記載がある</div>
+                              <div>「フリーパス証」に限る。「敬老バス回数券」不可）、介護保険被保険者証、生活</div>
+                              <div>保護受給証明書、顔写真証明書（施設等入所者用・在宅で保健医療サービス等を</div>
+                              <div>受けている方・未成年及び成年被後見人の方用・社会的参加（義務教育を含む就</div>
+                              <div>学、非常勤職を含む就労、家庭外での交遊など）を回避し長期にわたって概ね家</div>
+                              <div>庭にとどまり続けている状態である方用）　等</div>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )}
 
-                  {/* 代理人の特別案内 */}
-                  {proxySpecialNotice && (() => {
-                    const specialNotice = getSpecialNoticeContent(proxySpecialNotice);
-                    if (!specialNotice) return null;
-                    
-                    return (
-                      <div className="mb-0">
-                        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
-                          <h4 className="font-bold text-yellow-900 mb-3">{specialNotice.title}</h4>
-                          <p className="text-sm text-yellow-800 mb-4 leading-relaxed whitespace-pre-line">
-                            {specialNotice.content}
-                          </p>
-                          <div className="space-y-2">
-                            {specialNotice.documents.map((doc, index) => (
-                              <div key={index} className="flex items-center text-sm text-yellow-800">
-                                <i className="fas fa-file-pdf mr-2 text-red-600"></i>
-                                <span className="font-medium">{doc.name}</span>
-                                <span className="ml-2 text-gray-600">({doc.format})</span>
-                              </div>
-                            ))}
+              {/* 代理人の特別案内 */}
+              {proxySpecialNotice && (() => {
+                const specialNotice = getSpecialNoticeContent(proxySpecialNotice);
+                if (!specialNotice) return null;
+                
+                return (
+                  <div className="mb-0">
+                    <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+                      <h4 className="font-bold text-yellow-900 mb-3">{specialNotice.title}</h4>
+                      <p className="text-sm text-yellow-800 mb-4 leading-relaxed whitespace-pre-line">
+                        {specialNotice.content}
+                      </p>
+                      <div className="space-y-2">
+                        {specialNotice.documents.map((doc, index) => (
+                          <div key={index} className="flex items-center text-sm text-yellow-800">
+                            <i className="fas fa-file-pdf mr-2 text-red-600"></i>
+                            <span className="font-medium">{doc.name}</span>
+                            <span className="ml-2 text-gray-600">({doc.format})</span>
                           </div>
-                        </div>
+                        ))}
                       </div>
-                    );
-                  })()}
-                </div>
-              </div>
+                    </div>
+                  </div>
+                );
+              })()}
+            </CardContent>
+          </Card>
 
-              {/* 交付場所 */}
-              <div className="mb-8">
-                <div className="bg-white border border-gray-300 rounded-lg p-6">
-                  <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
-                    <i className="fas fa-map-marker-alt mr-2"></i>交付場所
-                  </h3>
-                  <p className="text-sm text-gray-800">京都市マイナンバーカードセンター、区役所・支所のマイナンバーカードセンター交付コーナー</p>
-                </div>
-              </div>
+          {/* 交付場所 */}
+          <Card className="shadow-lg border-gray-200 mb-8">
+            <CardContent className="p-2 sm:p-6">
+              <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
+                <i className="fas fa-map-marker-alt mr-2"></i>交付場所
+              </h3>
+              <p className="text-sm text-gray-800">京都市マイナンバーカードセンター、区役所・支所のマイナンバーカードセンター交付コーナー</p>
+            </CardContent>
+          </Card>
 
-              {/* 予約方法 */}
-              <div className="mb-8">
-                <div className="bg-white border border-gray-300 rounded-lg p-6">
-                  <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
-                    <i className="fas fa-calendar-alt mr-2"></i>予約方法
-                  </h3>
-                  <p className="text-sm text-gray-800">
-                    予約制です。京都市マイナンバーカードセンターの予約システムまたは電話でご予約ください。<br/>
-                    予約なしでの来庁も可能ですが、お待ちいただく場合があります。
-                  </p>
-                </div>
-              </div>
-
-
-
-            </>
-          )}
-        </CardContent>
-      </Card>
+          {/* 予約方法 */}
+          <Card className="shadow-lg border-gray-200 mb-8">
+            <CardContent className="p-2 sm:p-6">
+              <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
+                <i className="fas fa-calendar-alt mr-2"></i>予約方法
+              </h3>
+              <p className="text-sm text-gray-800">
+                予約制です。京都市マイナンバーカードセンターの予約システムまたは電話でご予約ください。<br/>
+                予約なしでの来庁も可能ですが、お待ちいただく場合があります。
+              </p>
+            </CardContent>
+          </Card>
+        </>
+      )}
 
       {/* Action buttons moved outside the white frame */}
       {procedureType === 'issuance' && (
