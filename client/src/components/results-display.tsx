@@ -373,7 +373,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
               {shouldShowIdentityDocTable() && (
                 <div className="mb-6">
                   <div className="bg-white border rounded-lg overflow-hidden">
-                    <table className="w-full text-sm table-fixed">
+                    <table className="w-full text-sm">
                       <tbody>
                         <tr>
                           <td colSpan={2} className="px-3 py-3 font-bold bg-kyoto-purple text-white text-center">
@@ -381,11 +381,11 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                           </td>
                         </tr>
                         <tr className="border-b">
-                          <td className="px-3 py-4 font-bold bg-gray-50 align-top w-1/4">
+                          <td className="px-3 py-4 font-bold bg-gray-50 align-top" style={{width: 'min(28%, 180px)'}}>
                             A欄<br/>
                             <span className="text-xs font-normal text-gray-600">顔写真付きの公的機関が発行した書類</span>
                           </td>
-                          <td className="px-3 py-4 w-3/4">
+                          <td className="px-3 py-4">
                             <div className="space-y-1 text-xs leading-relaxed">
                               <div>マイナンバーカード、住民基本台帳カード（顔写真付きに限る。）、運転免許証、</div>
                               <div>運転経歴証明書（平成24年4月1日以降の交付日のものに限る。）、旅券、</div>
@@ -395,11 +395,11 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                           </td>
                         </tr>
                         <tr>
-                          <td className="px-3 py-4 font-bold bg-gray-50 align-top w-1/4">
+                          <td className="px-3 py-4 font-bold bg-gray-50 align-top" style={{width: 'min(28%, 260px)'}}>
                             B欄<br/>
                             <span className="text-xs font-normal text-gray-600">「氏名と住所」又は「氏名と生年月日」の記載がある</span>
                           </td>
-                          <td className="px-3 py-4 w-3/4">
+                          <td className="px-3 py-4">
                             <div className="space-y-1 text-xs leading-relaxed">
                               <div>海技免状、電気工事士免状、無線従事者免許証、動力車操縦者運転免許証、</div>
                               <div>運行管理者技能検定合格証、猟銃・空気銃所持許可証、</div>
@@ -424,7 +424,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
               {shouldShowProxyOtherDocTable() && (
                 <div className="mb-6">
                   <div className="bg-white border rounded-lg overflow-hidden">
-                    <table className="w-full text-sm table-fixed">
+                    <table className="w-full text-sm">
                       <tbody>
                         <tr>
                           <td colSpan={2} className="px-3 py-3 font-bold bg-kyoto-purple text-white text-center">
@@ -432,11 +432,11 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                           </td>
                         </tr>
                         <tr className="border-b">
-                          <td className="px-3 py-4 font-bold bg-gray-50 align-top w-1/4">
+                          <td className="px-3 py-4 font-bold bg-gray-50 align-top" style={{width: 'min(28%, 180px)'}}>
                             A欄<br/>
                             <span className="text-xs font-normal text-gray-600">顔写真付きの公的機関が発行した書類</span>
                           </td>
-                          <td className="px-3 py-4 w-3/4">
+                          <td className="px-3 py-4">
                             <div className="space-y-1 text-xs leading-relaxed">
                               <div>マイナンバーカード、住民基本台帳カード、運転免許証、運転経歴証明書</div>
                               <div>（平成24年4月1日以降の交付年月日のものに限る。）、旅券（パスポート）、</div>
@@ -446,8 +446,8 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                           </td>
                         </tr>
                         <tr>
-                          <td className="px-3 py-4 font-bold bg-gray-50 align-top w-1/4">B欄</td>
-                          <td className="px-3 py-4 w-3/4">
+                          <td className="px-3 py-4 font-bold bg-gray-50 align-top" style={{width: 'min(28%, 180px)'}}>B欄</td>
+                          <td className="px-3 py-4">
                             <div className="space-y-1 text-xs leading-relaxed">
                               <div>資格確認書（健康保険証）、年金手帳、社員証、学生証、医療受給者証、</div>
                               <div>母子健康手帳（出生届済証明書欄に証明があり、現在の氏名と一致するものに限</div>
