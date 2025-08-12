@@ -355,7 +355,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
               {shouldShowProxyOtherDocTable() && (
                 <div className="mb-8">
                   <div className="bg-white border rounded-lg overflow-hidden">
-                    <table className="w-full text-sm table-fixed">
+                    <table className="w-full text-sm">
                       <tbody>
                         <tr>
                           <td colSpan={2} className="px-3 py-3 font-bold bg-kyoto-purple text-white text-center">
@@ -363,10 +363,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                           </td>
                         </tr>
                         <tr className="border-b">
-                          <td className="px-1 py-4 font-bold bg-gray-50 align-top text-xs w-20">
-                            <div>A欄</div>
-                            <div className="text-xs font-normal mt-1 leading-tight">（顔写真付きの公的機関が発行した証明書）</div>
-                          </td>
+                          <td className="px-3 py-4 font-bold bg-gray-50 align-top text-xs w-16">A欄</td>
                           <td className="px-3 py-4">
                             <div className="space-y-1 text-xs leading-relaxed">
                               <div>マイナンバーカード、住民基本台帳カード、運転免許証、運転経歴証明書</div>
@@ -377,10 +374,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                           </td>
                         </tr>
                         <tr>
-                          <td className="px-1 py-4 font-bold bg-gray-50 align-top w-20">
-                            <div>B欄</div>
-                            <div className="text-xs font-normal mt-1 leading-tight">（その他の証明書）</div>
-                          </td>
+                          <td className="px-3 py-4 font-bold bg-gray-50 align-top whitespace-nowrap w-16">B欄</td>
                           <td className="px-3 py-4">
                             <div className="space-y-1 text-xs leading-relaxed">
                               <div>資格確認書（健康保険証）、年金手帳、社員証、学生証、医療受給者証、</div>
