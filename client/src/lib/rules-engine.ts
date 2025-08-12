@@ -37,6 +37,48 @@ export function resolveItems(answers: Answer): string[] {
   return Array.from(new Set(requiredItems));
 }
 
+// 代理人の理由に基づく特別案内の判定
+export function getProxySpecialNotice(answers: Answer): string | null {
+  if (answers.procedure !== "card_issuance" || answers.visitor_type !== "proxy") {
+    return null;
+  }
+  
+  // 15歳未満の場合
+  if (answers.applicant_age === "under_15") {
+    return "minor_guardian";
+  }
+  
+  // 15歳以上の代理人の場合
+  if (answers.applicant_age === "15_over") {
+    const guardianReason = answers.guardian_reason_15_over;
+    
+    // 成年被後見人等の場合
+    if (["adult_guardian", "conservatee", "assisted_person", "voluntary_guardian"].includes(guardianReason)) {
+      return "minor_guardian"; // 同じ様式を使用
+    }
+    
+    // 「それ以外」を選択した場合の具体的理由
+    if (guardianReason === "other") {
+      const specificReason = answers.specific_reason;
+      
+      switch (specificReason) {
+        case "hospitalized":
+          return "hospitalized";
+        case "facility_resident":
+          return "facility_resident";
+        case "care_certified":
+          return "care_certified";
+        case "hikikomori":
+          return "hikikomori";
+        default:
+          return null;
+      }
+    }
+  }
+  
+  return null;
+}
+
 function resolveIssuanceItems(answers: Answer): string[] {
   const items: string[] = [];
   
