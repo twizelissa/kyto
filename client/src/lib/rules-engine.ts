@@ -45,9 +45,10 @@ function resolveIssuanceItems(answers: Answer): string[] {
     items.push("mynumber_card_notification");
   }
   
-  // 2. 更新・再発行の場合の現在のマイナンバーカード
+  // 2. 更新・再発行（紛失以外）の場合の現在のマイナンバーカード
+  // 質問2で「更新」「紛失以外の理由による再発行」を選択した場合のみ必要
   if (answers.issuance_type === "renewal" || answers.issuance_type === "other_reissue") {
-    items.push("current_mynumber_card_for_renewal");
+    items.push("current_mynumber_card_with_fee");
   }
   
   // 3. 返納書類（住民基本台帳カード、マイナンバー通知カード）

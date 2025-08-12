@@ -378,6 +378,7 @@ export const ITEMS: Record<string, RequiredItem> = {
   "mynumber_notification_card_old": {name: "マイナンバー通知カード（お持ちの方は返納していただきます。）", icon: "fas fa-id-card-alt"},
   "resident_card": {name: "住民基本台帳カード（お持ちの方は返納していただきます。）", icon: "fas fa-id-card"},
   "current_mynumber_card": {name: "現在お持ちのマイナンバーカード（マイナンバーカード再交付申請の方は、現在お持ちのマイナンバーカードを返納してください。返納がない場合、再交付手数料として1,000円頂戴します。）", icon: "fas fa-id-card"},
+  "current_mynumber_card_with_fee": {name: "現在お持ちのマイナンバーカード\n※返納がない場合は、再交付手数料として1,000円頂戴します。", icon: "fas fa-id-card"},
   "pin_number": {name: "暗証番号（4桁数字）", icon: "fas fa-key"},
   
   // 本人確認書類
