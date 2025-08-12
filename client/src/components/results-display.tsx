@@ -35,14 +35,14 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
     await generatePDF(answers, itemNames);
   };
 
-  // 本人確認書類一覧表を表示する条件をチェック（成年被後見人等）
+  // 本人確認書類一覧表を表示する条件をチェック（本人または成年被後見人等）
   const shouldShowIdentityDocTable = () => {
     if (answers.procedure !== "card_issuance") return false;
     
     // 本人の場合は表示
     if (answers.visitor_type === "self") return true;
     
-    // 代理人の場合、成年被後見人等の理由で表示
+    // 代理人の場合、成年被後見人等の理由のみで表示
     if (answers.visitor_type === "proxy") {
       const reason = answers.applicant_age === "under_15" ? answers.guardian_reason : answers.guardian_reason_15_over;
       const guardianReasons = ["adult_guardian", "conservatee", "assisted_person", "voluntary_guardian"];
@@ -56,11 +56,15 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
   const shouldShowProxyOtherDocTable = () => {
     if (answers.procedure !== "card_issuance" || answers.visitor_type !== "proxy") return false;
     
-    const reason = answers.applicant_age === "under_15" ? answers.guardian_reason : answers.guardian_reason_15_over;
-    const targetReasons = ["over_75", "hospitalized", "facility_resident", "care_certified", 
-                          "pregnant", "overseas_study", "student", "social_withdrawal", "disabled"];
+    // 15歳以上の代理人で「それ以外」を選択し、具体的理由が特定の値の場合
+    if (answers.applicant_age === "15_over" && answers.guardian_reason_15_over === "other") {
+      const specificReason = answers.specific_reason;
+      const targetReasons = ["over_75", "hospitalized", "facility_resident", "care_certified", 
+                            "pregnant", "study_abroad", "student", "hikikomori", "disabled"];
+      return targetReasons.includes(specificReason);
+    }
     
-    return targetReasons.includes(reason);
+    return false;
   };
 
   const getApplicationMethodContent = () => {
