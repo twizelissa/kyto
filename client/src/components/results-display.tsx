@@ -381,7 +381,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                           </td>
                         </tr>
                         <tr className="border-b">
-                          <td className="px-3 py-4 font-bold bg-gray-50 align-top" style={{width: 'min(28%, 180px)'}}>
+                          <td className="px-3 py-4 font-bold bg-gray-50 align-top" style={{width: 'min(25%, 160px)'}}>
                             A欄<br/>
                             <span className="text-xs font-normal text-gray-600">顔写真付きの公的機関が発行した書類</span>
                           </td>
@@ -395,7 +395,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                           </td>
                         </tr>
                         <tr>
-                          <td className="px-3 py-4 font-bold bg-gray-50 align-top" style={{width: 'min(28%, 260px)'}}>
+                          <td className="px-3 py-4 font-bold bg-gray-50 align-top" style={{width: 'min(25%, 240px)'}}>
                             B欄<br/>
                             <span className="text-xs font-normal text-gray-600">「氏名と住所」又は「氏名と生年月日」の記載がある</span>
                           </td>
@@ -432,7 +432,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                           </td>
                         </tr>
                         <tr className="border-b">
-                          <td className="px-3 py-4 font-bold bg-gray-50 align-top" style={{width: 'min(28%, 180px)'}}>
+                          <td className="px-3 py-4 font-bold bg-gray-50 align-top" style={{width: 'min(25%, 160px)'}}>
                             A欄<br/>
                             <span className="text-xs font-normal text-gray-600">顔写真付きの公的機関が発行した書類</span>
                           </td>
@@ -443,7 +443,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                           </td>
                         </tr>
                         <tr>
-                          <td className="px-3 py-4 font-bold bg-gray-50 align-top" style={{width: 'min(28%, 180px)'}}>B欄</td>
+                          <td className="px-3 py-4 font-bold bg-gray-50 align-top" style={{width: 'min(25%, 160px)'}}>B欄</td>
                           <td className="px-3 py-4">
                             <div className="text-xs leading-relaxed text-justify">
                               資格確認書（健康保険証）、年金手帳、社員証、学生証、医療受給者証、母子健康手帳（出生届済証明書欄に証明があり、現在の氏名と一致するものに限り、子の本人確認書類として有効）、敬老乗車証（氏名、生年月日の記載がある「フリーパス証」に限る。「敬老バス回数券」不可）、介護保険被保険者証、生活保護受給証明書、顔写真証明書（施設等入所者用・在宅で保健医療サービス等を受けている方・未成年及び成年被後見人の方用・社会的参加（義務教育を含む就学、非常勤職を含む就労、家庭外での交遊など）を回避し長期にわたって概ね家庭にとどまり続けている状態である方用）　等
