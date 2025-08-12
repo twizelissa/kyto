@@ -312,12 +312,6 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                   </h3>
                   <div className="bg-white border rounded-lg overflow-hidden">
                     <table className="w-full text-sm">
-                      <thead>
-                        <tr className="bg-kyoto-purple text-white">
-                          <th className="px-3 py-2 text-left font-bold w-12">区分</th>
-                          <th className="px-3 py-2 text-left font-bold">書類名</th>
-                        </tr>
-                      </thead>
                       <tbody>
                         <tr className="border-b">
                           <td className="px-3 py-4 font-bold bg-gray-50 align-top">A欄</td>
