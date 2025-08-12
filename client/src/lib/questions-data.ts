@@ -102,7 +102,7 @@ export const QUESTIONS: Question[] = [
     "id": "visitor_type",
     "text": "手続きに来られる方をお選びください",
     "options": [
-      {"v": "self", "label": "本人", "icon": "fas fa-user"},
+      {"v": "self", "label": "本人（代理人が同行する場合を含む）", "icon": "fas fa-user"},
       {"v": "proxy", "label": "代理人", "icon": "fas fa-user-friends"}
     ],
     "showWhen": (answers) => {
