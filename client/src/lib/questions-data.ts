@@ -137,7 +137,15 @@ export const QUESTIONS: Question[] = [
     ],
     "showWhen": (answers) => answers.procedure === "card_issuance" && answers.visitor_type === "self" && answers.self_detail_type === "with_proxy"
   },
-
+  {
+    "id": "self_cohabitation",
+    "text": "申請者と代理人の同居の有無をお選びください",
+    "options": [
+      {"v": "cohabiting", "label": "同居", "icon": "fas fa-home"},
+      {"v": "not_cohabiting", "label": "非同居", "icon": "fas fa-home"}
+    ],
+    "showWhen": (answers) => answers.procedure === "card_issuance" && answers.visitor_type === "self" && answers.self_detail_type === "with_proxy" && answers.self_proxy_reason === "under_15"
+  },
   {
     "id": "self_domicile",
     "text": "申請者の方の本籍地についてお選びください",
@@ -145,7 +153,7 @@ export const QUESTIONS: Question[] = [
       {"v": "kyoto", "label": "京都市内", "icon": "fas fa-map-marker-alt"},
       {"v": "other", "label": "それ以外", "icon": "fas fa-map"}
     ],
-    "showWhen": (answers) => answers.procedure === "card_issuance" && answers.visitor_type === "self" && answers.self_detail_type === "with_proxy" && answers.self_proxy_reason === "under_15"
+    "showWhen": (answers) => answers.procedure === "card_issuance" && answers.visitor_type === "self" && answers.self_detail_type === "with_proxy" && answers.self_proxy_reason === "under_15" && answers.self_cohabitation === "not_cohabiting"
   },
 
   {
