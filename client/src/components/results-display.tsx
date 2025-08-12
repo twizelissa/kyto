@@ -492,8 +492,8 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
               <div className="space-y-4 text-sm text-gray-800 leading-relaxed">
                 <div>
                   <ul className="space-y-2">
-                    <li>・マイナンバーカードセンター（<span className="underline text-red-600">事前予約</span>が必要です。）</li>
-                    <li>・各区役所・支所のマイナンバーカード交付コーナー（<span className="underline text-red-600">事前予約</span>が必要です。京都市民の方でしたら、住所地に関わらずいずれの区役所・支所でも手続可能です。）</li>
+                    <li>・<strong>マイナンバーカードセンター</strong>（<span className="underline text-red-600">事前予約</span>が必要です。）</li>
+                    <li>・<strong>各区役所・支所のマイナンバーカード交付コーナー</strong>（<span className="underline text-red-600">事前予約</span>が必要です。京都市民の方でしたら、住所地に関わらずいずれの区役所・支所でも手続可能です。）</li>
                   </ul>
                 </div>
                 
@@ -518,8 +518,8 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
                   <p className="font-semibold mb-2">下記のいずれかで予約</p>
                   <ul className="space-y-2">
-                    <li>・インターネット受付（24時間　年中無休）：<a href="https://mncard.city.kyoto.lg.jp/mynumpo-kyoto-u/?method=all" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">https://mncard.city.kyoto.lg.jp/mynumpo-kyoto-u/?method=all</a></li>
-                    <li>・電話受付（平日の午前9時～午後5時）：075－777－6201</li>
+                    <li>・<strong>インターネット受付</strong>（24時間　年中無休）：<a href="https://mncard.city.kyoto.lg.jp/mynumpo-kyoto-u/?method=all" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">https://mncard.city.kyoto.lg.jp/mynumpo-kyoto-u/?method=all</a></li>
+                    <li>・<strong>電話受付</strong>（平日の午前9時～午後5時）：075－777－6201</li>
                   </ul>
                 </div>
                 
