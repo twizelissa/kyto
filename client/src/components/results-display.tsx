@@ -42,9 +42,9 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
     // 本人の場合は表示
     if (answers.visitor_type === "self") return true;
     
-    // 代理人の場合、15歳未満のみで表示
+    // 代理人の場合は表示しない（新しい表を使用）
     if (answers.visitor_type === "proxy") {
-      return answers.applicant_age === "under_15";
+      return false;
     }
     
     return false;
@@ -53,6 +53,11 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
   // 代理人の特定理由での本人確認書類一覧表を表示する条件をチェック
   const shouldShowProxyOtherDocTable = () => {
     if (answers.procedure !== "card_issuance" || answers.visitor_type !== "proxy") return false;
+    
+    // 15歳未満の代理人の場合
+    if (answers.applicant_age === "under_15") {
+      return true;
+    }
     
     // 15歳以上の代理人の場合
     if (answers.applicant_age === "15_over") {
