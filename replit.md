@@ -101,6 +101,13 @@ Changelog:
   - Progress bar calculation issues identified (pending resolution):
     - Progress calculation logic needs refinement for accurate percentage display
     - Current implementation shows incorrect percentages during question flow
+- August 12, 2025. Card issuance document requirements refinement:
+  - Fixed identity document requirements for proxy applications with clear separation between applicant and proxy documents
+  - Eliminated warning messages for adult guardianship categories (成年被後見人等)
+  - Updated notification card display conditions to only show when applicant has notification card
+  - Enhanced identity document requirements based on visitor type (self vs proxy) and specific circumstances
+  - Refined certificate requirements for various difficulty-to-visit reasons (hospitalized, disabled, facility resident, etc.)
+  - Added specific document requirements for guardianship situations and underage applicants
 
 ## User Preferences
 
