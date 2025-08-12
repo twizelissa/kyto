@@ -437,7 +437,7 @@ export const ITEMS: Record<string, RequiredItem> = {
   "identity_document_self_with_notification": {name: "本人確認書類（A欄1点、又はB欄2点）", icon: "fas fa-id-badge"},
   "identity_document_self_no_notification": {name: "本人確認書類（A欄2点、又はA欄1点＋B欄1点）", icon: "fas fa-id-badge"},
   // 申請者本人の本人確認書類（代理人が来る場合）
-  "applicant_identity_document": {name: "申請者ご本人の本人確認書類（以下のいずれかのパターン）\n・A欄2点\n・A欄1点＋B欄1点\n・B欄3点（うち1点は顔写真付のもの）\n※ ただし、1歳未満の乳児の方につきましては、B欄2点（顔写真なし）で可", icon: "fas fa-id-badge"},
+  "applicant_identity_document": {name: "申請者ご本人の本人確認書類（以下のいずれかのパターン）\n・A欄2点\n・A欄1点＋B欄1点\n・B欄3点（うち1点は顔写真付のもの）\n※顔写真付の本人確認書類がない場合は、ご本人の来庁が必要となります。\n※ ただし、1歳未満の乳児の方につきましては、B欄2点（顔写真なし）で可", icon: "fas fa-id-badge"},
   
   // 代理人の本人確認書類
   "proxy_identity_document_other": {name: "代理人の本人確認書類（A欄2点、又はA欄1点＋B欄1点）", icon: "fas fa-user-friends"},
