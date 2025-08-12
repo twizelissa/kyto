@@ -244,7 +244,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                   if (!item) return null;
                   
                   return (
-                    <div key={itemKey} className="flex items-start space-x-4 p-4 border rounded-lg hover:bg-kyoto-purple-light transition-colors">
+                    <div key={itemKey} className="flex items-start space-x-3 p-3 border rounded-lg hover:bg-kyoto-purple-light transition-colors">
                       <Checkbox
                         id={`item-${index}`}
                         checked={checkedItems[itemKey] || false}

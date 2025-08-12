@@ -366,14 +366,14 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
                 {question.options.map((option) => (
                   <div
                     key={option.v}
-                    className={`option-card p-3 sm:p-4 border-2 rounded-lg cursor-pointer transition-all ${
+                    className={`option-card p-2 sm:p-3 border-2 rounded-lg cursor-pointer transition-all ${
                       selectedOption === option.v
                         ? "border-kyoto-purple bg-kyoto-purple-light"
                         : "border-gray-200 hover:border-kyoto-purple hover:bg-kyoto-purple-light"
                     }`}
                     onClick={() => handleOptionSelect(option.v)}
                   >
-                    <div className="flex items-center space-x-4">
+                    <div className="flex items-center space-x-3">
                       <i className={`${option.icon} text-kyoto-purple text-xl`}></i>
                       <span className="font-medium text-black">{option.label}</span>
                     </div>
