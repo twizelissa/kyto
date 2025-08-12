@@ -502,46 +502,50 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
 
 
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button
-                  onClick={() => printResults()}
-                  className="kyoto-button px-4 py-2 rounded-lg font-semibold text-center justify-center"
-                >
-                  <i className="fas fa-print mr-2"></i>印刷する
-                </Button>
-                <Button
-                  onClick={handleGeneratePDF}
-                  className="kyoto-button px-4 py-2 rounded-lg font-semibold text-center justify-center"
-                >
-                  <i className="fas fa-file-pdf mr-2"></i>PDFで保存
-                </Button>
-                <Button
-                  onClick={() => setShowQRCode(true)}
-                  className="kyoto-button px-4 py-2 rounded-lg font-semibold text-center justify-center"
-                >
-                  <i className="fas fa-qrcode mr-2"></i>QRコード表示
-                </Button>
-              </div>
             </>
           )}
-
-          {/* Common action buttons for all results */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-            <Button
-              onClick={onBack}
-              className="kyoto-button px-4 py-2 rounded-lg font-semibold text-center justify-center"
-            >
-              <i className="fas fa-chevron-left mr-2"></i>前のページへ戻る
-            </Button>
-            <Button
-              onClick={onRestart}
-              className="kyoto-button px-4 py-2 rounded-lg font-semibold text-center justify-center"
-            >
-              <i className="fas fa-redo mr-2"></i>最初から
-            </Button>
-          </div>
         </CardContent>
       </Card>
+
+      {/* Action buttons moved outside the white frame */}
+      {procedureType === 'issuance' && (
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+          <Button
+            onClick={() => printResults()}
+            className="kyoto-button px-4 py-2 rounded-lg font-semibold text-center justify-center"
+          >
+            <i className="fas fa-print mr-2"></i>印刷する
+          </Button>
+          <Button
+            onClick={handleGeneratePDF}
+            className="kyoto-button px-4 py-2 rounded-lg font-semibold text-center justify-center"
+          >
+            <i className="fas fa-file-pdf mr-2"></i>PDFで保存
+          </Button>
+          <Button
+            onClick={() => setShowQRCode(true)}
+            className="kyoto-button px-4 py-2 rounded-lg font-semibold text-center justify-center"
+          >
+            <i className="fas fa-qrcode mr-2"></i>QRコード表示
+          </Button>
+        </div>
+      )}
+
+      {/* Common action buttons for all results */}
+      <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+        <Button
+          onClick={onBack}
+          className="kyoto-button px-4 py-2 rounded-lg font-semibold text-center justify-center"
+        >
+          <i className="fas fa-chevron-left mr-2"></i>前のページへ戻る
+        </Button>
+        <Button
+          onClick={onRestart}
+          className="kyoto-button px-4 py-2 rounded-lg font-semibold text-center justify-center"
+        >
+          <i className="fas fa-redo mr-2"></i>最初から
+        </Button>
+      </div>
       
       {showQRCode && (
         <QRCodeDisplay 
