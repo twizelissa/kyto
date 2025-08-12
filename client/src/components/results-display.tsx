@@ -52,7 +52,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
     return false;
   };
 
-  // 代理人の特定理由（その他）での本人確認書類一覧表を表示する条件をチェック
+  // 代理人の特定理由での本人確認書類一覧表を表示する条件をチェック
   const shouldShowProxyOtherDocTable = () => {
     if (answers.procedure !== "card_issuance" || answers.visitor_type !== "proxy") return false;
     
