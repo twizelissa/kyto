@@ -22,7 +22,7 @@ export function resolveItems(answers: Answer): string[] {
   }
   
   // For electronic certificate issuance/renewal
-  if (answers.procedure === "electronic_certificate") {
+  if (answers.procedure === "digital_cert") {
     return resolveElectronicCertificateItems(answers);
   }
   
@@ -269,13 +269,13 @@ function resolveElectronicCertificateItems(answers: Answer): string[] {
   items.push("mynumber_card_self");
   
   // 2. 手続きに来られる方による追加書類
-  if (answers.visitor_type === "proxy") {
+  if (answers.cert_visitor_type === "proxy") {
     // 代理人の場合：代理人の顔写真付き本人確認書類
     items.push("proxy_id_certificate");
     
     // 3. 代理人の理由による追加書類
-    if (answers.guardian_reason_15_over) {
-      switch (answers.guardian_reason_15_over) {
+    if (answers.cert_guardian_reason) {
+      switch (answers.cert_guardian_reason) {
         case "adult_guardian":
           items.push("adult_guardian_register_cert");
           break;
@@ -293,13 +293,13 @@ function resolveElectronicCertificateItems(answers: Answer): string[] {
     
     // 4. 15歳未満かつ非同居かつ申請者の本籍が京都市以外の場合
     if (answers.applicant_age === "under_15" && 
-        answers.cohabitation === "not_cohabiting" && 
-        answers.domicile === "other") {
+        answers.cert_cohabitation === "not_cohabiting" && 
+        answers.cert_domicile === "other") {
       items.push("family_register_parental_rights");
     }
     
     // 5. 任意代理人の場合の照会書兼回答書
-    if (answers.guardian_reason_15_over === "voluntary") {
+    if (answers.cert_guardian_reason === "voluntary") {
       if (answers.certificate_type === "issuance") {
         // 発行の場合
         items.push("inquiry_response_voluntary_issuance");
@@ -310,7 +310,7 @@ function resolveElectronicCertificateItems(answers: Answer): string[] {
     }
     
     // 6. 同一世帯員（転入届又は転居届と併せて行う手続き）の場合
-    if (answers.guardian_reason_15_over === "household_member_with_move") {
+    if (answers.cert_guardian_reason === "household_member_with_move") {
       items.push("power_of_attorney");
     }
   }

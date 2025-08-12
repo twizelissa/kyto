@@ -68,6 +68,70 @@ export const QUESTIONS: Question[] = [
     ],
     "showWhen": (answers) => answers.application_method === "mail"
   },
+
+  // 電子証明書の発行・更新の質問
+  {
+    "id": "certificate_type",
+    "text": "お手続きの種類をお選びください",
+    "options": [
+      {"v": "issuance", "label": "発行", "icon": "fas fa-plus"},
+      {"v": "renewal", "label": "更新", "icon": "fas fa-sync-alt"}
+    ],
+    "showWhen": (answers) => answers.procedure === "digital_cert"
+  },
+  {
+    "id": "cert_visitor_type",
+    "text": "手続きに来られる方をお選びください",
+    "options": [
+      {"v": "self", "label": "本人", "icon": "fas fa-user"},
+      {"v": "proxy", "label": "代理人", "icon": "fas fa-user-friends"}
+    ],
+    "showWhen": (answers) => answers.procedure === "digital_cert" && Boolean(answers.certificate_type)
+  },
+  {
+    "id": "cert_guardian_reason",
+    "text": "下記の中から理由を選択してください",
+    "options": [
+      {"v": "adult_guardian", "label": "成年被後見人", "icon": "fas fa-shield-alt"},
+      {"v": "conservatee", "label": "被保佐人", "icon": "fas fa-shield-alt"},
+      {"v": "assisted_person", "label": "被補助人", "icon": "fas fa-shield-alt"},
+      {"v": "voluntary_guardian", "label": "任意被後見人", "icon": "fas fa-shield-alt"},
+      {"v": "voluntary", "label": "任意代理人", "icon": "fas fa-user-friends"},
+      {"v": "household_member_with_move", "label": "同一世帯員（転入届又は転居届と併せて行う手続き）", "icon": "fas fa-home"}
+    ],
+    "showWhen": (answers) => answers.procedure === "digital_cert" && answers.cert_visitor_type === "proxy"
+  },
+  {
+    "id": "applicant_age",
+    "text": "申請者の年齢をお選びください",
+    "options": [
+      {"v": "15_over", "label": "15歳以上", "icon": "fas fa-user"},
+      {"v": "under_15", "label": "15歳未満", "icon": "fas fa-child"}
+    ],
+    "showWhen": (answers) => answers.procedure === "digital_cert" && answers.cert_visitor_type === "proxy" && 
+      ["adult_guardian", "conservatee", "assisted_person", "voluntary_guardian"].includes(answers.cert_guardian_reason)
+  },
+  {
+    "id": "cert_cohabitation",
+    "text": "申請者と代理人の同居の有無をお選びください",
+    "options": [
+      {"v": "cohabiting", "label": "同居", "icon": "fas fa-home"},
+      {"v": "not_cohabiting", "label": "非同居", "icon": "fas fa-home"}
+    ],
+    "showWhen": (answers) => answers.procedure === "digital_cert" && answers.cert_visitor_type === "proxy" && 
+      answers.applicant_age === "under_15"
+  },
+  {
+    "id": "cert_domicile",
+    "text": "申請者の方の本籍地についてお選びください",
+    "options": [
+      {"v": "kyoto", "label": "京都市内", "icon": "fas fa-map-marker-alt"},
+      {"v": "other", "label": "それ以外", "icon": "fas fa-map"}
+    ],
+    "showWhen": (answers) => answers.procedure === "digital_cert" && answers.cert_visitor_type === "proxy" && 
+      answers.applicant_age === "under_15" && answers.cert_cohabitation === "not_cohabiting"
+  },
+
   // カードの交付（受け取り）の質問
   {
     "id": "issuance_type",
