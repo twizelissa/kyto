@@ -82,11 +82,15 @@ function WelcomeScreen({ onStart }: { onStart: () => void }) {
             <span className="flex items-center"><span className="text-2xl mr-2 text-black">✓</span> 申請方法</span>
             <span className="flex items-center"><span className="text-2xl mr-2 text-black">✓</span> 予約方法</span>
           </div>
-          <div className="md:hidden grid grid-cols-2 gap-3 text-base text-black font-medium justify-items-center">
-            <span className="flex items-center"><span className="text-2xl mr-2 text-black">✓</span> 持ち物</span>
-            <span className="flex items-center"><span className="text-2xl mr-2 text-black">✓</span> 場所</span>
-            <span className="flex items-center"><span className="text-2xl mr-2 text-black">✓</span> 申請方法</span>
-            <span className="flex items-center"><span className="text-2xl mr-2 text-black">✓</span> 予約方法</span>
+          <div className="md:hidden flex flex-col items-center gap-3 text-base text-black font-medium">
+            <div className="flex justify-center gap-8">
+              <span className="flex items-center"><span className="text-2xl mr-2 text-black">✓</span> 持ち物</span>
+              <span className="flex items-center"><span className="text-2xl mr-2 text-black">✓</span> 場所</span>
+            </div>
+            <div className="flex justify-center gap-8">
+              <span className="flex items-center"><span className="text-2xl mr-2 text-black">✓</span> 申請方法</span>
+              <span className="flex items-center"><span className="text-2xl mr-2 text-black">✓</span> 予約方法</span>
+            </div>
           </div>
         </div>
         
