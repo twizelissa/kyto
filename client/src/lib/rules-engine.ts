@@ -179,6 +179,11 @@ function resolveIssuanceItems(answers: Answer): string[] {
     }
   }
   
+  // 8. 照会書兼回答書（該当する場合のみ）
+  if (answers.issuance_inquiry_response_check === "applicable") {
+    items.push("inquiry_response");
+  }
+  
   return Array.from(new Set(items));
 }
 

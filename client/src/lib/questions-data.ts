@@ -366,6 +366,28 @@ export const QUESTIONS: Question[] = [
     ],
     "showWhen": (answers) => answers.procedure === "info_change" && answers.info_cohabitation_status === "not_cohabiting"
   },
+  {
+    "id": "issuance_inquiry_response_check",
+    "text": "次のいずれかに該当する場合は照会書兼回答書が必要となります。\n・カードの申請後からカードのお受取りのまでの間に住所や氏名の変更がある場合\n・在留期間の変更（更新）がある場合\n・カードの申請時に電子証明書の発行を希望していない方で、カードの交付時に電子証明書の発行を新たに希望される場合\n\n照会書兼回答書については、京都市マイナンバーカードセンターにお問い合わせください。",
+    "options": [
+      {"v": "not_applicable", "label": "該当しない", "icon": "fas fa-times"},
+      {"v": "applicable", "label": "該当する", "icon": "fas fa-check"}
+    ],
+    "showWhen": (answers) => {
+      if (answers.procedure !== "card_issuance" || answers.visitor_type !== "proxy") return false;
+      
+      const reason = answers.applicant_age === "under_15" ? answers.guardian_reason : answers.guardian_reason_15_over;
+      
+      // 対象となる理由の一覧
+      const targetReasons = [
+        "conservatee", "assisted_person", "voluntary_guardian", "other",
+        "over_75", "hospitalized", "facility_resident", "care_certified",
+        "pregnant", "overseas_study", "student", "social_withdrawal", "disabled"
+      ];
+      
+      return targetReasons.includes(reason);
+    }
+  },
   
   // カードの紛失の質問
   {

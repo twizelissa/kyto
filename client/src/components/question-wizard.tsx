@@ -322,6 +322,47 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
                 次へ進む
               </Button>
             </>
+          ) : question.id === "issuance_inquiry_response_check" ? (
+            <>
+              <h2 className="text-2xl font-bold text-black mb-6">照会書兼回答書について</h2>
+              <div className="bg-kyoto-purple-light border border-purple-200 rounded-lg p-4 sm:p-6 mb-6">
+                <div className="text-gray-800 leading-relaxed">
+                  {question.text.split('\n').map((line, index) => (
+                    <p key={index} className={index === 0 ? "mb-4" : index < 4 ? "mb-2" : "mb-4"}>
+                      {line}
+                    </p>
+                  ))}
+                </div>
+              </div>
+              
+              <div className="space-y-4">
+                {question.options.map((option) => (
+                  <div
+                    key={option.v}
+                    className={`option-card p-2 sm:p-3 border-2 rounded-lg cursor-pointer transition-all ${
+                      selectedOption === option.v
+                        ? "border-kyoto-purple bg-kyoto-purple-light"
+                        : "border-gray-200 hover:border-kyoto-purple hover:bg-kyoto-purple-light"
+                    }`}
+                    onClick={() => handleOptionSelect(option.v)}
+                  >
+                    <div className="flex items-center space-x-3">
+                      <i className={`${option.icon} text-kyoto-purple text-xl`}></i>
+                      <span className="font-medium text-black">{option.label}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              
+              {selectedOption && (
+                <Button 
+                  onClick={handleNext}
+                  className="kyoto-button w-full mt-6 text-center justify-center"
+                >
+                  次へ進む
+                </Button>
+              )}
+            </>
           ) : question.id === "inquiry_response_check" ? (
             <>
               <h2 className="text-2xl font-bold text-black mb-6">照会書兼回答書について</h2>
