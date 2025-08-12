@@ -363,7 +363,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                           </td>
                         </tr>
                         <tr className="border-b">
-                          <td className="px-3 py-4 font-bold bg-gray-50 align-top text-xs">A欄<br/>（顔写真付きの公的機関が発行した証明書）</td>
+                          <td className="px-3 py-4 font-bold bg-gray-50 align-top text-xs">A欄</td>
                           <td className="px-3 py-4">
                             <div className="space-y-1 text-xs leading-relaxed">
                               <div>マイナンバーカード、住民基本台帳カード、運転免許証、運転経歴証明書</div>
