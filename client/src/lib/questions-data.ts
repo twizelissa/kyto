@@ -133,7 +133,7 @@ export const QUESTIONS: Question[] = [
       {"v": "conservatee", "label": "被保佐人", "icon": "fas fa-shield-alt"},
       {"v": "assisted_person", "label": "被補助人", "icon": "fas fa-shield-alt"},
       {"v": "voluntary_guardian", "label": "任意被後見人", "icon": "fas fa-shield-alt"},
-      {"v": "under_15", "label": "申請者が15歳未満", "icon": "fas fa-child"}
+      {"v": "under_15", "label": "15歳未満", "icon": "fas fa-child"}
     ],
     "showWhen": (answers) => answers.procedure === "card_issuance" && answers.visitor_type === "self" && answers.self_detail_type === "with_proxy"
   },
