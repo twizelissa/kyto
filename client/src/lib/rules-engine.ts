@@ -122,11 +122,10 @@ function resolveIssuanceItems(answers: Answer): string[] {
   // 4. 交付通知書がない場合の処理
   if (answers.notification_card === "no") {
     if (answers.visitor_type === "proxy" && answers.applicant_age !== "under_15") {
-      // 成年被後見人等の場合は警告を表示しない
+      // 成年被後見人等の場合は本人確認書類不要（applicant_identity_documentのみで十分）
       if (answers.guardian_reason_15_over && 
           ["adult_guardian", "conservatee", "assisted_person", "voluntary_guardian"].includes(answers.guardian_reason_15_over)) {
-        // 成年被後見人等の場合は通常の本人確認書類
-        items.push("identity_document_with_notification");
+        // 成年被後見人等の場合は何も追加しない
       } else if (answers.inquiry_response_confirmed === "true") {
         // 照会書兼回答書を持っている場合
         items.push("inquiry_response");
