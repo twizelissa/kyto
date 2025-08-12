@@ -42,10 +42,9 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
     // 本人の場合は表示
     if (answers.visitor_type === "self") return true;
     
-    // 代理人の場合、成年被後見人のみで表示
+    // 代理人の場合、15歳未満のみで表示
     if (answers.visitor_type === "proxy") {
-      const reason = answers.applicant_age === "under_15" ? answers.guardian_reason : answers.guardian_reason_15_over;
-      return reason === "adult_guardian" || answers.applicant_age === "under_15";
+      return answers.applicant_age === "under_15";
     }
     
     return false;
@@ -59,8 +58,8 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
     if (answers.applicant_age === "15_over") {
       const guardianReason = answers.guardian_reason_15_over;
       
-      // 被保佐人、被補助人、任意被後見人の場合
-      if (["conservatee", "assisted_person", "voluntary_guardian"].includes(guardianReason)) {
+      // 成年被後見人、被保佐人、被補助人、任意被後見人の場合
+      if (["adult_guardian", "conservatee", "assisted_person", "voluntary_guardian"].includes(guardianReason)) {
         return true;
       }
       
