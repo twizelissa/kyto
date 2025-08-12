@@ -492,8 +492,8 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
               <div className="space-y-4 text-sm text-gray-800 leading-relaxed">
                 <div>
                   <ul className="space-y-2">
-                    <li>・マイナンバーカードセンター<span className="text-red-600">（事前予約が必要です。）</span></li>
-                    <li>・各区役所・支所のマイナンバーカード交付コーナー<span className="text-red-600">（事前予約が必要です。京都市民の方でしたら、住所地に関わらずいずれの区役所・支所でも手続可能です。）</span></li>
+                    <li>・マイナンバーカードセンター（事前予約が必要です。）</li>
+                    <li>・各区役所・支所のマイナンバーカード交付コーナー（事前予約が必要です。京都市民の方でしたら、住所地に関わらずいずれの区役所・支所でも手続可能です。）</li>
                   </ul>
                 </div>
                 
