@@ -526,5 +526,10 @@ export const ITEMS: Record<string, RequiredItem> = {
   "pregnant_cert": {name: "申請者ご本人がお越しになれないことを証する書類\n例）母子健康手帳、妊婦検診を受診したことが確認できる領収書又は受診券", icon: "fas fa-file-medical"},
   "study_abroad_cert": {name: "申請者ご本人がお越しになれないことを証する書類\n例）査証のコピー、留学先の学生証のコピー", icon: "fas fa-file-medical"},
   "student_cert": {name: "申請者ご本人がお越しになれないことを証する書類\n例）学生証、在学証明書", icon: "fas fa-file-medical"},
-  "hikikomori_cert": {name: "申請者ご本人がお越しになれないことを証する書類\n例）相談している公的な支援機関の職員及び当該支援機関の長が作成する顔写真証明書", icon: "fas fa-file-medical"}
+  "hikikomori_cert": {name: "申請者ご本人がお越しになれないことを証する書類\n例）相談している公的な支援機関の職員及び当該支援機関の長が作成する顔写真証明書", icon: "fas fa-file-medical"},
+  
+  // 電子証明書発行・更新用書類
+  "mynumber_card_certificate": {name: "ご本人のマイナンバーカード", icon: "fas fa-id-card"},
+  "proxy_identity_document": {name: "代理人の本人確認書類（A欄1点又はB欄2点）", icon: "fas fa-user-friends"},
+  "proxy_authorization_letter": {name: "委任状", icon: "fas fa-file-signature"}
 };

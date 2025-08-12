@@ -21,6 +21,11 @@ export function resolveItems(answers: Answer): string[] {
     return resolveIssuanceItems(answers);
   }
   
+  // For electronic certificate issuance/renewal
+  if (answers.procedure === "digital_cert") {
+    return resolveCertificateItems(answers);
+  }
+  
   // For other procedures that might need document lists
   const requiredItems: string[] = [];
   
@@ -252,6 +257,48 @@ function resolveIssuanceItems(answers: Answer): string[] {
   // 8. 照会書兼回答書（該当する場合のみ）
   if (answers.issuance_inquiry_response_check === "applicable") {
     items.push("inquiry_response");
+  }
+  
+  return Array.from(new Set(items));
+}
+
+function resolveCertificateItems(answers: Answer): string[] {
+  const items: string[] = [];
+  
+  // 1. 必ず「ご本人のマイナンバーカード」を追加
+  items.push("mynumber_card_certificate");
+  
+  // 2. 代理人の場合の追加書類
+  if (answers.cert_visitor_type === "proxy") {
+    // 代理人の本人確認書類
+    items.push("proxy_identity_document");
+    
+    // 代理権証明書類（代理人の理由に応じて）
+    if (answers.cert_proxy_reason) {
+      switch (answers.cert_proxy_reason) {
+        case "adult_guardian":
+          items.push("adult_guardian_cert");
+          break;
+        case "conservatee":
+          items.push("conservatee_cert");
+          break;
+        case "assisted_person":
+          items.push("assisted_person_cert");
+          break;
+        case "voluntary_guardian":
+          items.push("voluntary_guardian_cert");
+          break;
+        case "under_15":
+          // 15歳未満の場合は親権者であることの証明
+          if (answers.cert_cohabitation_status === "not_cohabiting" && answers.cert_koseki_location === "other") {
+            items.push("family_register_under_15");
+          }
+          break;
+        case "voluntary_proxy":
+          items.push("proxy_authorization_letter");
+          break;
+      }
+    }
   }
   
   return Array.from(new Set(items));
