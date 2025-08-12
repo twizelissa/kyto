@@ -324,7 +324,7 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
             </>
           ) : question.id === "issuance_inquiry_response_check" ? (
             <>
-              <h2 className="text-2xl font-bold text-black mb-6">照会書兼回答書について</h2>
+              <h2 className="text-2xl font-bold text-black mb-6 text-center">照会書兼回答書について</h2>
               <div className="rounded-lg p-4 sm:p-6 mb-6">
                 <div className="text-gray-800 leading-relaxed">
                   {question.text.split('\n').map((line, index) => (
@@ -365,7 +365,7 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
             </>
           ) : question.id === "inquiry_response_check" ? (
             <>
-              <h2 className="text-2xl font-bold text-black mb-6">照会書兼回答書について</h2>
+              <h2 className="text-2xl font-bold text-black mb-6 text-center">照会書兼回答書について</h2>
               <div className="bg-red-50 border border-red-200 rounded-lg p-6 mb-6">
                 <div className="text-red-800 leading-relaxed">
                   <p className="mb-4">
