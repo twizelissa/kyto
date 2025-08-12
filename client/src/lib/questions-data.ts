@@ -381,6 +381,8 @@ export const ITEMS: Record<string, RequiredItem> = {
   "identity_document_no_notification": {name: "本人確認書類（A欄から2点、又はA欄1点＋B欄1点）", icon: "fas fa-id-badge"},
   "mynumber_notification_card_old": {name: "マイナンバー通知カード（お持ちの方は返納していただきます。）", icon: "fas fa-id-card-alt"},
   "resident_card": {name: "住民基本台帳カード（お持ちの方は返納していただきます。）", icon: "fas fa-id-card"},
+  "basic_resident_card": {name: "住民基本台帳カード", icon: "fas fa-id-card"},
+  "mynumber_notification_card": {name: "マイナンバー通知カード又は個人番号通知書", icon: "fas fa-id-card-alt"},
   "current_mynumber_card": {name: "現在お持ちのマイナンバーカード（マイナンバーカード再交付申請の方は、現在お持ちのマイナンバーカードを返納してください。返納がない場合、再交付手数料として1,000円頂戴します。）", icon: "fas fa-id-card"},
   "current_mynumber_card_with_fee": {name: "現在お持ちのマイナンバーカード\n※返納がない場合は、再交付手数料として1,000円頂戴します。", icon: "fas fa-id-card"},
   "pin_number": {name: "暗証番号（4桁数字）", icon: "fas fa-key"},
@@ -423,8 +425,6 @@ export const ITEMS: Record<string, RequiredItem> = {
   "identity_document_proxy_75_over": {name: "本人確認書類\n・A欄2点\n・A欄1点＋B欄1点\n・B欄3点（うち1点は顔写真付のもの）\n※ ただし、1歳未満の乳児の方につきましては、B欄2点（顔写真なし）で可", icon: "fas fa-id-badge"},
   "identity_document_proxy_other": {name: "代理人の本人確認書類（A欄2点、又はA欄1点＋B欄1点）", icon: "fas fa-user-friends"},
   "identity_document_proxy_guardian": {name: "代理人の本人確認書類（A欄1点、又はB欄2点）", icon: "fas fa-user-friends"},
-  "basic_resident_card": {name: "住民基本台帳カード", icon: "fas fa-id-card"},
-  "mynumber_notification_card": {name: "マイナンバー通知カード又は個人番号通知書", icon: "fas fa-id-card-alt"},
   "no_notification_warning": {name: "交付通知書の提出がない場合は、マイナンバーカードのお受取ができません。\n紛失等でお手元にない場合は、京都市マイナンバーカードセンターへお問い合わせください。", icon: "fas fa-exclamation-triangle"},
   
   // 後見人関連書類（詳細）

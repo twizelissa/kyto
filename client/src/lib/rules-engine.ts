@@ -82,8 +82,11 @@ function resolveIssuanceItems(answers: Answer): string[] {
       items.push("no_notification_warning");
       return items;
     }
-    // 本人または15歳未満の場合は別の本人確認書類が必要
-    items.push("identity_document_no_notification");
+    // 本人の場合は別の本人確認書類が必要
+    if (answers.visitor_type === "self") {
+      items.push("identity_document_no_notification");
+    }
+    // 15歳未満の場合の処理は別途実装
   }
 
   // 5. 代理人の場合の追加処理（交付通知書がある場合）
