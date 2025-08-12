@@ -214,7 +214,7 @@ export const QUESTIONS: Question[] = [
       {"v": "cohabiting", "label": "同居", "icon": "fas fa-home"},
       {"v": "not_cohabiting", "label": "非同居", "icon": "fas fa-exchange-alt"}
     ],
-    "showWhen": (answers) => answers.procedure === "card_issuance" && answers.applicant_age === "under_15"
+    "showWhen": (answers) => answers.procedure === "card_issuance" && answers.visitor_type === "proxy" && answers.applicant_age === "under_15"
   },
   {
     "id": "koseki_location",
