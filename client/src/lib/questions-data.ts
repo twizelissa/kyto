@@ -135,7 +135,7 @@ export const QUESTIONS: Question[] = [
       {"v": "voluntary_guardian", "label": "任意被後見人", "icon": "fas fa-shield-alt"},
       {"v": "other", "label": "それ以外", "icon": "fas fa-ellipsis-h"}
     ],
-    "showWhen": (answers) => answers.procedure === "card_issuance" && answers.applicant_age === "15_over"
+    "showWhen": (answers) => answers.procedure === "card_issuance" && answers.visitor_type === "proxy" && answers.applicant_age === "15_over"
   },
   {
     "id": "inquiry_response_check",
@@ -162,6 +162,8 @@ export const QUESTIONS: Question[] = [
       {"v": "hikikomori", "label": "社会的参加を回避し長期にわたって概ね家庭にとどまり続けている状態である", "icon": "fas fa-home"}
     ],
     "showWhen": (answers) => answers.procedure === "card_issuance" && 
+                           answers.visitor_type === "proxy" &&
+                           answers.applicant_age === "15_over" &&
                            answers.guardian_reason_15_over === "other" && 
                            (answers.notification_card === "yes" || answers.inquiry_response_confirmed === "true")
   },
