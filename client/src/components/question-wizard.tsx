@@ -342,7 +342,7 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
                     次のいずれかに該当する場合は<strong>照会書兼回答書</strong>が必要となります。
                   </p>
                   
-                  <div className="border border-gray-300 rounded-lg p-4 mb-4">
+                  <div className="border border-yellow-400 bg-yellow-50 rounded-lg p-4 mb-4">
                     <p className="mb-2">・カードの申請後からカードのお受取りのまでの間に住所や氏名の変更がある場合</p>
                     <p className="mb-2">・在留期間の変更（更新）がある場合</p>
                     <p className="mb-0">・カードの申請時に電子証明書の発行を希望していない方で、カードの交付時に電子証明書の発行を新たに希望される場合</p>
