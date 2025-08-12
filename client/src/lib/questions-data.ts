@@ -151,7 +151,9 @@ export const QUESTIONS: Question[] = [
       {"v": "student", "label": "中学生・高校生・高専生", "icon": "fas fa-graduation-cap"},
       {"v": "hikikomori", "label": "社会的参加を回避し長期にわたって概ね家庭にとどまり続けている状態である", "icon": "fas fa-home"}
     ],
-    "showWhen": (answers) => answers.procedure === "card_issuance" && answers.guardian_reason_15_over === "other"
+    "showWhen": (answers) => answers.procedure === "card_issuance" && 
+                           answers.guardian_reason_15_over === "other" && 
+                           (answers.notification_card === "yes" || answers.inquiry_response_confirmed === "true")
   },
   {
     "id": "inquiry_response_check",
@@ -161,8 +163,7 @@ export const QUESTIONS: Question[] = [
                            answers.notification_card === "no" && 
                            answers.visitor_type === "proxy" && 
                            answers.applicant_age === "15_over" && 
-                           answers.guardian_reason_15_over === "other" &&
-                           Boolean(answers.specific_reason)
+                           answers.guardian_reason_15_over === "other"
   },
   {
     "id": "cohabitation_status",
