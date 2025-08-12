@@ -307,12 +307,14 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
               {/* 本人確認書類一覧表（特定条件で表示） */}
               {shouldShowIdentityDocTable() && (
                 <div className="mb-8">
-                  <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
-                    <i className="fas fa-table mr-2"></i>本人確認書類一覧（有効期限内のもの）
-                  </h3>
                   <div className="bg-white border rounded-lg overflow-hidden">
                     <table className="w-full text-sm">
                       <tbody>
+                        <tr>
+                          <td colSpan={2} className="px-3 py-3 font-bold bg-kyoto-purple text-white text-center">
+                            本人確認書類一覧（有効期限内のもの）
+                          </td>
+                        </tr>
                         <tr className="border-b">
                           <td className="px-3 py-4 font-bold bg-gray-50 align-top whitespace-nowrap">A欄</td>
                           <td className="px-3 py-4">
