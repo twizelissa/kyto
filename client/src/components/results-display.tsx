@@ -462,19 +462,19 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                 if (!specialNotice) return null;
                 
                 return (
-                  <div className="mb-4">
-                    <div className="p-3">
+                  <div className="mb-2 mt-2">
+                    <div className="p-2">
                       {specialNotice.title && (
                         <h4 className="font-bold text-gray-900 mb-2 text-sm">{specialNotice.title}</h4>
                       )}
-                      <p className="text-xs text-gray-700 mb-3 leading-relaxed whitespace-pre-line">
+                      <p className="text-xs text-gray-700 mb-2 leading-relaxed whitespace-pre-line">
                         {specialNotice.content}
                       </p>
                       <div className="space-y-1">
                         {specialNotice.documents.map((doc, index) => (
                           <div key={index} className="flex items-center text-xs text-gray-700">
                             <i className="fas fa-file-pdf mr-2 text-red-600"></i>
-                            <span className="font-medium">{doc.name}</span>
+                            <span className="font-medium text-yellow-600 underline">{doc.name}</span>
                             <span className="ml-2 text-gray-500">({doc.format})</span>
                           </div>
                         ))}
