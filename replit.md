@@ -108,6 +108,10 @@ Changelog:
   - Enhanced identity document requirements based on visitor type (self vs proxy) and specific circumstances
   - Refined certificate requirements for various difficulty-to-visit reasons (hospitalized, disabled, facility resident, etc.)
   - Added specific document requirements for guardianship situations and underage applicants
+  - Enhanced mobile responsiveness by removing width constraints and reducing padding for improved smartphone viewing:
+    - Removed max-width constraints on main containers for full-width content
+    - Reduced card padding from p-8 to p-2/p-6 for mobile/desktop respectively
+    - Optimized content area utilization for better mobile user experience
 
 ## User Preferences
 
