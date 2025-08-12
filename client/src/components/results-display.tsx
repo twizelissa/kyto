@@ -532,6 +532,30 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
         </div>
       )}
 
+      {/* 交付場所案内 */}
+      {requiredItems.length > 0 && (
+        <Card className="shadow-lg border-gray-200 mb-8">
+          <CardContent className="p-2 sm:p-6">
+            <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
+              <i className="fas fa-map-marker-alt mr-2"></i>交付場所について
+            </h3>
+            <div className="space-y-4 text-sm text-gray-800 leading-relaxed">
+              <div>
+                <p className="font-semibold mb-2">マイナンバーカードセンター（事前予約が必要です。）</p>
+                <p className="mb-4">各区役所・支所のマイナンバーカード交付コーナー（事前予約が必要です。京都市民の方でしたら、住所地に関わらずいずれの区役所・支所でも手続可能です。）</p>
+              </div>
+              
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <p className="mb-2">詳しくは、京都市マイナンバーカードセンターにお電話をしていただきますようお願いいたします。</p>
+                <p className="font-semibold">京都市マイナンバーカードセンター ： 電話番号　（075）746－6855</p>
+              </div>
+              
+              <p className="text-red-600 font-medium">※　区役所・支所では問合せを受け付けておりません。</p>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
       {/* Common action buttons for all results */}
       <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
         <Button
