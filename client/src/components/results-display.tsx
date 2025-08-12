@@ -462,12 +462,12 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                 if (!specialNotice) return null;
                 
                 return (
-                  <div className="mb-2 mt-2">
-                    <div className="p-2">
+                  <div className="mb-1 mt-0">
+                    <div className="p-1">
                       {specialNotice.title && (
                         <h4 className="font-bold text-gray-900 mb-2 text-sm">{specialNotice.title}</h4>
                       )}
-                      <p className="text-xs text-gray-700 mb-2 leading-relaxed whitespace-pre-line">
+                      <p className="text-xs text-gray-700 mb-1 leading-relaxed whitespace-pre-line">
                         {specialNotice.content}
                       </p>
                       <div className="space-y-1">
