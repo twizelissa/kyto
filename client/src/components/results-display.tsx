@@ -35,6 +35,23 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
     await generatePDF(answers, itemNames);
   };
 
+  // 本人確認書類一覧表を表示する条件をチェック
+  const shouldShowIdentityDocTable = () => {
+    if (answers.procedure !== "card_issuance") return false;
+    
+    // 本人の場合は表示
+    if (answers.visitor_type === "self") return true;
+    
+    // 代理人の場合、特定の理由で表示
+    if (answers.visitor_type === "proxy") {
+      const reason = answers.applicant_age === "under_15" ? answers.guardian_reason : answers.guardian_reason_15_over;
+      const targetReasons = ["adult_guardian", "conservatee", "assisted_person", "voluntary_guardian"];
+      return targetReasons.includes(reason) || answers.applicant_age === "under_15";
+    }
+    
+    return false;
+  };
+
   const getApplicationMethodContent = () => {
     const method = answers.application_method;
     const mailType = answers.mail_type;
@@ -286,6 +303,55 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                   </div>
                 </div>
               </div>
+
+              {/* 本人確認書類一覧表（特定条件で表示） */}
+              {shouldShowIdentityDocTable() && (
+                <div className="mb-8">
+                  <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
+                    <i className="fas fa-table mr-2"></i>本人確認書類一覧（有効期限内のもの）
+                  </h3>
+                  <div className="bg-white border rounded-lg overflow-hidden">
+                    <table className="w-full text-sm">
+                      <thead>
+                        <tr className="bg-kyoto-purple text-white">
+                          <th className="px-3 py-2 text-left font-bold w-12">区分</th>
+                          <th className="px-3 py-2 text-left font-bold">書類名</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className="border-b">
+                          <td className="px-3 py-4 font-bold bg-gray-50 align-top">A欄</td>
+                          <td className="px-3 py-4">
+                            <div className="space-y-1 text-xs leading-relaxed">
+                              <div>マイナンバーカード、住民基本台帳カード（顔写真付きに限る。）、運転免許証、</div>
+                              <div>運転経歴証明書（平成24年4月1日以降の交付日のものに限る。）、旅券、</div>
+                              <div>身体障害者手帳、精神障害者保健福祉手帳、療育手帳、在留カード、</div>
+                              <div>特別永住者証明書、一時庇護許可書、仮滞在許可証</div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="px-3 py-4 font-bold bg-gray-50 align-top">B欄</td>
+                          <td className="px-3 py-4">
+                            <div className="space-y-1 text-xs leading-relaxed">
+                              <div>海技免状、電気工事士免状、無線従事者免許証、動力車操縦者運転免許証、</div>
+                              <div>運行管理者技能検定合格証、猟銃・空気銃所持許可証、</div>
+                              <div>戦傷病者手帳、宅地建物取引士証、教習資格認定証、船員手帳、海技免許証、耐空検査員の証、</div>
+                              <div>航空従事者技能証明書、宅地建物取引士証、船員手帳、戦傷病者手帳、</div>
+                              <div>教習資格認定証、官公署がその職員に対して発行した身分証明書、</div>
+                              <div>Aの書類が更新中の場合に交付される仮証明書や引換証類、</div>
+                              <div>地方公共団体が交付する敬老手帳、生活保護受給証明書、</div>
+                              <div>資格確認書（健康保険証）、介護保険証、医療受給者証、各種年金証書、</div>
+                              <div>児童扶養手当証書、母子健康手帳（出生届出済証明書欄に証明があり、現在の氏名と一致するものに限り、子の本人確認書類として有効）　等</div>
+                              <div>社員証、学生証、学校で発行された在籍証明書（「氏名・生年月日」又は「氏名・住所」が記載されているものに限る）　等</div>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )}
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                 <Button
