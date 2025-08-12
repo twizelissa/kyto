@@ -314,7 +314,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                     <table className="w-full text-sm">
                       <tbody>
                         <tr className="border-b">
-                          <td className="px-3 py-4 font-bold bg-gray-50 align-top">A欄</td>
+                          <td className="px-3 py-4 font-bold bg-gray-50 align-top whitespace-nowrap">A欄</td>
                           <td className="px-3 py-4">
                             <div className="space-y-1 text-xs leading-relaxed">
                               <div>マイナンバーカード、住民基本台帳カード（顔写真付きに限る。）、運転免許証、</div>
@@ -325,7 +325,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                           </td>
                         </tr>
                         <tr>
-                          <td className="px-3 py-4 font-bold bg-gray-50 align-top">B欄</td>
+                          <td className="px-3 py-4 font-bold bg-gray-50 align-top whitespace-nowrap">B欄</td>
                           <td className="px-3 py-4">
                             <div className="space-y-1 text-xs leading-relaxed">
                               <div>海技免状、電気工事士免状、無線従事者免許証、動力車操縦者運転免許証、</div>
