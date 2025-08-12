@@ -487,7 +487,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
           <Card className="shadow-lg border-gray-200 mb-8">
             <CardContent className="p-2 sm:p-6">
               <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
-                <i className="fas fa-map-marker-alt mr-2"></i>交付場所
+                <i className="fas fa-map-marker-alt mr-2"></i>交付場所について
               </h3>
               <div className="space-y-4 text-sm text-gray-800 leading-relaxed">
                 <div>
@@ -510,7 +510,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
           <Card className="shadow-lg border-gray-200 mb-8">
             <CardContent className="p-2 sm:p-6">
               <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
-                <i className="fas fa-calendar-alt mr-2"></i>予約方法
+                <i className="fas fa-calendar-alt mr-2"></i>予約方法について
               </h3>
               <p className="text-sm text-gray-800">
                 予約制です。京都市マイナンバーカードセンターの予約システムまたは電話でご予約ください。<br/>
