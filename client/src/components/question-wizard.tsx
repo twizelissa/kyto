@@ -46,6 +46,12 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
     policeReport: false,
     centerReport: false
   });
+  
+  const [returnDocuments, setReturnDocuments] = useState<string[]>(() => {
+    // Initialize from existing answers if available
+    const existing = initialAnswers.return_documents;
+    return existing ? existing.split(',') : [];
+  });
 
   // Filter questions based on current answers
   const relevantQuestions = QUESTIONS.filter(q => 
@@ -135,6 +141,37 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
     }
   };
 
+  const handleReturnDocumentChange = (documentType: string) => {
+    setReturnDocuments(prev => {
+      const updated = prev.includes(documentType)
+        ? prev.filter(doc => doc !== documentType)
+        : [...prev, documentType];
+      
+      // Update answers immediately
+      const newAnswers = { ...answers, return_documents: updated.join(',') };
+      setAnswers(newAnswers);
+      
+      return updated;
+    });
+  };
+
+  const handleReturnDocumentNext = () => {
+    // Auto-advance after slight delay for better UX
+    setTimeout(() => {
+      const updatedRelevantQuestions = QUESTIONS.filter(q => 
+        !q.showWhen || q.showWhen(answers)
+      );
+      
+      if (currentQuestion < updatedRelevantQuestions.length - 1) {
+        setCurrentQuestion(currentQuestion + 1);
+        const nextQuestion = updatedRelevantQuestions[currentQuestion + 1];
+        setSelectedOption(answers[nextQuestion?.id] || "");
+      } else {
+        onComplete(answers);
+      }
+    }, 300);
+  };
+
   const handleRestart = () => {
     setCurrentQuestion(0);
     setAnswers({});
@@ -144,6 +181,7 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
       policeReport: false,
       centerReport: false
     });
+    setReturnDocuments([]);
   };
 
   return (
@@ -219,6 +257,39 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
                   次へ進む
                 </Button>
               )}
+            </>
+          ) : question.id === "return_documents" ? (
+            <>
+              <h2 className="text-2xl font-bold text-black mb-6">
+                {question.text.split('\n').map((line, index) => (
+                  <div key={index}>{line}</div>
+                ))}
+              </h2>
+              <div className="space-y-4">
+                {question.options.map((option) => (
+                  <div
+                    key={option.v}
+                    className="flex items-center space-x-4 p-3 sm:p-4 border rounded-lg"
+                  >
+                    <Checkbox 
+                      id={option.v}
+                      checked={returnDocuments.includes(option.v)}
+                      onCheckedChange={() => handleReturnDocumentChange(option.v)}
+                    />
+                    <i className={`${option.icon} text-kyoto-purple text-xl`}></i>
+                    <label htmlFor={option.v} className="font-medium text-black cursor-pointer flex-1">
+                      {option.label}
+                    </label>
+                  </div>
+                ))}
+              </div>
+              
+              <Button 
+                onClick={handleReturnDocumentNext}
+                className="kyoto-button w-full mt-6 text-center justify-center"
+              >
+                次へ進む
+              </Button>
             </>
           ) : (
             <>

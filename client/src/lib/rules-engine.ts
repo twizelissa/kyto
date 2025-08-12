@@ -50,11 +50,14 @@ function resolveIssuanceItems(answers: Answer): string[] {
   
   // For new applications - additional documents
   if (answers.issuance_type === "new") {
-    if (answers.basic_resident_card === "yes") {
-      items.push("basic_resident_card");
-    }
-    if (answers.mynumber_notification === "yes") {
-      items.push("mynumber_notification_card");
+    if (answers.return_documents) {
+      const documents = answers.return_documents.split(',');
+      if (documents.includes('basic_resident_card')) {
+        items.push("basic_resident_card");
+      }
+      if (documents.includes('mynumber_notification')) {
+        items.push("mynumber_notification_card");
+      }
     }
   }
   

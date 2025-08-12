@@ -90,22 +90,13 @@ export const QUESTIONS: Question[] = [
     "showWhen": (answers) => answers.procedure === "card_issuance" && Boolean(answers.issuance_type)
   },
   {
-    "id": "basic_resident_card",
-    "text": "住民基本台帳カードを持っていますか",
+    "id": "return_documents",
+    "text": "下記の書類をお持ちですか？\nお持ちの場合は返納していただきます。",
     "options": [
-      {"v": "yes", "label": "持っている", "icon": "fas fa-id-card"},
-      {"v": "no", "label": "持っていない", "icon": "fas fa-times"}
+      {"v": "basic_resident_card", "label": "住民基本台帳カード", "icon": "fas fa-id-card"},
+      {"v": "mynumber_notification", "label": "マイナンバー通知カード又は個人番号通知書", "icon": "fas fa-id-card-alt"}
     ],
     "showWhen": (answers) => answers.procedure === "card_issuance" && answers.issuance_type === "new" && Boolean(answers.notification_card)
-  },
-  {
-    "id": "mynumber_notification",
-    "text": "マイナンバー通知カード又は個人番号通知書を持っていますか",
-    "options": [
-      {"v": "yes", "label": "持っている", "icon": "fas fa-check"},
-      {"v": "no", "label": "持っていない", "icon": "fas fa-times"}
-    ],
-    "showWhen": (answers) => answers.procedure === "card_issuance" && answers.issuance_type === "new" && Boolean(answers.basic_resident_card)
   },
   {
     "id": "visitor_type",
@@ -117,7 +108,7 @@ export const QUESTIONS: Question[] = [
     "showWhen": (answers) => {
       if (answers.procedure !== "card_issuance") return false;
       if (answers.issuance_type === "new") {
-        return answers.mynumber_notification !== undefined;
+        return answers.return_documents !== undefined;
       } else {
         return answers.notification_card !== undefined;
       }
