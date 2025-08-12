@@ -327,8 +327,6 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
             <>
               <div className="text-center mb-8">
                 <i className="fas fa-check-circle text-kyoto-purple text-6xl mb-4"></i>
-                <h2 className="text-3xl font-bold text-kyoto-purple-dark mb-4">カードの交付について</h2>
-                <p className="text-lg text-gray-600">必要書類・交付場所・予約方法をご確認ください</p>
               </div>
 
               {/* 必要書類リスト */}
