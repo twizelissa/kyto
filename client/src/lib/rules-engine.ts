@@ -303,6 +303,10 @@ function resolveCertificateItems(answers: Answer): string[] {
             items.push("cert_inquiry_response_renewal");
           }
           break;
+        case "same_household":
+          // 同一世帯員（転入届又は転居届と併せて行う手続き）の場合
+          items.push("power_of_attorney");
+          break;
       }
     }
   }
