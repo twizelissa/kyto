@@ -246,35 +246,44 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
               </div>
               
               <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <Checkbox 
-                    id="callCenter"
-                    checked={lostCheckboxes.callCenter}
-                    onCheckedChange={() => handleLostCheckboxChange('callCenter')}
-                  />
-                  <label htmlFor="callCenter" className="text-sm font-medium text-gray-800">
+                <div className="flex items-center space-x-4">
+                  <div className="relative">
+                    <Checkbox 
+                      id="callCenter"
+                      checked={lostCheckboxes.callCenter}
+                      onCheckedChange={() => handleLostCheckboxChange('callCenter')}
+                      className="w-6 h-6 border-2 border-gray-400"
+                    />
+                  </div>
+                  <label htmlFor="callCenter" className="text-lg font-medium text-gray-800 cursor-pointer">
                     個人番号カードコールセンターへ連絡した
                   </label>
                 </div>
                 
-                <div className="flex items-center space-x-3">
-                  <Checkbox 
-                    id="policeReport"
-                    checked={lostCheckboxes.policeReport}
-                    onCheckedChange={() => handleLostCheckboxChange('policeReport')}
-                  />
-                  <label htmlFor="policeReport" className="text-sm font-medium text-gray-800">
+                <div className="flex items-center space-x-4">
+                  <div className="relative">
+                    <Checkbox 
+                      id="policeReport"
+                      checked={lostCheckboxes.policeReport}
+                      onCheckedChange={() => handleLostCheckboxChange('policeReport')}
+                      className="w-6 h-6 border-2 border-gray-400"
+                    />
+                  </div>
+                  <label htmlFor="policeReport" className="text-lg font-medium text-gray-800 cursor-pointer">
                     警察に遺失届を出し、受理番号を控えている
                   </label>
                 </div>
                 
-                <div className="flex items-center space-x-3">
-                  <Checkbox 
-                    id="centerReport"
-                    checked={lostCheckboxes.centerReport}
-                    onCheckedChange={() => handleLostCheckboxChange('centerReport')}
-                  />
-                  <label htmlFor="centerReport" className="text-sm font-medium text-gray-800">
+                <div className="flex items-center space-x-4">
+                  <div className="relative">
+                    <Checkbox 
+                      id="centerReport"
+                      checked={lostCheckboxes.centerReport}
+                      onCheckedChange={() => handleLostCheckboxChange('centerReport')}
+                      className="w-6 h-6 border-2 border-gray-400"
+                    />
+                  </div>
+                  <label htmlFor="centerReport" className="text-lg font-medium text-gray-800 cursor-pointer">
                     京都市マイナンバーカードセンターへ届け出た
                   </label>
                 </div>
@@ -306,6 +315,7 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
                       id={option.v}
                       checked={returnDocuments.includes(option.v)}
                       onCheckedChange={() => handleReturnDocumentChange(option.v)}
+                      className="w-6 h-6 border-2 border-gray-400"
                     />
                     <i className={`${option.icon} text-kyoto-purple text-xl`}></i>
                     <label htmlFor={option.v} className="font-medium text-black cursor-pointer flex-1">
@@ -337,14 +347,17 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
               </div>
               
               <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <Checkbox 
-                    id="inquiryResponse"
-                    checked={inquiryResponseConfirmed}
-                    onCheckedChange={(checked) => setInquiryResponseConfirmed(checked as boolean)}
-                  />
-                  <label htmlFor="inquiryResponse" className="text-sm font-medium text-gray-800">
-                    ✔️照会書兼回答書を持っている
+                <div className="flex items-center space-x-4">
+                  <div className="relative">
+                    <Checkbox 
+                      id="inquiryResponse"
+                      checked={inquiryResponseConfirmed}
+                      onCheckedChange={(checked) => setInquiryResponseConfirmed(checked as boolean)}
+                      className="w-6 h-6 border-2 border-gray-400"
+                    />
+                  </div>
+                  <label htmlFor="inquiryResponse" className="text-lg font-medium text-gray-800 cursor-pointer">
+                    ✓ 照会書兼回答書を持っている
                   </label>
                 </div>
               </div>
