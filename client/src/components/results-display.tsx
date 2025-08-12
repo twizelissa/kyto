@@ -359,7 +359,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                       <tbody>
                         <tr>
                           <td colSpan={2} className="px-3 py-3 font-bold bg-kyoto-purple text-white text-center">
-                            本人確認書類　※原本
+                            本人確認書類一覧（必ず原本をお持ちください。）
                           </td>
                         </tr>
                         <tr className="border-b">
