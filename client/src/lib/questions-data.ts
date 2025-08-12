@@ -530,6 +530,5 @@ export const ITEMS: Record<string, RequiredItem> = {
   
   // 電子証明書発行・更新用書類
   "mynumber_card_certificate": {name: "ご本人のマイナンバーカード", icon: "fas fa-id-card"},
-  "proxy_identity_document": {name: "代理人の本人確認書類（A欄1点又はB欄2点）", icon: "fas fa-user-friends"},
-  "proxy_authorization_letter": {name: "委任状", icon: "fas fa-file-signature"}
+  "proxy_identity_document_photo": {name: "代理人の方の顔写真付きの本人確認書類1点（原本）\n※記載された情報が最新で、かつ有効期限内", icon: "fas fa-user-friends"}
 };

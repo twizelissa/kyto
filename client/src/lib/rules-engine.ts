@@ -268,6 +268,11 @@ function resolveCertificateItems(answers: Answer): string[] {
   // 必ず「ご本人のマイナンバーカード」を追加
   items.push("mynumber_card_certificate");
   
+  // 代理人の場合の追加書類
+  if (answers.cert_visitor_type === "proxy") {
+    items.push("proxy_identity_document_photo");
+  }
+  
   return Array.from(new Set(items));
 }
 
