@@ -370,8 +370,8 @@ export const QUESTIONS: Question[] = [
     "id": "issuance_inquiry_response_check",
     "text": "次のいずれかに該当する場合は照会書兼回答書が必要となります。\n・カードの申請後からカードのお受取りのまでの間に住所や氏名の変更がある場合\n・在留期間の変更（更新）がある場合\n・カードの申請時に電子証明書の発行を希望していない方で、カードの交付時に電子証明書の発行を新たに希望される場合\n\n照会書兼回答書については、京都市マイナンバーカードセンターにお問い合わせください。",
     "options": [
-      {"v": "not_applicable", "label": "該当しない", "icon": "fas fa-times"},
-      {"v": "applicable", "label": "該当する", "icon": "fas fa-check"}
+      {"v": "applicable", "label": "該当する", "icon": "fas fa-check"},
+      {"v": "not_applicable", "label": "該当しない", "icon": "fas fa-times"}
     ],
     "showWhen": (answers) => {
       if (answers.procedure !== "card_issuance" || answers.visitor_type !== "proxy") return false;
