@@ -455,8 +455,8 @@ export const ITEMS: Record<string, RequiredItem> = {
   "notification_card": {name: "交付通知書（はがき）", icon: "fas fa-envelope"},
   "notification_card_proxy_other": {name: "交付通知書（はがき）\n・申請者ご本人が、裏面の「回答書」、「委任状」及び「暗証番号」の各欄をご記入ください。\n・暗証番号欄には目隠しシールを貼付してください。（貼り直しができませんのでご注意ください。）\n・封筒に入れて封緘後、代理人に預けてください。", icon: "fas fa-envelope"},
   "notification_card_proxy_75_over": {name: "交付通知書（はがき）\n・申請者ご本人が、裏面の「回答書」、「委任状」及び「暗証番号」の各欄をご記入ください。\n・委任状には外出困難である旨を記載してください。\n・暗証番号欄には目隠しシールを貼付してください。（貼り直しができませんのでご注意ください。）\n・封筒に入れて封緘後、代理人に預けてください。", icon: "fas fa-envelope"},
-  "identity_document_with_notification": {name: "申請者の本人確認書類（A欄から1点、又はB欄から2点）", icon: "fas fa-id-badge"},
-  "identity_document_no_notification": {name: "申請者の本人確認書類（A欄から2点、又はA欄1点＋B欄1点）", icon: "fas fa-id-badge"},
+  "identity_document_with_notification": {name: "本人確認書類（A欄から1点、又はB欄から2点）", icon: "fas fa-id-badge"},
+  "identity_document_no_notification": {name: "本人確認書類（A欄から2点、又はA欄1点＋B欄1点）", icon: "fas fa-id-badge"},
   "mynumber_notification_card_old": {name: "マイナンバー通知カード（お持ちの方は返納していただきます。）", icon: "fas fa-id-card-alt"},
   "resident_card": {name: "住民基本台帳カード（お持ちの方は返納していただきます。）", icon: "fas fa-id-card"},
   "basic_resident_card": {name: "住民基本台帳カード", icon: "fas fa-id-card"},
@@ -466,11 +466,11 @@ export const ITEMS: Record<string, RequiredItem> = {
   "pin_number": {name: "暗証番号（4桁数字）", icon: "fas fa-key"},
   
   // 本人確認書類
-  "self_id_a1": {name: "申請者の本人確認書類（A欄から1点）", icon: "fas fa-id-badge"},
-  "self_id_a2": {name: "申請者の本人確認書類（A欄から2点）", icon: "fas fa-id-badge"},
-  "self_id_a1_b1": {name: "申請者の本人確認書類（下表（本人確認書類一覧）のA欄から1点又はB欄から2点）※　交付通知書（はがき）をお持ちでない場合は、下表のA欄2点又はA欄1点＋B欄1点が必要になります。（例：運転免許証＋パスポート　又は　運転免許証＋資格確認書（健康保険証）　等）", icon: "fas fa-id-badge"},
-  "self_id_b2": {name: "申請者の本人確認書類（B欄から2点）", icon: "fas fa-id-badge"},
-  "self_id_b3_with_photo": {name: "申請者の本人確認書類（B欄3点、うち1点は顔写真付き）", icon: "fas fa-id-badge"},
+  "self_id_a1": {name: "本人確認書類（A欄から1点）", icon: "fas fa-id-badge"},
+  "self_id_a2": {name: "本人確認書類（A欄から2点）", icon: "fas fa-id-badge"},
+  "self_id_a1_b1": {name: "本人確認書類（下表（本人確認書類一覧）のA欄から1点又はB欄から2点）※　交付通知書（はがき）をお持ちでない場合は、下表のA欄2点又はA欄1点＋B欄1点が必要になります。（例：運転免許証＋パスポート　又は　運転免許証＋資格確認書（健康保険証）　等）", icon: "fas fa-id-badge"},
+  "self_id_b2": {name: "本人確認書類（B欄から2点）", icon: "fas fa-id-badge"},
+  "self_id_b3_with_photo": {name: "本人確認書類（B欄3点、うち1点は顔写真付き）", icon: "fas fa-id-badge"},
   
   // 法定代理人関連書類
   "legal_rep_id_a1": {name: "法定代理人の本人確認書類（A欄から1点）", icon: "fas fa-user-shield"},
