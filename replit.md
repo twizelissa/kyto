@@ -112,6 +112,11 @@ Changelog:
     - Removed max-width constraints on main containers for full-width content
     - Reduced card padding from p-8 to p-2/p-6 for mobile/desktop respectively
     - Optimized content area utilization for better mobile user experience
+  - Implemented complete document requirements for "本人（代理人が同行する場合を含む）" flow:
+    - Added proxy identity document requirements for accompanying proxy scenarios
+    - Implemented guardian certificate requirements (成年後見人に関する登記事項証明書, 保佐人に関する登記事項証明書・代理行為目録, etc.)
+    - Added family register requirements for 15歳未満 non-cohabiting cases with non-Kyoto domicile
+    - Updated identity document naming to "申請者ご本人の本人確認書類" for clarity in self-application scenarios
 
 ## User Preferences
 
