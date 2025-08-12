@@ -21,6 +21,11 @@ export function resolveItems(answers: Answer): string[] {
     return resolveIssuanceItems(answers);
   }
   
+  // For electronic certificate issuance/renewal
+  if (answers.procedure === "electronic_certificate") {
+    return resolveElectronicCertificateItems(answers);
+  }
+  
   // For other procedures that might need document lists
   const requiredItems: string[] = [];
   
@@ -252,6 +257,62 @@ function resolveIssuanceItems(answers: Answer): string[] {
   // 8. 照会書兼回答書（該当する場合のみ）
   if (answers.issuance_inquiry_response_check === "applicable") {
     items.push("inquiry_response");
+  }
+  
+  return Array.from(new Set(items));
+}
+
+function resolveElectronicCertificateItems(answers: Answer): string[] {
+  const items: string[] = [];
+  
+  // 1. 必ず「ご本人のマイナンバーカード」を追加
+  items.push("mynumber_card_self");
+  
+  // 2. 手続きに来られる方による追加書類
+  if (answers.visitor_type === "proxy") {
+    // 代理人の場合：代理人の顔写真付き本人確認書類
+    items.push("proxy_id_certificate");
+    
+    // 3. 代理人の理由による追加書類
+    if (answers.guardian_reason_15_over) {
+      switch (answers.guardian_reason_15_over) {
+        case "adult_guardian":
+          items.push("adult_guardian_register_cert");
+          break;
+        case "conservatee":
+          items.push("conservatee_register_cert");
+          break;
+        case "assisted_person":
+          items.push("assisted_person_register_cert");
+          break;
+        case "voluntary_guardian":
+          items.push("voluntary_guardian_register_cert");
+          break;
+      }
+    }
+    
+    // 4. 15歳未満かつ非同居かつ申請者の本籍が京都市以外の場合
+    if (answers.applicant_age === "under_15" && 
+        answers.cohabitation === "not_cohabiting" && 
+        answers.domicile === "other") {
+      items.push("family_register_parental_rights");
+    }
+    
+    // 5. 任意代理人の場合の照会書兼回答書
+    if (answers.guardian_reason_15_over === "voluntary") {
+      if (answers.certificate_type === "issuance") {
+        // 発行の場合
+        items.push("inquiry_response_voluntary_issuance");
+      } else if (answers.certificate_type === "renewal") {
+        // 更新の場合
+        items.push("inquiry_response_voluntary_renewal");
+      }
+    }
+    
+    // 6. 同一世帯員（転入届又は転居届と併せて行う手続き）の場合
+    if (answers.guardian_reason_15_over === "household_member_with_move") {
+      items.push("power_of_attorney");
+    }
   }
   
   return Array.from(new Set(items));
