@@ -330,6 +330,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
         <>
           <div className="text-center mb-8">
             <i className="fas fa-check-circle text-kyoto-purple text-6xl mb-4"></i>
+            <h2 className="text-2xl font-bold text-kyoto-purple-dark mb-6">以下の内容に沿ってお手続きください</h2>
           </div>
 
 
