@@ -331,33 +331,35 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
 
               {/* 必要書類リスト */}
               <div className="mb-8">
-                <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
-                  <i className="fas fa-clipboard-list mr-2"></i>必要書類リスト
-                </h3>
-                <div className="space-y-4">
-                {requiredItems.map((itemKey, index) => {
-                  const item = getItemDetails(itemKey);
-                  if (!item) return null;
-                  
-                  return (
-                    <div key={itemKey} className="flex items-start space-x-3 p-3 border rounded-lg hover:bg-kyoto-purple-light transition-colors">
-                      <Checkbox
-                        id={`item-${index}`}
-                        checked={checkedItems[itemKey] || false}
-                        onCheckedChange={(checked) => handleItemCheck(itemKey, checked as boolean)}
-                        className="mt-1"
-                      />
-                      <div className="flex-1">
-                        <label htmlFor={`item-${index}`} className="flex items-start space-x-3 cursor-pointer">
-                          <i className={`${item.icon} text-kyoto-purple text-lg mt-1`}></i>
-                          <div className="text-sm font-medium text-gray-800 whitespace-pre-line leading-relaxed">
-                            {item.name}
-                          </div>
-                        </label>
+                <div className="bg-white border border-gray-300 rounded-lg p-6">
+                  <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
+                    <i className="fas fa-clipboard-list mr-2"></i>必要書類リスト
+                  </h3>
+                  <div className="space-y-4">
+                  {requiredItems.map((itemKey, index) => {
+                    const item = getItemDetails(itemKey);
+                    if (!item) return null;
+                    
+                    return (
+                      <div key={itemKey} className="flex items-start space-x-3 p-3 border rounded-lg hover:bg-kyoto-purple-light transition-colors">
+                        <Checkbox
+                          id={`item-${index}`}
+                          checked={checkedItems[itemKey] || false}
+                          onCheckedChange={(checked) => handleItemCheck(itemKey, checked as boolean)}
+                          className="mt-1"
+                        />
+                        <div className="flex-1">
+                          <label htmlFor={`item-${index}`} className="flex items-start space-x-3 cursor-pointer">
+                            <i className={`${item.icon} text-kyoto-purple text-lg mt-1`}></i>
+                            <div className="text-sm font-medium text-gray-800 whitespace-pre-line leading-relaxed">
+                              {item.name}
+                            </div>
+                          </label>
+                        </div>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                  </div>
                 </div>
               </div>
 
@@ -475,25 +477,26 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                 );
               })()}
 
-              {/* 交付場所・予約方法 */}
+              {/* 交付場所 */}
               <div className="mb-8">
-                <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
-                  <i className="fas fa-map-marker-alt mr-2"></i>交付場所・予約方法
-                </h3>
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="font-bold text-blue-900 mb-2">交付場所</h4>
-                      <p className="text-sm text-blue-800">京都市マイナンバーカードセンター、区役所・支所のマイナンバーカードセンター交付コーナー</p>
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-blue-900 mb-2">予約方法</h4>
-                      <p className="text-sm text-blue-800">
-                        予約制です。京都市マイナンバーカードセンターの予約システムまたは電話でご予約ください。<br/>
-                        予約なしでの来庁も可能ですが、お待ちいただく場合があります。
-                      </p>
-                    </div>
-                  </div>
+                  <h3 className="text-xl font-bold text-blue-900 mb-4 flex items-center">
+                    <i className="fas fa-map-marker-alt mr-2"></i>交付場所
+                  </h3>
+                  <p className="text-sm text-blue-800">京都市マイナンバーカードセンター、区役所・支所のマイナンバーカードセンター交付コーナー</p>
+                </div>
+              </div>
+
+              {/* 予約方法 */}
+              <div className="mb-8">
+                <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+                  <h3 className="text-xl font-bold text-green-900 mb-4 flex items-center">
+                    <i className="fas fa-calendar-alt mr-2"></i>予約方法
+                  </h3>
+                  <p className="text-sm text-green-800">
+                    予約制です。京都市マイナンバーカードセンターの予約システムまたは電話でご予約ください。<br/>
+                    予約なしでの来庁も可能ですが、お待ちいただく場合があります。
+                  </p>
                 </div>
               </div>
 
