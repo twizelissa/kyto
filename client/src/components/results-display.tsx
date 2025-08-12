@@ -282,28 +282,6 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                 </div>
               </div>
 
-              {/* 交付場所・予約方法 */}
-              <div className="mb-8">
-                <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
-                  <i className="fas fa-map-marker-alt mr-2"></i>交付場所・予約方法
-                </h3>
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="font-bold text-blue-900 mb-2">交付場所</h4>
-                      <p className="text-sm text-blue-800">京都市マイナンバーカードセンター、区役所・支所のマイナンバーカードセンター交付コーナー</p>
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-blue-900 mb-2">予約方法</h4>
-                      <p className="text-sm text-blue-800">
-                        予約制です。京都市マイナンバーカードセンターの予約システムまたは電話でご予約ください。<br/>
-                        予約なしでの来庁も可能ですが、お待ちいただく場合があります。
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
               {/* 本人確認書類一覧表（特定条件で表示） */}
               {shouldShowIdentityDocTable() && (
                 <div className="mb-8">
@@ -348,6 +326,30 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                   </div>
                 </div>
               )}
+
+              {/* 交付場所・予約方法 */}
+              <div className="mb-8">
+                <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
+                  <i className="fas fa-map-marker-alt mr-2"></i>交付場所・予約方法
+                </h3>
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-bold text-blue-900 mb-2">交付場所</h4>
+                      <p className="text-sm text-blue-800">京都市マイナンバーカードセンター、区役所・支所のマイナンバーカードセンター交付コーナー</p>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-blue-900 mb-2">予約方法</h4>
+                      <p className="text-sm text-blue-800">
+                        予約制です。京都市マイナンバーカードセンターの予約システムまたは電話でご予約ください。<br/>
+                        予約なしでの来庁も可能ですが、お待ちいただく場合があります。
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                 <Button
