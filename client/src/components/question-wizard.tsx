@@ -325,7 +325,7 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
           ) : question.id === "issuance_inquiry_response_check" ? (
             <>
               <h2 className="text-2xl font-bold text-black mb-6">照会書兼回答書について</h2>
-              <div className="bg-kyoto-purple-light border border-purple-200 rounded-lg p-4 sm:p-6 mb-6">
+              <div className="rounded-lg p-4 sm:p-6 mb-6">
                 <div className="text-gray-800 leading-relaxed">
                   {question.text.split('\n').map((line, index) => (
                     <p key={index} className={index === 0 ? "mb-4" : index < 4 ? "mb-2" : "mb-4"}>
