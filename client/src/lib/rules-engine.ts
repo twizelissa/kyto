@@ -271,6 +271,24 @@ function resolveCertificateItems(answers: Answer): string[] {
   // 代理人の場合の追加書類
   if (answers.cert_visitor_type === "proxy") {
     items.push("proxy_identity_document_photo");
+    
+    // 代理人の理由による証明書類
+    if (answers.cert_proxy_reason) {
+      switch (answers.cert_proxy_reason) {
+        case "adult_guardian":
+          items.push("cert_adult_guardian_cert");
+          break;
+        case "conservatee":
+          items.push("cert_conservatee_cert");
+          break;
+        case "assisted_person":
+          items.push("cert_assisted_person_cert");
+          break;
+        case "voluntary_guardian":
+          items.push("cert_voluntary_guardian_cert");
+          break;
+      }
+    }
   }
   
   return Array.from(new Set(items));
