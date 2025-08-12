@@ -419,7 +419,7 @@ export const ITEMS: Record<string, RequiredItem> = {
   "proxy_id_a1": {name: "任意代理人の本人確認書類（A欄から1点）", icon: "fas fa-user-friends"},
   "proxy_id_a2": {name: "任意代理人の本人確認書類（A欄から2点）", icon: "fas fa-user-friends"},
   "proxy_id_a1_b1": {name: "任意代理人の本人確認書類（A欄1点＋B欄1点）", icon: "fas fa-user-friends"},
-  "inquiry_response": {name: "照会書兼回答書（封入・封緘済み）", icon: "fas fa-envelope-open"},
+  "inquiry_response": {name: "照会書兼回答書", icon: "fas fa-envelope-open"},
   "power_of_attorney": {name: "委任状", icon: "fas fa-file-signature"},
   "reason_certificate": {name: "来庁できない理由を証明する書類", icon: "fas fa-file-medical"},
   
