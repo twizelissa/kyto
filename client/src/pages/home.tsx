@@ -41,7 +41,7 @@ export default function Home({ onHomeClick }: { onHomeClick?: () => void }) {
   };
 
   return (
-    <div className="container mx-auto px-1 sm:px-4 py-8 max-w-none sm:max-w-4xl">
+    <div className={`container mx-auto px-1 sm:px-4 py-8 max-w-none sm:max-w-4xl ${currentState === 'welcome' ? 'min-h-screen flex items-center justify-center' : ''}`}>
 
 
         {currentState === 'welcome' && (
