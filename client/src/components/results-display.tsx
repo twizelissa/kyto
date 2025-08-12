@@ -35,18 +35,18 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
     await generatePDF(answers, itemNames);
   };
 
-  // 本人確認書類一覧表を表示する条件をチェック
+  // 本人確認書類一覧表を表示する条件をチェック（成年被後見人等）
   const shouldShowIdentityDocTable = () => {
     if (answers.procedure !== "card_issuance") return false;
     
     // 本人の場合は表示
     if (answers.visitor_type === "self") return true;
     
-    // 代理人の場合、特定の理由で表示
+    // 代理人の場合、成年被後見人等の理由で表示
     if (answers.visitor_type === "proxy") {
       const reason = answers.applicant_age === "under_15" ? answers.guardian_reason : answers.guardian_reason_15_over;
-      const targetReasons = ["adult_guardian", "conservatee", "assisted_person", "voluntary_guardian"];
-      return targetReasons.includes(reason) || answers.applicant_age === "under_15";
+      const guardianReasons = ["adult_guardian", "conservatee", "assisted_person", "voluntary_guardian"];
+      return guardianReasons.includes(reason) || answers.applicant_age === "under_15";
     }
     
     return false;
