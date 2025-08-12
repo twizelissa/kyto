@@ -513,12 +513,12 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                 <i className="fas fa-calendar-alt mr-2"></i>予約方法について
               </h3>
               <div className="space-y-4 text-sm text-gray-800 leading-relaxed">
-                <p>カード交付の<span className="underline text-red-600">事前予約</span>は、交付希望日から祝休日・年末年始を除いた概ね5日前に予約を締め切ります。</p>
+                <p><span className="underline text-red-600">事前予約</span>は、交付希望日から祝休日・年末年始を除いた概ね5日前に予約を締め切ります。</p>
                 
                 <div>
                   <p className="font-semibold mb-2">予約方法</p>
                   <ul className="space-y-2 ml-4">
-                    <li>・インターネット受付（24時間　年中無休）：<a href="https://mncard.city.kyoto.lg.jp/mynumpo-kyoto-u/?method=all" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">https://mncard.city.kyoto.lg.jp/mynumpo-kyoto-u/?method=all</a><span className="text-gray-600">外部サイトへリンクします</span></li>
+                    <li>・インターネット受付（24時間　年中無休）：<a href="https://mncard.city.kyoto.lg.jp/mynumpo-kyoto-u/?method=all" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">https://mncard.city.kyoto.lg.jp/mynumpo-kyoto-u/?method=all</a></li>
                     <li>・電話受付（平日の午前9時～午後5時）：075－777－6201</li>
                   </ul>
                 </div>
