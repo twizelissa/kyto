@@ -108,7 +108,10 @@ function resolveIssuanceItems(answers: Answer): string[] {
       if (reason === "over_75" || reason === "disabled" || reason === "hospitalized" || 
           reason === "facility_resident" || reason === "care_certified" || reason === "pregnant" || 
           reason === "study_abroad" || reason === "student" || reason === "hikikomori") {
+        // 申請者本人の本人確認書類
         items.push("identity_document_proxy_75_over");
+        // 代理人の本人確認書類
+        items.push("identity_document_proxy_other");
         
         // 来庁困難理由証明書類を追加
         switch (reason) {
@@ -138,6 +141,9 @@ function resolveIssuanceItems(answers: Answer): string[] {
             break;
         }
       } else {
+        // 申請者本人の本人確認書類
+        items.push("identity_document_proxy_75_over");
+        // 代理人の本人確認書類
         items.push("identity_document_proxy_other");
       }
     } else if (answers.applicant_age === "15_over" && 
@@ -145,6 +151,9 @@ function resolveIssuanceItems(answers: Answer): string[] {
                ["adult_guardian", "conservatee", "assisted_person", "voluntary_guardian"].includes(answers.guardian_reason_15_over)) {
       // 成年被後見人等の場合
       const reason = answers.guardian_reason_15_over;
+      // 申請者本人の本人確認書類
+      items.push("identity_document_proxy_75_over");
+      // 代理人の本人確認書類
       items.push("identity_document_proxy_guardian");
       
       switch (reason) {
@@ -163,6 +172,9 @@ function resolveIssuanceItems(answers: Answer): string[] {
       }
     } else if (answers.applicant_age === "under_15") {
       // 15歳未満の場合
+      // 申請者本人の本人確認書類
+      items.push("identity_document_proxy_75_over");
+      // 代理人の本人確認書類
       items.push("identity_document_proxy_guardian");
       
       if (answers.cohabitation_status === "not_cohabiting" && answers.koseki_location === "other") {
