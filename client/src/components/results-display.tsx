@@ -365,8 +365,8 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                           <td className="px-3 py-4">
                             <div className="space-y-1 text-xs leading-relaxed">
                               <div>資格確認書（健康保険証）、年金手帳、社員証、学生証、医療受給者証、</div>
-                              <div>母子健康手帳（出生届済証明書欄に証明があり、現在の氏名と一致するものに限</div>
-                              <div>り、子の本人確認書類として有効）、税・社会保険料領収書又は「氏名・生年月日の記載があ</div>
+                              <div>母子健康手帳（出生届出済証明書欄に証明があり、現在の氏名と一致するものに限</div>
+                              <div>り、子の本人確認書類として有効）、敬老手帳、税・社会保険料領収書又は「氏名・生年月日の記載があ</div>
                               <div>る「フリーパス証」に限る。「敬老パス回数券」不可）、介護保険被保険者証、生</div>
                               <div>活</div>
                               <div>保護受給証明書、顔写真証明書（施設等入所者用・在宅で保健医療サービス等を</div>
