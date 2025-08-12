@@ -298,6 +298,10 @@ function resolveCertificateItems(answers: Answer): string[] {
           if (answers.cert_type === "issuance") {
             items.push("cert_inquiry_response_voluntary");
           }
+          // 任意代理人かつ更新の場合
+          if (answers.cert_type === "renewal") {
+            items.push("cert_inquiry_response_renewal");
+          }
           break;
       }
     }

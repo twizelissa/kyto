@@ -536,5 +536,6 @@ export const ITEMS: Record<string, RequiredItem> = {
   "cert_assisted_person_cert": {name: "補助人に関する登記事項証明書、代理行為目録", icon: "fas fa-file-certificate"},
   "cert_voluntary_guardian_cert": {name: "任意後見人に関する登記事項証明書、代理権目録", icon: "fas fa-file-certificate"},
   "cert_family_register_under_15": {name: "親権を証する書類（戸籍全部事項証明書）", icon: "fas fa-file-alt"},
-  "cert_inquiry_response_voluntary": {name: "照会書兼回答書\n※あらかじめ申請者ご本人の住所地に送付（転送不可）し、申請者ご本人が記入のうえ、封筒に封入・封緘された状態で任意代理人に預けていただく必要があります。\n※事前に必ず京都市マイナンバーカードセンターにお問い合わせください。", icon: "fas fa-envelope-open"}
+  "cert_inquiry_response_voluntary": {name: "照会書兼回答書\n※あらかじめ申請者ご本人の住所地に送付（転送不可）し、申請者ご本人が記入のうえ、封筒に封入・封緘された状態で任意代理人に預けていただく必要があります。\n※事前に必ず京都市マイナンバーカードセンターにお問い合わせください。", icon: "fas fa-envelope-open"},
+  "cert_inquiry_response_renewal": {name: "照会書兼回答書（有効期限のお知らせに関する通知書に同封）\n※申請者ご本人が必要事項をご記入のうえ、封筒に入れて封緘し、任意代理人に預けてください。\n※照会書兼回答書に記入する暗証番号は、カードお受取時に設定した暗証番号を記入してください。\n※暗証番号を忘れた場合、住所変更などカードの記載事項に変更がある場合、照会書兼回答書の有効期限を過ぎている場合は更新手続をすることができませんので、事前に必ず京都市マイナンバーカードセンターにお問合せください。", icon: "fas fa-envelope-open"}
 };
