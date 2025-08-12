@@ -115,16 +115,7 @@ export const QUESTIONS: Question[] = [
       }
     }
   },
-  {
-    "id": "inquiry_response_check",
-    "text": "照会書兼回答書について",
-    "options": [],
-    "showWhen": (answers) => answers.procedure === "card_issuance" && 
-                           answers.notification_card === "no" && 
-                           answers.visitor_type === "proxy" && 
-                           answers.applicant_age === "15_over" && 
-                           answers.guardian_reason_15_over === "other"
-  },
+
   {
     "id": "applicant_age",
     "text": "申請者の年齢をお選びください",
@@ -161,6 +152,17 @@ export const QUESTIONS: Question[] = [
       {"v": "hikikomori", "label": "社会的参加を回避し長期にわたって概ね家庭にとどまり続けている状態である", "icon": "fas fa-home"}
     ],
     "showWhen": (answers) => answers.procedure === "card_issuance" && answers.guardian_reason_15_over === "other"
+  },
+  {
+    "id": "inquiry_response_check",
+    "text": "照会書兼回答書について",
+    "options": [],
+    "showWhen": (answers) => answers.procedure === "card_issuance" && 
+                           answers.notification_card === "no" && 
+                           answers.visitor_type === "proxy" && 
+                           answers.applicant_age === "15_over" && 
+                           answers.guardian_reason_15_over === "other" &&
+                           Boolean(answers.specific_reason)
   },
   {
     "id": "cohabitation_status",
