@@ -412,11 +412,30 @@ export const ITEMS: Record<string, RequiredItem> = {
   
   // カードの交付（受け取り）用書類
   "mynumber_card_notification": {name: "交付通知書（はがき）", icon: "fas fa-envelope"},
-  "identity_document": {name: "本人確認書類", icon: "fas fa-id-badge"},
-  "basic_resident_card": {name: "住民基本台帳カード（返納用）", icon: "fas fa-id-card"},
-  "mynumber_notification_card": {name: "マイナンバー通知カード（返納用）", icon: "fas fa-id-card-alt"},
-  "proxy_identity": {name: "代理人の本人確認書類", icon: "fas fa-user-friends"},
-  "guardianship_document": {name: "後見等に関する登記事項証明書", icon: "fas fa-file-certificate"},
-  "family_register": {name: "戸籍謄本等（申請者と代理人の関係が分かるもの）", icon: "fas fa-file-alt"},
-  "family_register_outside_kyoto": {name: "戸籍謄本等（京都市外のもの）", icon: "fas fa-file-alt"}
+  "current_mynumber_card_for_renewal": {name: "現在お持ちのマイナンバーカード ※返納がない場合は、再交付手数料として1,000円頂戴します。", icon: "fas fa-id-card"},
+  "identity_document_self_with_notification": {name: "本人確認書類（A欄1点、又はB欄2点）", icon: "fas fa-id-badge"},
+  "identity_document_self_no_notification": {name: "本人確認書類（A欄2点、又はA欄1点＋B欄1点）", icon: "fas fa-id-badge"},
+  "identity_document_proxy_75_over": {name: "本人確認書類\n・A欄2点\n・A欄1点＋B欄1点\n・B欄3点（うち1点は顔写真付のもの）\n※ ただし、1歳未満の乳児の方につきましては、B欄2点（顔写真なし）で可", icon: "fas fa-id-badge"},
+  "identity_document_proxy_other": {name: "代理人の本人確認書類（A欄2点、又はA欄1点＋B欄1点）", icon: "fas fa-user-friends"},
+  "identity_document_proxy_guardian": {name: "代理人の本人確認書類（A欄1点、又はB欄2点）", icon: "fas fa-user-friends"},
+  "basic_resident_card": {name: "住民基本台帳カード", icon: "fas fa-id-card"},
+  "mynumber_notification_card": {name: "マイナンバー通知カード又は個人番号通知書", icon: "fas fa-id-card-alt"},
+  "no_notification_warning": {name: "交付通知書の提出がない場合は、マイナンバーカードのお受取ができません。\n紛失等でお手元にない場合は、京都市マイナンバーカードセンターへお問い合わせください。", icon: "fas fa-exclamation-triangle"},
+  
+  // 後見人関連書類（詳細）
+  "adult_guardian_cert": {name: "成年後見人に関する登記事項証明書（原本）", icon: "fas fa-file-certificate"},
+  "conservatee_cert": {name: "被保佐人に関する登記事項証明書（原本）、代理行為目録", icon: "fas fa-file-certificate"},
+  "assisted_person_cert": {name: "被補助人に関する登記事項証明書（原本）、代理行為目録", icon: "fas fa-file-certificate"},
+  "voluntary_guardian_cert": {name: "任意被後見人に関する登記事項証明書（原本）、代理権目録", icon: "fas fa-file-certificate"},
+  "family_register_under_15": {name: "親権を証する書類（戸籍全部事項証明書）※原本", icon: "fas fa-file-alt"},
+  
+  // 来庁困難理由証明書類
+  "hospitalized_cert": {name: "申請者ご本人がお越しになれないことを証する書類\n例）診断書、入院診療計画書、入院費用の領収書、診療明細書、病院長が作成する顔写真証明書", icon: "fas fa-file-medical"},
+  "disabled_cert": {name: "申請者ご本人がお越しになれないことを証する書類\n例）障害者手帳（［身体障害者手帳］［療育手帳］［精神障害者福祉手帳］）、障害者福祉サービス受給者証、施設長が作成する顔写真証明書", icon: "fas fa-file-medical"},
+  "facility_cert": {name: "申請者ご本人がお越しになれないことを証する書類\n例）施設入所証明書、施設長が作成する顔写真証明書", icon: "fas fa-file-medical"},
+  "care_cert": {name: "申請者ご本人がお越しになれないことを証する書類\n例）介護保険被保険者証、認定結果通知書、ケアマネージャー及びその所属する事業者の長が作成する顔写真証明書", icon: "fas fa-file-medical"},
+  "pregnant_cert": {name: "申請者ご本人がお越しになれないことを証する書類\n例）母子健康手帳、妊婦検診を受診したことが確認できる領収書又は受診券", icon: "fas fa-file-medical"},
+  "study_abroad_cert": {name: "申請者ご本人がお越しになれないことを証する書類\n例）査証のコピー、留学先の学生証のコピー", icon: "fas fa-file-medical"},
+  "student_cert": {name: "申請者ご本人がお越しになれないことを証する書類\n例）学生証、在学証明書", icon: "fas fa-file-medical"},
+  "hikikomori_cert": {name: "申請者ご本人がお越しになれないことを証する書類\n例）相談している公的な支援機関の職員及び当該支援機関の長が作成する顔写真証明書", icon: "fas fa-file-medical"}
 };

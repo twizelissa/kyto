@@ -229,11 +229,16 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
             <>
               <div className="text-center mb-8">
                 <i className="fas fa-check-circle text-kyoto-purple text-6xl mb-4"></i>
-                <h2 className="text-3xl font-bold text-kyoto-purple-dark mb-4">必要書類リスト</h2>
-                <p className="text-lg text-gray-600">以下の書類をご準備ください</p>
+                <h2 className="text-3xl font-bold text-kyoto-purple-dark mb-4">カードの交付について</h2>
+                <p className="text-lg text-gray-600">必要書類・交付場所・予約方法をご確認ください</p>
               </div>
 
-              <div className="space-y-4 mb-8">
+              {/* 必要書類リスト */}
+              <div className="mb-8">
+                <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
+                  <i className="fas fa-clipboard-list mr-2"></i>必要書類リスト
+                </h3>
+                <div className="space-y-4">
                 {requiredItems.map((itemKey, index) => {
                   const item = getItemDetails(itemKey);
                   if (!item) return null;
@@ -247,14 +252,39 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                         className="mt-1"
                       />
                       <div className="flex-1">
-                        <label htmlFor={`item-${index}`} className="flex items-center space-x-3 cursor-pointer">
-                          <i className={`${item.icon} text-kyoto-purple text-lg`}></i>
-                          <span className="text-sm font-medium text-gray-800">{item.name}</span>
+                        <label htmlFor={`item-${index}`} className="flex items-start space-x-3 cursor-pointer">
+                          <i className={`${item.icon} text-kyoto-purple text-lg mt-1`}></i>
+                          <div className="text-sm font-medium text-gray-800 whitespace-pre-line leading-relaxed">
+                            {item.name}
+                          </div>
                         </label>
                       </div>
                     </div>
                   );
                 })}
+                </div>
+              </div>
+
+              {/* 交付場所・予約方法 */}
+              <div className="mb-8">
+                <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
+                  <i className="fas fa-map-marker-alt mr-2"></i>交付場所・予約方法
+                </h3>
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-bold text-blue-900 mb-2">交付場所</h4>
+                      <p className="text-sm text-blue-800">京都市マイナンバーカードセンター、区役所・支所のマイナンバーカードセンター交付コーナー</p>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-blue-900 mb-2">予約方法</h4>
+                      <p className="text-sm text-blue-800">
+                        予約制です。京都市マイナンバーカードセンターの予約システムまたは電話でご予約ください。<br/>
+                        予約なしでの来庁も可能ですが、お待ちいただく場合があります。
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">

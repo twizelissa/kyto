@@ -40,47 +40,106 @@ export function resolveItems(answers: Answer): string[] {
 function resolveIssuanceItems(answers: Answer): string[] {
   const items: string[] = [];
   
-  // Basic required items for all issuance
-  items.push("mynumber_card_notification", "identity_document");
-  
-  // Add notification card requirement
+  // 1. 交付通知書（基本必須）
   if (answers.notification_card === "yes") {
-    items.push("notification_card");
+    items.push("mynumber_card_notification");
   }
   
-  // For new applications - additional documents
-  if (answers.issuance_type === "new") {
-    if (answers.return_documents) {
-      const documents = answers.return_documents.split(',');
-      if (documents.includes('basic_resident_card')) {
-        items.push("basic_resident_card");
-      }
-      if (documents.includes('mynumber_notification')) {
-        items.push("mynumber_notification_card");
-      }
+  // 2. 更新・再発行の場合の現在のマイナンバーカード
+  if (answers.issuance_type === "renewal" || answers.issuance_type === "other_reissue") {
+    items.push("current_mynumber_card_for_renewal");
+  }
+  
+  // 3. 返納書類（住民基本台帳カード、マイナンバー通知カード）
+  if (answers.return_documents) {
+    const documents = answers.return_documents.split(',');
+    if (documents.includes('basic_resident_card')) {
+      items.push("basic_resident_card");
+    }
+    if (documents.includes('mynumber_notification')) {
+      items.push("mynumber_notification_card");
     }
   }
   
-  // For proxy visitors - additional documents
-  if (answers.visitor_type === "proxy") {
-    items.push("proxy_identity", "power_of_attorney");
-    
-    // Additional documents for specific cases
-    if (answers.applicant_age === "15_over") {
-      if (answers.guardian_reason_15_over === "adult_guardian" || 
-          answers.guardian_reason_15_over === "conservatee" || 
-          answers.guardian_reason_15_over === "assisted_person" || 
-          answers.guardian_reason_15_over === "voluntary_guardian") {
-        items.push("guardianship_document");
-      }
+  // 4. 本人確認書類と来庁者別の処理
+  if (answers.visitor_type === "self") {
+    // 本人の場合
+    if (answers.notification_card === "yes") {
+      items.push("identity_document_self_with_notification");
+    } else {
+      items.push("identity_document_self_no_notification");
+    }
+  } else if (answers.visitor_type === "proxy") {
+    // 代理人の場合
+    if (answers.notification_card === "no" && answers.applicant_age !== "under_15") {
+      // 交付通知書なし、かつ15歳未満以外の場合は受取不可
+      items.push("no_notification_warning");
+      return items;
     }
     
-    if (answers.applicant_age === "under_15") {
-      items.push("family_register");
-      if (answers.cohabitation_status === "not_cohabiting") {
-        if (answers.koseki_location === "other") {
-          items.push("family_register_outside_kyoto");
+    // 75歳以上や特定の理由の場合
+    if (answers.applicant_age === "15_over" && answers.guardian_reason_15_over === "other") {
+      const reason = answers.specific_reason;
+      if (reason === "over_75" || reason === "disabled" || reason === "hospitalized" || 
+          reason === "facility_resident" || reason === "care_certified" || reason === "pregnant" || 
+          reason === "study_abroad" || reason === "student" || reason === "hikikomori") {
+        items.push("identity_document_proxy_75_over");
+        
+        // 来庁困難理由証明書類を追加
+        switch (reason) {
+          case "hospitalized":
+            items.push("hospitalized_cert");
+            break;
+          case "disabled":
+            items.push("disabled_cert");
+            break;
+          case "facility_resident":
+            items.push("facility_cert");
+            break;
+          case "care_certified":
+            items.push("care_cert");
+            break;
+          case "pregnant":
+            items.push("pregnant_cert");
+            break;
+          case "study_abroad":
+            items.push("study_abroad_cert");
+            break;
+          case "student":
+            items.push("student_cert");
+            break;
+          case "hikikomori":
+            items.push("hikikomori_cert");
+            break;
         }
+      } else {
+        items.push("identity_document_proxy_other");
+      }
+    } else if (answers.applicant_age === "15_over") {
+      // 成年被後見人等の場合
+      const reason = answers.guardian_reason_15_over;
+      items.push("identity_document_proxy_guardian");
+      
+      switch (reason) {
+        case "adult_guardian":
+          items.push("adult_guardian_cert");
+          break;
+        case "conservatee":
+          items.push("conservatee_cert");
+          break;
+        case "assisted_person":
+          items.push("assisted_person_cert");
+          break;
+        case "voluntary_guardian":
+          items.push("voluntary_guardian_cert");
+          break;
+      }
+    } else if (answers.applicant_age === "under_15") {
+      // 15歳未満の場合
+      items.push("identity_document_proxy_guardian");
+      
+      if (answers.cohabitation_status === "not_cohabiting" && answers.koseki_location === "other") {
+        items.push("family_register_under_15");
       }
     }
   }
