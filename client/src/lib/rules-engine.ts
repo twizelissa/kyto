@@ -40,9 +40,22 @@ export function resolveItems(answers: Answer): string[] {
 function resolveIssuanceItems(answers: Answer): string[] {
   const items: string[] = [];
   
-  // 1. 交付通知書（基本必須）
+  // 1. 交付通知書（持っている場合のみ）
   if (answers.notification_card === "yes") {
-    items.push("mynumber_card_notification");
+    // 代理人で特定の条件の場合は注意書き付きの交付通知書
+    if (answers.visitor_type === "proxy" && answers.applicant_age === "15_over" && answers.guardian_reason_15_over === "other") {
+      const reason = answers.specific_reason;
+      if (reason === "over_75") {
+        items.push("notification_card_proxy_75_over");
+      } else {
+        items.push("notification_card_proxy_other");
+      }
+    } else {
+      items.push("notification_card");
+    }
+    
+    // 交付通知書がある場合の本人確認書類
+    items.push("identity_document_with_notification");
   }
   
   // 2. 更新・再発行（紛失以外）の場合の現在のマイナンバーカード
@@ -62,21 +75,19 @@ function resolveIssuanceItems(answers: Answer): string[] {
     }
   }
   
-  // 4. 本人確認書類と来庁者別の処理
-  if (answers.visitor_type === "self") {
-    // 本人の場合
-    if (answers.notification_card === "yes") {
-      items.push("identity_document_self_with_notification");
-    } else {
-      items.push("identity_document_self_no_notification");
-    }
-  } else if (answers.visitor_type === "proxy") {
-    // 代理人の場合
-    if (answers.notification_card === "no" && answers.applicant_age !== "under_15") {
-      // 交付通知書なし、かつ15歳未満以外の場合は受取不可
+  // 4. 交付通知書がない場合の処理
+  if (answers.notification_card === "no") {
+    if (answers.visitor_type === "proxy" && answers.applicant_age !== "under_15") {
+      // 代理人で15歳未満以外の場合は受取不可
       items.push("no_notification_warning");
       return items;
     }
+    // 本人または15歳未満の場合は別の本人確認書類が必要
+    items.push("identity_document_no_notification");
+  }
+
+  // 5. 代理人の場合の追加処理（交付通知書がある場合）
+  if (answers.visitor_type === "proxy" && answers.notification_card === "yes") {
     
     // 75歳以上や特定の理由の場合
     if (answers.applicant_age === "15_over" && answers.guardian_reason_15_over === "other") {
