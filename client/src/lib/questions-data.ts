@@ -68,70 +68,6 @@ export const QUESTIONS: Question[] = [
     ],
     "showWhen": (answers) => answers.application_method === "mail"
   },
-
-  // 電子証明書の発行・更新の質問
-  {
-    "id": "certificate_type",
-    "text": "お手続きの種類をお選びください",
-    "options": [
-      {"v": "issuance", "label": "発行", "icon": "fas fa-plus"},
-      {"v": "renewal", "label": "更新", "icon": "fas fa-sync-alt"}
-    ],
-    "showWhen": (answers) => answers.procedure === "digital_cert"
-  },
-  {
-    "id": "cert_visitor_type",
-    "text": "手続きに来られる方をお選びください",
-    "options": [
-      {"v": "self", "label": "本人", "icon": "fas fa-user"},
-      {"v": "proxy", "label": "代理人", "icon": "fas fa-user-friends"}
-    ],
-    "showWhen": (answers) => answers.procedure === "digital_cert" && Boolean(answers.certificate_type)
-  },
-  {
-    "id": "cert_guardian_reason",
-    "text": "下記の中から理由を選択してください",
-    "options": [
-      {"v": "adult_guardian", "label": "成年被後見人", "icon": "fas fa-shield-alt"},
-      {"v": "conservatee", "label": "被保佐人", "icon": "fas fa-shield-alt"},
-      {"v": "assisted_person", "label": "被補助人", "icon": "fas fa-shield-alt"},
-      {"v": "voluntary_guardian", "label": "任意被後見人", "icon": "fas fa-shield-alt"},
-      {"v": "voluntary", "label": "任意代理人", "icon": "fas fa-user-friends"},
-      {"v": "household_member_with_move", "label": "同一世帯員（転入届又は転居届と併せて行う手続き）", "icon": "fas fa-home"}
-    ],
-    "showWhen": (answers) => answers.procedure === "digital_cert" && answers.cert_visitor_type === "proxy"
-  },
-  {
-    "id": "applicant_age",
-    "text": "申請者の年齢をお選びください",
-    "options": [
-      {"v": "15_over", "label": "15歳以上", "icon": "fas fa-user"},
-      {"v": "under_15", "label": "15歳未満", "icon": "fas fa-child"}
-    ],
-    "showWhen": (answers) => answers.procedure === "digital_cert" && answers.cert_visitor_type === "proxy" && 
-      ["adult_guardian", "conservatee", "assisted_person", "voluntary_guardian"].includes(answers.cert_guardian_reason)
-  },
-  {
-    "id": "cert_cohabitation",
-    "text": "申請者と代理人の同居の有無をお選びください",
-    "options": [
-      {"v": "cohabiting", "label": "同居", "icon": "fas fa-home"},
-      {"v": "not_cohabiting", "label": "非同居", "icon": "fas fa-home"}
-    ],
-    "showWhen": (answers) => answers.procedure === "digital_cert" && answers.cert_visitor_type === "proxy" && 
-      answers.applicant_age === "under_15"
-  },
-  {
-    "id": "cert_domicile",
-    "text": "申請者の方の本籍地についてお選びください",
-    "options": [
-      {"v": "kyoto", "label": "京都市内", "icon": "fas fa-map-marker-alt"},
-      {"v": "other", "label": "それ以外", "icon": "fas fa-map"}
-    ],
-    "showWhen": (answers) => answers.procedure === "digital_cert" && answers.cert_visitor_type === "proxy" && 
-      answers.applicant_age === "under_15" && answers.cert_cohabitation === "not_cohabiting"
-  },
-
   // カードの交付（受け取り）の質問
   {
     "id": "issuance_type",
@@ -590,16 +526,5 @@ export const ITEMS: Record<string, RequiredItem> = {
   "pregnant_cert": {name: "申請者ご本人がお越しになれないことを証する書類\n例）母子健康手帳、妊婦検診を受診したことが確認できる領収書又は受診券", icon: "fas fa-file-medical"},
   "study_abroad_cert": {name: "申請者ご本人がお越しになれないことを証する書類\n例）査証のコピー、留学先の学生証のコピー", icon: "fas fa-file-medical"},
   "student_cert": {name: "申請者ご本人がお越しになれないことを証する書類\n例）学生証、在学証明書", icon: "fas fa-file-medical"},
-  "hikikomori_cert": {name: "申請者ご本人がお越しになれないことを証する書類\n例）相談している公的な支援機関の職員及び当該支援機関の長が作成する顔写真証明書", icon: "fas fa-file-medical"},
-  
-  // 電子証明書関連書類
-  "mynumber_card_self": {name: "ご本人のマイナンバーカード", icon: "fas fa-id-card"},
-  "proxy_id_certificate": {name: "代理人の方の顔写真付きの本人確認書類1点（原本）※記載された情報が最新で、かつ有効期限内", icon: "fas fa-user-friends"},
-  "adult_guardian_register_cert": {name: "成年後見人に関する登記事項証明書原本", icon: "fas fa-file-certificate"},
-  "conservatee_register_cert": {name: "保佐人に関する登記事項証明書原本、代理行為目録", icon: "fas fa-file-certificate"},
-  "assisted_person_register_cert": {name: "補助人に関する登記事項証明書原本、代理行為目録", icon: "fas fa-file-certificate"},
-  "voluntary_guardian_register_cert": {name: "任意後見人に関する登記事項証明書原本、代理権目録", icon: "fas fa-file-certificate"},
-  "family_register_parental_rights": {name: "親権を証する書類（戸籍全部事項証明書）※原本", icon: "fas fa-file-alt"},
-  "inquiry_response_voluntary_issuance": {name: "照会書兼回答書 あらかじめ申請者ご本人の住所地に送付（転送不可）し、申請者ご本人が記入のうえ、封筒に封入・封緘された状態で任意代理人に預けていただく必要があります。 事前に必ず京都市マイナンバーカードセンターにお問い合わせください。", icon: "fas fa-envelope-open"},
-  "inquiry_response_voluntary_renewal": {name: "照会書兼回答書（有効期限のお知らせに関する通知書に同封） ※申請者ご本人が必要事項をご記入のうえ、封筒に入れて封緘し、任意代理人に預けてください。 ※照会書兼回答書に記入する暗証番号は、カードお受取時に設定した暗証番号を記入してください。 ※暗証番号を忘れた場合、住所変更などカードの記載事項に変更がある場合、照会書兼回答書の有効期限を過ぎている場合は更新手続をすることができませんので、事前に必ず京都市マイナンバーカードセンターにお問合せください。", icon: "fas fa-envelope-open"}
+  "hikikomori_cert": {name: "申請者ご本人がお越しになれないことを証する書類\n例）相談している公的な支援機関の職員及び当該支援機関の長が作成する顔写真証明書", icon: "fas fa-file-medical"}
 };
