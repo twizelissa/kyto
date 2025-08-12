@@ -499,10 +499,9 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                 
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
                   <p className="mb-2">詳しくは、京都市マイナンバーカードセンターにお電話をしていただきますようお願いいたします。</p>
-                  <p className="font-semibold">京都市マイナンバーカードセンター ： 電話番号　（075）746－6855</p>
+                  <p className="font-semibold mb-2">京都市マイナンバーカードセンター ： 電話番号　（075）746－6855</p>
+                  <p>※　区役所・支所では問合せを受け付けておりません。</p>
                 </div>
-                
-                <p className="text-red-600 font-medium">※　区役所・支所では問合せを受け付けておりません。</p>
               </div>
             </CardContent>
           </Card>
