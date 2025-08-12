@@ -287,6 +287,12 @@ function resolveCertificateItems(answers: Answer): string[] {
         case "voluntary_guardian":
           items.push("cert_voluntary_guardian_cert");
           break;
+        case "under_15":
+          // 15歳未満かつ非同居かつ本籍が京都市以外の場合
+          if (answers.cert_cohabitation_status === "not_cohabiting" && answers.cert_koseki_location === "other") {
+            items.push("cert_family_register_under_15");
+          }
+          break;
       }
     }
   }
