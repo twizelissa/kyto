@@ -91,19 +91,16 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
     await generatePDF(answers, itemNames);
   };
 
-  // 本人確認書類一覧表を表示する条件をチェック（本人または成年被後見人のみ）
+  // 本人確認書類一覧表を表示する条件をチェック（本人申請のみ）
   const shouldShowIdentityDocTable = () => {
+    // カード交付以外は表示しない
     if (answers.procedure !== "card_issuance") return false;
     
-    // 本人の場合は表示
-    if (answers.visitor_type === "self") return true;
+    // 代理人の場合は絶対に表示しない
+    if (answers.visitor_type === "proxy") return false;
     
-    // 代理人の場合は表示しない（新しい表を使用）
-    if (answers.visitor_type === "proxy") {
-      return false;
-    }
-    
-    return false;
+    // 本人の場合のみ表示
+    return answers.visitor_type === "self";
   };
 
   // 代理人の特定理由での本人確認書類一覧表を表示する条件をチェック
