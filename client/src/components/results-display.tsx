@@ -432,7 +432,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                           </td>
                         </tr>
                         <tr className="border-b">
-                          <td className="px-3 py-4 font-bold bg-gray-50 align-top text-xs" style={{width: 'min(25%, 200px)'}}>
+                          <td className="px-3 py-4 font-bold bg-gray-50 align-top" style={{width: 'min(25%, 200px)'}}>
                             A欄<br/>
                             <span className="text-xs font-normal text-gray-600">顔写真付きの公的機関が発行した書類</span>
                           </td>
@@ -446,7 +446,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                           </td>
                         </tr>
                         <tr>
-                          <td className="px-3 py-4 font-bold bg-gray-50 align-top text-xs" style={{width: 'min(25%, 200px)'}}>B欄</td>
+                          <td className="px-3 py-4 font-bold bg-gray-50 align-top" style={{width: 'min(25%, 200px)'}}>B欄</td>
                           <td className="px-3 py-4">
                             <div className="space-y-1 text-xs leading-relaxed">
                               <div>資格確認書（健康保険証）、年金手帳、社員証、学生証、医療受給者証、</div>
