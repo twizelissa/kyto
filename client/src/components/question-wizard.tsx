@@ -95,6 +95,18 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
     const newAnswers = { ...answers, [question.id]: value };
     setAnswers(newAnswers);
     
+    // Check for early completion conditions
+    if (question.id === "guardian_reason_15_over" && 
+        newAnswers.procedure === "card_issuance" && 
+        newAnswers.notification_card === "no" && 
+        newAnswers.visitor_type === "proxy" && 
+        newAnswers.applicant_age === "15_over" &&
+        ["adult_guardian", "conservatee", "assisted_person", "voluntary_guardian"].includes(value)) {
+      // For these guardian types, skip to completion immediately
+      onComplete(newAnswers);
+      return;
+    }
+    
     // Auto-advance after selection with slight delay for better UX
     setTimeout(() => {
       // Recalculate relevant questions with new answers
