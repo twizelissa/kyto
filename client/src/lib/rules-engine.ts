@@ -243,8 +243,8 @@ function resolveIssuanceItems(answers: Answer): string[] {
       }
     }
     
-    // 15歳未満かつ非同居かつ本籍地が京都以外の場合
-    if (answers.self_proxy_reason === "under_15" && answers.self_cohabitation === "not_cohabiting" && answers.self_domicile === "other") {
+    // 15歳未満かつ本籍地が京都以外の場合
+    if (answers.self_proxy_reason === "under_15" && answers.self_domicile === "other") {
       items.push("family_register_under_15");
     }
   }
