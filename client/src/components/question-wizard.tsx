@@ -52,6 +52,8 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
     const existing = initialAnswers.return_documents;
     return existing ? existing.split(',') : [];
   });
+  
+  const [inquiryResponseConfirmed, setInquiryResponseConfirmed] = useState(false);
 
   // Filter questions based on current answers
   const relevantQuestions = QUESTIONS.filter(q => 
@@ -103,7 +105,7 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
       if (currentQuestion < updatedRelevantQuestions.length - 1) {
         setCurrentQuestion(currentQuestion + 1);
         const nextQuestion = updatedRelevantQuestions[currentQuestion + 1];
-        setSelectedOption(newAnswers[nextQuestion?.id] || "");
+        setSelectedOption(nextQuestion?.id ? newAnswers[nextQuestion.id] || "" : "");
       } else {
         onComplete(newAnswers);
       }
@@ -172,11 +174,32 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
       if (currentQuestion < updatedRelevantQuestions.length - 1) {
         setCurrentQuestion(currentQuestion + 1);
         const nextQuestion = updatedRelevantQuestions[currentQuestion + 1];
-        setSelectedOption(newAnswers[nextQuestion?.id] || "");
+        setSelectedOption(nextQuestion?.id ? newAnswers[nextQuestion.id] || "" : "");
       } else {
         onComplete(newAnswers);
       }
     }, 300);
+  };
+
+  const handleInquiryResponseNext = () => {
+    if (inquiryResponseConfirmed) {
+      const newAnswers = { ...answers, inquiry_response_confirmed: "true" };
+      setAnswers(newAnswers);
+      
+      setTimeout(() => {
+        const updatedRelevantQuestions = QUESTIONS.filter(q => 
+          !q.showWhen || q.showWhen(newAnswers)
+        );
+        
+        if (currentQuestion < updatedRelevantQuestions.length - 1) {
+          setCurrentQuestion(currentQuestion + 1);
+          const nextQuestion = updatedRelevantQuestions[currentQuestion + 1];
+          setSelectedOption(nextQuestion?.id ? newAnswers[nextQuestion.id] || "" : "");
+        } else {
+          onComplete(newAnswers);
+        }
+      }, 300);
+    }
   };
 
   const handleRestart = () => {
@@ -189,6 +212,7 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
       centerReport: false
     });
     setReturnDocuments([]);
+    setInquiryResponseConfirmed(false);
   };
 
   return (
@@ -297,6 +321,42 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
               >
                 次へ進む
               </Button>
+            </>
+          ) : question.id === "inquiry_response_check" ? (
+            <>
+              <h2 className="text-2xl font-bold text-black mb-6">照会書兼回答書について</h2>
+              <div className="bg-red-50 border border-red-200 rounded-lg p-6 mb-6">
+                <div className="text-red-800 leading-relaxed">
+                  <p className="mb-4">
+                    交付通知書の提出がない場合は、マイナンバーカードのお受取ができません。
+                  </p>
+                  <p className="mb-4">
+                    紛失等でお手元にない場合は、代わりとなる「照会書兼回答書」の送付を京都市マイナンバーカードセンターに依頼ください。申請者ご本人の住民票上の住所地に転送不要扱いの郵便物として送付します。
+                  </p>
+                </div>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="flex items-center space-x-3">
+                  <Checkbox 
+                    id="inquiryResponse"
+                    checked={inquiryResponseConfirmed}
+                    onCheckedChange={(checked) => setInquiryResponseConfirmed(checked as boolean)}
+                  />
+                  <label htmlFor="inquiryResponse" className="text-sm font-medium text-gray-800">
+                    ✔️照会書兼回答書を持っている
+                  </label>
+                </div>
+              </div>
+              
+              {inquiryResponseConfirmed && (
+                <Button 
+                  onClick={handleInquiryResponseNext}
+                  className="kyoto-button w-full mt-4 text-center justify-center"
+                >
+                  次へ進む
+                </Button>
+              )}
             </>
           ) : (
             <>

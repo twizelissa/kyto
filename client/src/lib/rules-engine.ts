@@ -78,12 +78,17 @@ function resolveIssuanceItems(answers: Answer): string[] {
   // 4. 交付通知書がない場合の処理
   if (answers.notification_card === "no") {
     if (answers.visitor_type === "proxy" && answers.applicant_age !== "under_15") {
-      // 代理人で15歳未満以外の場合は受取不可
-      items.push("no_notification_warning");
-      return items;
-    }
-    // 本人の場合は別の本人確認書類が必要
-    if (answers.visitor_type === "self") {
+      // 照会書兼回答書を持っている場合
+      if (answers.inquiry_response_confirmed === "true") {
+        items.push("inquiry_response");
+        items.push("identity_document_with_notification");
+      } else {
+        // 代理人で15歳未満以外の場合は受取不可
+        items.push("no_notification_warning");
+        return items;
+      }
+    } else if (answers.visitor_type === "self") {
+      // 本人の場合は別の本人確認書類が必要
       items.push("identity_document_no_notification");
     }
     // 15歳未満の場合の処理は別途実装

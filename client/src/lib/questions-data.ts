@@ -116,6 +116,16 @@ export const QUESTIONS: Question[] = [
     }
   },
   {
+    "id": "inquiry_response_check",
+    "text": "照会書兼回答書について",
+    "options": [],
+    "showWhen": (answers) => answers.procedure === "card_issuance" && 
+                           answers.notification_card === "no" && 
+                           answers.visitor_type === "proxy" && 
+                           answers.applicant_age === "15_over" && 
+                           answers.guardian_reason_15_over === "other"
+  },
+  {
     "id": "applicant_age",
     "text": "申請者の年齢をお選びください",
     "options": [
