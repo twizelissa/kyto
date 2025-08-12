@@ -115,6 +115,46 @@ export const QUESTIONS: Question[] = [
       }
     }
   },
+  // 本人選択時の詳細質問
+  {
+    "id": "self_detail_type",
+    "text": "手続きに来られる方をお選びください",
+    "options": [
+      {"v": "self_only", "label": "本人のみ", "icon": "fas fa-user"},
+      {"v": "with_proxy", "label": "代理人が同行する", "icon": "fas fa-user-friends"}
+    ],
+    "showWhen": (answers) => answers.procedure === "card_issuance" && answers.visitor_type === "self"
+  },
+  {
+    "id": "self_proxy_reason",
+    "text": "下記の中から理由を選択してください",
+    "options": [
+      {"v": "adult_guardian", "label": "成年被後見人", "icon": "fas fa-shield-alt"},
+      {"v": "conservatee", "label": "被保佐人", "icon": "fas fa-shield-alt"},
+      {"v": "assisted_person", "label": "被補助人", "icon": "fas fa-shield-alt"},
+      {"v": "voluntary_guardian", "label": "任意被後見人", "icon": "fas fa-shield-alt"},
+      {"v": "under_15", "label": "申請者が15歳未満", "icon": "fas fa-child"}
+    ],
+    "showWhen": (answers) => answers.procedure === "card_issuance" && answers.visitor_type === "self" && answers.self_detail_type === "with_proxy"
+  },
+  {
+    "id": "self_cohabitation",
+    "text": "申請者と代理人の同居の有無をお選びください",
+    "options": [
+      {"v": "cohabiting", "label": "同居", "icon": "fas fa-home"},
+      {"v": "not_cohabiting", "label": "非同居", "icon": "fas fa-home"}
+    ],
+    "showWhen": (answers) => answers.procedure === "card_issuance" && answers.visitor_type === "self" && answers.self_detail_type === "with_proxy" && answers.self_proxy_reason === "under_15"
+  },
+  {
+    "id": "self_domicile",
+    "text": "申請者の方の本籍地についてお選びください",
+    "options": [
+      {"v": "kyoto", "label": "京都市内", "icon": "fas fa-map-marker-alt"},
+      {"v": "other", "label": "それ以外", "icon": "fas fa-map"}
+    ],
+    "showWhen": (answers) => answers.procedure === "card_issuance" && answers.visitor_type === "self" && answers.self_detail_type === "with_proxy" && answers.self_proxy_reason === "under_15" && answers.self_cohabitation === "not_cohabiting"
+  },
 
   {
     "id": "applicant_age",

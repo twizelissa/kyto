@@ -194,7 +194,7 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
         if (currentQuestion < updatedRelevantQuestions.length - 1) {
           setCurrentQuestion(currentQuestion + 1);
           const nextQuestion = updatedRelevantQuestions[currentQuestion + 1];
-          setSelectedOption(nextQuestion?.id ? newAnswers[nextQuestion.id] || "" : "");
+          setSelectedOption(nextQuestion?.id ? (newAnswers as any)[nextQuestion.id] || "" : "");
         } else {
           onComplete(newAnswers);
         }
