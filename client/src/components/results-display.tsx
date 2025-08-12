@@ -212,8 +212,8 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
-      <Card className="rounded-xl shadow-lg p-8 mb-6">
+    <div className="max-w-none mx-auto px-1 sm:px-4 py-8">
+      <Card className="rounded-xl shadow-lg p-2 sm:p-6 mb-6">
         <CardContent className="space-y-8">
           {isApplicationMethodResult ? (
             <>

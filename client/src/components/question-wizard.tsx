@@ -229,7 +229,7 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
       </div>
 
       {/* Question Card */}
-      <Card className="kyoto-card rounded-lg shadow-lg p-4 sm:p-8 mb-6">
+      <Card className="kyoto-card rounded-lg shadow-lg p-2 sm:p-6 mb-6 w-full">
         <CardContent className="space-y-6">
           {question.id === "lost_procedures" ? (
             <>
