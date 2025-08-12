@@ -437,7 +437,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                             <span className="text-xs font-normal text-gray-600">顔写真付きの公的機関が発行した書類</span>
                           </td>
                           <td className="px-3 py-4">
-                            <div className="space-y-1 text-xs leading-relaxed">
+                            <div className="space-y-1 text-xs leading-relaxed text-justify">
                               <div>マイナンバーカード、住民基本台帳カード、運転免許証、運転経歴証明書</div>
                               <div>（平成24年4月1日以降の交付年月日のものに限る。）、旅券（パスポート）、</div>
                               <div>障害者手帳（身体障害者手帳、精神障害者保健福祉手帳、療育手帳）、</div>
@@ -448,7 +448,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                         <tr>
                           <td className="px-3 py-4 font-bold bg-gray-50 align-top" style={{width: 'min(28%, 180px)'}}>B欄</td>
                           <td className="px-3 py-4">
-                            <div className="space-y-1 text-xs leading-relaxed">
+                            <div className="space-y-1 text-xs leading-relaxed text-justify">
                               <div>資格確認書（健康保険証）、年金手帳、社員証、学生証、医療受給者証、</div>
                               <div>母子健康手帳（出生届済証明書欄に証明があり、現在の氏名と一致するものに限</div>
                               <div>り、子の本人確認書類として有効）、敬老乗車証（氏名、生年月日の記載がある</div>
