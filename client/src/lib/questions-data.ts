@@ -108,7 +108,8 @@ export const QUESTIONS: Question[] = [
     "showWhen": (answers) => {
       if (answers.procedure !== "card_issuance") return false;
       if (answers.issuance_type === "new") {
-        return answers.return_documents !== undefined;
+        // 新規の場合は return_documents が存在する（空文字でも良い）かチェック
+        return "return_documents" in answers;
       } else {
         return answers.notification_card !== undefined;
       }

@@ -156,18 +156,25 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
   };
 
   const handleReturnDocumentNext = () => {
+    // 値が設定されていない場合でも空文字で設定
+    const newAnswers = { ...answers };
+    if (!("return_documents" in newAnswers)) {
+      newAnswers.return_documents = returnDocuments.join(',');
+    }
+    setAnswers(newAnswers);
+    
     // Auto-advance after slight delay for better UX
     setTimeout(() => {
       const updatedRelevantQuestions = QUESTIONS.filter(q => 
-        !q.showWhen || q.showWhen(answers)
+        !q.showWhen || q.showWhen(newAnswers)
       );
       
       if (currentQuestion < updatedRelevantQuestions.length - 1) {
         setCurrentQuestion(currentQuestion + 1);
         const nextQuestion = updatedRelevantQuestions[currentQuestion + 1];
-        setSelectedOption(answers[nextQuestion?.id] || "");
+        setSelectedOption(newAnswers[nextQuestion?.id] || "");
       } else {
-        onComplete(answers);
+        onComplete(newAnswers);
       }
     }, 300);
   };
