@@ -180,13 +180,13 @@ function resolveIssuanceItems(answers: Answer): string[] {
   }
   
   // 6. 本人（代理人が同行する場合を含む）で代理人同行の場合の追加処理
-  if (answers.visitor_type === "self" && answers.self_accompanying === "proxy_accompanying") {
+  if (answers.visitor_type === "self" && answers.self_detail_type === "with_proxy") {
     // 代理人の本人確認書類を追加
     items.push("proxy_accompanying_id");
     
     // 後見人関連の証明書類を追加
-    if (answers.proxy_reason_accompanying) {
-      switch (answers.proxy_reason_accompanying) {
+    if (answers.self_proxy_reason) {
+      switch (answers.self_proxy_reason) {
         case "adult_guardian":
           items.push("adult_guardian_cert");
           break;
@@ -203,7 +203,7 @@ function resolveIssuanceItems(answers: Answer): string[] {
     }
     
     // 15歳未満かつ非同居かつ本籍地が京都以外の場合
-    if (answers.cohabitation_15_under === "not_cohabiting" && answers.birthplace_15_under === "other") {
+    if (answers.self_proxy_reason === "under_15" && answers.self_cohabitation === "not_cohabiting" && answers.self_domicile === "other") {
       items.push("family_register_under_15");
     }
   }
