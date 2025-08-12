@@ -34,7 +34,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
       case "hospitalized":
       case "facility_resident":
         return {
-          title: "長期入院・施設入所の方への特別措置",
+          title: "",
           content: `申請者が長期で入院や介護施設等に入所している方については、下記様式に申請者ご本人の顔写真を貼付し、病院・施設長等が署名又は記名押印することでB欄の本人確認書類1点（顔写真証明書）とすることができます。
 ※「長期の入院」につきましては、概ね90日以上の入院が見込まれる場合を示しています。`,
           documents: [
@@ -45,7 +45,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
       
       case "care_certified":
         return {
-          title: "要介護・要支援認定者の方への特別措置",
+          title: "",
           content: `在宅で保健医療サービス又は福祉サービスの提供を受けている方については、下記様式に申請者ご本人の顔写真を貼布し、ご本人に対して居宅介護支援を行う介護支援専門員とその専門員が属する指定居宅介護支援事業者の長が署名又は記名押印することでB欄の本人確認書類の1点（顔写真証明書）とすることができます。`,
           documents: [
             { name: "在宅で保健医療サービス等を受けている方用", format: "PDF形式, 46.35KB" },
@@ -55,7 +55,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
       
       case "minor_guardian":
         return {
-          title: "未成年及び成年被後見人等の方への特別措置",
+          title: "",
           content: `未成年及び成年被後見人又は被保佐人、被補助人、被任意後見人の方については、下記様式に申請者ご本人の顔写真を貼付し、法定代理人（親権者又は成年後見人、保佐人、補助人、任意後見人）の方が署名又は記名押印することでB欄の本人確認書類の1点（顔写真証明書）とすることができます。`,
           documents: [
             { name: "未成年及び成年被後見人又は被保佐人、被補助人、被任意後見人の方用", format: "PDF形式, 43.01KB" },
@@ -65,7 +65,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
       
       case "hikikomori":
         return {
-          title: "社会的参加を回避し長期にわたって概ね家庭にとどまり続けている状態である方への特別措置",
+          title: "",
           content: `社会的参加を回避し長期にわたって概ね家庭にとどまり続けている状態である方については、下記様式に申請者ご本人の顔写真を貼付し、相談している公的な支援機関の職員及び当該支援機関の長が署名又は記名押印することでB欄の本人確認書類の1点（顔写真証明書）とすることができます。`,
           documents: [
             { name: "社会的参加を回避し長期にわたって概ね家庭にとどまり続けている状態である方用", format: "PDF形式, 47.07KB" },
@@ -462,18 +462,20 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                 if (!specialNotice) return null;
                 
                 return (
-                  <div className="mb-0">
-                    <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
-                      <h4 className="font-bold text-yellow-900 mb-3">{specialNotice.title}</h4>
-                      <p className="text-sm text-yellow-800 mb-4 leading-relaxed whitespace-pre-line">
+                  <div className="mb-4">
+                    <div className="p-3">
+                      {specialNotice.title && (
+                        <h4 className="font-bold text-gray-900 mb-2 text-sm">{specialNotice.title}</h4>
+                      )}
+                      <p className="text-xs text-gray-700 mb-3 leading-relaxed whitespace-pre-line">
                         {specialNotice.content}
                       </p>
-                      <div className="space-y-2">
+                      <div className="space-y-1">
                         {specialNotice.documents.map((doc, index) => (
-                          <div key={index} className="flex items-center text-sm text-yellow-800">
+                          <div key={index} className="flex items-center text-xs text-gray-700">
                             <i className="fas fa-file-pdf mr-2 text-red-600"></i>
                             <span className="font-medium">{doc.name}</span>
-                            <span className="ml-2 text-gray-600">({doc.format})</span>
+                            <span className="ml-2 text-gray-500">({doc.format})</span>
                           </div>
                         ))}
                       </div>
