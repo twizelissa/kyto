@@ -509,11 +509,14 @@ export const ITEMS: Record<string, RequiredItem> = {
   "no_notification_warning": {name: "交付通知書の提出がない場合は、マイナンバーカードのお受取ができません。\n紛失等でお手元にない場合は、京都市マイナンバーカードセンターへお問い合わせください。", icon: "fas fa-exclamation-triangle"},
   
   // 後見人関連書類（詳細）
-  "adult_guardian_cert": {name: "成年後見人に関する登記事項証明書（原本）", icon: "fas fa-file-certificate"},
-  "conservatee_cert": {name: "被保佐人に関する登記事項証明書（原本）、代理行為目録", icon: "fas fa-file-certificate"},
-  "assisted_person_cert": {name: "被補助人に関する登記事項証明書（原本）、代理行為目録", icon: "fas fa-file-certificate"},
-  "voluntary_guardian_cert": {name: "任意被後見人に関する登記事項証明書（原本）、代理権目録", icon: "fas fa-file-certificate"},
-  "family_register_under_15": {name: "親権を証する書類（戸籍全部事項証明書）※原本", icon: "fas fa-file-alt"},
+  "adult_guardian_cert": {name: "成年後見人に関する登記事項証明書", icon: "fas fa-file-certificate"},
+  "conservatee_cert": {name: "保佐人に関する登記事項証明書、代理行為目録", icon: "fas fa-file-certificate"},
+  "assisted_person_cert": {name: "補助人に関する登記事項証明書、代理行為目録", icon: "fas fa-file-certificate"},
+  "voluntary_guardian_cert": {name: "任意後見人に関する登記事項証明書、代理権目録", icon: "fas fa-file-certificate"},
+  "family_register_under_15": {name: "戸籍全部事項証明書", icon: "fas fa-file-alt"},
+  
+  // 代理人同行時の追加書類
+  "proxy_accompanying_id": {name: "代理人の本人確認書類（A欄1点又はB欄2点）", icon: "fas fa-user-friends"},
   
   // 来庁困難理由証明書類
   "hospitalized_cert": {name: "申請者ご本人がお越しになれないことを証する書類\n例）診断書、入院診療計画書、入院費用の領収書、診療明細書、病院長が作成する顔写真証明書", icon: "fas fa-file-medical"},

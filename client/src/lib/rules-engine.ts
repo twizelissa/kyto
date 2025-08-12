@@ -179,6 +179,35 @@ function resolveIssuanceItems(answers: Answer): string[] {
     }
   }
   
+  // 6. 本人（代理人が同行する場合を含む）で代理人同行の場合の追加処理
+  if (answers.visitor_type === "self" && answers.self_accompanying === "proxy_accompanying") {
+    // 代理人の本人確認書類を追加
+    items.push("proxy_accompanying_id");
+    
+    // 後見人関連の証明書類を追加
+    if (answers.proxy_reason_accompanying) {
+      switch (answers.proxy_reason_accompanying) {
+        case "adult_guardian":
+          items.push("adult_guardian_cert");
+          break;
+        case "conservatee":
+          items.push("conservatee_cert");
+          break;
+        case "assisted_person":
+          items.push("assisted_person_cert");
+          break;
+        case "voluntary_guardian":
+          items.push("voluntary_guardian_cert");
+          break;
+      }
+    }
+    
+    // 15歳未満かつ非同居かつ本籍地が京都以外の場合
+    if (answers.cohabitation_15_under === "not_cohabiting" && answers.birthplace_15_under === "other") {
+      items.push("family_register_under_15");
+    }
+  }
+  
   // 8. 照会書兼回答書（該当する場合のみ）
   if (answers.issuance_inquiry_response_check === "applicable") {
     items.push("inquiry_response");
