@@ -52,6 +52,17 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
     return false;
   };
 
+  // 代理人の特定理由（その他）での本人確認書類一覧表を表示する条件をチェック
+  const shouldShowProxyOtherDocTable = () => {
+    if (answers.procedure !== "card_issuance" || answers.visitor_type !== "proxy") return false;
+    
+    const reason = answers.applicant_age === "under_15" ? answers.guardian_reason : answers.guardian_reason_15_over;
+    const targetReasons = ["over_75", "hospitalized", "facility_resident", "care_certified", 
+                          "pregnant", "overseas_study", "student", "social_withdrawal", "disabled"];
+    
+    return targetReasons.includes(reason);
+  };
+
   const getApplicationMethodContent = () => {
     const method = answers.application_method;
     const mailType = answers.mail_type;
@@ -318,6 +329,50 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                               <div>資格確認書（健康保険証）、介護保険証、医療受給者証、各種年金証書、</div>
                               <div>児童扶養手当証書、母子健康手帳（出生届出済証明書欄に証明があり、現在の氏名と一致するものに限り、子の本人確認書類として有効）　等</div>
                               <div>社員証、学生証、学校で発行された在籍証明書（「氏名・生年月日」又は「氏名・住所」が記載されているものに限る）　等</div>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )}
+
+              {/* 代理人（その他理由）の本人確認書類一覧表 */}
+              {shouldShowProxyOtherDocTable() && (
+                <div className="mb-8">
+                  <div className="bg-white border rounded-lg overflow-hidden">
+                    <table className="w-full text-sm">
+                      <tbody>
+                        <tr>
+                          <td colSpan={2} className="px-3 py-3 font-bold bg-kyoto-purple text-white text-center">
+                            本人確認書類
+                          </td>
+                        </tr>
+                        <tr className="border-b">
+                          <td className="px-3 py-4 font-bold bg-gray-50 align-top text-xs">A欄<br/>（顔写真付きの公的機関が発行した証明書）</td>
+                          <td className="px-3 py-4">
+                            <div className="space-y-1 text-xs leading-relaxed">
+                              <div>マイナンバーカード、住民基本台帳カード、運転免許証、運転経歴証明書</div>
+                              <div>（平成24年4月1日以降の交付年月日のものに限る。）、旅券（パスポート）、</div>
+                              <div>障害者手帳（身体障害者手帳、精神障害者保健福祉手帳、療育手帳）、</div>
+                              <div>在留カード、特別永住者証明書、一時庇護許可証、仮滞在許可証　等</div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="px-3 py-4 font-bold bg-gray-50 align-top whitespace-nowrap">B欄</td>
+                          <td className="px-3 py-4">
+                            <div className="space-y-1 text-xs leading-relaxed">
+                              <div>資格確認書（健康保険証）、年金手帳、社員証、学生証、医療受給者証、</div>
+                              <div>母子健康手帳（出生届済証明書欄に証明があり、現在の氏名と一致するものに限</div>
+                              <div>り、子の本人確認書類として有効）、税・社会保険料領収書又は「氏名・生年月日の記載があ</div>
+                              <div>る「フリーパス証」に限る。「敬老パス回数券」不可）、介護保険被保険者証、生</div>
+                              <div>活</div>
+                              <div>保護受給証明書、顔写真証明書（施設等入所者用・在宅で保健医療サービス等を</div>
+                              <div>受けている方・未成年及び成年後見人の方用・社会的参加（義務教育を含む就</div>
+                              <div>学、非常勤職を含む就労、家庭外での交流など）を回避し長期にわたって概ね家</div>
+                              <div>庭にとどまり続けている状態である方用）　等</div>
                             </div>
                           </td>
                         </tr>
