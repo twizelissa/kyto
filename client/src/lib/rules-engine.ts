@@ -78,12 +78,17 @@ function resolveIssuanceItems(answers: Answer): string[] {
   // 4. 交付通知書がない場合の処理
   if (answers.notification_card === "no") {
     if (answers.visitor_type === "proxy" && answers.applicant_age !== "under_15") {
-      // 照会書兼回答書を持っている場合
-      if (answers.inquiry_response_confirmed === "true") {
+      // 成年被後見人等の場合は警告を表示しない
+      if (answers.guardian_reason_15_over && 
+          ["adult_guardian", "conservatee", "assisted_person", "voluntary_guardian"].includes(answers.guardian_reason_15_over)) {
+        // 成年被後見人等の場合は通常の本人確認書類
+        items.push("identity_document_with_notification");
+      } else if (answers.inquiry_response_confirmed === "true") {
+        // 照会書兼回答書を持っている場合
         items.push("inquiry_response");
         items.push("identity_document_with_notification");
       } else {
-        // 代理人で15歳未満以外の場合は受取不可
+        // その他の代理人で15歳未満以外の場合は受取不可
         items.push("no_notification_warning");
         return items;
       }
@@ -94,8 +99,8 @@ function resolveIssuanceItems(answers: Answer): string[] {
     // 15歳未満の場合の処理は別途実装
   }
 
-  // 5. 代理人の場合の追加処理（交付通知書がある場合）
-  if (answers.visitor_type === "proxy" && answers.notification_card === "yes") {
+  // 5. 代理人の場合の追加処理
+  if (answers.visitor_type === "proxy") {
     
     // 75歳以上や特定の理由の場合
     if (answers.applicant_age === "15_over" && answers.guardian_reason_15_over === "other") {
@@ -135,7 +140,9 @@ function resolveIssuanceItems(answers: Answer): string[] {
       } else {
         items.push("identity_document_proxy_other");
       }
-    } else if (answers.applicant_age === "15_over") {
+    } else if (answers.applicant_age === "15_over" && 
+               answers.guardian_reason_15_over && 
+               ["adult_guardian", "conservatee", "assisted_person", "voluntary_guardian"].includes(answers.guardian_reason_15_over)) {
       // 成年被後見人等の場合
       const reason = answers.guardian_reason_15_over;
       items.push("identity_document_proxy_guardian");
