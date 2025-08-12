@@ -293,6 +293,12 @@ function resolveCertificateItems(answers: Answer): string[] {
             items.push("cert_family_register_under_15");
           }
           break;
+        case "voluntary_proxy":
+          // 任意代理人かつ発行の場合
+          if (answers.cert_type === "issuance") {
+            items.push("cert_inquiry_response_voluntary");
+          }
+          break;
       }
     }
   }

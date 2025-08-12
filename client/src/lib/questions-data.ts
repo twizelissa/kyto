@@ -535,5 +535,6 @@ export const ITEMS: Record<string, RequiredItem> = {
   "cert_conservatee_cert": {name: "保佐人に関する登記事項証明書、代理行為目録", icon: "fas fa-file-certificate"},
   "cert_assisted_person_cert": {name: "補助人に関する登記事項証明書、代理行為目録", icon: "fas fa-file-certificate"},
   "cert_voluntary_guardian_cert": {name: "任意後見人に関する登記事項証明書、代理権目録", icon: "fas fa-file-certificate"},
-  "cert_family_register_under_15": {name: "親権を証する書類（戸籍全部事項証明書）", icon: "fas fa-file-alt"}
+  "cert_family_register_under_15": {name: "親権を証する書類（戸籍全部事項証明書）", icon: "fas fa-file-alt"},
+  "cert_inquiry_response_voluntary": {name: "照会書兼回答書\nあらかじめ申請者ご本人の住所地に送付（転送不可）し、申請者ご本人が記入のうえ、封筒に封入・封緘された状態で任意代理人に預けていただく必要があります。\n事前に必ず京都市マイナンバーカードセンターにお問い合わせください。", icon: "fas fa-envelope-open"}
 };
