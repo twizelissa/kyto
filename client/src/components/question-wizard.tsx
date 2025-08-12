@@ -295,25 +295,6 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
             <>
               <h2 className="text-2xl font-bold text-black mb-6">{question.text}</h2>
               
-              {/* Show proxy information for card issuance visitor type question */}
-              {question.id === "visitor_type" && (
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 sm:p-6 mb-6">
-                  <h3 className="font-semibold text-blue-900 mb-3">代理人による受取について</h3>
-                  <div className="text-sm text-blue-800 leading-relaxed">
-                    <p className="mb-3">代理人が受取を行うことができるのは、次のような場合などに限られます。</p>
-                    <ul className="list-disc pl-5 space-y-1">
-                      <li>75歳以上の方や要介護・要支援認定、障害をお持ちで来庁が困難である方</li>
-                      <li>長期の入院や施設に入所しており、来所が困難である方（長期の入院とは、概ね90日以上の入院が見込まれる場合を示しています。）</li>
-                      <li>成年被後見人又は、被保佐人、被補助人、任意被後見人の方</li>
-                      <li>申請者が15歳未満の方や15歳以上の中学生、高校生、高専生、海外留学されている方</li>
-                      <li>妊婦の方</li>
-                      <li>社会的参加（義務教育を含む就学、非常勤職を含む就労、家庭外での交遊など）を回避し長期にわたって概ね家庭にとどまり続けている状態である方</li>
-                    </ul>
-                    <p className="mt-3 font-medium">（注意）仕事の多忙等といった場合は、やむを得ない理由に該当しません。</p>
-                  </div>
-                </div>
-              )}
-              
               <div className="space-y-4">
                 {question.options.map((option) => (
                   <div
@@ -332,6 +313,25 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
                   </div>
                 ))}
               </div>
+              
+              {/* Show proxy information for card issuance visitor type question */}
+              {question.id === "visitor_type" && (
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 sm:p-6 mt-6">
+                  <h3 className="font-semibold text-blue-900 mb-3">代理人による受取について</h3>
+                  <div className="text-sm text-blue-800 leading-relaxed">
+                    <p className="mb-3">代理人が受取を行うことができるのは、次のような場合などに限られます。</p>
+                    <ul className="list-disc pl-5 space-y-1">
+                      <li>75歳以上の方や要介護・要支援認定、障害をお持ちで来庁が困難である方</li>
+                      <li>長期の入院や施設に入所しており、来所が困難である方（長期の入院とは、概ね90日以上の入院が見込まれる場合を示しています。）</li>
+                      <li>成年被後見人又は、被保佐人、被補助人、任意被後見人の方</li>
+                      <li>申請者が15歳未満の方や15歳以上の中学生、高校生、高専生、海外留学されている方</li>
+                      <li>妊婦の方</li>
+                      <li>社会的参加（義務教育を含む就学、非常勤職を含む就労、家庭外での交遊など）を回避し長期にわたって概ね家庭にとどまり続けている状態である方</li>
+                    </ul>
+                    <p className="mt-3 font-medium">（注意）仕事の多忙等といった場合は、やむを得ない理由に該当しません。</p>
+                  </div>
+                </div>
+              )}
             </>
           )}
         </CardContent>
