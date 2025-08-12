@@ -54,8 +54,10 @@ function resolveIssuanceItems(answers: Answer): string[] {
       items.push("notification_card");
     }
     
-    // 交付通知書がある場合の本人確認書類
-    items.push("identity_document_with_notification");
+    // 交付通知書がある場合かつ本人の場合のみ本人確認書類
+    if (answers.visitor_type === "self") {
+      items.push("identity_document_with_notification");
+    }
   }
   
   // 2. 更新・再発行（紛失以外）の場合の現在のマイナンバーカード
