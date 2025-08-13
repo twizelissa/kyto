@@ -590,59 +590,70 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                 {answers.procedure === "card_issuance" ? "交付場所について" : "手続場所について"}
               </h3>
               <div className="space-y-4 text-sm text-gray-800 leading-relaxed">
-                <div>
-                  <ul className="space-y-2">
-                    {/* 暗証番号の変更・初期化の場合のみコンビニ案内を追加 */}
-                    {answers.procedure === "pin_change" && (
-                      <li>・<strong>全国のコンビニエンスストア（セブンイレブン、ローソン等）やイオングループの一部の商業施設に設置されているキオスク端末（マルチコピー機）</strong><br />
-                        ※詳細な手順等については地方公共団体情報システム機構（J-LIS）のページをご覧ください。<br />
-                        ※ 一部の店舗ではマイナンバーカード署名用パスワード初期化・再設定（「署名用電子証明書（6桁から16桁までの暗証番号」）だけが可能となっておりますので、ご利用に応じた手続きが出来るストアをこちらからご確認ください。
-                      </li>
-                    )}
-                    <li>・<strong>マイナンバーカードセンター</strong>（<span className="underline text-red-600">事前予約</span>が必要です。）</li>
-                    <li>・<strong>各区役所・支所のマイナンバーカード交付コーナー</strong>（<span className="underline text-red-600">事前予約</span>が必要です。京都市民の方でしたら、住所地に関わらずいずれの区役所・支所でも手続可能です。）</li>
-                  </ul>
-                </div>
-                
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                  <p className="mb-2">詳しくは、京都市マイナンバーカードセンターにお電話をしていただきますようお願いいたします。</p>
-                  <p className="font-semibold mb-2">京都市マイナンバーカードセンター ： 電話番号　（075）746－6855</p>
-                  <p>※　区役所・支所では問合せを受け付けておりません。</p>
-                </div>
+                {/* 住所・氏名等の変更の場合はシンプルな案内のみ */}
+                {answers.procedure === "info_change" ? (
+                  <div>
+                    <p><strong>住所地を管轄する区役所・支所区役所・支所の市民総合窓口室　戸籍住民担当</strong></p>
+                  </div>
+                ) : (
+                  <>
+                    <div>
+                      <ul className="space-y-2">
+                        {/* 暗証番号の変更・初期化の場合のみコンビニ案内を追加 */}
+                        {answers.procedure === "pin_change" && (
+                          <li>・<strong>全国のコンビニエンスストア（セブンイレブン、ローソン等）やイオングループの一部の商業施設に設置されているキオスク端末（マルチコピー機）</strong><br />
+                            ※詳細な手順等については地方公共団体情報システム機構（J-LIS）のページをご覧ください。<br />
+                            ※ 一部の店舗ではマイナンバーカード署名用パスワード初期化・再設定（「署名用電子証明書（6桁から16桁までの暗証番号」）だけが可能となっておりますので、ご利用に応じた手続きが出来るストアをこちらからご確認ください。
+                          </li>
+                        )}
+                        <li>・<strong>マイナンバーカードセンター</strong>（<span className="underline text-red-600">事前予約</span>が必要です。）</li>
+                        <li>・<strong>各区役所・支所のマイナンバーカード交付コーナー</strong>（<span className="underline text-red-600">事前予約</span>が必要です。京都市民の方でしたら、住所地に関わらずいずれの区役所・支所でも手続可能です。）</li>
+                      </ul>
+                    </div>
+                    
+                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                      <p className="mb-2">詳しくは、京都市マイナンバーカードセンターにお電話をしていただきますようお願いいたします。</p>
+                      <p className="font-semibold mb-2">京都市マイナンバーカードセンター ： 電話番号　（075）746－6855</p>
+                      <p>※　区役所・支所では問合せを受け付けておりません。</p>
+                    </div>
+                  </>
+                )}
               </div>
             </CardContent>
           </Card>
 
-          {/* 予約方法 */}
-          <Card className="shadow-lg border-gray-200 mb-8">
-            <CardContent className="p-2 sm:p-6">
-              <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
-                <i className="fas fa-calendar-alt mr-2"></i>予約方法について
-              </h3>
-              <div className="space-y-4 text-sm text-gray-800 leading-relaxed">
-                <p>{answers.procedure === "card_issuance" ? "交付希望日" : "手続希望日"}から祝休日・年末年始を除いた概ね<span className="text-red-600 font-bold">5日前</span>に予約を締め切ります。</p>
-                
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                  <p className="font-semibold mb-2 text-blue-600">下記のいずれかの方法で予約</p>
-                  <ul className="space-y-2">
-                    <li>・<strong>インターネット受付</strong>（24時間　年中無休）：<a href="https://mncard.city.kyoto.lg.jp/mynumpo-kyoto-u/?method=all" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">https://mncard.city.kyoto.lg.jp/mynumpo-kyoto-u/?method=all</a></li>
-                    <li>・<strong>電話受付</strong>（平日の午前9時～午後5時）：075－777－6201</li>
-                  </ul>
+          {/* 予約方法（住所・氏名等の変更以外の場合のみ表示） */}
+          {answers.procedure !== "info_change" && (
+            <Card className="shadow-lg border-gray-200 mb-8">
+              <CardContent className="p-2 sm:p-6">
+                <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
+                  <i className="fas fa-calendar-alt mr-2"></i>予約方法について
+                </h3>
+                <div className="space-y-4 text-sm text-gray-800 leading-relaxed">
+                  <p>{answers.procedure === "card_issuance" ? "交付希望日" : "手続希望日"}から祝休日・年末年始を除いた概ね<span className="text-red-600 font-bold">5日前</span>に予約を締め切ります。</p>
+                  
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <p className="font-semibold mb-2 text-blue-600">下記のいずれかの方法で予約</p>
+                    <ul className="space-y-2">
+                      <li>・<strong>インターネット受付</strong>（24時間　年中無休）：<a href="https://mncard.city.kyoto.lg.jp/mynumpo-kyoto-u/?method=all" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">https://mncard.city.kyoto.lg.jp/mynumpo-kyoto-u/?method=all</a></li>
+                      <li>・<strong>電話受付</strong>（平日の午前9時～午後5時）：075－777－6201</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <p>※　区役所・支所では予約を受け付けておりません。</p>
+                    {/* カードの交付（受け取り）の場合のみ製造管理番号の注意事項を表示 */}
+                    {answers.procedure === "card_issuance" && (
+                      <>
+                        <p>※　交付通知書に記載の「製造管理番号」が必要となりますので、お手元にご用意ください。交付通知書の紛失等により「製造管理番号」が不明な際は、事前にマイナンバーカードセンターにお問い合わせいただき、ご確認ください。</p>
+                        <p>※　電話受付によるご予約をご希望の方は、「発送番号」も併せて事前にご確認ください。</p>
+                      </>
+                    )}
+                  </div>
                 </div>
-                
-                <div className="space-y-2">
-                  <p>※　区役所・支所では予約を受け付けておりません。</p>
-                  {/* カードの交付（受け取り）の場合のみ製造管理番号の注意事項を表示 */}
-                  {answers.procedure === "card_issuance" && (
-                    <>
-                      <p>※　交付通知書に記載の「製造管理番号」が必要となりますので、お手元にご用意ください。交付通知書の紛失等により「製造管理番号」が不明な際は、事前にマイナンバーカードセンターにお問い合わせいただき、ご確認ください。</p>
-                      <p>※　電話受付によるご予約をご希望の方は、「発送番号」も併せて事前にご確認ください。</p>
-                    </>
-                  )}
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          )}
         </>
       )}
 
