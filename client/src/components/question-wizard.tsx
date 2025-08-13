@@ -459,6 +459,16 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
                   </div>
                 </div>
               )}
+              
+              {/* Show PIN change/reset notice for visitor type question */}
+              {question.id === "pin_visitor_type" && (
+                <div className="mt-6">
+                  <div className="text-sm text-red-600 leading-relaxed">
+                    <p className="mb-2">※本人が窓口に来ることができない場合は、暗証番号の初期化・再設定に数日かかります。</p>
+                    <p>※申請手続き後、本人宛てに郵送した「回答書」の提出が必要となるため、窓口へ2回お越しいただくこととなります。</p>
+                  </div>
+                </div>
+              )}
             </>
           )}
         </CardContent>
