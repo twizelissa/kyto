@@ -387,7 +387,12 @@ function resolveInfoChangeItems(answers: Answer): string[] {
   
   // 代理人の場合の追加書類
   if (answers.info_visitor_type === "proxy") {
-    items.push("info_proxy_identity_document");
+    // 任意代理人の場合は特別な文言の本人確認書類
+    if (answers.info_proxy_reason === "voluntary_proxy") {
+      items.push("info_proxy_identity_document_voluntary");
+    } else {
+      items.push("info_proxy_identity_document");
+    }
     
     // 代理人理由による追加書類
     if (answers.info_proxy_reason) {
@@ -414,7 +419,11 @@ function resolveInfoChangeItems(answers: Answer): string[] {
           // 同一世帯員（転入届又は転居届と併せて行う手続き）
           items.push("info_family_register_same_household");
           break;
-        // TODO: その他の理由（任意代理人）の実装
+        case "voluntary_proxy":
+          // 任意代理人の場合の追加書類
+          items.push("info_inquiry_response_voluntary");
+          items.push("info_power_of_attorney");
+          break;
       }
     }
   }

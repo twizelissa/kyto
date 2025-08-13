@@ -524,5 +524,8 @@ export const ITEMS: Record<string, RequiredItem> = {
   "info_assisted_person_cert": {name: "補助人に関する登記事項証明書、代理行為目録", icon: "fas fa-file-certificate"},
   "info_voluntary_guardian_cert": {name: "任意後見人に関する登記事項証明書、代理権目録", icon: "fas fa-file-certificate"},
   "info_family_register_under_15": {name: "戸籍全部事項証明書", icon: "fas fa-file-alt"},
-  "info_family_register_same_household": {name: "戸籍全部事項証明書", icon: "fas fa-file-alt"}
+  "info_family_register_same_household": {name: "戸籍全部事項証明書", icon: "fas fa-file-alt"},
+  "info_proxy_identity_document_voluntary": {name: "代理人の本人確認書類（マイナンバーカード、運転免許証、旅券等）\n※文書照会後に来所する際は、本人確認書類を2点提示いただく場合があります（1度目の来所時に必要書類をご確認ください）", icon: "fas fa-user-friends"},
+  "info_inquiry_response_voluntary": {name: "照会書兼回答書\n※暗証番号等、必要事項を記載のうえ、封筒に入れて封緘した状態でお持ちください。", icon: "fas fa-envelope-open"},
+  "info_power_of_attorney": {name: "委任状（様式は問いません）", icon: "fas fa-file-signature"}
 };
