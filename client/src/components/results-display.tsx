@@ -561,6 +561,13 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
               <div className="space-y-4 text-sm text-gray-800 leading-relaxed">
                 <div>
                   <ul className="space-y-2">
+                    {/* 暗証番号の変更・初期化の場合のみコンビニ案内を追加 */}
+                    {answers.procedure === "pin_change" && (
+                      <li>・<strong>全国のコンビニエンスストア（セブンイレブン、ローソン等）やイオングループの一部の商業施設に設置されているキオスク端末（マルチコピー機）</strong><br />
+                        ※詳細な手順等については地方公共団体情報システム機構（J-LIS）のページをご覧ください。<br />
+                        ※ 一部の店舗ではマイナンバーカード署名用パスワード初期化・再設定（「署名用電子証明書（6桁から16桁までの暗証番号」）だけが可能となっておりますので、ご利用に応じた手続きが出来るストアをこちらからご確認ください。
+                      </li>
+                    )}
                     <li>・<strong>マイナンバーカードセンター</strong>（<span className="underline text-red-600">事前予約</span>が必要です。）</li>
                     <li>・<strong>各区役所・支所のマイナンバーカード交付コーナー</strong>（<span className="underline text-red-600">事前予約</span>が必要です。京都市民の方でしたら、住所地に関わらずいずれの区役所・支所でも手続可能です。）</li>
                   </ul>
