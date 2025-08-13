@@ -480,6 +480,34 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                   </div>
                 );
               })()}
+
+              {/* 代理人の本人確認書類一覧表 */}
+              {answers.visitor_type === "proxy" || answers.cert_visitor_type === "proxy" ? (
+                <div className="mt-6">
+                  <div className="bg-white border border-gray-300 rounded-lg overflow-hidden">
+                    <table className="w-full border-collapse">
+                      <thead>
+                        <tr>
+                          <th colSpan={2} className="px-4 py-3 font-bold bg-gray-800 text-white text-center text-sm">
+                            本人確認書類一覧
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td className="px-4 py-3 text-xs text-gray-800 leading-relaxed">
+                            マイナンバーカード、住民基本台帳カード（顔写真付きに限る。）、運転免許証、
+                            運転経歴証明書（平成24年4月1日以降の交付年月日のものに限る。）、
+                            旅券（パスポート）、身体障害者手帳、精神障害者保健福祉手帳（顔写真付きに限る。）、
+                            療育手帳、在留カード（顔写真付きに限る。）、特別永住者証明書（顔写真付きに限る。）、
+                            一時庇護許可証、仮滞在許可証、官公署が発行する資格者証や免状（海技免状や電気工事士免状など） 等
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              ) : null}
             </CardContent>
           </Card>
 
