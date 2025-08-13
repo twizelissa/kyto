@@ -537,11 +537,11 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                         </div>
                       </div>
                       
-                      <p className="text-red-600 font-medium">※ご本人が必要事項を記入し、暗証番号を知られないよう封筒に封入・封緘したものを、代理人の方が手続きの際、お持ちください。封入・封緘されていない場合は受付できませんので、あらかじめご了承ください。</p>
+                      <p className="text-red-600">※ご本人が必要事項を記入し、暗証番号を知られないよう封筒に封入・封緘したものを、代理人の方が手続きの際、お持ちください。封入・封緘されていない場合は受付できませんので、あらかじめご了承ください。</p>
                       
                       <p className="text-red-600 mt-3">※転入届又は転居届の手続きを行うに当たり、後日に同一世帯員の方が電子証明書の発行等の手続きを行う場合（下記（例）参照）、又は同一世帯員以外の方に手続きを委任する場合は、照会書兼回答書が必要となりますので、マイナンバーカードセンターにお問合せください（電話：075－746－6855）。</p>
                       <div className="mt-2">
-                        <p className="font-medium text-red-600">例）</p>
+                        <p className="text-red-600">例）</p>
                         <ul className="space-y-1 ml-4 text-red-600">
                           <li>・転入届を提出した日にマイナンバーカードを忘れて後日手続きする場合</li>
                           <li>・転入届を提出した日に委任状がなく、後日の手続きとなった場合　など</li>
