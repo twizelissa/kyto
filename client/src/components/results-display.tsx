@@ -488,7 +488,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                     <table className="w-full border-collapse">
                       <thead>
                         <tr>
-                          <th colSpan={2} className="px-4 py-3 font-bold bg-gray-800 text-white text-center text-sm">
+                          <th colSpan={2} className="px-4 py-3 font-bold bg-kyoto-purple text-white text-center text-sm">
                             本人確認書類一覧
                           </th>
                         </tr>
