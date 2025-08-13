@@ -374,6 +374,10 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
             {answers.procedure === "card_lost" && answers.lost_situation === "found" && (
               <p className="text-sm text-red-600 mt-2">※一時停止解除を行うまではマイナンバーカードやマイナンバーカードに搭載されている電子証明書は利用できません。</p>
             )}
+            {/* カードの返納の場合の手数料説明 */}
+            {answers.procedure === "card_return" && (
+              <p className="text-sm text-red-600 mt-2">※自主的に返納された後のマイナンバーカードの再交付に当たっては手数料がかかります。</p>
+            )}
           </div>
 
 
