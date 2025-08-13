@@ -415,7 +415,7 @@ export interface RequiredItem {
 
 export const ITEMS: Record<string, RequiredItem> = {
   // 基本書類
-  "mynumber_card": {name: "マイナンバーカード本体", icon: "fas fa-id-card"},
+  "mynumber_card": {name: "マイナンバーカード", icon: "fas fa-id-card"},
   "notification_card": {name: "交付通知書（はがき）", icon: "fas fa-envelope"},
   "notification_card_proxy_other": {name: "交付通知書（はがき）\n・申請者ご本人が、裏面の「回答書」、「委任状」及び「暗証番号」の各欄をご記入ください。\n・暗証番号欄には目隠しシールを貼付してください。（貼り直しができませんのでご注意ください。）\n・封筒に入れて封緘後、代理人に預けてください。", icon: "fas fa-envelope"},
   "notification_card_proxy_75_over": {name: "交付通知書（はがき）\n・申請者ご本人が、裏面の「回答書」、「委任状」及び「暗証番号」の各欄をご記入ください。\n・委任状には外出困難である旨を記載してください。\n・暗証番号欄には目隠しシールを貼付してください。（貼り直しができませんのでご注意ください。）\n・封筒に入れて封緘後、代理人に預けてください。", icon: "fas fa-envelope"},

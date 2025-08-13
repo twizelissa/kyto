@@ -323,47 +323,17 @@ function resolveCertificateItems(answers: Answer): string[] {
 function resolvePinChangeItems(answers: Answer): string[] {
   const items: string[] = [];
   
-  // 基本必要書類（全員共通）
-  items.push("mynumber_card");
-  items.push("identity_document_ab");
-  
-  // 本人の場合は基本書類のみ
+  // 本人の場合の必要書類
   if (answers.pin_visitor_type === "self") {
+    items.push("mynumber_card");
+    items.push("identity_document_ab");
     return Array.from(new Set(items));
   }
   
-  // 代理人の場合の追加書類
+  // 代理人の場合は後で実装予定
   if (answers.pin_visitor_type === "proxy") {
-    // 代理人の本人確認書類
-    items.push("pin_proxy_identity_document");
-    
-    // 代理人理由による追加書類
-    if (answers.pin_proxy_reason) {
-      switch (answers.pin_proxy_reason) {
-        case "adult_guardian":
-          items.push("pin_adult_guardian_cert");
-          break;
-        case "conservatee":
-          items.push("pin_conservatee_cert");
-          break;
-        case "assisted_person":
-          items.push("pin_assisted_person_cert");
-          break;
-        case "voluntary_guardian":
-          items.push("pin_voluntary_guardian_cert");
-          break;
-        case "under_15":
-          // 15歳未満かつ非同居かつ本籍が京都市以外の場合
-          if (answers.pin_cohabitation_status === "not_cohabiting" && answers.pin_koseki_location === "other") {
-            items.push("pin_family_register_under_15");
-          }
-          break;
-        case "voluntary_proxy":
-          // 任意代理人の場合は照会書兼回答書が必要
-          items.push("pin_inquiry_response_voluntary");
-          break;
-      }
-    }
+    // 代理人の書類は別途指示待ち
+    return [];
   }
   
   return Array.from(new Set(items));
