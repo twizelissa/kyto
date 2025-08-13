@@ -370,6 +370,10 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                 <p className="text-sm text-red-600">※引越しの場合は<span className="underline text-yellow-600">こちら</span>もご覧ください。</p>
               </div>
             )}
+            {/* カードの発見の場合の一時停止解除説明 */}
+            {answers.procedure === "card_lost" && answers.lost_situation === "found" && (
+              <p className="text-sm text-red-600 mt-2">※一時停止解除を行うまではマイナンバーカードやマイナンバーカードに搭載されている電子証明書は利用できません。</p>
+            )}
           </div>
 
 
