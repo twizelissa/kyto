@@ -334,6 +334,28 @@ function resolvePinChangeItems(answers: Answer): string[] {
   if (answers.pin_visitor_type === "proxy") {
     items.push("pin_applicant_mynumber_card");
     items.push("pin_proxy_identity_options");
+    
+    // 代理人理由による追加書類
+    if (answers.pin_proxy_reason) {
+      switch (answers.pin_proxy_reason) {
+        case "adult_guardian":
+          items.push("pin_adult_guardian_cert");
+          break;
+        case "conservatee":
+          items.push("pin_conservatee_cert");
+          break;
+        case "assisted_person":
+          items.push("pin_assisted_person_cert");
+          break;
+        case "voluntary_guardian":
+          items.push("pin_voluntary_guardian_cert");
+          break;
+        case "voluntary_proxy":
+          items.push("pin_inquiry_response_with_instructions");
+          break;
+      }
+    }
+    
     return Array.from(new Set(items));
   }
   

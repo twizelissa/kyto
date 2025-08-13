@@ -438,6 +438,7 @@ export const ITEMS: Record<string, RequiredItem> = {
   "pin_voluntary_guardian_cert": {name: "任意後見人に関する登記事項証明書、代理権目録", icon: "fas fa-file-certificate"},
   "pin_family_register_under_15": {name: "戸籍全部事項証明書", icon: "fas fa-file-alt"},
   "pin_inquiry_response_voluntary": {name: "照会書兼回答書（事前に京都市マイナンバーカードセンターから郵送されるもの）", icon: "fas fa-envelope-open"},
+  "pin_inquiry_response_with_instructions": {name: "照会書兼回答書\n※申請者ご本人が必要事項を記入してください。\n※照会書兼回答書は封筒に入れ、封緘のうえご持参ください。\n※照会書兼回答書にご記入いただいた暗証番号は、必ず控えておいてください。", icon: "fas fa-envelope-open"},
   "pin_applicant_mynumber_card": {name: "ご本人のマイナンバーカード", icon: "fas fa-id-card"},
   "pin_proxy_identity_options": {name: "代理人の方の本人確認書類（下記のいずれかのパターン）\n・マイナンバーカード（暗証番号照合ができる場合）1点\n・A欄2点\n・A欄1点＋B欄1点", icon: "fas fa-user-friends"},
   
