@@ -353,6 +353,12 @@ function resolvePinChangeItems(answers: Answer): string[] {
         case "voluntary_proxy":
           items.push("pin_inquiry_response_with_instructions");
           break;
+        case "under_15":
+          // 15歳未満かつ非同居かつ本籍が京都市以外の場合
+          if (answers.pin_cohabitation_status === "not_cohabiting" && answers.pin_koseki_location === "other") {
+            items.push("pin_family_register_under_15");
+          }
+          break;
       }
     }
     
