@@ -385,8 +385,12 @@ function resolveInfoChangeItems(answers: Answer): string[] {
     return Array.from(new Set(items));
   }
   
-  // 代理人の場合は後続の実装で追加書類を処理
-  // TODO: 代理人の場合の追加書類実装
+  // 代理人の場合の追加書類
+  if (answers.info_visitor_type === "proxy") {
+    items.push("info_proxy_identity_document");
+    
+    // TODO: 代理人理由による追加書類実装（今後追加）
+  }
   
   return Array.from(new Set(items));
 }

@@ -517,5 +517,6 @@ export const ITEMS: Record<string, RequiredItem> = {
   "cert_inquiry_response_renewal": {name: "照会書兼回答書（有効期限のお知らせに関する通知書に同封）\n※申請者ご本人が必要事項をご記入のうえ、封筒に入れて封緘し、任意代理人に預けてください。\n※照会書兼回答書に記入する暗証番号は、カードお受取時に設定した暗証番号を記入してください。\n※暗証番号を忘れた場合、住所変更などカードの記載事項に変更がある場合、照会書兼回答書の有効期限を過ぎている場合は更新手続をすることができませんので、事前に必ず京都市マイナンバーカードセンターにお問合せください。", icon: "fas fa-envelope-open"},
   
   // 住所・氏名等の変更用書類
-  "info_applicant_mynumber_card": {name: "ご本人のマイナンバーカード", icon: "fas fa-id-card"}
+  "info_applicant_mynumber_card": {name: "ご本人のマイナンバーカード", icon: "fas fa-id-card"},
+  "info_proxy_identity_document": {name: "代理人の本人確認書類（マイナンバーカード、運転免許証、旅券等）", icon: "fas fa-user-friends"}
 };
