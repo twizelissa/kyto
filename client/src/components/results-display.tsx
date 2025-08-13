@@ -19,6 +19,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
   const [showLostConfirmation, setShowLostConfirmation] = useState(
     answers.procedure === "card_lost" && answers.lost_situation === "lost"
   );
+  const [procedureCompleted, setProcedureCompleted] = useState(false);
   
   // Check if this is an application method result
   const isApplicationMethodResult = answers.application_method;
@@ -342,14 +343,35 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
               <p>あわせて，警察に遺失届を出していただき、<span className="text-red-600 font-bold">受理番号</span>を控えてください。<br />※マイナンバーカードの再発行手続きの際，警察署で発行される受理番号の控えが必要となります。</p>
             </div>
             
-            {/* 確認後に通常結果画面に進むボタン */}
-            <div className="mt-6 text-center">
-              <Button
-                onClick={() => setShowLostConfirmation(false)}
-                className="bg-kyoto-purple text-white hover:bg-kyoto-purple-dark px-6 py-2 rounded-lg"
-              >
-                再発行手続きの必要書類を確認する
-              </Button>
+            {/* 手続き完了確認チェックボックス */}
+            <div className="mt-6 space-y-4">
+              <div className="flex items-center space-x-3">
+                <Checkbox
+                  id="procedure-completed"
+                  checked={procedureCompleted}
+                  onCheckedChange={(checked) => setProcedureCompleted(checked as boolean)}
+                />
+                <label
+                  htmlFor="procedure-completed"
+                  className="text-sm text-black leading-relaxed cursor-pointer"
+                >
+                  手続きを完了した
+                </label>
+              </div>
+              
+              <div className="text-center">
+                <Button
+                  onClick={() => setShowLostConfirmation(false)}
+                  disabled={!procedureCompleted}
+                  className={`px-6 py-2 rounded-lg ${
+                    procedureCompleted 
+                      ? 'bg-kyoto-purple text-white hover:bg-kyoto-purple-dark' 
+                      : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                  }`}
+                >
+                  次へ進む
+                </Button>
+              </div>
             </div>
           </CardContent>
         </Card>
