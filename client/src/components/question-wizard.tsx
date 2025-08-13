@@ -464,7 +464,7 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
               {question.id === "pin_proxy_reason" && (
                 <div className="mt-6">
                   <div className="text-sm text-red-600 leading-relaxed">
-                    <p>※任意代理人が手続きをする場合、申請手続き後、本人宛てに郵送した「回答書」の提出が必要となります。窓口へ2回お越しいただくこととなり、お手続きに数日かかりますので、ご了承ください。</p>
+                    <p>※任意代理人が手続きをする場合、暗証番号を初期化・再設定に必要な書類（照会書兼回答書）をご本人あてに郵送し、代理人の方にご持参いただく必要がありますので、事前に京都市マイナンバーカードセンター（TEL　075－746－6855）までお問合せください。</p>
                   </div>
                 </div>
               )}
