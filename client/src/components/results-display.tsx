@@ -770,7 +770,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               onClick={() => printResults()}
-              className="bg-purple-100 hover:bg-purple-200 text-purple-800 border border-purple-300 px-6 py-3 rounded-lg font-semibold text-center justify-center shadow transition-colors"
+              className="bg-white hover:bg-gray-50 text-gray-700 border border-gray-300 px-6 py-3 rounded-lg font-semibold text-center justify-center shadow transition-colors"
             >
               <i className="fas fa-print mr-2"></i>印刷
             </Button>
@@ -782,7 +782,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
             </Button>
             <Button
               onClick={() => setShowQRCode(true)}
-              className="bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-300 px-6 py-3 rounded-lg font-semibold text-center justify-center shadow transition-colors"
+              className="bg-white hover:bg-gray-50 text-gray-700 border border-gray-300 px-6 py-3 rounded-lg font-semibold text-center justify-center shadow transition-colors"
             >
               <i className="fas fa-share mr-2"></i>共有
             </Button>
