@@ -31,6 +31,11 @@ export function resolveItems(answers: Answer): string[] {
     return resolvePinChangeItems(answers);
   }
   
+  // For address/name change procedures
+  if (answers.procedure === "info_change") {
+    return resolveInfoChangeItems(answers);
+  }
+  
   // For other procedures that might need document lists
   const requiredItems: string[] = [];
   
@@ -364,6 +369,24 @@ function resolvePinChangeItems(answers: Answer): string[] {
     
     return Array.from(new Set(items));
   }
+  
+  return Array.from(new Set(items));
+}
+
+// 住所・氏名等の変更の必要書類解決
+function resolveInfoChangeItems(answers: Answer): string[] {
+  const items: string[] = [];
+  
+  // 必ず必要：ご本人のマイナンバーカード
+  items.push("info_applicant_mynumber_card");
+  
+  // 本人の場合はマイナンバーカードのみ
+  if (answers.info_visitor_type === "self") {
+    return Array.from(new Set(items));
+  }
+  
+  // 代理人の場合は後続の実装で追加書類を処理
+  // TODO: 代理人の場合の追加書類実装
   
   return Array.from(new Set(items));
 }
