@@ -289,13 +289,34 @@ export const QUESTIONS: Question[] = [
     "showWhen": (answers) => answers.procedure === "pin_change"
   },
   {
+    "id": "pin_memory_status",
+    "text": "暗証番号を覚えていますか？",
+    "options": [
+      {"v": "remember", "label": "覚えている", "icon": "fas fa-check"},
+      {"v": "forgot", "label": "忘れた", "icon": "fas fa-times"}
+    ],
+    "showWhen": (answers) => answers.procedure === "pin_change" && answers.pin_type === "reset"
+  },
+  {
     "id": "pin_visitor_type",
     "text": "手続きに来られる方をお選びください",
     "options": [
       {"v": "self", "label": "本人", "icon": "fas fa-user"},
       {"v": "proxy", "label": "代理人", "icon": "fas fa-user-friends"}
     ],
-    "showWhen": (answers) => answers.procedure === "pin_change" && Boolean(answers.pin_type)
+    "showWhen": (answers) => {
+      if (answers.procedure !== "pin_change") return false;
+      
+      // 変更の場合は直接表示
+      if (answers.pin_type === "change") return true;
+      
+      // 初期化の場合は暗証番号記憶状況質問に答えた後に表示
+      if (answers.pin_type === "reset") {
+        return Boolean(answers.pin_memory_status);
+      }
+      
+      return false;
+    }
   },
   {
     "id": "pin_proxy_reason",
