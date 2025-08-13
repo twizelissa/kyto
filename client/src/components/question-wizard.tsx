@@ -460,12 +460,11 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
                 </div>
               )}
               
-              {/* Show PIN change/reset notice for visitor type question */}
-              {question.id === "pin_visitor_type" && (
+              {/* Show PIN proxy reason notice */}
+              {question.id === "pin_proxy_reason" && (
                 <div className="mt-6">
                   <div className="text-sm text-red-600 leading-relaxed">
-                    <p className="mb-2">※本人が窓口に来ることができない場合は、暗証番号の変更・初期化に数日かかります。</p>
-                    <p>※申請手続き後、本人宛てに郵送した「回答書」の提出が必要となるため、窓口へ2回お越しいただくこととなります。</p>
+                    <p>※任意代理人が手続きをする場合、申請手続き後、本人宛てに郵送した「回答書」の提出が必要となります。窓口へ2回お越しいただくこととなり、お手続きに数日かかりますので、ご了承ください。</p>
                   </div>
                 </div>
               )}
