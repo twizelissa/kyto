@@ -262,7 +262,7 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
           {question.id === "lost_procedures" ? (
             <>
               <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-black mb-6">紛失手続きについてご確認</h2>
-              <div className="bg-kyoto-purple-light border border-purple-200 rounded-lg p-4 sm:p-6 mb-6">
+              <div className="bg-red-50 border border-red-200 rounded-lg p-4 sm:p-6 mb-6">
                 <div className="text-gray-800 leading-relaxed">
                   <p className="mb-4">
                     マイナンバーカードを紛失した時は，マイナンバーカード一時停止のお手続きが必要となりますので，個人番号カードコールセンター（TEL0120－95－0178）へご連絡をお願いします。
