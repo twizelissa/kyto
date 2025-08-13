@@ -382,6 +382,9 @@ export const QUESTIONS: Question[] = [
     "showWhen": (answers) => {
       if (answers.procedure !== "card_issuance" || answers.visitor_type !== "proxy") return false;
       
+      // 照会書兼回答書を持っている場合は表示しない
+      if (answers.inquiry_response_confirmed === "true") return false;
+      
       const reason = answers.applicant_age === "under_15" ? answers.guardian_reason : answers.guardian_reason_15_over;
       
       // 対象となる理由の一覧
