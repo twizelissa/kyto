@@ -452,7 +452,15 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
                   >
                     <div className="flex items-center space-x-3">
                       <i className={`${option.icon} text-kyoto-purple text-xl`}></i>
-                      <span className="font-medium text-black">{option.label}</span>
+                      <span className="font-medium text-black">
+                        {option.label.includes('任意代理人※') ? (
+                          <>
+                            任意代理人<span className="text-red-600">※</span>
+                          </>
+                        ) : (
+                          option.label
+                        )}
+                      </span>
                     </div>
                   </div>
                 ))}

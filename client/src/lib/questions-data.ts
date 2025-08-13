@@ -349,7 +349,7 @@ export const QUESTIONS: Question[] = [
       {"v": "assisted_person", "label": "被補助人", "icon": "fas fa-shield-alt"},
       {"v": "voluntary_guardian", "label": "任意被後見人", "icon": "fas fa-shield-alt"},
       {"v": "under_15", "label": "15歳未満", "icon": "fas fa-child"},
-      {"v": "voluntary_proxy", "label": "任意代理人", "icon": "fas fa-user-friends"},
+      {"v": "voluntary_proxy", "label": "任意代理人※", "icon": "fas fa-user-friends"},
       {"v": "same_household", "label": "同一世帯員（転入届又は転居届と併せて行う手続き）", "icon": "fas fa-home"}
     ],
     "showWhen": (answers) => answers.procedure === "info_change" && answers.info_visitor_type === "proxy"
