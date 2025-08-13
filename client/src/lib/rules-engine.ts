@@ -404,7 +404,13 @@ function resolveInfoChangeItems(answers: Answer): string[] {
         case "voluntary_guardian":
           items.push("info_voluntary_guardian_cert");
           break;
-        // TODO: その他の理由（15歳未満、任意代理人、同一世帯員）の実装
+        case "under_15":
+          // 15歳未満かつ非同居かつ本籍が京都市以外の場合
+          if (answers.info_cohabitation_status === "not_cohabiting" && answers.info_koseki_location === "other") {
+            items.push("info_family_register_under_15");
+          }
+          break;
+        // TODO: その他の理由（任意代理人、同一世帯員）の実装
       }
     }
   }
