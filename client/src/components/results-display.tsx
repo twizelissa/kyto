@@ -673,7 +673,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                 ) : answers.procedure === "card_lost" && answers.lost_situation === "found" ? (
                   /* カードの発見の場合はマイナンバーカードセンターのみ */
                   <div>
-                    <p>・<strong>マイナンバーカードセンター</strong>（<span className="underline text-red-600">事前予約</span>が必要です。）</p>
+                    <p>マイナンバーカードセンター（<span className="underline text-red-600">事前予約</span>が必要です。）</p>
                   </div>
                 ) : (
                   <>
