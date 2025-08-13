@@ -369,6 +369,32 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
             </CardContent>
           </Card>
         )}
+        
+        {/* 予約方法について（紛失した場合のみ表示） */}
+        {answers.lost_situation === "lost" && (
+          <Card className="shadow-lg border-gray-200 mb-8">
+            <CardContent className="p-2 sm:p-6">
+              <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
+                <i className="fas fa-calendar-alt mr-2"></i>予約方法について
+              </h3>
+              <div className="space-y-4 text-sm text-gray-800 leading-relaxed">
+                <p>交付希望日から祝休日・年末年始を除いた概ね<span className="text-red-600 font-bold">5日前</span>に予約を締め切ります。</p>
+                
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                  <p className="font-semibold mb-2 text-blue-600">＜下記のいずれかの方法で予約＞</p>
+                  <ul className="space-y-2">
+                    <li>・<strong>インターネット受付</strong>（24時間　年中無休）：<a href="https://mncard.city.kyoto.lg.jp/mynumpo-kyoto-u/?method=all" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">https://mncard.city.kyoto.lg.jp/mynumpo-kyoto-u/?method=all</a></li>
+                    <li>・<strong>電話受付</strong>（平日の午前9時～午後5時）：075－777－6201</li>
+                  </ul>
+                </div>
+                
+                <div className="space-y-2">
+                  <p>※　区役所・支所では予約を受け付けておりません。</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        )}
         </>
       ) : (
         <>
