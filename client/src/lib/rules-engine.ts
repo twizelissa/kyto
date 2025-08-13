@@ -444,8 +444,20 @@ function resolveInfoChangeItems(answers: Answer): string[] {
 function resolveCardLossItems(answers: Answer): string[] {
   const items: string[] = [];
   
-  // 紛失の場合は書類ではなく手続き案内を表示するため、空の配列を返す
+  // 紛失の場合の必要書類を追加
   if (answers.lost_situation === "lost") {
+    // 紛失手続き専用書類
+    items.push("lost_report_form_document");
+    items.push("police_receipt_number");
+    
+    // 基本的な必要書類を追加（再発行のため）
+    const basicItems = resolveIssuanceItems({
+      ...answers,
+      procedure: "card_issuance",
+    });
+    
+    items.push(...basicItems);
+    
     return items;
   }
   
