@@ -468,6 +468,15 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
                   </div>
                 </div>
               )}
+              
+              {/* Show info change proxy reason notice */}
+              {question.id === "info_proxy_reason" && (
+                <div className="mt-6">
+                  <div className="text-sm text-red-600 leading-relaxed">
+                    <p>※任意代理人が手続きをする場合、窓口での申請後にご本人宛に、マイナンバーカードの記載事項変更に関する文書照会書を送付します。任意代理人の方は、改めて照会書等を窓口にお持ちいただき、手続きをする必要がありますので、ご注意ください。</p>
+                  </div>
+                </div>
+              )}
             </>
           )}
         </CardContent>
