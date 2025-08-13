@@ -518,5 +518,9 @@ export const ITEMS: Record<string, RequiredItem> = {
   
   // 住所・氏名等の変更用書類
   "info_applicant_mynumber_card": {name: "ご本人のマイナンバーカード", icon: "fas fa-id-card"},
-  "info_proxy_identity_document": {name: "代理人の本人確認書類（マイナンバーカード、運転免許証、旅券等）", icon: "fas fa-user-friends"}
+  "info_proxy_identity_document": {name: "代理人の本人確認書類（マイナンバーカード、運転免許証、旅券等）", icon: "fas fa-user-friends"},
+  "info_adult_guardian_cert": {name: "成年後見人に関する登記事項証明書", icon: "fas fa-file-certificate"},
+  "info_conservatee_cert": {name: "保佐人に関する登記事項証明書、代理行為目録", icon: "fas fa-file-certificate"},
+  "info_assisted_person_cert": {name: "補助人に関する登記事項証明書、代理行為目録", icon: "fas fa-file-certificate"},
+  "info_voluntary_guardian_cert": {name: "任意後見人に関する登記事項証明書、代理権目録", icon: "fas fa-file-certificate"}
 };

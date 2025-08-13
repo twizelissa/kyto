@@ -389,7 +389,24 @@ function resolveInfoChangeItems(answers: Answer): string[] {
   if (answers.info_visitor_type === "proxy") {
     items.push("info_proxy_identity_document");
     
-    // TODO: 代理人理由による追加書類実装（今後追加）
+    // 代理人理由による追加書類
+    if (answers.info_proxy_reason) {
+      switch (answers.info_proxy_reason) {
+        case "adult_guardian":
+          items.push("info_adult_guardian_cert");
+          break;
+        case "conservatee":
+          items.push("info_conservatee_cert");
+          break;
+        case "assisted_person":
+          items.push("info_assisted_person_cert");
+          break;
+        case "voluntary_guardian":
+          items.push("info_voluntary_guardian_cert");
+          break;
+        // TODO: その他の理由（15歳未満、任意代理人、同一世帯員）の実装
+      }
+    }
   }
   
   return Array.from(new Set(items));
