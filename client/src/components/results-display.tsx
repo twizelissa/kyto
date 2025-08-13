@@ -324,7 +324,8 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
           </CardContent>
         </Card>
       ) : answers.procedure === "card_lost" ? (
-        /* カードの紛失手続きの特別表示 */
+        <>
+        {/* カードの紛失手続きの特別表示 */}
         <Card className="rounded-xl shadow-lg mb-6 bg-white border-gray-200">
           <CardContent className="p-2 sm:p-6">
             {answers.lost_situation === "lost" && (
@@ -340,15 +341,6 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                 <p>あわせて，警察に遺失届を出していただき、受理番号を控えてください。その後，<span className="text-yellow-600 underline font-medium">京都市マイナンバーカードセンター</span>へ届け出をしていただき，マイナンバーカードの再発行のお手続きをおとりください。</p>
                 
                 <p className="text-sm font-normal text-black">※マイナンバーカードの再発行手続きの際，警察署で発行される受理番号の控えが必要となります。</p>
-                
-                <div className="bg-kyoto-purple-light border border-purple-200 rounded-lg p-4 mt-4">
-                  <h4 className="font-bold mb-3 text-kyoto-purple-dark flex items-center">
-                    <i className="fas fa-map-marker-alt mr-2"></i>手続場所について
-                  </h4>
-                  <div className="text-sm space-y-2">
-                    <p>マイナンバーカードの再発行手続きは、<span className="text-yellow-600 underline font-medium">京都市マイナンバーカードセンター</span>で行います。</p>
-                  </div>
-                </div>
               </div>
             )}
             
@@ -361,6 +353,23 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
             )}
           </CardContent>
         </Card>
+        
+        {/* 手続場所について（紛失した場合のみ表示） */}
+        {answers.lost_situation === "lost" && (
+          <Card className="shadow-lg border-gray-200 mb-8">
+            <CardContent className="p-2 sm:p-6">
+              <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
+                <i className="fas fa-map-marker-alt mr-2"></i>手続場所について
+              </h3>
+              <div className="space-y-4 text-sm text-gray-800 leading-relaxed">
+                <div>
+                  <p>マイナンバーカードの再発行手続きは、<span className="text-yellow-600 underline font-medium">京都市マイナンバーカードセンター</span>で行います。</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+        </>
       ) : (
         <>
           <div className="text-center mb-8">
