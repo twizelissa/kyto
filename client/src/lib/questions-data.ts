@@ -326,7 +326,7 @@ export const QUESTIONS: Question[] = [
       {"v": "kyoto_city", "label": "京都市内", "icon": "fas fa-map-marker-alt"},
       {"v": "other", "label": "それ以外", "icon": "fas fa-map"}
     ],
-    "showWhen": (answers) => answers.procedure === "pin_change" && answers.pin_cohabitation_status === "not_cohabiting"
+    "showWhen": (answers) => answers.procedure === "pin_change" && answers.pin_proxy_reason === "under_15" && answers.pin_cohabitation_status === "not_cohabiting"
   },
 
   
