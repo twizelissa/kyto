@@ -22,7 +22,8 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
     // Find the last answered question
     let lastAnsweredIndex = -1;
     for (let i = relevantQuestions.length - 1; i >= 0; i--) {
-      if (initialAnswers[relevantQuestions[i].id]) {
+      const question = relevantQuestions[i];
+      if (question && question.id && initialAnswers[question.id]) {
         lastAnsweredIndex = i;
         break;
       }
@@ -61,6 +62,21 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
   );
 
   const question = relevantQuestions[currentQuestion];
+  
+  // If no question found, handle gracefully
+  if (!question) {
+    console.warn('No question found at index:', currentQuestion, 'Relevant questions:', relevantQuestions.length);
+    // Try to find the first relevant question or complete the flow
+    if (relevantQuestions.length === 0) {
+      // No relevant questions, complete the flow
+      onComplete(answers);
+      return null;
+    } else {
+      // Reset to first question
+      setCurrentQuestion(0);
+      return null;
+    }
+  }
   
   // Calculate maximum possible questions for current flow
   // Calculate the total number of questions for the current flow
