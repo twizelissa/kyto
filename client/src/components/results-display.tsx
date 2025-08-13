@@ -339,9 +339,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
               
               <p>へご連絡をお願いします。</p>
               
-              <p>あわせて，警察に遺失届を出していただき、受理番号を控えてください。</p>
-              
-              <p className="text-sm font-normal text-black">※マイナンバーカードの再発行手続きの際，警察署で発行される受理番号の控えが必要となります。</p>
+              <p>あわせて，警察に遺失届を出していただき、受理番号を控えてください。※マイナンバーカードの再発行手続きの際，警察署で発行される受理番号の控えが必要となります。</p>
             </div>
             
             {/* 確認後に通常結果画面に進むボタン */}
