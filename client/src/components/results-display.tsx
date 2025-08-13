@@ -337,7 +337,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                 
                 <p>へご連絡をお願いします。</p>
                 
-                <p>あわせて，警察に遺失届を出していただき、受理番号を控えてください。その後，京都市マイナンバーカードセンターへ届け出をしていただき，マイナンバーカードの再発行のお手続きをおとりください。</p>
+                <p>あわせて，警察に遺失届を出していただき、受理番号を控えてください。その後，<span className="text-yellow-600 underline font-medium">京都市マイナンバーカードセンター</span>へ届け出をしていただき，マイナンバーカードの再発行のお手続きをおとりください。</p>
                 
                 <p className="text-sm font-normal text-black">※マイナンバーカードの再発行手続きの際，警察署で発行される受理番号の控えが必要となります。</p>
               </div>
