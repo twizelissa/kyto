@@ -410,7 +410,11 @@ function resolveInfoChangeItems(answers: Answer): string[] {
             items.push("info_family_register_under_15");
           }
           break;
-        // TODO: その他の理由（任意代理人、同一世帯員）の実装
+        case "same_household":
+          // 同一世帯員（転入届又は転居届と併せて行う手続き）
+          items.push("info_family_register_same_household");
+          break;
+        // TODO: その他の理由（任意代理人）の実装
       }
     }
   }
