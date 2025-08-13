@@ -164,10 +164,24 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
   };
 
   const handleLostProceedNext = () => {
-    if (lostCheckboxes.callCenter && lostCheckboxes.policeReport && lostCheckboxes.centerReport) {
+    if (lostCheckboxes.callCenter) {
       const newAnswers = { ...answers, lost_check_complete: "true" };
       setAnswers(newAnswers);
-      setCurrentQuestion(currentQuestion + 1);
+      
+      // Auto-advance to next question or complete
+      setTimeout(() => {
+        const updatedRelevantQuestions = QUESTIONS.filter(q => 
+          !q.showWhen || q.showWhen(newAnswers)
+        );
+        
+        if (currentQuestion < updatedRelevantQuestions.length - 1) {
+          setCurrentQuestion(currentQuestion + 1);
+          const nextQuestion = updatedRelevantQuestions[currentQuestion + 1];
+          setSelectedOption(nextQuestion?.id ? newAnswers[nextQuestion.id] || "" : "");
+        } else {
+          onComplete(newAnswers);
+        }
+      }, 300);
     }
   };
 
