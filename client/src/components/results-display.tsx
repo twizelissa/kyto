@@ -16,6 +16,9 @@ interface ResultsDisplayProps {
 export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDisplayProps) {
   const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
   const [showQRCode, setShowQRCode] = useState(false);
+  const [showLostConfirmation, setShowLostConfirmation] = useState(
+    answers.procedure === "card_lost" && answers.lost_situation === "lost"
+  );
   
   // Check if this is an application method result
   const isApplicationMethodResult = answers.application_method;
@@ -323,8 +326,8 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
             </div>
           </CardContent>
         </Card>
-      ) : answers.procedure === "card_lost" && answers.lost_situation === "lost" ? (
-        /* カードの紛失手続きの特別表示 */
+      ) : showLostConfirmation ? (
+        /* カードの紛失手続きの確認画面 */
         <Card className="rounded-xl shadow-lg mb-6 bg-white border-gray-200">
           <CardContent className="p-2 sm:p-6">
             <div className="text-sm text-black leading-relaxed space-y-4">
@@ -346,6 +349,16 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
               </div>
               
               <p className="text-sm font-normal text-black">※マイナンバーカードの再発行手続きの際，警察署で発行される受理番号の控えが必要となります。</p>
+            </div>
+            
+            {/* 確認後に通常結果画面に進むボタン */}
+            <div className="mt-6 text-center">
+              <Button
+                onClick={() => setShowLostConfirmation(false)}
+                className="bg-kyoto-purple text-white hover:bg-kyoto-purple-dark px-6 py-2 rounded-lg"
+              >
+                再発行手続きの必要書類を確認する
+              </Button>
             </div>
           </CardContent>
         </Card>
@@ -768,21 +781,23 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
 
 
 
-      {/* Common action buttons for all results */}
-      <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-        <Button
-          onClick={onBack}
-          className="kyoto-button px-4 py-2 rounded-lg font-semibold text-center justify-center"
-        >
-          <i className="fas fa-chevron-left mr-2"></i>前のページへ戻る
-        </Button>
-        <Button
-          onClick={onRestart}
-          className="kyoto-button px-4 py-2 rounded-lg font-semibold text-center justify-center"
-        >
-          <i className="fas fa-redo mr-2"></i>最初から
-        </Button>
-      </div>
+      {/* Common action buttons for all results (except lost confirmation screen) */}
+      {!showLostConfirmation && (
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+          <Button
+            onClick={onBack}
+            className="kyoto-button px-4 py-2 rounded-lg font-semibold text-center justify-center"
+          >
+            <i className="fas fa-chevron-left mr-2"></i>前のページへ戻る
+          </Button>
+          <Button
+            onClick={onRestart}
+            className="kyoto-button px-4 py-2 rounded-lg font-semibold text-center justify-center"
+          >
+            <i className="fas fa-redo mr-2"></i>最初から
+          </Button>
+        </div>
+      )}
       
       {showQRCode && (
         <QRCodeDisplay 
