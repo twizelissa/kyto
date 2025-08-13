@@ -261,54 +261,24 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
         <CardContent className="space-y-6">
           {question.id === "lost_procedures" ? (
             <>
-              <div className="text-sm text-black leading-relaxed space-y-4 mb-6">
-                <p>マイナンバーカードを紛失した時は，マイナンバーカード一時停止のお手続きが必要となりますので，</p>
-                
-                <div className="border border-red-500 rounded-lg p-3 bg-red-50 text-center">
-                  <p className="font-normal text-red-600 text-base">個人番号カードコールセンター（TEL 0120-95-0178）</p>
-                </div>
-                
-                <p>へご連絡をお願いします。</p>
-                
-                <p>あわせて，警察に遺失届を出していただき、<span className="text-red-600 font-bold">受理番号</span>を控えてください。<br />※マイナンバーカードの再発行手続きの際，警察署で発行される受理番号の控えが必要となります。</p>
+              <div className="text-sm leading-relaxed space-y-4 mb-6">
+                <p className="text-red-600">マイナンバーカードを紛失した時は，マイナンバーカード一時停止のお手続きが必要となります。必ず、一時停止のお手続きが完了してから再発行へ進んでください。（「カードの紛失・紛失手続き後の発見」へ進んでください。）</p>
               </div>
               
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <Checkbox 
-                    id="callCenter"
+                    id="stopProcedureCompleted"
                     checked={lostCheckboxes.callCenter}
                     onCheckedChange={() => handleLostCheckboxChange('callCenter')}
                   />
-                  <label htmlFor="callCenter" className="text-sm font-medium text-gray-800">
-                    個人番号カードコールセンターへ連絡した
-                  </label>
-                </div>
-                
-                <div className="flex items-center space-x-3">
-                  <Checkbox 
-                    id="policeReport"
-                    checked={lostCheckboxes.policeReport}
-                    onCheckedChange={() => handleLostCheckboxChange('policeReport')}
-                  />
-                  <label htmlFor="policeReport" className="text-sm font-medium text-gray-800">
-                    警察に遺失届を出し、受理番号を控えている
-                  </label>
-                </div>
-                
-                <div className="flex items-center space-x-3">
-                  <Checkbox 
-                    id="centerReport"
-                    checked={lostCheckboxes.centerReport}
-                    onCheckedChange={() => handleLostCheckboxChange('centerReport')}
-                  />
-                  <label htmlFor="centerReport" className="text-sm font-medium text-gray-800">
-                    京都市マイナンバーカードセンターへ届け出た
+                  <label htmlFor="stopProcedureCompleted" className="text-sm font-medium text-gray-800">
+                    一時停止手続きを完了した
                   </label>
                 </div>
               </div>
               
-              {lostCheckboxes.callCenter && lostCheckboxes.policeReport && lostCheckboxes.centerReport && (
+              {lostCheckboxes.callCenter && (
                 <Button 
                   onClick={handleLostProceedNext}
                   className="kyoto-button w-full mt-4 text-center justify-center"
