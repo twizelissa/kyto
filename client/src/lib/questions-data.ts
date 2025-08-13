@@ -328,43 +328,7 @@ export const QUESTIONS: Question[] = [
     ],
     "showWhen": (answers) => answers.procedure === "pin_change" && answers.pin_cohabitation_status === "not_cohabiting"
   },
-  {
-    "id": "pin_knowledge",
-    "text": "住民基本台帳用4桁の暗証番号がわかりますか",
-    "options": [
-      {"v": "know", "label": "わかる", "icon": "fas fa-check"},
-      {"v": "unknown_or_change_only", "label": "わからない（又は暗証番号の変更のみ）", "icon": "fas fa-question"}
-    ],
-    "showWhen": (answers) => {
-      if (answers.procedure !== "pin_change") return false;
-      
-      // 本人の場合
-      if (answers.pin_visitor_type === "self") return true;
-      
-      // 代理人の場合
-      if (answers.pin_visitor_type === "proxy") {
-        const reason = answers.pin_proxy_reason;
-        
-        // 成年被後見人、被保佐人、被補助人、任意被後見人、任意代理人の場合
-        if (reason === "adult_guardian" || reason === "conservatee" || 
-            reason === "assisted_person" || reason === "voluntary_guardian" || 
-            reason === "voluntary_proxy") {
-          return true;
-        }
-        
-        // 15歳未満の場合
-        if (reason === "under_15") {
-          // 同居の場合
-          if (answers.pin_cohabitation_status === "cohabiting") return true;
-          // 非同居で本籍地質問に答えた場合
-          if (answers.pin_cohabitation_status === "not_cohabiting" && 
-              answers.pin_koseki_location !== undefined) return true;
-        }
-      }
-      
-      return false;
-    }
-  },
+
   
   // 住所・氏名等の変更の質問
   {
