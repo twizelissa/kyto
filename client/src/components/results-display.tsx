@@ -340,6 +340,8 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                 {(answers.info_visitor_type === "self" || (answers.info_visitor_type === "proxy" && answers.info_proxy_reason !== "voluntary_proxy")) && (
                   <p className="text-sm text-red-600">※マイナンバーカードの交付時に設定した住民基本台帳用の暗証番号（4桁の数字）が必要になります。</p>
                 )}
+                <p className="text-sm text-red-600">※ご本人が届出と併せて代理で同一世帯員の方のマイナンバーカードの電子証明書の発行等を行う場合はこちらをご確認ください。</p>
+                <p className="text-sm text-red-600">※引越しの場合はこちらもご覧ください。</p>
               </div>
             )}
           </div>
