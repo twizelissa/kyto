@@ -323,6 +323,48 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
             </div>
           </CardContent>
         </Card>
+      ) : answers.procedure === "card_lost" ? (
+        /* カードの紛失手続きの特別表示 */
+        <Card className="rounded-xl shadow-lg mb-6" style={{backgroundColor: '#fee2e2', borderColor: '#fca5a5'}}>
+          <CardContent className="p-2 sm:p-6">
+            <div className="text-center mb-6">
+              <i className="fas fa-exclamation-triangle text-red-600 text-6xl mb-4"></i>
+              <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-red-800 mb-6">カードの紛失・紛失手続き後の発見</h2>
+            </div>
+            
+            {answers.lost_situation === "lost" && (
+              <div className="bg-white border border-red-300 rounded-lg p-4 mb-6">
+                <div className="text-sm text-gray-800 leading-relaxed space-y-4">
+                  <p>マイナンバーカードを紛失した時は，マイナンバーカード一時停止のお手続きが必要となりますので，</p>
+                  
+                  <div className="text-center bg-red-50 border border-red-200 rounded-lg p-4">
+                    <p className="font-bold text-red-800 text-lg">個人番号カードコールセンター（TEL 0120-95-0178）</p>
+                  </div>
+                  
+                  <p>へご連絡をお願いします。</p>
+                  
+                  <p>あわせて，警察に遺失届を出していただき、受理番号を控えてください。その後，京都市マイナンバーカードセンターへ届け出をしていただき，マイナンバーカードの再発行のお手続きをおとりください。</p>
+                  
+                  <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3">
+                    <p className="text-sm font-medium text-yellow-800">※マイナンバーカードの再発行手続きの際，警察署で発行される受理番号の控えが必要となります。</p>
+                  </div>
+                </div>
+              </div>
+            )}
+            
+            {answers.lost_situation === "found" && (
+              <div className="bg-white border border-red-300 rounded-lg p-4 mb-6">
+                <div className="text-sm text-gray-800 leading-relaxed space-y-4">
+                  <p>紛失したカードを発見された場合の手続きについては、京都市マイナンバーカードセンターにお問い合わせください。</p>
+                  
+                  <div className="text-center bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <p className="font-bold text-blue-800 text-lg">京都市マイナンバーカードセンター（TEL 075-746-6855）</p>
+                  </div>
+                </div>
+              </div>
+            )}
+          </CardContent>
+        </Card>
       ) : (
         <>
           <div className="text-center mb-8">
@@ -626,13 +668,14 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
             </CardContent>
           </Card>
 
-          {/* 交付場所/手続場所 */}
-          <Card className="shadow-lg border-gray-200 mb-8">
-            <CardContent className="p-2 sm:p-6">
-              <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
-                <i className="fas fa-map-marker-alt mr-2"></i>
-                {answers.procedure === "card_issuance" ? "交付場所について" : "手続場所について"}
-              </h3>
+          {/* 交付場所/手続場所（カードの紛失以外の場合のみ表示） */}
+          {answers.procedure !== "card_lost" && (
+            <Card className="shadow-lg border-gray-200 mb-8">
+              <CardContent className="p-2 sm:p-6">
+                <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
+                  <i className="fas fa-map-marker-alt mr-2"></i>
+                  {answers.procedure === "card_issuance" ? "交付場所について" : "手続場所について"}
+                </h3>
               <div className="space-y-4 text-sm text-gray-800 leading-relaxed">
                 {/* 住所・氏名等の変更の場合はシンプルな案内のみ */}
                 {answers.procedure === "info_change" ? (
@@ -665,9 +708,10 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
               </div>
             </CardContent>
           </Card>
+          )}
 
-          {/* 予約方法（住所・氏名等の変更以外の場合のみ表示） */}
-          {answers.procedure !== "info_change" && (
+          {/* 予約方法（住所・氏名等の変更及びカード紛失以外の場合のみ表示） */}
+          {answers.procedure !== "info_change" && answers.procedure !== "card_lost" && (
             <Card className="shadow-lg border-gray-200 mb-8">
               <CardContent className="p-2 sm:p-6">
                 <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">

@@ -36,6 +36,11 @@ export function resolveItems(answers: Answer): string[] {
     return resolveInfoChangeItems(answers);
   }
   
+  // For card loss procedures
+  if (answers.procedure === "card_lost") {
+    return resolveCardLossItems(answers);
+  }
+  
   // For other procedures that might need document lists
   const requiredItems: string[] = [];
   
@@ -428,6 +433,14 @@ function resolveInfoChangeItems(answers: Answer): string[] {
   }
   
   return Array.from(new Set(items));
+}
+
+// カードの紛失手続きの必要書類解決
+function resolveCardLossItems(answers: Answer): string[] {
+  const items: string[] = [];
+  
+  // 紛失の場合は書類ではなく手続き案内を表示するため、空の配列を返す
+  return items;
 }
 
 export function getItemDetails(itemKey: string) {
