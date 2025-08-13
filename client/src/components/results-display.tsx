@@ -548,6 +548,27 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                   </div>
                 </div>
               )}
+
+              {/* 委任状について（住所・氏名等の変更で任意代理人を選択した場合） */}
+              {answers.procedure === "info_change" && answers.info_proxy_reason === "voluntary_proxy" && (
+                <div className="mt-6">
+                  <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                    <h4 className="font-bold text-kyoto-purple-dark mb-3 flex items-center">
+                      <i className="fas fa-file-signature mr-2"></i>委任状について
+                    </h4>
+                    <div className="space-y-3 text-sm text-gray-800 leading-relaxed">
+                      <p>下記の委任状をお使いいただけます。</p>
+                      
+                      <div className="mt-2 mb-3">
+                        <div className="flex items-center text-sm">
+                          <i className="fas fa-file-pdf mr-2 text-red-600"></i>
+                          <span className="font-medium text-yellow-600 underline">委任状(PDF形式, 14.70KB)</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
             </CardContent>
           </Card>
 
