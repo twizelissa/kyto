@@ -278,14 +278,19 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
                 </div>
               </div>
               
-              {lostCheckboxes.callCenter && (
-                <Button 
+              <div className="text-center">
+                <Button
                   onClick={handleLostProceedNext}
-                  className="kyoto-button w-full mt-4 text-center justify-center"
+                  disabled={!lostCheckboxes.callCenter}
+                  className={`px-6 py-2 rounded-lg ${
+                    lostCheckboxes.callCenter 
+                      ? 'bg-kyoto-purple text-white hover:bg-kyoto-purple-dark' 
+                      : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                  }`}
                 >
                   次へ進む
                 </Button>
-              )}
+              </div>
             </>
           ) : question.id === "return_documents" ? (
             <>
