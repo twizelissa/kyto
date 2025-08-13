@@ -339,6 +339,13 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                 
                 <p>あわせて，警察に遺失届を出していただき、受理番号を控えてください。その後，<span className="text-yellow-600 underline font-medium">京都市マイナンバーカードセンター</span>へ届け出をしていただき，マイナンバーカードの再発行のお手続きをおとりください。</p>
                 
+                <div className="bg-gray-50 border border-gray-300 rounded-lg p-4 my-4">
+                  <p className="text-sm text-black font-medium mb-2">京都市マイナンバーカードセンター　０７５－７４６－６８５５</p>
+                  <p className="text-sm text-black ml-4">月、水曜日　９時～１９時</p>
+                  <p className="text-sm text-black ml-4">上記以外　　９時～１７時</p>
+                  <p className="text-sm text-black ml-4">※　祝休日、年末年始（１２月２９日～１月３日）、システム停止日除く</p>
+                </div>
+                
                 <p className="text-sm font-normal text-black">※マイナンバーカードの再発行手続きの際，警察署で発行される受理番号の控えが必要となります。</p>
               </div>
             )}
