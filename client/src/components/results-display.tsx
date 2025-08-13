@@ -341,9 +341,13 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                 
                 <p className="text-sm font-normal text-black">※マイナンバーカードの再発行手続きの際，警察署で発行される受理番号の控えが必要となります。</p>
                 
-                <div className="border border-gray-300 rounded-lg p-4 mt-4">
-                  <h3 className="font-medium text-black mb-2">手続場所について</h3>
-                  <p className="text-sm text-black">マイナンバーカードの再発行手続きは、<span className="text-yellow-600 underline font-medium">京都市マイナンバーカードセンター</span>で行います。</p>
+                <div className="bg-kyoto-purple-light border border-purple-200 rounded-lg p-4 mt-4">
+                  <h4 className="font-bold mb-3 text-kyoto-purple-dark flex items-center">
+                    <i className="fas fa-map-marker-alt mr-2"></i>手続場所について
+                  </h4>
+                  <div className="text-sm space-y-2">
+                    <p>マイナンバーカードの再発行手続きは、<span className="text-yellow-600 underline font-medium">京都市マイナンバーカードセンター</span>で行います。</p>
+                  </div>
                 </div>
               </div>
             )}
