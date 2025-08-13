@@ -334,7 +334,13 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
             )}
             {/* 住所・氏名等の変更の場合の期限説明 */}
             {answers.procedure === "info_change" && (
-              <p className="text-sm text-red-600 mt-2">※変更のあった日から14日以内にお越しください。</p>
+              <div className="mt-2 space-y-1">
+                <p className="text-sm text-red-600">※変更のあった日から14日以内にお越しください。</p>
+                {/* 任意代理人以外の場合の暗証番号説明 */}
+                {(answers.info_visitor_type === "self" || (answers.info_visitor_type === "proxy" && answers.info_proxy_reason !== "voluntary_proxy")) && (
+                  <p className="text-sm text-red-600">※マイナンバーカードの交付時に設定した住民基本台帳用の暗証番号（4桁の数字）が必要になります。</p>
+                )}
+              </div>
             )}
           </div>
 
