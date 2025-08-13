@@ -537,7 +537,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                       </thead>
                       <tbody>
                         <tr>
-                          <td className="px-4 py-3 bg-blue-50 border-b border-gray-300 w-[30%]">
+                          <td className="px-4 py-3 bg-gray-50 border-b border-gray-300 w-[30%]">
                             <div className="font-bold text-sm text-gray-900 mb-2">A欄</div>
                             <div className="text-xs text-gray-700 font-medium mb-1">顔写真付きの公的機関が発行したもの</div>
                           </td>
@@ -548,7 +548,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                           </td>
                         </tr>
                         <tr>
-                          <td className="px-4 py-3 bg-blue-50 w-[30%]">
+                          <td className="px-4 py-3 bg-gray-50 w-[30%]">
                             <div className="font-bold text-sm text-gray-900 mb-2">B欄</div>
                             <div className="text-xs text-gray-700 font-medium mb-1">「氏名と住所」又は「氏名と生年月日」の記載があるもの</div>
                           </td>
