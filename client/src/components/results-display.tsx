@@ -323,40 +323,30 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
             </div>
           </CardContent>
         </Card>
-      ) : answers.procedure === "card_lost" ? (
+      ) : answers.procedure === "card_lost" && answers.lost_situation === "lost" ? (
         /* カードの紛失手続きの特別表示 */
         <Card className="rounded-xl shadow-lg mb-6 bg-white border-gray-200">
           <CardContent className="p-2 sm:p-6">
-            {answers.lost_situation === "lost" && (
-              <div className="text-sm text-black leading-relaxed space-y-4">
-                <p>マイナンバーカードを紛失した時は，マイナンバーカード一時停止のお手続きが必要となりますので，</p>
-                
-                <div className="border border-red-500 rounded-lg p-3 bg-red-50 text-center">
-                  <p className="font-normal text-red-600 text-base">個人番号カードコールセンター（TEL 0120-95-0178）</p>
-                </div>
-                
-                <p>へご連絡をお願いします。</p>
-                
-                <p>あわせて，警察に遺失届を出していただき、受理番号を控えてください。その後，<span className="text-yellow-600 underline font-medium">京都市マイナンバーカードセンター</span>へ届け出をしていただき，マイナンバーカードの再発行のお手続きをおとりください。</p>
-                
-                <div className="bg-gray-50 border border-gray-300 rounded-lg p-4 my-4">
-                  <p className="text-sm text-black font-medium mb-2">京都市マイナンバーカードセンター　０７５－７４６－６８５５</p>
-                  <p className="text-sm text-black ml-4">月、水曜日　９時～１９時</p>
-                  <p className="text-sm text-black ml-4">上記以外　　９時～１７時</p>
-                  <p className="text-sm text-black ml-4">※　祝休日、年末年始（１２月２９日～１月３日）、システム停止日除く</p>
-                </div>
-                
-                <p className="text-sm font-normal text-black">※マイナンバーカードの再発行手続きの際，警察署で発行される受理番号の控えが必要となります。</p>
+            <div className="text-sm text-black leading-relaxed space-y-4">
+              <p>マイナンバーカードを紛失した時は，マイナンバーカード一時停止のお手続きが必要となりますので，</p>
+              
+              <div className="border border-red-500 rounded-lg p-3 bg-red-50 text-center">
+                <p className="font-normal text-red-600 text-base">個人番号カードコールセンター（TEL 0120-95-0178）</p>
               </div>
-            )}
-            
-            {answers.lost_situation === "found" && (
-              <div className="text-sm text-black leading-relaxed space-y-4">
-                <p>紛失したカードを発見された場合の手続きについては、京都市マイナンバーカードセンターにお問い合わせください。</p>
-                
-                <p className="font-normal text-black text-base">京都市マイナンバーカードセンター（TEL 075-746-6855）</p>
+              
+              <p>へご連絡をお願いします。</p>
+              
+              <p>あわせて，警察に遺失届を出していただき、受理番号を控えてください。その後，<span className="text-yellow-600 underline font-medium">京都市マイナンバーカードセンター</span>へ届け出をしていただき，マイナンバーカードの再発行のお手続きをおとりください。</p>
+              
+              <div className="bg-gray-50 border border-gray-300 rounded-lg p-4 my-4">
+                <p className="text-sm text-black font-medium mb-2">京都市マイナンバーカードセンター　０７５－７４６－６８５５</p>
+                <p className="text-sm text-black ml-4">月、水曜日　９時～１９時</p>
+                <p className="text-sm text-black ml-4">上記以外　　９時～１７時</p>
+                <p className="text-sm text-black ml-4">※　祝休日、年末年始（１２月２９日～１月３日）、システム停止日除く</p>
               </div>
-            )}
+              
+              <p className="text-sm font-normal text-black">※マイナンバーカードの再発行手続きの際，警察署で発行される受理番号の控えが必要となります。</p>
+            </div>
           </CardContent>
         </Card>
       ) : (
