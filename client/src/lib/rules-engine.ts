@@ -144,7 +144,6 @@ function resolveIssuanceItems(answers: Answer): string[] {
       } else if (answers.inquiry_response_confirmed === "true") {
         // 照会書兼回答書を持っている場合
         items.push("inquiry_response");
-        items.push("identity_document_with_notification");
       } else {
         // その他の代理人で15歳未満以外の場合は受取不可
         items.push("no_notification_warning");
