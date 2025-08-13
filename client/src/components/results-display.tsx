@@ -582,7 +582,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                 <i className="fas fa-calendar-alt mr-2"></i>予約方法について
               </h3>
               <div className="space-y-4 text-sm text-gray-800 leading-relaxed">
-                <p>交付希望日から祝休日・年末年始を除いた概ね<span className="text-red-600 font-bold">5日前</span>に予約を締め切ります。</p>
+                <p>{answers.procedure === "card_issuance" ? "交付希望日" : "手続希望日"}から祝休日・年末年始を除いた概ね<span className="text-red-600 font-bold">5日前</span>に予約を締め切ります。</p>
                 
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
                   <p className="font-semibold mb-2 text-blue-600">下記のいずれかの方法で予約</p>
