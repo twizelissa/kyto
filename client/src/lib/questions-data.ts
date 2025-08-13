@@ -534,5 +534,9 @@ export const ITEMS: Record<string, RequiredItem> = {
 
   // カードの紛失・発見手続き用書類
   "found_temp_stop_release_form": {name: "個人番号カード　一時停止解除届（窓口でお渡し、記入していただきます。）", icon: "fas fa-file-alt"},
-  "found_lost_mynumber_card": {name: "紛失したマイナンバーカード", icon: "fas fa-id-card"}
+  "found_lost_mynumber_card": {name: "紛失したマイナンバーカード", icon: "fas fa-id-card"},
+
+  // カードの返納手続き用書類
+  "return_form_document": {name: "個人番号カード紛失・廃止・返納届（窓口でお渡し、記入していただきます。）", icon: "fas fa-file-alt"},
+  "return_mynumber_card": {name: "マイナンバーカード", icon: "fas fa-id-card"}
 };

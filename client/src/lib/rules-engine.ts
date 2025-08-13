@@ -41,6 +41,11 @@ export function resolveItems(answers: Answer): string[] {
     return resolveCardLossItems(answers);
   }
   
+  // For card return procedures
+  if (answers.procedure === "card_return") {
+    return resolveCardReturnItems(answers);
+  }
+  
   // For other procedures that might need document lists
   const requiredItems: string[] = [];
   
@@ -451,6 +456,18 @@ function resolveCardLossItems(answers: Answer): string[] {
     // 紛失したマイナンバーカード
     items.push("found_lost_mynumber_card");
   }
+  
+  return items;
+}
+
+// カードの返納手続きの必要書類解決
+function resolveCardReturnItems(answers: Answer): string[] {
+  const items: string[] = [];
+  
+  // 個人番号カード紛失・廃止・返納届
+  items.push("return_form_document");
+  // マイナンバーカード
+  items.push("return_mynumber_card");
   
   return items;
 }
