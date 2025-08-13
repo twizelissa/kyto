@@ -329,7 +329,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
             <i className="fas fa-check-circle text-kyoto-purple text-6xl mb-4"></i>
             <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-black mb-6">以下の内容に沿ってお手続きください</h2>
             {/* 電子証明書更新の場合の暗証番号説明 */}
-            {answers.procedure === "electronic_certificate" && answers.cert_type === "renewal" && (
+            {answers.procedure === "digital_cert" && answers.cert_type === "renewal" && (
               <p className="text-sm text-gray-600 mt-2">※カード発行時に設定した暗証番号が必要となります。</p>
             )}
           </div>
