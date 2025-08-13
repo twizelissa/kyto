@@ -495,8 +495,8 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                 );
               })()}
 
-              {/* 代理人の本人確認書類一覧表 */}
-              {answers.visitor_type === "proxy" || answers.cert_visitor_type === "proxy" ? (
+              {/* 代理人の本人確認書類一覧表（電子証明書の場合のみ） */}
+              {answers.procedure === "digital_cert" && answers.cert_visitor_type === "proxy" ? (
                 <div className="mt-6">
                   <div className="bg-white border border-gray-300 rounded-lg overflow-hidden">
                     <table className="w-full border-collapse">
