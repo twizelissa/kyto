@@ -98,19 +98,19 @@ function WelcomeScreen({ onStart }: { onStart: () => void }) {
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-                <div className="bg-kyoto-purple-light rounded-lg p-4 border border-purple-100">
-                  <i className="fas fa-clock text-kyoto-purple text-2xl mb-2"></i>
-                  <h3 className="font-semibold text-kyoto-purple-dark">約1分で完了</h3>
+                <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                  <i className="fas fa-clock text-gray-600 text-2xl mb-2"></i>
+                  <h3 className="font-semibold text-gray-800">約1分で完了</h3>
                   <p className="text-sm text-gray-600">簡単な質問に答えるだけ</p>
                 </div>
-                <div className="bg-kyoto-purple-light rounded-lg p-4 border border-purple-100">
-                  <i className="fas fa-list-check text-kyoto-purple text-2xl mb-2"></i>
-                  <h3 className="font-semibold text-kyoto-purple-dark">チェックリストの自動作成</h3>
+                <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                  <i className="fas fa-list-check text-gray-600 text-2xl mb-2"></i>
+                  <h3 className="font-semibold text-gray-800">チェックリストの自動作成</h3>
                   <p className="text-sm text-gray-600">必要な項目を整理</p>
                 </div>
-                <div className="bg-kyoto-purple-light rounded-lg p-4 border border-purple-100">
-                  <i className="fas fa-share text-kyoto-purple text-2xl mb-2"></i>
-                  <h3 className="font-semibold text-kyoto-purple-dark">簡単に印刷・共有可能</h3>
+                <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                  <i className="fas fa-share text-gray-600 text-2xl mb-2"></i>
+                  <h3 className="font-semibold text-gray-800">簡単に印刷・共有可能</h3>
                   <p className="text-sm text-gray-600">・PDFの作成<br/>・QRコードの生成<br/>・LINE/SMSで共有</p>
                 </div>
               </div>
