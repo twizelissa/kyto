@@ -530,5 +530,9 @@ export const ITEMS: Record<string, RequiredItem> = {
   "info_family_register_same_household": {name: "戸籍全部事項証明書", icon: "fas fa-file-alt"},
   "info_proxy_identity_document_voluntary": {name: "代理人の本人確認書類（マイナンバーカード、運転免許証、旅券等）\n※文書照会後に来所する際は、本人確認書類を2点提示いただく場合があります（1度目の来所時に必要書類をご確認ください）", icon: "fas fa-user-friends"},
   "info_inquiry_response_voluntary": {name: "照会書兼回答書\n※暗証番号等、必要事項を記載のうえ、封筒に入れて封緘した状態でお持ちください。", icon: "fas fa-envelope-open"},
-  "info_power_of_attorney": {name: "委任状（様式は問いません）", icon: "fas fa-file-signature"}
+  "info_power_of_attorney": {name: "委任状（様式は問いません）", icon: "fas fa-file-signature"},
+
+  // カードの紛失・発見手続き用書類
+  "found_identity_document": {name: "本人確認書類", icon: "fas fa-id-badge"},
+  "found_mynumber_card": {name: "発見したマイナンバーカード", icon: "fas fa-id-card"}
 };

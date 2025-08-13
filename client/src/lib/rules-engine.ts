@@ -440,6 +440,18 @@ function resolveCardLossItems(answers: Answer): string[] {
   const items: string[] = [];
   
   // 紛失の場合は書類ではなく手続き案内を表示するため、空の配列を返す
+  if (answers.lost_situation === "lost") {
+    return items;
+  }
+  
+  // 発見の場合は通常の手続きとして必要書類を設定
+  if (answers.lost_situation === "found") {
+    // 本人確認書類（発見者）
+    items.push("found_identity_document");
+    // 発見したマイナンバーカード
+    items.push("found_mynumber_card");
+  }
+  
   return items;
 }
 

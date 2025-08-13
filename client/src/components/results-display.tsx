@@ -653,7 +653,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
           </Card>
 
           {/* 交付場所/手続場所（カードの紛失以外の場合のみ表示） */}
-          {answers.procedure !== "card_lost" && (
+          {!(answers.procedure === "card_lost" && answers.lost_situation === "lost") && (
             <Card className="shadow-lg border-gray-200 mb-8">
               <CardContent className="p-2 sm:p-6">
                 <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
@@ -695,7 +695,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
           )}
 
           {/* 予約方法（住所・氏名等の変更及びカード紛失以外の場合のみ表示） */}
-          {answers.procedure !== "info_change" && answers.procedure !== "card_lost" && (
+          {answers.procedure !== "info_change" && !(answers.procedure === "card_lost" && answers.lost_situation === "lost") && (
             <Card className="shadow-lg border-gray-200 mb-8">
               <CardContent className="p-2 sm:p-6">
                 <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
