@@ -334,7 +334,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
 
 
 
-          {/* 必要書類リスト */}
+          {/* 用意するもの */}
           <Card className="shadow-lg border-gray-200 mb-8">
             <CardContent className="p-2 sm:p-6">
               <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
