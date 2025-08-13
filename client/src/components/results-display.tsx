@@ -334,7 +334,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
             )}
             {/* 住所・氏名等の変更の場合の期限説明 */}
             {answers.procedure === "info_change" && (
-              <p className="text-xs text-red-600 mt-2">※変更のあった日から14日以内にお越しください。</p>
+              <p className="text-sm text-red-600 mt-2">※変更のあった日から14日以内にお越しください。</p>
             )}
           </div>
 
