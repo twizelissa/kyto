@@ -446,10 +446,10 @@ function resolveCardLossItems(answers: Answer): string[] {
   
   // 発見の場合は通常の手続きとして必要書類を設定
   if (answers.lost_situation === "found") {
-    // 本人確認書類（発見者）
-    items.push("found_identity_document");
-    // 発見したマイナンバーカード
-    items.push("found_mynumber_card");
+    // 個人番号カード一時停止解除届
+    items.push("found_temp_stop_release_form");
+    // 紛失したマイナンバーカード
+    items.push("found_lost_mynumber_card");
   }
   
   return items;

@@ -533,6 +533,6 @@ export const ITEMS: Record<string, RequiredItem> = {
   "info_power_of_attorney": {name: "委任状（様式は問いません）", icon: "fas fa-file-signature"},
 
   // カードの紛失・発見手続き用書類
-  "found_identity_document": {name: "本人確認書類", icon: "fas fa-id-badge"},
-  "found_mynumber_card": {name: "発見したマイナンバーカード", icon: "fas fa-id-card"}
+  "found_temp_stop_release_form": {name: "個人番号カード　一時停止解除届（窓口でお渡し、記入していただきます。）", icon: "fas fa-file-alt"},
+  "found_lost_mynumber_card": {name: "紛失したマイナンバーカード", icon: "fas fa-id-card"}
 };
