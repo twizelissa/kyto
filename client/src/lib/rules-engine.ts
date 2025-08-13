@@ -330,10 +330,11 @@ function resolvePinChangeItems(answers: Answer): string[] {
     return Array.from(new Set(items));
   }
   
-  // 代理人の場合は後で実装予定
+  // 代理人の場合の必要書類
   if (answers.pin_visitor_type === "proxy") {
-    // 代理人の書類は別途指示待ち
-    return [];
+    items.push("pin_applicant_mynumber_card");
+    items.push("pin_proxy_identity_options");
+    return Array.from(new Set(items));
   }
   
   return Array.from(new Set(items));
