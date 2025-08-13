@@ -334,11 +334,11 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
 
 
 
-          {/* 用意するもの */}
+          {/* 必要書類リスト */}
           <Card className="shadow-lg border-gray-200 mb-8">
             <CardContent className="p-2 sm:p-6">
               <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
-                <i className="fas fa-clipboard-list mr-2"></i>用意するもの
+                <i className="fas fa-clipboard-list mr-2"></i>必要書類リスト
               </h3>
               <div className="space-y-4 mb-6">
               {requiredItems.map((itemKey, index) => {
