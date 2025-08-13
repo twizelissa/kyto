@@ -429,6 +429,16 @@ export const ITEMS: Record<string, RequiredItem> = {
   "current_mynumber_card_with_fee": {name: "現在お持ちのマイナンバーカード\n※返納がない場合は、再交付手数料として1,000円頂戴します。", icon: "fas fa-id-card"},
   "pin_number": {name: "暗証番号（4桁数字）", icon: "fas fa-key"},
   
+  // PIN変更・初期化用書類
+  "identity_document_ab": {name: "本人確認書類（A欄又はB欄から1点）", icon: "fas fa-id-badge"},
+  "pin_proxy_identity_document": {name: "代理人の本人確認書類（顔写真付）", icon: "fas fa-user-friends"},
+  "pin_adult_guardian_cert": {name: "成年後見人に関する登記事項証明書", icon: "fas fa-file-certificate"},
+  "pin_conservatee_cert": {name: "保佐人に関する登記事項証明書、代理行為目録", icon: "fas fa-file-certificate"},
+  "pin_assisted_person_cert": {name: "補助人に関する登記事項証明書、代理行為目録", icon: "fas fa-file-certificate"},
+  "pin_voluntary_guardian_cert": {name: "任意後見人に関する登記事項証明書、代理権目録", icon: "fas fa-file-certificate"},
+  "pin_family_register_under_15": {name: "戸籍全部事項証明書", icon: "fas fa-file-alt"},
+  "pin_inquiry_response_voluntary": {name: "照会書兼回答書（事前に京都市マイナンバーカードセンターから郵送されるもの）", icon: "fas fa-envelope-open"},
+  
   // 本人確認書類
   "self_id_a1": {name: "本人確認書類（A欄から1点）", icon: "fas fa-id-badge"},
   "self_id_a2": {name: "本人確認書類（A欄から2点）", icon: "fas fa-id-badge"},
