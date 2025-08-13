@@ -556,7 +556,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
             <CardContent className="p-2 sm:p-6">
               <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
                 <i className="fas fa-map-marker-alt mr-2"></i>
-                {answers.procedure === "digital_cert" ? "手続場所について" : "交付場所について"}
+                {answers.procedure === "card_issuance" ? "交付場所について" : "手続場所について"}
               </h3>
               <div className="space-y-4 text-sm text-gray-800 leading-relaxed">
                 <div>
