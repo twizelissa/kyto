@@ -331,7 +331,9 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
               <div className="text-sm text-black leading-relaxed space-y-4">
                 <p>マイナンバーカードを紛失した時は，マイナンバーカード一時停止のお手続きが必要となりますので，</p>
                 
-                <p className="font-normal text-black text-base">個人番号カードコールセンター（TEL 0120-95-0178）</p>
+                <div className="border border-red-500 rounded-lg p-3 bg-red-50">
+                  <p className="font-normal text-red-600 text-base">個人番号カードコールセンター（TEL 0120-95-0178）</p>
+                </div>
                 
                 <p>へご連絡をお願いします。</p>
                 
