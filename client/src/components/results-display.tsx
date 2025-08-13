@@ -512,6 +512,49 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                   </div>
                 </div>
               ) : null}
+
+              {/* 委任状について（電子証明書で同一世帯員を選択した場合） */}
+              {answers.procedure === "digital_cert" && answers.cert_proxy_reason === "same_household" && (
+                <div className="mt-6">
+                  <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                    <h4 className="font-bold text-kyoto-purple-dark mb-3 flex items-center">
+                      <i className="fas fa-file-signature mr-2"></i>委任状について
+                    </h4>
+                    <div className="space-y-3 text-sm text-gray-800 leading-relaxed">
+                      <p>委任状の様式は任意ですが、次の記載事項が必要です。</p>
+                      <ul className="space-y-1 ml-4">
+                        <li>・委任する事項（「電子証明書の発行等手続き」など）</li>
+                        <li>・電子証明書等の暗証番号</li>
+                        <li>・委任者及び受任者の住所・氏名</li>
+                        <li>・委任者の署名又は記名・押印</li>
+                      </ul>
+                      <p>なお、下記より「委任状」様式をダウンロードのうえ、使用していただけます。</p>
+                      
+                      <div className="bg-red-50 border border-red-200 rounded-lg p-3 mt-3">
+                        <p className="text-red-700 font-medium">※ご本人が必要事項を記入し、暗証番号を知られないよう封筒に封入・封緘したものを、代理人の方が手続きの際、お持ちください。封入・封緘されていない場合は受付できませんので、あらかじめご了承ください。</p>
+                      </div>
+                      
+                      <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mt-3">
+                        <p className="text-blue-700">※転入届又は転居届の手続きを行うに当たり、後日に同一世帯員の方が電子証明書の発行等の手続きを行う場合（下記（例）参照）、又は同一世帯員以外の方に手続きを委任する場合は、照会書兼回答書が必要となりますので、マイナンバーカードセンターにお問合せください（電話：075－746－6855）。</p>
+                        <div className="mt-2">
+                          <p className="font-medium text-blue-800">例）</p>
+                          <ul className="space-y-1 ml-4 text-blue-700">
+                            <li>・転入届を提出した日にマイナンバーカードを忘れて後日手続きする場合</li>
+                            <li>・転入届を提出した日に委任状がなく、後日の手続きとなった場合　など</li>
+                          </ul>
+                        </div>
+                      </div>
+                      
+                      <div className="mt-3">
+                        <div className="flex items-center text-sm">
+                          <i className="fas fa-file-pdf mr-2 text-red-600"></i>
+                          <span className="font-medium text-yellow-600 underline">委任状(PDF形式, 88.48KB)</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
             </CardContent>
           </Card>
 
