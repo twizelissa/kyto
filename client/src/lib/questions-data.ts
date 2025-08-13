@@ -103,7 +103,7 @@ export const QUESTIONS: Question[] = [
     "text": "手続きに来られる方をお選びください",
     "options": [
       {"v": "self", "label": "本人（代理人が同行する場合を含む）", "icon": "fas fa-user"},
-      {"v": "proxy", "label": "代理人", "icon": "fas fa-user-friends"}
+      {"v": "proxy", "label": "代理人※", "icon": "fas fa-user-friends"}
     ],
     "showWhen": (answers) => {
       if (answers.procedure !== "card_issuance") return false;

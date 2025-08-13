@@ -457,6 +457,10 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
                           <>
                             任意代理人<span className="text-red-600">※</span>
                           </>
+                        ) : option.label.includes('代理人※') ? (
+                          <>
+                            代理人<span className="text-red-600">※</span>
+                          </>
                         ) : (
                           option.label
                         )}
@@ -470,7 +474,7 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
               {question.id === "visitor_type" && (
                 <div className="mt-6">
                   <div className="text-sm text-red-600 leading-relaxed">
-                    <p className="mb-3">代理人が受取を行うことができるのは、次のような場合などに限られます。</p>
+                    <p className="mb-3">※代理人が受取を行うことができるのは、次のような場合などに限られます。</p>
                     <ul className="list-disc pl-5 space-y-1">
                       <li>75歳以上の方や要介護・要支援認定、障害をお持ちで来庁が困難である方</li>
                       <li>長期の入院や施設に入所しており、来所が困難である方（長期の入院とは、概ね90日以上の入院が見込まれる場合を示しています。）</li>
