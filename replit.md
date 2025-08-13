@@ -117,6 +117,12 @@ Changelog:
     - Implemented guardian certificate requirements (成年後見人に関する登記事項証明書, 保佐人に関する登記事項証明書・代理行為目録, etc.)
     - Added family register requirements for 15歳未満 non-cohabiting cases with non-Kyoto domicile
     - Updated identity document naming to "申請者ご本人の本人確認書類" for clarity in self-application scenarios
+- August 13, 2025. Address/name change procedure completion and visual enhancements:
+  - Completed comprehensive address/name change document requirements system with all proxy scenarios
+  - Implemented voluntary proxy special handling with inquiry response documents and power of attorney requirements
+  - Added specialized proxy identity document wording for voluntary proxy with additional visit notice
+  - Enhanced visual consistency with red asterisk (※) display for voluntary proxy options
+  - Finalized document matrix covering all proxy reasons: adult guardian, conservatee, assisted person, voluntary guardian, under-15, voluntary proxy, and same household scenarios
 
 ## User Preferences
 
