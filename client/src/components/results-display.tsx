@@ -674,8 +674,8 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                   <div>
                     <p>住所地を管轄する区役所・支所区役所・支所の市民総合窓口室　戸籍住民担当</p>
                   </div>
-                ) : answers.procedure === "card_lost" && answers.lost_situation === "found" ? (
-                  /* カードの発見の場合はマイナンバーカードセンターのみ */
+                ) : (answers.procedure === "card_lost" && answers.lost_situation === "found") || answers.procedure === "card_return" ? (
+                  /* カードの発見・返納の場合はマイナンバーカードセンターのみ */
                   <div>
                     <p>マイナンバーカードセンター（<span className="underline text-red-600">事前予約</span>が必要です。）</p>
                   </div>
