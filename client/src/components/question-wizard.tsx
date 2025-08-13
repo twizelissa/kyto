@@ -261,16 +261,16 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
         <CardContent className="space-y-6">
           {question.id === "lost_procedures" ? (
             <>
-              <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-black mb-6 text-center">紛失手続きについてご確認</h2>
-              <div className="bg-red-50 border border-red-200 rounded-lg p-4 sm:p-6 mb-6">
-                <div className="text-red-800 leading-relaxed">
-                  <p className="mb-4">
-                    マイナンバーカードを紛失した時は，マイナンバーカード一時停止のお手続きが必要となりますので，個人番号カードコールセンター（TEL0120－95－0178）へご連絡をお願いします。
-                  </p>
-                  <p className="mb-4">
-                    あわせて，警察に遺失届を出していただき、受理番号を控えてください。その後，京都市マイナンバーカードセンターへ届け出をしていただき，マイナンバーカードの再発行のお手続きをおとりください。（※マイナンバーカードの再発行手続きの際，警察署で発行される受理番号の控えが必要となります。）
-                  </p>
+              <div className="text-sm text-black leading-relaxed space-y-4 mb-6">
+                <p>マイナンバーカードを紛失した時は，マイナンバーカード一時停止のお手続きが必要となりますので，</p>
+                
+                <div className="border border-red-500 rounded-lg p-3 bg-red-50 text-center">
+                  <p className="font-normal text-red-600 text-base">個人番号カードコールセンター（TEL 0120-95-0178）</p>
                 </div>
+                
+                <p>へご連絡をお願いします。</p>
+                
+                <p>あわせて，警察に遺失届を出していただき、<span className="text-red-600 font-bold">受理番号</span>を控えてください。<br />※マイナンバーカードの再発行手続きの際，警察署で発行される受理番号の控えが必要となります。</p>
               </div>
               
               <div className="space-y-4">
