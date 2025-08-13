@@ -261,8 +261,10 @@ export default function QuestionWizard({ onComplete, onBack, initialAnswers = {}
         <CardContent className="space-y-6">
           {question.id === "lost_procedures" ? (
             <>
-              <div className="text-sm leading-relaxed space-y-4 mb-6">
-                <p className="text-red-600">マイナンバーカードを紛失した時は，マイナンバーカード一時停止のお手続きが必要となります。必ず、一時停止のお手続きが完了してから再発行へ進んでください。（「カードの紛失・紛失手続き後の発見」へ進んでください。）</p>
+              <div className="text-sm leading-relaxed space-y-2 mb-6">
+                <p className="text-red-600">マイナンバーカードを紛失した時は，マイナンバーカード一時停止のお手続きが必要となります。</p>
+                <p className="text-red-600">必ず、一時停止のお手続きが完了してから再発行へ進んでください。</p>
+                <p className="text-red-600">完了していない方は「カードの紛失・紛失手続き後の発見」へ進んでください。</p>
               </div>
               
               <div className="space-y-4">
