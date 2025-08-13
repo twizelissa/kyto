@@ -537,22 +537,22 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                       </thead>
                       <tbody>
                         <tr>
-                          <td className="px-4 py-3 bg-blue-50 border-b border-gray-300">
+                          <td className="px-4 py-3 bg-blue-50 border-b border-gray-300 w-[30%]">
                             <div className="font-bold text-sm text-gray-900 mb-2">A欄</div>
                             <div className="text-xs text-gray-700 font-medium mb-1">顔写真付きの公的機関が発行したもの</div>
                           </td>
-                          <td className="px-4 py-3 border-b border-gray-300">
+                          <td className="px-4 py-3 border-b border-gray-300 w-[70%]">
                             <div className="text-xs text-gray-800 leading-relaxed">
                               運転免許証、運転経歴証明書（平成24年4月1日以降の交付年月日のものに限る。）、旅券、身体障害者手帳、精神障害者保健福祉手帳、療育手帳、在留カード、特別永住者証明書、一時庇護許可証、仮滞在許可証
                             </div>
                           </td>
                         </tr>
                         <tr>
-                          <td className="px-4 py-3 bg-blue-50">
+                          <td className="px-4 py-3 bg-blue-50 w-[30%]">
                             <div className="font-bold text-sm text-gray-900 mb-2">B欄</div>
                             <div className="text-xs text-gray-700 font-medium mb-1">「氏名と住所」又は「氏名と生年月日」の記載があるもの</div>
                           </td>
-                          <td className="px-4 py-3">
+                          <td className="px-4 py-3 w-[70%]">
                             <div className="text-xs text-gray-800 leading-relaxed">
                               海技免状、電気工事士免状、無線従事者許可証、動力車操縦者運転免許証、運行管理者技能検定合格所、猟銃・空気銃所持許可証、特殊電気工事資格者認定証、認定電気工事従事者認定証、耐空検査員の証、航空従事者技能証明書、宅地建物取引士証、船員手帳、戦傷病者手帳、教習資格認定証、検定合格証、官公署がその職員に対して発行した身分証明書、Aの書類が更新中の場合に交付される仮証明書や引換証類、地方公共団体が交付する敬老手帳、生活保護受給証明証、資格確認書（健康保険証）、介護保険証、医療受給者証、各種年金証書、児童扶養手当証書、特別児童扶養手当証書、母子健康手帳　等<br />
                               社員証、学生証、学校で発行された在籍証明書　等
