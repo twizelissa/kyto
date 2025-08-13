@@ -284,7 +284,7 @@ export const QUESTIONS: Question[] = [
     "text": "お手続きの種類をお選びください",
     "options": [
       {"v": "change", "label": "変更", "icon": "fas fa-edit"},
-      {"v": "reset", "label": "初期化", "icon": "fas fa-redo"}
+      {"v": "reset", "label": "初期化（暗証番号を忘れた場合）", "icon": "fas fa-redo"}
     ],
     "showWhen": (answers) => answers.procedure === "pin_change"
   },
