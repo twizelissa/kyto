@@ -593,7 +593,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                 {/* 住所・氏名等の変更の場合はシンプルな案内のみ */}
                 {answers.procedure === "info_change" ? (
                   <div>
-                    <p><strong>住所地を管轄する区役所・支所区役所・支所の市民総合窓口室　戸籍住民担当</strong></p>
+                    <p>住所地を管轄する区役所・支所区役所・支所の市民総合窓口室　戸籍住民担当</p>
                   </div>
                 ) : (
                   <>
