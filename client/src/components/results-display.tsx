@@ -334,7 +334,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
             )}
             {/* 住所・氏名等の変更の場合の期限説明 */}
             {answers.procedure === "info_change" && (
-              <div className="mt-2 space-y-1">
+              <div className="mt-2 space-y-1 text-left">
                 <p className="text-sm text-red-600">※変更のあった日から14日以内にお越しください。</p>
                 {/* 任意代理人以外の場合の暗証番号説明 */}
                 {(answers.info_visitor_type === "self" || (answers.info_visitor_type === "proxy" && answers.info_proxy_reason !== "voluntary_proxy")) && (
