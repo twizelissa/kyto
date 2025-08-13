@@ -770,19 +770,19 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               onClick={() => printResults()}
-              className="bg-white hover:bg-gray-50 text-gray-700 border border-gray-300 px-6 py-3 rounded-lg font-semibold text-center justify-center shadow transition-colors"
+              className="bg-white hover:bg-gray-50 text-gray-700 border border-kyoto-purple px-6 py-3 rounded-lg font-semibold text-center justify-center shadow transition-colors"
             >
               <i className="fas fa-print mr-2"></i>印刷
             </Button>
             <Button
               onClick={handleGeneratePDF}
-              className="bg-white hover:bg-gray-50 text-gray-700 border border-gray-300 px-6 py-3 rounded-lg font-semibold text-center justify-center shadow transition-colors"
+              className="bg-white hover:bg-gray-50 text-gray-700 border border-kyoto-purple px-6 py-3 rounded-lg font-semibold text-center justify-center shadow transition-colors"
             >
               <i className="fas fa-file-pdf mr-2"></i>PDF作成
             </Button>
             <Button
               onClick={() => setShowQRCode(true)}
-              className="bg-white hover:bg-gray-50 text-gray-700 border border-gray-300 px-6 py-3 rounded-lg font-semibold text-center justify-center shadow transition-colors"
+              className="bg-white hover:bg-gray-50 text-gray-700 border border-kyoto-purple px-6 py-3 rounded-lg font-semibold text-center justify-center shadow transition-colors"
             >
               <i className="fas fa-share mr-2"></i>共有
             </Button>
