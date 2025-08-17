@@ -679,17 +679,20 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                       をご確認ください。
                     </p>
                   ) : answers.application_method === "mail" && answers.mail_type === "notification_form" ? (
-                    <p>
-                      <a 
-                        href="https://www.kojinbango-card.go.jp/apprec/apply/mail_apply/" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-blue-600 hover:text-blue-800 underline font-bold"
-                      >
-                        マイナンバーカード総合サイト
-                      </a>
-                      をご確認ください。
-                    </p>
+                    <div className="space-y-3">
+                      <p>マイナンバーカード交付申請書に必要事項を記入していただき、顔写真を貼って、通知カード又は個人番号通知書と一緒に同封されている返信用封筒に交付申請書を入れてポストに投函してください。</p>
+                      <p>※詳しい申請方法は
+                        <a 
+                          href="https://www.kojinbango-card.go.jp/apprec/apply/mail_apply/" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:text-blue-800 underline font-bold mx-1"
+                        >
+                          マイナンバーカード総合サイト
+                        </a>
+                        をご確認ください。
+                      </p>
+                    </div>
                   ) : answers.application_method === "mail" && answers.mail_type === "handwritten_form" ? (
                     <p>
                       <a 
