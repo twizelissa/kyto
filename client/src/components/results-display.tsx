@@ -336,7 +336,32 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                 <i className="fas fa-clipboard-list mr-2"></i>用意するもの
               </h3>
               <div className="space-y-4 text-sm text-gray-800 leading-relaxed">
-                <p>※ここに必要書類の内容を後で追加します。</p>
+                {answers.application_method === "online" ? (
+                  <div className="space-y-3">
+                    <div className="flex items-start space-x-3">
+                      <i className="fas fa-id-card text-kyoto-purple text-lg mt-1"></i>
+                      <div>
+                        <div className="font-medium">申請書ID（半角数字23桁）</div>
+                        <div className="text-xs text-gray-600 mt-1">※交付申請書のQRコードを読み取りサイトにアクセスした場合、申請書IDはすでに記載され変更できません。</div>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <i className="fas fa-envelope text-kyoto-purple text-lg mt-1"></i>
+                      <div>
+                        <div className="font-medium">メールアドレス</div>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <i className="fas fa-camera text-kyoto-purple text-lg mt-1"></i>
+                      <div>
+                        <div className="font-medium">顔写真（スマホの場合、操作中に撮影することも可能）</div>
+                        <div className="text-xs text-gray-600 mt-1">※申請者が1歳未満の場合は顔写真の登録が不要</div>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <p>※他の申請方法の内容を後で追加します。</p>
+                )}
               </div>
             </CardContent>
           </Card>
@@ -348,19 +373,24 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                 <i className="fas fa-map-marker-alt mr-2"></i>手続場所について
               </h3>
               <div className="space-y-4 text-sm text-gray-800 leading-relaxed">
-                <p>※ここに手続場所の内容を後で追加します。</p>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* 予約方法について（カードの申請・更新用） */}
-          <Card className="shadow-lg border-gray-200 mb-8">
-            <CardContent className="p-2 sm:p-6">
-              <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
-                <i className="fas fa-calendar-alt mr-2"></i>予約方法について
-              </h3>
-              <div className="space-y-4 text-sm text-gray-800 leading-relaxed">
-                <p>※ここに予約方法の内容を後で追加します。</p>
+                {answers.application_method === "online" ? (
+                  <div className="flex items-start space-x-3">
+                    <i className="fas fa-globe text-kyoto-purple text-lg mt-1"></i>
+                    <div>
+                      <div className="font-medium">オンライン申請サイト：</div>
+                      <a 
+                        href="https://net.kojinbango-card.go.jp/SS_SERVICE_OUT/FA01S001Action.do" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:text-blue-800 underline break-all"
+                      >
+                        https://net.kojinbango-card.go.jp/SS_SERVICE_OUT/FA01S001Action.do
+                      </a>
+                    </div>
+                  </div>
+                ) : (
+                  <p>※他の申請方法の内容を後で追加します。</p>
+                )}
               </div>
             </CardContent>
           </Card>
