@@ -31,15 +31,10 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
   const isProxySelectedForPickup = isPickupMethodResult && answers.visitor_type === "proxy";
   
   // Check if this is an electronic certificate result
-  const isElectronicCertificateResult = answers.procedure === "electronic_certificate";
+  const isElectronicCertificateResult = answers.procedure === "digital_cert";
   
   // Check if proxy was selected for electronic certificate
   const isProxySelectedForCertificate = isElectronicCertificateResult && answers.visitor_type === "proxy";
-  
-  // Debug: Log the values
-  console.log("Debug - answers.procedure:", answers.procedure);
-  console.log("Debug - isElectronicCertificateResult:", isElectronicCertificateResult);
-  console.log("Debug - isProxySelectedForCertificate:", isProxySelectedForCertificate);
   
   const requiredItems = isApplicationMethodResult ? [] : resolveItems(answers);
   
