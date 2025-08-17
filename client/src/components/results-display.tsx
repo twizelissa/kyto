@@ -363,6 +363,11 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
         <div>
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-kyoto-purple-dark mb-4">{getApplicationMethodContent().title}</h2>
+            {answers.application_method === "mobile_service" && answers.mobile_service_type === "mobile_support" && (
+              <div className="text-xs text-red-600 leading-relaxed mt-2">
+                ※申請書はご自身で投函していただきます。また、カードはマイナンバーカードセンター等へ受け取りに来庁していただく必要があります。
+              </div>
+            )}
           </div>
 
           {/* 用意するもの（カードの申請・更新用） */}
