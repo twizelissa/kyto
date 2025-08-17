@@ -335,27 +335,57 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
               <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
                 <i className="fas fa-clipboard-list mr-2"></i>用意するもの
               </h3>
-              <div className="space-y-4 text-sm text-gray-800 leading-relaxed">
+              <div className="space-y-4 mb-6">
                 {answers.application_method === "online" ? (
-                  <div className="space-y-3">
-                    <div className="flex items-start space-x-3">
-                      <i className="fas fa-id-card text-kyoto-purple text-lg mt-1"></i>
-                      <div>
-                        <div className="font-medium">申請書ID（半角数字23桁）</div>
-                        <div className="text-xs text-gray-600 mt-1">※交付申請書のQRコードを読み取りサイトにアクセスした場合、申請書IDはすでに記載され変更できません。</div>
+                  <div className="space-y-4">
+                    <div className="flex items-start space-x-3 p-3 border rounded-lg hover:bg-kyoto-purple-light transition-colors">
+                      <Checkbox
+                        id="online-application-id"
+                        checked={checkedItems["online-application-id"] || false}
+                        onCheckedChange={(checked) => handleItemCheck("online-application-id", checked as boolean)}
+                        className="mt-1"
+                      />
+                      <div className="flex-1">
+                        <label htmlFor="online-application-id" className="flex items-start space-x-3 cursor-pointer">
+                          <i className="fas fa-id-card text-kyoto-purple text-lg mt-1"></i>
+                          <div className="text-sm font-medium text-gray-800 whitespace-pre-line leading-relaxed">
+                            申請書ID（半角数字23桁）
+                            {"\n"}※交付申請書のQRコードを読み取りサイトにアクセスした場合、申請書IDはすでに記載され変更できません。
+                          </div>
+                        </label>
                       </div>
                     </div>
-                    <div className="flex items-start space-x-3">
-                      <i className="fas fa-envelope text-kyoto-purple text-lg mt-1"></i>
-                      <div>
-                        <div className="font-medium">メールアドレス</div>
+                    <div className="flex items-start space-x-3 p-3 border rounded-lg hover:bg-kyoto-purple-light transition-colors">
+                      <Checkbox
+                        id="online-email"
+                        checked={checkedItems["online-email"] || false}
+                        onCheckedChange={(checked) => handleItemCheck("online-email", checked as boolean)}
+                        className="mt-1"
+                      />
+                      <div className="flex-1">
+                        <label htmlFor="online-email" className="flex items-start space-x-3 cursor-pointer">
+                          <i className="fas fa-envelope text-kyoto-purple text-lg mt-1"></i>
+                          <div className="text-sm font-medium text-gray-800 whitespace-pre-line leading-relaxed">
+                            メールアドレス
+                          </div>
+                        </label>
                       </div>
                     </div>
-                    <div className="flex items-start space-x-3">
-                      <i className="fas fa-camera text-kyoto-purple text-lg mt-1"></i>
-                      <div>
-                        <div className="font-medium">顔写真（スマホの場合、操作中に撮影することも可能）</div>
-                        <div className="text-xs text-gray-600 mt-1">※申請者が1歳未満の場合は顔写真の登録が不要</div>
+                    <div className="flex items-start space-x-3 p-3 border rounded-lg hover:bg-kyoto-purple-light transition-colors">
+                      <Checkbox
+                        id="online-photo"
+                        checked={checkedItems["online-photo"] || false}
+                        onCheckedChange={(checked) => handleItemCheck("online-photo", checked as boolean)}
+                        className="mt-1"
+                      />
+                      <div className="flex-1">
+                        <label htmlFor="online-photo" className="flex items-start space-x-3 cursor-pointer">
+                          <i className="fas fa-camera text-kyoto-purple text-lg mt-1"></i>
+                          <div className="text-sm font-medium text-gray-800 whitespace-pre-line leading-relaxed">
+                            顔写真（スマホの場合、操作中に撮影することも可能）
+                            {"\n"}※申請者が1歳未満の場合は顔写真の登録が不要
+                          </div>
+                        </label>
                       </div>
                     </div>
                   </div>
