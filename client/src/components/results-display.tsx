@@ -316,17 +316,55 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
   return (
     <div className="max-w-none mx-auto px-1 sm:px-4 py-8">
       {isApplicationMethodResult ? (
-        <Card className="rounded-xl shadow-lg p-2 sm:p-6 mb-6">
-          <CardContent className="space-y-8">
-            <div className="text-center mb-8">
-              <i className="fas fa-info-circle text-kyoto-purple text-6xl mb-4"></i>
-              <h2 className="text-3xl font-bold text-kyoto-purple-dark mb-4">{getApplicationMethodContent().title}</h2>
-            </div>
-            <div className="text-gray-800 leading-relaxed">
-              {getApplicationMethodContent().content}
-            </div>
-          </CardContent>
-        </Card>
+        <div>
+          <Card className="rounded-xl shadow-lg p-2 sm:p-6 mb-6">
+            <CardContent className="space-y-8">
+              <div className="text-center mb-8">
+                <i className="fas fa-info-circle text-kyoto-purple text-6xl mb-4"></i>
+                <h2 className="text-3xl font-bold text-kyoto-purple-dark mb-4">{getApplicationMethodContent().title}</h2>
+              </div>
+              <div className="text-gray-800 leading-relaxed">
+                {getApplicationMethodContent().content}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* 必要書類リスト（カードの申請・更新用） */}
+          <Card className="shadow-lg border-gray-200 mb-8">
+            <CardContent className="p-2 sm:p-6">
+              <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
+                <i className="fas fa-clipboard-list mr-2"></i>必要書類リスト
+              </h3>
+              <div className="space-y-4 text-sm text-gray-800 leading-relaxed">
+                <p>※ここに必要書類の内容を後で追加します。</p>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* 手続場所について（カードの申請・更新用） */}
+          <Card className="shadow-lg border-gray-200 mb-8">
+            <CardContent className="p-2 sm:p-6">
+              <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
+                <i className="fas fa-map-marker-alt mr-2"></i>手続場所について
+              </h3>
+              <div className="space-y-4 text-sm text-gray-800 leading-relaxed">
+                <p>※ここに手続場所の内容を後で追加します。</p>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* 予約方法について（カードの申請・更新用） */}
+          <Card className="shadow-lg border-gray-200 mb-8">
+            <CardContent className="p-2 sm:p-6">
+              <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
+                <i className="fas fa-calendar-alt mr-2"></i>予約方法について
+              </h3>
+              <div className="space-y-4 text-sm text-gray-800 leading-relaxed">
+                <p>※ここに予約方法の内容を後で追加します。</p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
       ) : showLostConfirmation ? (
         /* カードの紛失手続きの確認画面 */
         <Card className="rounded-xl shadow-lg mb-6 bg-white border-gray-200">
