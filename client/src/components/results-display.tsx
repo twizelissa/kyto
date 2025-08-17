@@ -483,6 +483,83 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                       </div>
                     </div>
                   </div>
+                ) : answers.application_method === "mail" && answers.mail_type === "handwritten_form" ? (
+                  <div className="space-y-4">
+                    <div className="flex items-start space-x-3 p-3 border rounded-lg hover:bg-kyoto-purple-light transition-colors">
+                      <Checkbox
+                        id="handwritten-application-form"
+                        checked={checkedItems["handwritten-application-form"] || false}
+                        onCheckedChange={(checked) => handleItemCheck("handwritten-application-form", checked as boolean)}
+                        className="mt-1"
+                      />
+                      <div className="flex-1">
+                        <label htmlFor="handwritten-application-form" className="flex items-start space-x-3 cursor-pointer">
+                          <i className="fas fa-file-alt text-kyoto-purple text-lg mt-1"></i>
+                          <div className="text-sm font-medium text-gray-800 whitespace-pre-line leading-relaxed">
+                            手書き交付申請書 ▶︎ダウンロードは
+                            <a 
+                              href="https://www.city.kyoto.lg.jp/bunshi/cmsfiles/contents/0000290/290445/tegaki-kofu-shinseisho2025.pdf" 
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-blue-600 hover:text-blue-800 underline mx-1 font-bold"
+                            >
+                              こちら
+                            </a>
+                            {"\n"}※マイナンバーの記入漏れ、誤記載にはお気を付けください。
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-3 p-3 border rounded-lg hover:bg-kyoto-purple-light transition-colors">
+                      <Checkbox
+                        id="handwritten-envelope"
+                        checked={checkedItems["handwritten-envelope"] || false}
+                        onCheckedChange={(checked) => handleItemCheck("handwritten-envelope", checked as boolean)}
+                        className="mt-1"
+                      />
+                      <div className="flex-1">
+                        <label htmlFor="handwritten-envelope" className="flex items-start space-x-3 cursor-pointer">
+                          <i className="fas fa-envelope text-kyoto-purple text-lg mt-1"></i>
+                          <div className="text-sm font-medium text-gray-800 whitespace-pre-line leading-relaxed">
+                            申請書送付用封筒（切手不要） ▶︎ダウンロードは
+                            <a 
+                              href="https://www.city.kyoto.lg.jp/bunshi/cmsfiles/contents/0000290/290445/shinseisyohuto2025.pdf" 
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-blue-600 hover:text-blue-800 underline mx-1 font-bold"
+                            >
+                              こちら
+                            </a>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-3 p-3 border rounded-lg hover:bg-kyoto-purple-light transition-colors">
+                      <Checkbox
+                        id="handwritten-photo"
+                        checked={checkedItems["handwritten-photo"] || false}
+                        onCheckedChange={(checked) => handleItemCheck("handwritten-photo", checked as boolean)}
+                        className="mt-1"
+                      />
+                      <div className="flex-1">
+                        <label htmlFor="handwritten-photo" className="flex items-start space-x-3 cursor-pointer">
+                          <i className="fas fa-camera text-kyoto-purple text-lg mt-1"></i>
+                          <div className="text-sm font-medium text-gray-800 whitespace-pre-line leading-relaxed">
+                            顔写真 ※詳しくは、マイナンバーカード総合サイト（
+                            <a 
+                              href="https://www.kojinbango-card.go.jp/apprec/apply/facephoto/" 
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-blue-600 hover:text-blue-800 underline font-bold"
+                            >
+                              顔写真のチェックポイント
+                            </a>
+                            ）にてご確認ください。
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
                 ) : (
                   <p>※他の申請方法の内容を後で追加します。</p>
                 )}
@@ -538,6 +615,13 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                       <div className="font-medium">お近くのポストに投函</div>
                     </div>
                   </div>
+                ) : answers.application_method === "mail" && answers.mail_type === "handwritten_form" ? (
+                  <div className="flex items-start space-x-3">
+                    <i className="fas fa-mailbox text-kyoto-purple text-lg mt-1"></i>
+                    <div>
+                      <div className="font-medium">お近くのポストに投函</div>
+                    </div>
+                  </div>
                 ) : (
                   <p>※他の申請方法の内容を後で追加します。</p>
                 )}
@@ -546,7 +630,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
           </Card>
 
           {/* 申請方法について（カードの申請・更新用） */}
-          {(answers.application_method === "online" || answers.application_method === "photo_booth" || (answers.application_method === "mail" && answers.mail_type === "notification_form")) && (
+          {(answers.application_method === "online" || answers.application_method === "photo_booth" || (answers.application_method === "mail" && (answers.mail_type === "notification_form" || answers.mail_type === "handwritten_form"))) && (
             <Card className="shadow-lg border-gray-200 mb-8">
               <CardContent className="p-2 sm:p-6">
                 <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
@@ -592,6 +676,18 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                       をご確認ください。
                     </p>
                   ) : answers.application_method === "mail" && answers.mail_type === "notification_form" ? (
+                    <p>
+                      <a 
+                        href="https://www.kojinbango-card.go.jp/apprec/apply/photobooth_apply/" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:text-blue-800 underline font-bold"
+                      >
+                        マイナンバーカード総合サイト
+                      </a>
+                      をご確認ください。
+                    </p>
+                  ) : answers.application_method === "mail" && answers.mail_type === "handwritten_form" ? (
                     <p>
                       <a 
                         href="https://www.kojinbango-card.go.jp/apprec/apply/photobooth_apply/" 
