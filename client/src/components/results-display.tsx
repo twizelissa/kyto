@@ -1420,8 +1420,14 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                   <i className="fas fa-link mr-2 text-gray-600"></i>参考URL
                 </h4>
                 <div className="space-y-2 text-sm text-gray-700">
-                  {/* URLリストは後で追加 */}
-                  <p className="text-gray-500">※参考URLは後で追加されます</p>
+                  {isApplicationMethodResult ? (
+                    <>
+                      <p>マイナンバーカードの申請についてー出張申請窓口、オンラインや郵送申請をお勧めします！ー</p>
+                      <p>個人番号（マイナンバー）カードの特急発行について</p>
+                    </>
+                  ) : (
+                    <p className="text-gray-500">※参考URLは後で追加されます</p>
+                  )}
                 </div>
               </div>
 
@@ -1431,8 +1437,16 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                   <i className="fas fa-phone mr-2 text-gray-600"></i>お問い合わせ先
                 </h4>
                 <div className="space-y-2 text-sm text-gray-700">
-                  {/* 連絡先情報は後で追加 */}
-                  <p className="text-gray-500">※お問い合わせ先は後で追加されます</p>
+                  {isApplicationMethodResult ? (
+                    <>
+                      <p className="font-medium">京都市マイナンバーカードセンター</p>
+                      <p>（開所時間：月・水曜日：9:00～19:00　その他：9:00～17:00　※祝休日・年末年始等を除く）</p>
+                      <p>電話：075-746-6855</p>
+                      <p>ファックス：075-861-2611</p>
+                    </>
+                  ) : (
+                    <p className="text-gray-500">※お問い合わせ先は後で追加されます</p>
+                  )}
                 </div>
               </div>
             </div>
