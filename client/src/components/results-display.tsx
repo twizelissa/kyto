@@ -1411,28 +1411,28 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
 
       {/* Footer - Full width for all final pages */}
       {!showQRCode && (
-        <div className="w-full bg-gray-500 py-8 px-4">
+        <div className="w-screen bg-gray-200 py-8 px-4 -mx-[calc(50vw-50%)]">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* 参考URL */}
               <div>
-                <h4 className="font-bold text-white mb-3 flex items-center">
-                  <i className="fas fa-link mr-2 text-gray-200"></i>参考URL
+                <h4 className="font-bold text-gray-800 mb-3 flex items-center">
+                  <i className="fas fa-link mr-2 text-gray-600"></i>参考URL
                 </h4>
-                <div className="space-y-2 text-sm text-gray-200">
+                <div className="space-y-2 text-sm text-gray-700">
                   {/* URLリストは後で追加 */}
-                  <p className="text-gray-300">※参考URLは後で追加されます</p>
+                  <p className="text-gray-500">※参考URLは後で追加されます</p>
                 </div>
               </div>
 
               {/* お問い合わせ先 */}
               <div>
-                <h4 className="font-bold text-white mb-3 flex items-center">
-                  <i className="fas fa-phone mr-2 text-gray-200"></i>お問い合わせ先
+                <h4 className="font-bold text-gray-800 mb-3 flex items-center">
+                  <i className="fas fa-phone mr-2 text-gray-600"></i>お問い合わせ先
                 </h4>
-                <div className="space-y-2 text-sm text-gray-200">
+                <div className="space-y-2 text-sm text-gray-700">
                   {/* 連絡先情報は後で追加 */}
-                  <p className="text-gray-300">※お問い合わせ先は後で追加されます</p>
+                  <p className="text-gray-500">※お問い合わせ先は後で追加されます</p>
                 </div>
               </div>
             </div>
