@@ -801,12 +801,15 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                       <p>事前予約制？</p>
                     </div>
                   ) : answers.application_method === "mobile_service" && answers.mobile_service_type === "mobile_window" ? (
-                    <p>詳しくは<a 
-                      href="https://kyotomn-branch.com" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-blue-600 hover:text-blue-800 underline font-bold mx-1"
-                    >こちら</a>のホームページをご確認ください。</p>
+                    <div className="space-y-3">
+                      <p className="text-red-600 font-bold">※事前予約優先</p>
+                      <p>詳しくは<a 
+                        href="https://kyotomn-branch.com" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:text-blue-800 underline font-bold mx-1"
+                      >こちら</a>のホームページをご確認ください。</p>
+                    </div>
                   ) : null}
                 </div>
               </CardContent>
