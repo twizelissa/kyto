@@ -1411,7 +1411,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
 
       {/* Footer - Full width for all final pages */}
       {!showQRCode && (
-        <div className="w-screen bg-gray-200 pt-8 pb-0 px-4 -mx-[calc(50vw-50%)] mb-0">
+        <div className="w-screen bg-gray-200 py-8 px-4 -mx-[calc(50vw-50%)]">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* 参考URL */}
