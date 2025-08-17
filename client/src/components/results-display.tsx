@@ -36,6 +36,11 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
   // Check if proxy was selected for electronic certificate
   const isProxySelectedForCertificate = isElectronicCertificateResult && answers.visitor_type === "proxy";
   
+  // Debug: Log the values
+  console.log("Debug - answers.procedure:", answers.procedure);
+  console.log("Debug - isElectronicCertificateResult:", isElectronicCertificateResult);
+  console.log("Debug - isProxySelectedForCertificate:", isProxySelectedForCertificate);
+  
   const requiredItems = isApplicationMethodResult ? [] : resolveItems(answers);
   
   // 手続きタイプを取得
@@ -1422,7 +1427,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
       </div>
 
       {/* Footer - Full width for all final pages */}
-      {!showQRCode && (
+      {!showQRCode && !showLostConfirmation && (
         <div className="w-screen bg-gray-200 py-8 px-4 -mx-[calc(50vw-50%)]">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
