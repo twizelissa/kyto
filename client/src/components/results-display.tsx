@@ -1274,8 +1274,8 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
             </CardContent>
           </Card>
 
-          {/* 交付場所/手続場所（カードの紛失確認画面以外の場合のみ表示） */}
-          {!showLostConfirmation && (
+          {/* 交付場所/手続場所（カードの紛失確認画面以外、かつ郵送申請以外の場合のみ表示） */}
+          {!showLostConfirmation && !(answers.procedure === "card_issuance" && answers.application_method === "mail") && (
             <Card className="shadow-lg border-gray-200 mb-8">
               <CardContent className="p-2 sm:p-6">
                 <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
@@ -1316,8 +1316,8 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
           </Card>
           )}
 
-          {/* 予約方法（住所・氏名等の変更及びカード紛失確認画面以外の場合のみ表示） */}
-          {answers.procedure !== "info_change" && !showLostConfirmation && (
+          {/* 予約方法（住所・氏名等の変更、カード紛失確認画面、及び郵送申請以外の場合のみ表示） */}
+          {answers.procedure !== "info_change" && !showLostConfirmation && !(answers.procedure === "card_issuance" && answers.application_method === "mail") && (
             <Card className="shadow-lg border-gray-200 mb-8">
               <CardContent className="p-2 sm:p-6">
                 <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
