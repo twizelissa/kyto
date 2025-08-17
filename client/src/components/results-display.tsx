@@ -1324,50 +1324,6 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
         </>
       )}
 
-      {/* 参考URL・お問い合わせ先（カードの申請・更新の場合のみ） */}
-      {isApplicationMethodResult && !showLostConfirmation && (
-        <Card className="shadow-lg border-gray-200 mb-8">
-          <CardContent className="p-2 sm:p-6">
-            <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
-              <i className="fas fa-link mr-2"></i>参考URL
-            </h3>
-            <div className="space-y-3 text-sm text-gray-800 leading-relaxed">
-              <div>
-                <a 
-                  href="#" 
-                  className="text-blue-600 hover:text-blue-800 underline block"
-                >
-                  マイナンバーカードの申請についてー出張申請窓口、オンラインや郵送申請をお勧めします！ー
-                </a>
-              </div>
-              <div>
-                <a 
-                  href="#" 
-                  className="text-blue-600 hover:text-blue-800 underline block"
-                >
-                  個人番号（マイナンバー）カードの特急発行について
-                </a>
-              </div>
-            </div>
-            
-            <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 mt-6 flex items-center">
-              <i className="fas fa-phone mr-2"></i>お問い合わせ先
-            </h3>
-            <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
-              <div className="space-y-2 text-sm text-gray-800 leading-relaxed">
-                <div className="font-bold text-kyoto-purple-dark">京都市マイナンバーカードセンター</div>
-                <div className="space-y-1">
-                  <div><strong>開所時間：</strong>月・水曜日：9:00～19:00　その他：9:00～17:00</div>
-                  <div className="text-xs text-gray-600">※祝休日・年末年始等を除く</div>
-                  <div><strong>電話：</strong>075-746-6855</div>
-                  <div><strong>ファックス：</strong>075-861-2611</div>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      )}
-
       {/* Action buttons for all procedures (except lost confirmation screen) */}
       {!showLostConfirmation && (
         <div className="space-y-4">
