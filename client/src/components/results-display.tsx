@@ -34,11 +34,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
   const isElectronicCertificateResult = answers.procedure === "digital_cert";
   
   // Check if proxy was selected for electronic certificate
-  const isProxySelectedForCertificate = isElectronicCertificateResult && answers.visitor_type === "proxy";
-  
-  // Debug: Log the visitor_type value
-  console.log("Debug - answers.visitor_type:", answers.visitor_type);
-  console.log("Debug - isProxySelectedForCertificate:", isProxySelectedForCertificate);
+  const isProxySelectedForCertificate = isElectronicCertificateResult && answers.cert_visitor_type === "proxy";
   
   const requiredItems = isApplicationMethodResult ? [] : resolveItems(answers);
   
