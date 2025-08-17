@@ -494,10 +494,10 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                     <div className="mt-3 bg-yellow-50 border-2 border-yellow-400 rounded-lg p-3">
                       <div className="font-medium text-sm mb-2 text-yellow-700">＜対応しているまちなかの証明写真機＞</div>
                       <ul className="text-sm space-y-1 ml-3 text-yellow-700">
-                        <li>• 株式会社DNPフォトイメージングジャパン</li>
-                        <li>• ME Group Japan 株式会社</li>
-                        <li>• 株式会社北菱プリントテクノロジー</li>
-                        <li>• 三吉工業株式会社</li>
+                        <li>• <a href="https://www.dnpphoto.jp/products/kirei/mynumber/" target="_blank" rel="noopener noreferrer" className="text-yellow-700 hover:text-yellow-800 underline">株式会社DNPフォトイメージングジャパン</a></li>
+                        <li>• <a href="https://me-group.jp/individual/photo-me#mynumber" target="_blank" rel="noopener noreferrer" className="text-yellow-700 hover:text-yellow-800 underline">ME Group Japan 株式会社</a></li>
+                        <li>• <a href="https://www.hokuryou.co.jp/id_photo.html" target="_blank" rel="noopener noreferrer" className="text-yellow-700 hover:text-yellow-800 underline">株式会社北菱プリントテクノロジー</a></li>
+                        <li>• <a href="https://www.miyoshi-jp.com" target="_blank" rel="noopener noreferrer" className="text-yellow-700 hover:text-yellow-800 underline">三吉工業株式会社</a></li>
                       </ul>
                     </div>
                   </div>
