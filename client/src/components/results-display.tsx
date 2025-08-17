@@ -1354,41 +1354,41 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
       {/* Action buttons for all procedures (except lost confirmation screen) */}
       {!showLostConfirmation && (
         <div className="space-y-4">
-          {/* Print, PDF, Share buttons - Always horizontal */}
-          <div className="flex gap-2 sm:gap-4 justify-center">
+          {/* Print, PDF, Share buttons - Always horizontal with fixed width */}
+          <div className="flex gap-2 justify-center">
             <Button
               onClick={() => printResults()}
-              className="bg-white hover:bg-gray-50 text-kyoto-purple border border-kyoto-purple px-3 sm:px-6 py-3 rounded-lg font-semibold text-center justify-center shadow transition-colors flex-1 sm:flex-none text-xs sm:text-sm"
+              className="bg-white hover:bg-gray-50 text-kyoto-purple border border-kyoto-purple px-4 py-3 rounded-lg font-semibold text-center justify-center shadow transition-colors text-sm whitespace-nowrap"
             >
-              <i className="fas fa-print mr-1 sm:mr-2"></i>印刷
+              <i className="fas fa-print mr-2"></i>印刷
             </Button>
             <Button
               onClick={handleGeneratePDF}
-              className="bg-white hover:bg-gray-50 text-kyoto-purple border border-kyoto-purple px-3 sm:px-6 py-3 rounded-lg font-semibold text-center justify-center shadow transition-colors flex-1 sm:flex-none text-xs sm:text-sm"
+              className="bg-white hover:bg-gray-50 text-kyoto-purple border border-kyoto-purple px-4 py-3 rounded-lg font-semibold text-center justify-center shadow transition-colors text-sm whitespace-nowrap"
             >
-              <i className="fas fa-file-pdf mr-1 sm:mr-2"></i>PDF作成
+              <i className="fas fa-file-pdf mr-2"></i>PDF作成
             </Button>
             <Button
               onClick={() => setShowQRCode(true)}
-              className="bg-white hover:bg-gray-50 text-kyoto-purple border border-kyoto-purple px-3 sm:px-6 py-3 rounded-lg font-semibold text-center justify-center shadow transition-colors flex-1 sm:flex-none text-xs sm:text-sm"
+              className="bg-white hover:bg-gray-50 text-kyoto-purple border border-kyoto-purple px-4 py-3 rounded-lg font-semibold text-center justify-center shadow transition-colors text-sm whitespace-nowrap"
             >
-              <i className="fas fa-share mr-1 sm:mr-2"></i>共有
+              <i className="fas fa-share mr-2"></i>共有
             </Button>
           </div>
           
-          {/* Navigation buttons - Always horizontal */}
-          <div className="flex gap-2 sm:gap-4 justify-center">
+          {/* Navigation buttons - Always horizontal with fixed width */}
+          <div className="flex gap-2 justify-center">
             <Button
               onClick={onBack}
-              className="kyoto-button px-3 sm:px-4 py-2 rounded-lg font-semibold text-center justify-center flex-1 sm:flex-none text-xs sm:text-sm"
+              className="kyoto-button px-4 py-2 rounded-lg font-semibold text-center justify-center text-sm whitespace-nowrap"
             >
-              <i className="fas fa-chevron-left mr-1 sm:mr-2"></i>前のページへ戻る
+              <i className="fas fa-chevron-left mr-2"></i>前のページへ戻る
             </Button>
             <Button
               onClick={onRestart}
-              className="kyoto-button px-3 sm:px-4 py-2 rounded-lg font-semibold text-center justify-center flex-1 sm:flex-none text-xs sm:text-sm"
+              className="kyoto-button px-4 py-2 rounded-lg font-semibold text-center justify-center text-sm whitespace-nowrap"
             >
-              <i className="fas fa-redo mr-1 sm:mr-2"></i>最初から
+              <i className="fas fa-redo mr-2"></i>最初から
             </Button>
           </div>
 
