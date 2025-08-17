@@ -149,8 +149,26 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
             <p>スマートフォンや自宅のパソコン等で申請される場合は、IDや二次元バーコードが記載されたマイナンバーカード交付申請書をご利用ください。</p>
             <p>詳しい申請方法は、マイナンバーカード総合サイト（地方公共団体情報システム機構のホームページ）をご確認ください。</p>
             <div className="space-y-2">
-              <p>▶︎パソコンからの申請はこちら</p>
-              <p>▶︎スマートフォンからの申請はこちら</p>
+              <p>
+                <a 
+                  href="https://www.kojinbango-card.go.jp/apprec/apply/online_apply/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:text-blue-800 underline"
+                >
+                  ▶︎パソコンからの申請はこちら
+                </a>
+              </p>
+              <p>
+                <a 
+                  href="https://www.kojinbango-card.go.jp/apprec/apply/online_apply/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:text-blue-800 underline"
+                >
+                  ▶︎スマートフォンからの申請はこちら
+                </a>
+              </p>
             </div>
           </div>
         )
