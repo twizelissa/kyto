@@ -451,7 +451,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                         <label htmlFor="mail-return-envelope" className="flex items-start space-x-3 cursor-pointer">
                           <i className="fas fa-envelope text-kyoto-purple text-lg mt-1"></i>
                           <div className="text-sm font-medium text-gray-800 whitespace-pre-line leading-relaxed">
-                            返信用封筒（通知カード又は個人番号通知書と一緒に同封されている）
+                            返信用封筒（通知カード又は個人番号通知書と一緒に同封されているもの）
                             {"\n"}※お持ちでない場合は、以下の申請書送付用封筒（切手不要）をダウンロードし、必要事項をご記入ください
                           </div>
                         </label>
@@ -472,6 +472,14 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                           </div>
                         </label>
                       </div>
+                    </div>
+                    <div className="mt-4 bg-yellow-50 border-2 border-yellow-400 rounded-lg p-3">
+                      <div className="font-medium text-sm mb-2 text-yellow-700">手書き交付申請書</div>
+                      <p className="text-sm text-yellow-700">
+                        <a href="#" className="text-yellow-700 hover:text-yellow-800 underline">
+                          手書き交付申請書(PDF形式, 620.41KB)
+                        </a>
+                      </p>
                     </div>
                   </div>
                 ) : (
