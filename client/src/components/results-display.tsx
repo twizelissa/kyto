@@ -603,6 +603,25 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                   <div className="space-y-4">
                     <p className="text-sm font-medium text-gray-800 leading-relaxed">※保留</p>
                   </div>
+                ) : answers.application_method === "mobile_service" && answers.mobile_service_type === "mobile_window" ? (
+                  <div className="space-y-4">
+                    <div className="flex items-start space-x-3 p-3 border rounded-lg hover:bg-kyoto-purple-light transition-colors">
+                      <Checkbox
+                        id="mobile-window-id-documents"
+                        checked={checkedItems["mobile-window-id-documents"] || false}
+                        onCheckedChange={(checked) => handleItemCheck("mobile-window-id-documents", checked as boolean)}
+                        className="mt-1"
+                      />
+                      <div className="flex-1">
+                        <label htmlFor="mobile-window-id-documents" className="flex items-start space-x-3 cursor-pointer">
+                          <i className="fas fa-id-card text-kyoto-purple text-lg mt-1"></i>
+                          <div className="text-sm font-medium text-gray-800 whitespace-pre-line leading-relaxed">
+                            マイナンバー通知カードや本人確認書類（運転免許証やパスポート等）
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
                 ) : (
                   <p>※他の申請方法の内容を後で追加します。</p>
                 )}
@@ -689,6 +708,23 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                       </div>
                     </div>
                   </div>
+                ) : answers.application_method === "mobile_service" && answers.mobile_service_type === "mobile_window" ? (
+                  <div className="space-y-4">
+                    <div className="flex items-start space-x-3">
+                      <i className="fas fa-store text-kyoto-purple text-lg mt-1"></i>
+                      <div>
+                        <div className="text-sm text-gray-800 leading-relaxed">
+                          商業施設等において、本人確認のうえ申請を受け付けるブースを開設します。<br/>
+                          今後の実施予定について、詳しくは<a 
+                            href="https://kyotomn-branch.com" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-blue-600 hover:text-blue-800 underline font-bold mx-1"
+                          >こちら</a>のホームページをご確認ください。
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 ) : (
                   <p>※他の申請方法の内容を後で追加します。</p>
                 )}
@@ -697,11 +733,11 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
           </Card>
 
           {/* 申請方法について（カードの申請・更新用） */}
-          {(answers.application_method === "online" || answers.application_method === "photo_booth" || (answers.application_method === "mail" && (answers.mail_type === "notification_form" || answers.mail_type === "handwritten_form")) || answers.application_method === "center") && (
+          {(answers.application_method === "online" || answers.application_method === "photo_booth" || (answers.application_method === "mail" && (answers.mail_type === "notification_form" || answers.mail_type === "handwritten_form")) || answers.application_method === "center" || (answers.application_method === "mobile_service" && answers.mobile_service_type === "mobile_window")) && (
             <Card className="shadow-lg border-gray-200 mb-8">
               <CardContent className="p-2 sm:p-6">
                 <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
-                  <i className="fas fa-calendar-alt mr-2"></i>申請方法について
+                  <i className="fas fa-calendar-alt mr-2"></i>{answers.application_method === "mobile_service" && answers.mobile_service_type === "mobile_window" ? "予約方法について" : "申請方法について"}
                 </h3>
                 <div className="space-y-4 text-sm text-gray-800 leading-relaxed">
                   {answers.application_method === "online" ? (
@@ -764,6 +800,13 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                       <p>写真撮影や申請書の記入方法の案内等、申請書の作成をお手伝いします。<br/>なお、完成した申請書はご自身でポストに投函いただきます（切手不要）。</p>
                       <p>事前予約制？</p>
                     </div>
+                  ) : answers.application_method === "mobile_service" && answers.mobile_service_type === "mobile_window" ? (
+                    <p>詳しくは<a 
+                      href="https://kyotomn-branch.com" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:text-blue-800 underline font-bold mx-1"
+                    >こちら</a>のホームページをご確認ください。</p>
                   ) : null}
                 </div>
               </CardContent>
