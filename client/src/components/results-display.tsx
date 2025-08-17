@@ -253,7 +253,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
           <div className="space-y-4">
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
               <h4 className="font-bold mb-3">開庁時間</h4>
-              <p className="text-sm mb-2">※事前予約制ですので、事前にこちらからご予約のうえお越しください。</p>
+              <p className="text-sm mb-2">※<span className="text-red-600 font-bold">事前予約</span>制ですので、<span className="text-red-600 font-bold">事前予約</span>にこちらからご予約のうえお越しください。</p>
               <div className="text-sm space-y-1">
                 <p><strong>月・水曜日：</strong>午前9時～午後7時</p>
                 <p><strong>その他：</strong>午前9時～午後5時</p>
@@ -301,7 +301,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
                 <div className="text-sm space-y-2">
                   <p>商業施設等において、本人確認のうえ申請を受け付けるブースを開設します。京都市民の方については、カードができあがりましたら、原則としてカードをご自宅へ郵送します。</p>
-                  <p>※事前予約優先。今後の実施予定や予約方法など、詳しくはこちらのホームページをご確認ください。</p>
+                  <p>※<span className="text-red-600 font-bold">事前予約</span>優先。今後の実施予定や予約方法など、詳しくはこちらのホームページをご確認ください。</p>
                   <p>※マイナンバー通知カードや本人確認書類（運転免許証やパスポート等）のご持参が必要です。</p>
                 </div>
               </div>
@@ -336,7 +336,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                 <h4 className="font-bold mb-3">出張申請窓口</h4>
                 <div className="text-sm space-y-2">
                   <p>商業施設等において、本人確認のうえ申請を受け付けるブースを開設します。京都市民の方については、カードができあがりましたら、原則としてカードをご自宅へ郵送します。</p>
-                  <p>※事前予約優先。今後の実施予定や予約方法など、詳しくはこちらのホームページをご確認ください。</p>
+                  <p>※<span className="text-red-600 font-bold">事前予約</span>優先。今後の実施予定や予約方法など、詳しくはこちらのホームページをご確認ください。</p>
                   <p>※マイナンバー通知カードや本人確認書類（運転免許証やパスポート等）のご持参が必要です。</p>
                 </div>
               </div>
@@ -885,11 +885,11 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                   ) : answers.application_method === "center" ? (
                     <div className="space-y-3">
                       <p>写真撮影や申請書の記入方法の案内等、申請書の作成をお手伝いします。<br/>なお、完成した申請書はご自身でポストに投函いただきます（切手不要）。</p>
-                      <p>事前予約制？</p>
+                      <p><span className="text-red-600 font-bold">事前予約</span>制？</p>
                     </div>
                   ) : answers.application_method === "mobile_service" && answers.mobile_service_type === "mobile_window" ? (
                     <div className="space-y-3">
-                      <p className="text-red-600 font-bold">※事前予約優先</p>
+                      <p>※<span className="text-red-600 font-bold">事前予約</span>優先</p>
                       <p>詳しくは<a 
                         href="https://kyotomn-branch.com" 
                         target="_blank" 
@@ -1291,7 +1291,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                 ) : (answers.procedure === "card_lost" && answers.lost_situation === "found") || (answers.procedure === "card_lost" && answers.lost_situation === "lost") || answers.procedure === "card_return" ? (
                   /* カードの紛失・発見・返納の場合はマイナンバーカードセンターのみ */
                   <div>
-                    <p>マイナンバーカードセンター（<span className="underline text-red-600">事前予約</span>が必要です。）</p>
+                    <p>マイナンバーカードセンター（<span className="text-red-600 font-bold">事前予約</span>が必要です。）</p>
                   </div>
                 ) : (
                   <>
@@ -1304,8 +1304,8 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                             ※ 一部の店舗ではマイナンバーカード署名用パスワード初期化・再設定（「署名用電子証明書（6桁から16桁までの暗証番号」）だけが可能となっておりますので、ご利用に応じた手続きが出来るストアをこちらからご確認ください。
                           </li>
                         )}
-                        <li>・<strong>マイナンバーカードセンター</strong>（<span className="underline text-red-600">事前予約</span>が必要です。）</li>
-                        <li>・<strong>各区役所・支所のマイナンバーカード交付コーナー</strong>（<span className="underline text-red-600">事前予約</span>が必要です。京都市民の方でしたら、住所地に関わらずいずれの区役所・支所でも手続可能です。）</li>
+                        <li>・<strong>マイナンバーカードセンター</strong>（<span className="text-red-600 font-bold">事前予約</span>が必要です。）</li>
+                        <li>・<strong>各区役所・支所のマイナンバーカード交付コーナー</strong>（<span className="text-red-600 font-bold">事前予約</span>が必要です。京都市民の方でしたら、住所地に関わらずいずれの区役所・支所でも手続可能です。）</li>
                       </ul>
                     </div>
 
