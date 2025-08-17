@@ -936,7 +936,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
             </div>
 
             {/* Footer for lost card confirmation */}
-            <div className="mt-8 bg-gray-100 p-6 rounded-lg">
+            <div className="mt-8 bg-gray-200 p-6 rounded-lg">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* 参考URL */}
                 <div>
@@ -1393,7 +1393,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
           </div>
 
           {/* Footer */}
-          <div className="mt-12 bg-gray-100 p-6 rounded-lg">
+          <div className="mt-12 bg-gray-200 p-6 rounded-lg">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* 参考URL */}
               <div>
