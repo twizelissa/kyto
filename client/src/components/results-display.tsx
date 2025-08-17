@@ -480,14 +480,6 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                         </label>
                       </div>
                     </div>
-                    <div className="mt-4 bg-yellow-50 border-2 border-yellow-400 rounded-lg p-3">
-                      <div className="font-medium text-sm mb-2 text-yellow-700">申請書送付用封筒</div>
-                      <p className="text-sm text-yellow-700">
-                        <a href="#" className="text-yellow-700 hover:text-yellow-800 underline">
-                          申請書送付用封筒(PDF形式, 760.93KB)
-                        </a>
-                      </p>
-                    </div>
                   </div>
                 ) : (
                   <p>※他の申請方法の内容を後で追加します。</p>
