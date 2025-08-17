@@ -647,6 +647,10 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                         alt="下京区総合庁舎案内図" 
                         className="max-w-full h-auto border border-gray-300 rounded"
                       />
+                      <div className="mt-3 text-sm text-gray-600 space-y-2">
+                        <p>※　駐輪場には数に限りがあります。また、一般用駐車場はありませんので、公共交通機関をご利用のうえお越しください。</p>
+                        <p>※　平日9時～17時は南側、月・水曜日17時～19時及び土日は北側の入り口からお入りください。</p>
+                      </div>
                     </div>
                   </div>
                 ) : (
