@@ -496,7 +496,8 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                         <label htmlFor="handwritten-application-form" className="flex items-start space-x-3 cursor-pointer">
                           <i className="fas fa-file-alt text-kyoto-purple text-lg mt-1"></i>
                           <div className="text-sm font-medium text-gray-800 whitespace-pre-line leading-relaxed">
-                            手書き交付申請書 ▶︎ダウンロードは
+                            手書き交付申請書
+                            {"\n"}▶︎ダウンロードは
                             <a 
                               href="https://www.city.kyoto.lg.jp/bunshi/cmsfiles/contents/0000290/290445/tegaki-kofu-shinseisho2025.pdf" 
                               target="_blank"
@@ -521,7 +522,8 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                         <label htmlFor="handwritten-envelope" className="flex items-start space-x-3 cursor-pointer">
                           <i className="fas fa-envelope text-kyoto-purple text-lg mt-1"></i>
                           <div className="text-sm font-medium text-gray-800 whitespace-pre-line leading-relaxed">
-                            申請書送付用封筒（切手不要） ▶︎ダウンロードは
+                            申請書送付用封筒（切手不要）
+                            {"\n"}▶︎ダウンロードは
                             <a 
                               href="https://www.city.kyoto.lg.jp/bunshi/cmsfiles/contents/0000290/290445/shinseisyohuto2025.pdf" 
                               target="_blank"
@@ -545,7 +547,8 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                         <label htmlFor="handwritten-photo" className="flex items-start space-x-3 cursor-pointer">
                           <i className="fas fa-camera text-kyoto-purple text-lg mt-1"></i>
                           <div className="text-sm font-medium text-gray-800 whitespace-pre-line leading-relaxed">
-                            顔写真 ※詳しくは、マイナンバーカード総合サイト（
+                            顔写真
+                            {"\n"}※詳しくは、マイナンバーカード総合サイト（
                             <a 
                               href="https://www.kojinbango-card.go.jp/apprec/apply/facephoto/" 
                               target="_blank"
