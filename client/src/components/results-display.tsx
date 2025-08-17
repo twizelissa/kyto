@@ -641,7 +641,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                       </div>
                     </div>
                     <div className="mt-3 text-sm text-gray-600 leading-relaxed">
-                      本人確認書類のご持参は不要です
+                      ※本人確認書類のご持参は不要です
                     </div>
                   </div>
                 ) : (
