@@ -1422,8 +1422,26 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                 <div className="space-y-2 text-sm text-gray-700">
                   {isApplicationMethodResult ? (
                     <>
-                      <p>マイナンバーカードの申請についてー出張申請窓口、オンラインや郵送申請をお勧めします！ー</p>
-                      <p>個人番号（マイナンバー）カードの特急発行について</p>
+                      <p>
+                        <a 
+                          href="https://www.city.kyoto.lg.jp/bunshi/page/0000290445.html" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:text-blue-800 underline"
+                        >
+                          マイナンバーカードの申請についてー出張申請窓口、オンラインや郵送申請をお勧めします！ー
+                        </a>
+                      </p>
+                      <p>
+                        <a 
+                          href="https://www.city.kyoto.lg.jp/bunshi/page/0000334762.html" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:text-blue-800 underline"
+                        >
+                          個人番号（マイナンバー）カードの特急発行について
+                        </a>
+                      </p>
                     </>
                   ) : (
                     <p className="text-gray-500">※参考URLは後で追加されます</p>
