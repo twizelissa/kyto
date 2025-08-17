@@ -720,7 +720,10 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                   ) : answers.application_method === "mail" && answers.mail_type === "handwritten_form" ? (
                     <p>交付申請書に必要事項を御記入いただき、顔写真を貼ってポストに投函してください。</p>
                   ) : answers.application_method === "center" ? (
-                    <p>写真撮影や申請書の記入方法の案内等、申請書の作成をお手伝いします。<br/>なお、完成した申請書はご自身でポストに投函いただきます（切手不要）。</p>
+                    <div className="space-y-3">
+                      <p>写真撮影や申請書の記入方法の案内等、申請書の作成をお手伝いします。<br/>なお、完成した申請書はご自身でポストに投函いただきます（切手不要）。</p>
+                      <p>事前予約制？</p>
+                    </div>
                   ) : null}
                 </div>
               </CardContent>
