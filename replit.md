@@ -123,6 +123,15 @@ Changelog:
   - Added specialized proxy identity document wording for voluntary proxy with additional visit notice
   - Enhanced visual consistency with red asterisk (※) display for voluntary proxy options
   - Finalized document matrix covering all proxy reasons: adult guardian, conservatee, assisted person, voluntary guardian, under-15, voluntary proxy, and same household scenarios
+- August 17, 2025. Footer implementation and visual improvements:
+  - Changed home page checkmarks (✓) to red color for better visibility
+  - Implemented comprehensive footer system for final pages with gray backgrounds and full-width layout
+  - Added specific footer content for card application/renewal with reference URLs and contact information
+  - Added specific footer content for card pickup/delivery with conditional proxy display
+  - Added specific footer content for electronic certificate procedures with conditional proxy display
+  - Fixed electronic certificate proxy detection using correct property name (cert_visitor_type vs visitor_type)
+  - Implemented bullet point formatting (・) for multiple reference URLs
+  - All reference URLs are clickable links that open in new tabs with proper security attributes
 
 ## User Preferences
 
