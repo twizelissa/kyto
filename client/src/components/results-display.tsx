@@ -690,7 +690,8 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
             </CardContent>
           </Card>
 
-          {/* 手続場所について（カードの申請・更新用） */}
+          {/* 手続場所について（カードの申請・更新用、郵送申請以外） */}
+          {answers.application_method !== "mail" && (
           <Card className="shadow-lg border-gray-200 mb-8">
             <CardContent className="p-2 sm:p-6">
               <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
@@ -816,6 +817,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
               </div>
             </CardContent>
           </Card>
+          )}
 
 
 
