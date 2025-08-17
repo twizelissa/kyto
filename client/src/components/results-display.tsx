@@ -1356,6 +1356,13 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
       {/* Action buttons for all procedures (except lost confirmation screen) */}
       {!showLostConfirmation && (
         <div className="space-y-4">
+          {/* Delivery notification for card application/renewal procedures */}
+          {isApplicationMethodResult && (
+            <div className="text-sm text-gray-800 leading-relaxed mb-4 text-center">
+              マイナンバーカードの交付準備が整いましたら、マイナンバーカードセンターから交付通知書（はがき）を住民票に記載の住所宛てに転送不要で送付します。
+            </div>
+          )}
+          
           {/* Print, PDF, Share buttons - Always horizontal with fixed width */}
           <div className="flex gap-2 justify-center">
             <Button
