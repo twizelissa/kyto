@@ -643,7 +643,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                     </div>
                     <div className="mt-3">
                       <img 
-                        src="/attached_assets/kuyakusyo_annnai_zu.gif" 
+                        src="https://www.city.kyoto.lg.jp/bunshi/cmsfiles/contents/0000287/287997/kuyakusyo_annnai_zu.gif" 
                         alt="下京区総合庁舎案内図" 
                         className="max-w-full h-auto border border-gray-300 rounded"
                       />
