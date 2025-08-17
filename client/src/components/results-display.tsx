@@ -30,6 +30,12 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
   // Check if proxy was selected for card pickup
   const isProxySelectedForPickup = isPickupMethodResult && answers.visitor_type === "proxy";
   
+  // Check if this is an electronic certificate result
+  const isElectronicCertificateResult = answers.procedure === "electronic_certificate";
+  
+  // Check if proxy was selected for electronic certificate
+  const isProxySelectedForCertificate = isElectronicCertificateResult && answers.visitor_type === "proxy";
+  
   const requiredItems = isApplicationMethodResult ? [] : resolveItems(answers);
   
   // 手続きタイプを取得
@@ -1496,6 +1502,43 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                         </>
                       )}
                     </>
+                  ) : isElectronicCertificateResult ? (
+                    <>
+                      <p>
+                        ・<a 
+                          href="https://www.city.kyoto.lg.jp/bunshi/page/0000260101.html" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:text-blue-800 underline"
+                        >
+                          マイナンバーカード及び電子証明書の更新について
+                        </a>
+                      </p>
+                      {isProxySelectedForCertificate && (
+                        <>
+                          <p>
+                            ・<a 
+                              href="https://www.city.kyoto.lg.jp/bunshi/page/0000294079.html" 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="text-blue-600 hover:text-blue-800 underline"
+                            >
+                              任意代理人による電子証明書の更新について
+                            </a>
+                          </p>
+                          <p>
+                            ・<a 
+                              href="https://www.city.kyoto.lg.jp/bunshi/page/0000320627.html" 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="text-blue-600 hover:text-blue-800 underline"
+                            >
+                              転入届、転居届と併せて行う電子証明書の発行等の同一世帯員による代理手続きについて
+                            </a>
+                          </p>
+                        </>
+                      )}
+                    </>
                   ) : (
                     <p className="text-gray-500">※参考URLは後で追加されます</p>
                   )}
@@ -1508,7 +1551,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                   <i className="fas fa-phone mr-2 text-gray-600"></i>お問い合わせ先
                 </h4>
                 <div className="space-y-2 text-sm text-gray-700">
-                  {isApplicationMethodResult || isPickupMethodResult ? (
+                  {isApplicationMethodResult || isPickupMethodResult || isElectronicCertificateResult ? (
                     <>
                       <p className="font-medium">京都市マイナンバーカードセンター</p>
                       <p>（開所時間：月・水曜日：9:00～19:00　その他：9:00～17:00　※祝休日・年末年始等を除く）</p>
