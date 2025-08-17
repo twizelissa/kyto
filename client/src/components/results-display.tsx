@@ -657,6 +657,10 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                       ※本人確認書類のご持参は不要です
                     </div>
                   </div>
+                ) : answers.application_method === "office_support" ? (
+                  <div className="space-y-4">
+                    <p className="text-sm font-medium text-gray-800 leading-relaxed">※保留</p>
+                  </div>
                 ) : (
                   <p>※他の申請方法の内容を後で追加します。</p>
                 )}
@@ -778,8 +782,11 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                     </div>
                   </div>
                 ) : answers.application_method === "office_support" ? (
-                  <div className="text-sm text-gray-800">
-                    ※保留
+                  <div className="flex items-start space-x-3">
+                    <i className="fas fa-building text-kyoto-purple text-lg mt-1"></i>
+                    <div>
+                      <div className="font-medium">区役所・支所の窓口（マイナンバーカードセンター交付コーナー）</div>
+                    </div>
                   </div>
                 ) : (
                   <p>※他の申請方法の内容を後で追加します。</p>
@@ -788,19 +795,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
             </CardContent>
           </Card>
 
-          {/* 手続場所について（カードの申請・更新用） */}
-          {answers.application_method === "office_support" && (
-            <Card className="shadow-lg border-gray-200 mb-8">
-              <CardContent className="p-2 sm:p-6">
-                <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
-                  <i className="fas fa-building mr-2"></i>手続場所について
-                </h3>
-                <div className="text-sm text-gray-800 leading-relaxed">
-                  区役所・支所の窓口（マイナンバーカードセンター交付コーナー）
-                </div>
-              </CardContent>
-            </Card>
-          )}
+
 
           {/* 申請方法について（カードの申請・更新用） */}
           {(answers.application_method === "online" || answers.application_method === "photo_booth" || (answers.application_method === "mail" && (answers.mail_type === "notification_form" || answers.mail_type === "handwritten_form")) || answers.application_method === "center" || (answers.application_method === "mobile_service" && (answers.mobile_service_type === "mobile_window" || answers.mobile_service_type === "mobile_support")) || answers.application_method === "office_support") && (
