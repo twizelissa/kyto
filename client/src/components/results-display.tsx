@@ -1429,7 +1429,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                   {isApplicationMethodResult ? (
                     <>
                       <p>
-                        <a 
+                        ・<a 
                           href="https://www.city.kyoto.lg.jp/bunshi/page/0000290445.html" 
                           target="_blank" 
                           rel="noopener noreferrer"
@@ -1439,7 +1439,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                         </a>
                       </p>
                       <p>
-                        <a 
+                        ・<a 
                           href="https://www.city.kyoto.lg.jp/bunshi/page/0000334762.html" 
                           target="_blank" 
                           rel="noopener noreferrer"
@@ -1452,7 +1452,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                   ) : isPickupMethodResult ? (
                     <>
                       <p>
-                        <a 
+                        ・<a 
                           href="https://www.city.kyoto.lg.jp/bunshi/page/0000290448.html" 
                           target="_blank" 
                           rel="noopener noreferrer"
@@ -1462,7 +1462,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                         </a>
                       </p>
                       <p>
-                        <a 
+                        ・<a 
                           href="https://www.city.kyoto.lg.jp/bunshi/page/0000301400.html" 
                           target="_blank" 
                           rel="noopener noreferrer"
@@ -1474,7 +1474,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                       {isProxySelectedForPickup && (
                         <>
                           <p>
-                            <a 
+                            ・<a 
                               href="https://www.city.kyoto.lg.jp/bunshi/page/0000294072.html" 
                               target="_blank" 
                               rel="noopener noreferrer"
@@ -1484,7 +1484,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                             </a>
                           </p>
                           <p>
-                            <a 
+                            ・<a 
                               href="https://www.city.kyoto.lg.jp/bunshi/page/0000279797.html" 
                               target="_blank" 
                               rel="noopener noreferrer"
