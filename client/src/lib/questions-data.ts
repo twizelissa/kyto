@@ -61,7 +61,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": "mail_type",
-    "text": "郵送申請の種類をお選びください",
+    "text": "申請方法をお選びください",
     "options": [
       {"v": "notification_form", "label": "通知カード又は個人番号通知書に同封されているマイナンバーカード交付申請書による申請", "icon": "fas fa-file-alt"},
       {"v": "handwritten_form", "label": "手書き交付申請書による申請", "icon": "fas fa-pen"}
