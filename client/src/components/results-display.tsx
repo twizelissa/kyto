@@ -369,6 +369,11 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                 <div>※カードはマイナンバーカードセンター等へ受け取りに来庁していただく必要があります。</div>
               </div>
             )}
+            {answers.application_method === "office_support" && (
+              <div className="text-xs text-red-600 leading-relaxed mt-2">
+                ※予約制によるマイナンバーカードの交付業務を優先するため、お待ちいただく場合がありますので御了承ください。
+              </div>
+            )}
           </div>
 
           {/* 用意するもの（カードの申請・更新用） */}
@@ -772,6 +777,10 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                       </div>
                     </div>
                   </div>
+                ) : answers.application_method === "office_support" ? (
+                  <div className="text-sm text-gray-800">
+                    ※保留
+                  </div>
                 ) : (
                   <p>※他の申請方法の内容を後で追加します。</p>
                 )}
@@ -779,8 +788,22 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
             </CardContent>
           </Card>
 
+          {/* 手続場所について（カードの申請・更新用） */}
+          {answers.application_method === "office_support" && (
+            <Card className="shadow-lg border-gray-200 mb-8">
+              <CardContent className="p-2 sm:p-6">
+                <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
+                  <i className="fas fa-building mr-2"></i>手続場所について
+                </h3>
+                <div className="text-sm text-gray-800 leading-relaxed">
+                  区役所・支所の窓口（マイナンバーカードセンター交付コーナー）
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
           {/* 申請方法について（カードの申請・更新用） */}
-          {(answers.application_method === "online" || answers.application_method === "photo_booth" || (answers.application_method === "mail" && (answers.mail_type === "notification_form" || answers.mail_type === "handwritten_form")) || answers.application_method === "center" || (answers.application_method === "mobile_service" && (answers.mobile_service_type === "mobile_window" || answers.mobile_service_type === "mobile_support"))) && (
+          {(answers.application_method === "online" || answers.application_method === "photo_booth" || (answers.application_method === "mail" && (answers.mail_type === "notification_form" || answers.mail_type === "handwritten_form")) || answers.application_method === "center" || (answers.application_method === "mobile_service" && (answers.mobile_service_type === "mobile_window" || answers.mobile_service_type === "mobile_support")) || answers.application_method === "office_support") && (
             <Card className="shadow-lg border-gray-200 mb-8">
               <CardContent className="p-2 sm:p-6">
                 <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
@@ -859,6 +882,11 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                     </div>
                   ) : answers.application_method === "mobile_service" && answers.mobile_service_type === "mobile_support" ? (
                     <p>予約不要</p>
+                  ) : answers.application_method === "office_support" ? (
+                    <div className="space-y-3">
+                      <p>申請のサポート（交付申請書の記入補助、顔写真の無料撮影）を行っております。</p>
+                      <p>交付申請書はご自身で投函していただいております。</p>
+                    </div>
                   ) : null}
                 </div>
               </CardContent>
