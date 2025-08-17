@@ -270,31 +270,67 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
     }
     
     if (method === "mobile_service") {
-      return {
-        title: "出張申請窓口・出張申請サポートについて",
-        content: (
-          <div className="space-y-4">
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <h4 className="font-bold mb-3">出張申請窓口</h4>
-              <div className="text-sm space-y-2">
-                <p>商業施設等において、本人確認のうえ申請を受け付けるブースを開設します。京都市民の方については、カードができあがりましたら、原則としてカードをご自宅へ郵送します。</p>
-                <p>※事前予約優先。今後の実施予定や予約方法など、詳しくはこちらのホームページをご確認ください。</p>
-                <p>※マイナンバー通知カードや本人確認書類（運転免許証やパスポート等）のご持参が必要です。</p>
+      const serviceType = answers.mobile_service_type;
+      
+      if (serviceType === "mobile_window") {
+        return {
+          title: "出張申請窓口について",
+          content: (
+            <div className="space-y-4">
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <div className="text-sm space-y-2">
+                  <p>商業施設等において、本人確認のうえ申請を受け付けるブースを開設します。京都市民の方については、カードができあがりましたら、原則としてカードをご自宅へ郵送します。</p>
+                  <p>※事前予約優先。今後の実施予定や予約方法など、詳しくはこちらのホームページをご確認ください。</p>
+                  <p>※マイナンバー通知カードや本人確認書類（運転免許証やパスポート等）のご持参が必要です。</p>
+                </div>
               </div>
             </div>
-            
-            <div className="bg-kyoto-purple-light border border-purple-200 rounded-lg p-4">
-              <h4 className="font-bold mb-3 text-kyoto-purple-dark">出張申請サポート</h4>
-              <div className="text-sm space-y-2">
-                <p>商業施設等において、申請のサポート（交付申請書の記入補助、顔写真の無料撮影）を行うブースを開設します。</p>
-                <p>※予約不要。今後の実施予定など、詳しくはこちらのページをご確認ください。</p>
-                <p>※当日は本人確認書類のご持参は不要ですが、できる限りマイナンバー通知カード等のマイナンバーが分かるものをお持ちください。（メモなどでも結構です。）</p>
-                <p>※申請書はご自身で投函していただきます。また、カードはマイナンバーカードセンター等へ受け取りに来庁していただく必要があります。</p>
+          )
+        };
+      } else if (serviceType === "mobile_support") {
+        return {
+          title: "出張申請サポートについて",
+          content: (
+            <div className="space-y-4">
+              <div className="bg-kyoto-purple-light border border-purple-200 rounded-lg p-4">
+                <div className="text-sm space-y-2">
+                  <p>商業施設等において、申請のサポート（交付申請書の記入補助、顔写真の無料撮影）を行うブースを開設します。</p>
+                  <p>※予約不要。今後の実施予定など、詳しくはこちらのページをご確認ください。</p>
+                  <p>※当日は本人確認書類のご持参は不要ですが、できる限りマイナンバー通知カード等のマイナンバーが分かるものをお持ちください。（メモなどでも結構です。）</p>
+                  <p>※申請書はご自身で投函していただきます。また、カードはマイナンバーカードセンター等へ受け取りに来庁していただく必要があります。</p>
+                </div>
               </div>
             </div>
-          </div>
-        )
-      };
+          )
+        };
+      } else {
+        // Fallback - should not happen with the new flow
+        return {
+          title: "出張申請窓口・出張申請サポートについて",
+          content: (
+            <div className="space-y-4">
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <h4 className="font-bold mb-3">出張申請窓口</h4>
+                <div className="text-sm space-y-2">
+                  <p>商業施設等において、本人確認のうえ申請を受け付けるブースを開設します。京都市民の方については、カードができあがりましたら、原則としてカードをご自宅へ郵送します。</p>
+                  <p>※事前予約優先。今後の実施予定や予約方法など、詳しくはこちらのホームページをご確認ください。</p>
+                  <p>※マイナンバー通知カードや本人確認書類（運転免許証やパスポート等）のご持参が必要です。</p>
+                </div>
+              </div>
+              
+              <div className="bg-kyoto-purple-light border border-purple-200 rounded-lg p-4">
+                <h4 className="font-bold mb-3 text-kyoto-purple-dark">出張申請サポート</h4>
+                <div className="text-sm space-y-2">
+                  <p>商業施設等において、申請のサポート（交付申請書の記入補助、顔写真の無料撮影）を行うブースを開設します。</p>
+                  <p>※予約不要。今後の実施予定など、詳しくはこちらのページをご確認ください。</p>
+                  <p>※当日は本人確認書類のご持参は不要ですが、できる限りマイナンバー通知カード等のマイナンバーが分かるものをお持ちください。（メモなどでも結構です。）</p>
+                  <p>※申請書はご自身で投函していただきます。また、カードはマイナンバーカードセンター等へ受け取りに来庁していただく必要があります。</p>
+                </div>
+              </div>
+            </div>
+          )
+        };
+      }
     }
     
     if (method === "office_support") {

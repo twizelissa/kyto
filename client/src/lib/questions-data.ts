@@ -68,6 +68,15 @@ export const QUESTIONS: Question[] = [
     ],
     "showWhen": (answers) => answers.application_method === "mail"
   },
+  {
+    "id": "mobile_service_type",
+    "text": "申請方法をお選びください",
+    "options": [
+      {"v": "mobile_window", "label": "出張申請窓口", "icon": "fas fa-truck"},
+      {"v": "mobile_support", "label": "出張申請サポート", "icon": "fas fa-hands-helping"}
+    ],
+    "showWhen": (answers) => answers.application_method === "mobile_service"
+  },
   // カードの交付（受け取り）の質問
   {
     "id": "issuance_type",
