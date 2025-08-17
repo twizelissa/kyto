@@ -329,11 +329,11 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
             </CardContent>
           </Card>
 
-          {/* 必要書類リスト（カードの申請・更新用） */}
+          {/* 用意するもの（カードの申請・更新用） */}
           <Card className="shadow-lg border-gray-200 mb-8">
             <CardContent className="p-2 sm:p-6">
               <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
-                <i className="fas fa-clipboard-list mr-2"></i>必要書類リスト
+                <i className="fas fa-clipboard-list mr-2"></i>用意するもの
               </h3>
               <div className="space-y-4 text-sm text-gray-800 leading-relaxed">
                 <p>※ここに必要書類の内容を後で追加します。</p>
