@@ -132,6 +132,8 @@ Changelog:
   - Fixed electronic certificate proxy detection using correct property name (cert_visitor_type vs visitor_type)
   - Implemented bullet point formatting (・) for multiple reference URLs
   - All reference URLs are clickable links that open in new tabs with proper security attributes
+  - Enhanced "事前予約" (advance reservation) text styling to red bold without underlines across all pages for consistent branding
+  - Optimized mail application workflow by removing unnecessary "手続場所について" (procedure location) and "予約方法について" (reservation method) sections for postal applications, creating a cleaner and more relevant user experience
 
 ## User Preferences
 
