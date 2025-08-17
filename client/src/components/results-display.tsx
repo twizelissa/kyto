@@ -452,7 +452,14 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                           <i className="fas fa-envelope text-kyoto-purple text-lg mt-1"></i>
                           <div className="text-sm font-medium text-gray-800 whitespace-pre-line leading-relaxed">
                             返信用封筒（通知カード又は個人番号通知書と一緒に同封されているもの）
-                            {"\n"}※お持ちでない場合は、以下の申請書送付用封筒（切手不要）をダウンロードし、必要事項をご記入ください
+                            {"\n"}※お持ちでない場合は、以下の
+                            <a 
+                              href="#" 
+                              className="text-blue-600 hover:text-blue-800 underline mx-1"
+                            >
+                              申請書送付用封筒（切手不要）
+                            </a>
+                            をダウンロードし、必要事項をご記入ください
                           </div>
                         </label>
                       </div>
