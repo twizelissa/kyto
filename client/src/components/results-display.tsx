@@ -472,22 +472,22 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                     </div>
                   </div>
                 ) : answers.application_method === "photo_booth" ? (
-                  <div className="flex items-start space-x-3">
-                    <i className="fas fa-camera text-kyoto-purple text-lg mt-1"></i>
-                    <div>
-                      <div className="font-medium">まちなかの証明写真機</div>
-                      <div className="text-xs text-gray-600 mt-1">※申請できるものとできないものがあります。</div>
-                      <div className="mt-3">
-                        <div className="bg-yellow-50 border-2 border-yellow-400 rounded-lg p-3">
-                          <div className="font-medium text-sm mb-2 text-yellow-700">＜対応しているまちなかの証明写真機＞</div>
-                          <ul className="text-sm space-y-1 ml-3 text-yellow-700">
-                            <li>• 株式会社DNPフォトイメージングジャパン</li>
-                            <li>• ME Group Japan 株式会社</li>
-                            <li>• 株式会社北菱プリントテクノロジー</li>
-                            <li>• 三吉工業株式会社</li>
-                          </ul>
-                        </div>
+                  <div>
+                    <div className="flex items-start space-x-3">
+                      <i className="fas fa-camera text-kyoto-purple text-lg mt-1"></i>
+                      <div>
+                        <div className="font-medium">まちなかの証明写真機</div>
+                        <div className="text-xs text-gray-600 mt-1">※申請できるものとできないものがあります。</div>
                       </div>
+                    </div>
+                    <div className="mt-3 bg-yellow-50 border-2 border-yellow-400 rounded-lg p-3">
+                      <div className="font-medium text-sm mb-2 text-yellow-700">＜対応しているまちなかの証明写真機＞</div>
+                      <ul className="text-sm space-y-1 ml-3 text-yellow-700">
+                        <li>• 株式会社DNPフォトイメージングジャパン</li>
+                        <li>• ME Group Japan 株式会社</li>
+                        <li>• 株式会社北菱プリントテクノロジー</li>
+                        <li>• 三吉工業株式会社</li>
+                      </ul>
                     </div>
                   </div>
                 ) : (
