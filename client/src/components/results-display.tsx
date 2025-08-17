@@ -24,6 +24,12 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
   // Check if this is an application method result
   const isApplicationMethodResult = answers.application_method;
   
+  // Check if this is a card pickup result
+  const isPickupMethodResult = answers.procedure === "card_issuance";
+  
+  // Check if proxy was selected for card pickup
+  const isProxySelectedForPickup = isPickupMethodResult && answers.visitor_type === "proxy";
+  
   const requiredItems = isApplicationMethodResult ? [] : resolveItems(answers);
   
   // 手続きタイプを取得
@@ -1443,6 +1449,17 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                         </a>
                       </p>
                     </>
+                  ) : isPickupMethodResult ? (
+                    <>
+                      <p>マイナンバーカードの交付（お受取）について</p>
+                      <p>事前予約をすれば区役所・支所でもマイナンバーカードのお受取りや電子証明書の更新等ができます！！</p>
+                      {isProxySelectedForPickup && (
+                        <>
+                          <p>本人がお越しになれない場合のマイナンバーカードの受取について</p>
+                          <p>申請者が15歳未満、成年被後見人の場合のマイナンバーカードの交付（お受取）について</p>
+                        </>
+                      )}
+                    </>
                   ) : (
                     <p className="text-gray-500">※参考URLは後で追加されます</p>
                   )}
@@ -1455,7 +1472,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                   <i className="fas fa-phone mr-2 text-gray-600"></i>お問い合わせ先
                 </h4>
                 <div className="space-y-2 text-sm text-gray-700">
-                  {isApplicationMethodResult ? (
+                  {isApplicationMethodResult || isPickupMethodResult ? (
                     <>
                       <p className="font-medium">京都市マイナンバーカードセンター</p>
                       <p>（開所時間：月・水曜日：9:00～19:00　その他：9:00～17:00　※祝休日・年末年始等を除く）</p>
