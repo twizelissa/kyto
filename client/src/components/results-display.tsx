@@ -678,7 +678,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                   ) : answers.application_method === "mail" && answers.mail_type === "notification_form" ? (
                     <p>
                       <a 
-                        href="https://www.kojinbango-card.go.jp/apprec/apply/photobooth_apply/" 
+                        href="https://www.kojinbango-card.go.jp/apprec/apply/mail_apply/" 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="text-blue-600 hover:text-blue-800 underline font-bold"
@@ -690,7 +690,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                   ) : answers.application_method === "mail" && answers.mail_type === "handwritten_form" ? (
                     <p>
                       <a 
-                        href="https://www.kojinbango-card.go.jp/apprec/apply/photobooth_apply/" 
+                        href="https://www.kojinbango-card.go.jp/apprec/apply/mail_apply/" 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="text-blue-600 hover:text-blue-800 underline font-bold"
