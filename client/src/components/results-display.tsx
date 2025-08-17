@@ -181,7 +181,18 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
         content: (
           <div className="space-y-4">
             <p>マイナンバーカードの申請に対応した証明写真機から申請することができます。</p>
-            <p>詳しい申請方法は，マイナンバーカード総合サイトをご確認ください。</p>
+            <p>
+              詳しい申請方法は，
+              <a 
+                href="https://www.kojinbango-card.go.jp/apprec/apply/photobooth_apply/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:text-blue-800 underline font-bold"
+              >
+                マイナンバーカード総合サイト
+              </a>
+              をご確認ください。
+            </p>
           </div>
         )
       };
