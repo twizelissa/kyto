@@ -622,6 +622,28 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                       </div>
                     </div>
                   </div>
+                ) : answers.application_method === "mobile_service" && answers.mobile_service_type === "mobile_support" ? (
+                  <div className="space-y-4">
+                    <div className="flex items-start space-x-3 p-3 border rounded-lg hover:bg-kyoto-purple-light transition-colors">
+                      <Checkbox
+                        id="mobile-support-mynumber-documents"
+                        checked={checkedItems["mobile-support-mynumber-documents"] || false}
+                        onCheckedChange={(checked) => handleItemCheck("mobile-support-mynumber-documents", checked as boolean)}
+                        className="mt-1"
+                      />
+                      <div className="flex-1">
+                        <label htmlFor="mobile-support-mynumber-documents" className="flex items-start space-x-3 cursor-pointer">
+                          <i className="fas fa-id-card-alt text-kyoto-purple text-lg mt-1"></i>
+                          <div className="text-sm font-medium text-gray-800 whitespace-pre-line leading-relaxed">
+                            マイナンバー通知カード等のマイナンバーが分かるもの（メモでも可）
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                    <div className="mt-3 text-sm text-gray-600 leading-relaxed">
+                      本人確認書類のご持参は不要です
+                    </div>
+                  </div>
                 ) : (
                   <p>※他の申請方法の内容を後で追加します。</p>
                 )}
@@ -725,6 +747,23 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                       </div>
                     </div>
                   </div>
+                ) : answers.application_method === "mobile_service" && answers.mobile_service_type === "mobile_support" ? (
+                  <div className="space-y-4">
+                    <div className="flex items-start space-x-3">
+                      <i className="fas fa-hands-helping text-kyoto-purple text-lg mt-1"></i>
+                      <div>
+                        <div className="text-sm text-gray-800 leading-relaxed">
+                          商業施設等において、申請のサポート（交付申請書の記入補助、顔写真の無料撮影）を行うブースを開設します。<br/>
+                          今後の実施予定など、詳しくは<a 
+                            href="https://kyotomn-branch.com" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-blue-600 hover:text-blue-800 underline font-bold mx-1"
+                          >こちら</a>のページをご確認ください。
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 ) : (
                   <p>※他の申請方法の内容を後で追加します。</p>
                 )}
@@ -733,11 +772,11 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
           </Card>
 
           {/* 申請方法について（カードの申請・更新用） */}
-          {(answers.application_method === "online" || answers.application_method === "photo_booth" || (answers.application_method === "mail" && (answers.mail_type === "notification_form" || answers.mail_type === "handwritten_form")) || answers.application_method === "center" || (answers.application_method === "mobile_service" && answers.mobile_service_type === "mobile_window")) && (
+          {(answers.application_method === "online" || answers.application_method === "photo_booth" || (answers.application_method === "mail" && (answers.mail_type === "notification_form" || answers.mail_type === "handwritten_form")) || answers.application_method === "center" || (answers.application_method === "mobile_service" && (answers.mobile_service_type === "mobile_window" || answers.mobile_service_type === "mobile_support"))) && (
             <Card className="shadow-lg border-gray-200 mb-8">
               <CardContent className="p-2 sm:p-6">
                 <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
-                  <i className="fas fa-calendar-alt mr-2"></i>{answers.application_method === "mobile_service" && answers.mobile_service_type === "mobile_window" ? "予約方法について" : "申請方法について"}
+                  <i className="fas fa-calendar-alt mr-2"></i>{answers.application_method === "mobile_service" && (answers.mobile_service_type === "mobile_window" || answers.mobile_service_type === "mobile_support") ? "予約方法について" : "申請方法について"}
                 </h3>
                 <div className="space-y-4 text-sm text-gray-800 leading-relaxed">
                   {answers.application_method === "online" ? (
@@ -810,6 +849,8 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                         className="text-blue-600 hover:text-blue-800 underline font-bold mx-1"
                       >こちら</a>のホームページをご確認ください。</p>
                     </div>
+                  ) : answers.application_method === "mobile_service" && answers.mobile_service_type === "mobile_support" ? (
+                    <p>予約不要</p>
                   ) : null}
                 </div>
               </CardContent>
