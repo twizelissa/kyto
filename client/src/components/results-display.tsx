@@ -563,7 +563,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                       </div>
                     </div>
                   </div>
-                ) : answers.application_method === "card_center" ? (
+                ) : answers.application_method === "center" ? (
                   <div className="space-y-4">
                     <p className="text-sm font-medium text-gray-800 leading-relaxed">※保留</p>
                   </div>
@@ -629,7 +629,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                       <div className="font-medium">お近くのポストに投函</div>
                     </div>
                   </div>
-                ) : answers.application_method === "card_center" ? (
+                ) : answers.application_method === "center" ? (
                   <div className="space-y-4">
                     <div className="flex items-start space-x-3">
                       <i className="fas fa-building text-kyoto-purple text-lg mt-1"></i>
@@ -657,7 +657,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
           </Card>
 
           {/* 申請方法について（カードの申請・更新用） */}
-          {(answers.application_method === "online" || answers.application_method === "photo_booth" || (answers.application_method === "mail" && (answers.mail_type === "notification_form" || answers.mail_type === "handwritten_form")) || answers.application_method === "card_center") && (
+          {(answers.application_method === "online" || answers.application_method === "photo_booth" || (answers.application_method === "mail" && (answers.mail_type === "notification_form" || answers.mail_type === "handwritten_form")) || answers.application_method === "center") && (
             <Card className="shadow-lg border-gray-200 mb-8">
               <CardContent className="p-2 sm:p-6">
                 <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
@@ -719,7 +719,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                     </div>
                   ) : answers.application_method === "mail" && answers.mail_type === "handwritten_form" ? (
                     <p>交付申請書に必要事項を御記入いただき、顔写真を貼ってポストに投函してください。</p>
-                  ) : answers.application_method === "card_center" ? (
+                  ) : answers.application_method === "center" ? (
                     <p>写真撮影や申請書の記入方法の案内等、申請書の作成をお手伝いします。<br/>なお、完成した申請書はご自身でポストに投函いただきます（切手不要）。</p>
                   ) : null}
                 </div>
