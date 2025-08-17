@@ -1382,7 +1382,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
               onClick={onBack}
               className="kyoto-button px-4 py-2 rounded-lg font-semibold text-center justify-center text-sm whitespace-nowrap"
             >
-              <i className="fas fa-chevron-left mr-2"></i>前のページへ戻る
+              <i className="fas fa-chevron-left mr-2"></i>前へ戻る
             </Button>
             <Button
               onClick={onRestart}
