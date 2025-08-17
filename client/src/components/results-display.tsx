@@ -146,30 +146,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
         title: "オンライン申請について",
         content: (
           <div className="space-y-4">
-            <p>スマートフォンや自宅のパソコン等で申請される場合は、IDや二次元バーコードが記載されたマイナンバーカード交付申請書をご利用ください。</p>
-            <p>詳しい申請方法は、マイナンバーカード総合サイト（地方公共団体情報システム機構のホームページ）をご確認ください。</p>
-            <div className="space-y-2">
-              <p>
-                <a 
-                  href="https://www.kojinbango-card.go.jp/apprec/apply/online_apply/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-blue-600 hover:text-blue-800 underline"
-                >
-                  ▶︎パソコンからの申請はこちら
-                </a>
-              </p>
-              <p>
-                <a 
-                  href="https://www.kojinbango-card.go.jp/apprec/apply/online_apply/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-blue-600 hover:text-blue-800 underline"
-                >
-                  ▶︎スマートフォンからの申請はこちら
-                </a>
-              </p>
-            </div>
+            <p>オンライン申請が選択されました。</p>
           </div>
         )
       };
@@ -517,7 +494,31 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                 </h3>
                 <div className="space-y-4 text-sm text-gray-800 leading-relaxed">
                   {answers.application_method === "online" ? (
-                    <p>オンライン申請では予約は不要です。24時間いつでも申請が可能です。</p>
+                    <div className="space-y-4">
+                      <p>マイナンバーカード総合サイト（地方公共団体情報システム機構のホームページ）をご確認ください。</p>
+                      <div className="space-y-2">
+                        <p>
+                          <a 
+                            href="https://www.kojinbango-card.go.jp/apprec/apply/online_apply/" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-blue-600 hover:text-blue-800 underline"
+                          >
+                            ▶︎パソコンからの申請はこちら
+                          </a>
+                        </p>
+                        <p>
+                          <a 
+                            href="https://www.kojinbango-card.go.jp/apprec/apply/online_apply/" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-blue-600 hover:text-blue-800 underline"
+                          >
+                            ▶︎スマートフォンからの申請はこちら
+                          </a>
+                        </p>
+                      </div>
+                    </div>
                   ) : answers.application_method === "photo_booth" ? (
                     <p>まちなかの証明写真機では予約は不要です。対応している写真機で直接申請してください。</p>
                   ) : null}
