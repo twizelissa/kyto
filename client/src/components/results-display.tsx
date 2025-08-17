@@ -1517,6 +1517,16 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                           マイナンバーカード及び電子証明書の更新について
                         </a>
                       </p>
+                      <p>
+                        ・<a 
+                          href="https://www.city.kyoto.lg.jp/bunshi/page/0000301400.html" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:text-blue-800 underline"
+                        >
+                          事前予約をすれば区役所・支所でもマイナンバーカードのお受取りや電子証明書の更新等ができます！！
+                        </a>
+                      </p>
                       {isProxySelectedForCertificate && (
                         <>
                           <p>
