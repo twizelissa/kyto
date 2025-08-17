@@ -39,6 +39,9 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
   // Check if this is a PIN change result
   const isPinChangeResult = answers.procedure === "pin_change";
   
+  // Check if this is an info change result
+  const isInfoChangeResult = answers.procedure === "info_change";
+  
   const requiredItems = isApplicationMethodResult ? [] : resolveItems(answers);
   
   // 手続きタイプを取得
@@ -1565,6 +1568,19 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                         </a>
                       </p>
                     </>
+                  ) : isInfoChangeResult ? (
+                    <>
+                      <p>
+                        ・<a 
+                          href="https://www.city.kyoto.lg.jp/bunshi/page/0000287984.html" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:text-blue-800 underline"
+                        >
+                          マイナンバーカードの住所や氏名等に変更があったとき
+                        </a>
+                      </p>
+                    </>
                   ) : (
                     <p className="text-gray-500">※参考URLは後で追加されます</p>
                   )}
@@ -1583,6 +1599,12 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                       <p>（開所時間：月・水曜日：9:00～19:00　その他：9:00～17:00　※祝休日・年末年始等を除く）</p>
                       <p>電話：075-746-6855</p>
                       <p>ファックス：075-861-2611</p>
+                    </>
+                  ) : isInfoChangeResult ? (
+                    <>
+                      <p className="font-medium">文化市民局 地域自治推進室 戸籍住民企画担当</p>
+                      <p>電話：050-1722-5417</p>
+                      <p>ファックス：075-213-0321</p>
                     </>
                   ) : (
                     <p className="text-gray-500">※お問い合わせ先は後で追加されます</p>
