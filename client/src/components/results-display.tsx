@@ -323,17 +323,9 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
     <div className="max-w-none mx-auto px-1 sm:px-4 py-8">
       {isApplicationMethodResult ? (
         <div>
-          <Card className="rounded-xl shadow-lg p-2 sm:p-6 mb-6">
-            <CardContent className="space-y-8">
-              <div className="text-center mb-8">
-                <i className="fas fa-info-circle text-kyoto-purple text-6xl mb-4"></i>
-                <h2 className="text-3xl font-bold text-kyoto-purple-dark mb-4">{getApplicationMethodContent().title}</h2>
-              </div>
-              <div className="text-gray-800 leading-relaxed">
-                {getApplicationMethodContent().content}
-              </div>
-            </CardContent>
-          </Card>
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-kyoto-purple-dark mb-4">{getApplicationMethodContent().title}</h2>
+          </div>
 
           {/* 用意するもの（カードの申請・更新用） */}
           <Card className="shadow-lg border-gray-200 mb-8">
