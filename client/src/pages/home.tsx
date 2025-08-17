@@ -80,19 +80,19 @@ function WelcomeScreen({ onStart }: { onStart: () => void }) {
                   質問にお答えいただくと、あなたに必要な情報をご案内いたします。
                 </p>
                 <div className="hidden md:flex flex-wrap justify-center gap-6 text-base text-black font-medium">
-                  <span className="flex items-center"><span className="text-2xl mr-2 text-black">✓</span> 持ち物</span>
-                  <span className="flex items-center"><span className="text-2xl mr-2 text-black">✓</span> 場所</span>
-                  <span className="flex items-center"><span className="text-2xl mr-2 text-black">✓</span> 申請方法</span>
-                  <span className="flex items-center"><span className="text-2xl mr-2 text-black">✓</span> 予約方法</span>
+                  <span className="flex items-center"><span className="text-2xl mr-2 text-red-600">✓</span> 持ち物</span>
+                  <span className="flex items-center"><span className="text-2xl mr-2 text-red-600">✓</span> 場所</span>
+                  <span className="flex items-center"><span className="text-2xl mr-2 text-red-600">✓</span> 申請方法</span>
+                  <span className="flex items-center"><span className="text-2xl mr-2 text-red-600">✓</span> 予約方法</span>
                 </div>
                 <div className="md:hidden flex flex-col items-center gap-3 text-base text-black font-medium">
                   <div className="flex justify-center gap-8">
-                    <span className="flex items-center"><span className="text-2xl mr-2 text-black">✓</span> 持ち物</span>
-                    <span className="flex items-center"><span className="text-2xl mr-2 text-black">✓</span> 場所</span>
+                    <span className="flex items-center"><span className="text-2xl mr-2 text-red-600">✓</span> 持ち物</span>
+                    <span className="flex items-center"><span className="text-2xl mr-2 text-red-600">✓</span> 場所</span>
                   </div>
                   <div className="flex justify-center gap-8">
-                    <span className="flex items-center"><span className="text-2xl mr-2 text-black">✓</span> 申請方法</span>
-                    <span className="flex items-center"><span className="text-2xl mr-2 text-black">✓</span> 予約方法</span>
+                    <span className="flex items-center"><span className="text-2xl mr-2 text-red-600">✓</span> 申請方法</span>
+                    <span className="flex items-center"><span className="text-2xl mr-2 text-red-600">✓</span> 予約方法</span>
                   </div>
                 </div>
               </div>
