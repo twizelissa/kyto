@@ -42,6 +42,9 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
   // Check if this is an info change result
   const isInfoChangeResult = answers.procedure === "info_change";
   
+  // Check if this is a card lost or return result
+  const isCardLostOrReturnResult = answers.procedure === "card_lost" || answers.procedure === "card_return";
+  
   const requiredItems = isApplicationMethodResult ? [] : resolveItems(answers);
   
   // 手続きタイプを取得
@@ -1581,6 +1584,19 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                         </a>
                       </p>
                     </>
+                  ) : isCardLostOrReturnResult ? (
+                    <>
+                      <p>
+                        ・<a 
+                          href="https://www.city.kyoto.lg.jp/bunshi/page/0000287984.html" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:text-blue-800 underline"
+                        >
+                          マイナンバーカードの紛失・返納について
+                        </a>
+                      </p>
+                    </>
                   ) : (
                     <p className="text-gray-500">※参考URLは後で追加されます</p>
                   )}
@@ -1593,7 +1609,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                   <i className="fas fa-phone mr-2 text-gray-600"></i>お問い合わせ先
                 </h4>
                 <div className="space-y-2 text-sm text-gray-700">
-                  {isApplicationMethodResult || isPickupMethodResult || isElectronicCertificateResult || isPinChangeResult ? (
+                  {isApplicationMethodResult || isPickupMethodResult || isElectronicCertificateResult || isPinChangeResult || isCardLostOrReturnResult ? (
                     <>
                       <p className="font-medium">京都市マイナンバーカードセンター</p>
                       <p>（開所時間：月・水曜日：9:00～19:00　その他：9:00～17:00　※祝休日・年末年始等を除く）</p>
