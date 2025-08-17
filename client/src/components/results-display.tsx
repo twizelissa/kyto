@@ -1451,12 +1451,48 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                     </>
                   ) : isPickupMethodResult ? (
                     <>
-                      <p>マイナンバーカードの交付（お受取）について</p>
-                      <p>事前予約をすれば区役所・支所でもマイナンバーカードのお受取りや電子証明書の更新等ができます！！</p>
+                      <p>
+                        <a 
+                          href="https://www.city.kyoto.lg.jp/bunshi/page/0000290448.html" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:text-blue-800 underline"
+                        >
+                          マイナンバーカードの交付（お受取）について
+                        </a>
+                      </p>
+                      <p>
+                        <a 
+                          href="https://www.city.kyoto.lg.jp/bunshi/page/0000301400.html" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:text-blue-800 underline"
+                        >
+                          事前予約をすれば区役所・支所でもマイナンバーカードのお受取りや電子証明書の更新等ができます！！
+                        </a>
+                      </p>
                       {isProxySelectedForPickup && (
                         <>
-                          <p>本人がお越しになれない場合のマイナンバーカードの受取について</p>
-                          <p>申請者が15歳未満、成年被後見人の場合のマイナンバーカードの交付（お受取）について</p>
+                          <p>
+                            <a 
+                              href="https://www.city.kyoto.lg.jp/bunshi/page/0000294072.html" 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="text-blue-600 hover:text-blue-800 underline"
+                            >
+                              本人がお越しになれない場合のマイナンバーカードの受取について
+                            </a>
+                          </p>
+                          <p>
+                            <a 
+                              href="https://www.city.kyoto.lg.jp/bunshi/page/0000279797.html" 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="text-blue-600 hover:text-blue-800 underline"
+                            >
+                              申請者が15歳未満、成年被後見人の場合のマイナンバーカードの交付（お受取）について
+                            </a>
+                          </p>
                         </>
                       )}
                     </>
