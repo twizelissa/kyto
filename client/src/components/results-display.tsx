@@ -407,6 +407,41 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                       </div>
                     </div>
                   </div>
+                ) : answers.application_method === "photo_booth" ? (
+                  <div className="space-y-4">
+                    <div className="flex items-start space-x-3 p-3 border rounded-lg hover:bg-kyoto-purple-light transition-colors">
+                      <Checkbox
+                        id="photo-booth-money"
+                        checked={checkedItems["photo-booth-money"] || false}
+                        onCheckedChange={(checked) => handleItemCheck("photo-booth-money", checked as boolean)}
+                        className="mt-1"
+                      />
+                      <div className="flex-1">
+                        <label htmlFor="photo-booth-money" className="flex items-start space-x-3 cursor-pointer">
+                          <i className="fas fa-coins text-kyoto-purple text-lg mt-1"></i>
+                          <div className="text-sm font-medium text-gray-800 whitespace-pre-line leading-relaxed">
+                            撮影用のお金
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-3 p-3 border rounded-lg hover:bg-kyoto-purple-light transition-colors">
+                      <Checkbox
+                        id="photo-booth-qr"
+                        checked={checkedItems["photo-booth-qr"] || false}
+                        onCheckedChange={(checked) => handleItemCheck("photo-booth-qr", checked as boolean)}
+                        className="mt-1"
+                      />
+                      <div className="flex-1">
+                        <label htmlFor="photo-booth-qr" className="flex items-start space-x-3 cursor-pointer">
+                          <i className="fas fa-qrcode text-kyoto-purple text-lg mt-1"></i>
+                          <div className="text-sm font-medium text-gray-800 whitespace-pre-line leading-relaxed">
+                            交付申請書のQRコード
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
                 ) : (
                   <p>※他の申請方法の内容を後で追加します。</p>
                 )}
@@ -434,6 +469,23 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                       >
                         https://net.kojinbango-card.go.jp/SS_SERVICE_OUT/FA01S001Action.do
                       </a>
+                    </div>
+                  </div>
+                ) : answers.application_method === "photo_booth" ? (
+                  <div className="flex items-start space-x-3">
+                    <i className="fas fa-camera text-kyoto-purple text-lg mt-1"></i>
+                    <div>
+                      <div className="font-medium">まちなかの証明写真機</div>
+                      <div className="text-xs text-gray-600 mt-1">※申請できるものとできないものがあります。</div>
+                      <div className="mt-3">
+                        <div className="font-medium text-sm mb-2">＜対応しているまちなかの証明写真機＞</div>
+                        <ul className="text-sm space-y-1 ml-3">
+                          <li>• 株式会社DNPフォトイメージングジャパン</li>
+                          <li>• ME Group Japan 株式会社</li>
+                          <li>• 株式会社北菱プリントテクノロジー</li>
+                          <li>• 三吉工業株式会社</li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 ) : (
