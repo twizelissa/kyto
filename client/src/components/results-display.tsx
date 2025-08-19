@@ -424,22 +424,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                         </label>
                       </div>
                     </div>
-                    <div className="flex items-start space-x-3 p-3 border rounded-lg hover:bg-kyoto-purple-light transition-colors">
-                      <Checkbox
-                        id="online-email"
-                        checked={checkedItems["online-email"] || false}
-                        onCheckedChange={(checked) => handleItemCheck("online-email", checked as boolean)}
-                        className="mt-1"
-                      />
-                      <div className="flex-1">
-                        <label htmlFor="online-email" className="flex items-start space-x-3 cursor-pointer">
-                          <i className="fas fa-envelope text-kyoto-purple text-lg mt-1"></i>
-                          <div className="text-sm font-medium text-gray-800 whitespace-pre-line leading-relaxed">
-                            メールアドレス
-                          </div>
-                        </label>
-                      </div>
-                    </div>
+
                     <div className="flex items-start space-x-3 p-3 border rounded-lg hover:bg-kyoto-purple-light transition-colors">
                       <Checkbox
                         id="online-photo"
