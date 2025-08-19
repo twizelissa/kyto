@@ -1557,7 +1557,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                     <>
                       <p>
                         ・<a 
-                          href="https://www.city.kyoto.lg.jp/bunshi/page/0000287984.html" 
+                          href="https://www.city.kyoto.lg.jp/bunshi/page/0000263916.html" 
                           target="_blank" 
                           rel="noopener noreferrer"
                           className="text-blue-600 hover:text-blue-800 underline"
