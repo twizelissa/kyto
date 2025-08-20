@@ -1415,12 +1415,89 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
             <i className="fas fa-bug mr-2"></i>デバッグ情報：選択した内容
           </h3>
           <div className="space-y-2 text-sm text-gray-800">
-            {Object.entries(answers).map(([key, value]) => (
-              <div key={key} className="flex flex-wrap">
-                <span className="font-medium text-yellow-700 min-w-[200px]">{key}:</span>
-                <span className="text-gray-600">{typeof value === 'object' ? JSON.stringify(value) : String(value)}</span>
-              </div>
-            ))}
+            {Object.entries(answers).map(([key, value]) => {
+              // Create Japanese translations for common keys
+              const getJapaneseKey = (englishKey: string) => {
+                const keyMap: Record<string, string> = {
+                  'procedure': '手続きの種類',
+                  'applicant_age': '申請者の年齢',
+                  'visitor_type': '来庁者',
+                  'proxy_reason': '代理人の理由',
+                  'application_method': '申請方法',
+                  'mail_type': '郵送の種類',
+                  'mobile_service_type': '出張サービスの種類',
+                  'cert_type': '電子証明書の種類',
+                  'cert_visitor_type': '電子証明書来庁者',
+                  'cert_proxy_reason': '電子証明書代理人理由',
+                  'pin_type': 'PIN変更の種類',
+                  'pin_visitor_type': 'PIN変更来庁者',
+                  'pin_proxy_reason': 'PIN変更代理人理由',
+                  'info_visitor_type': '住所変更来庁者',
+                  'info_proxy_reason': '住所変更代理人理由',
+                  'lost_situation': '紛失状況',
+                  'return_reason': '返納理由'
+                };
+                return keyMap[englishKey] || englishKey;
+              };
+
+              // Create Japanese translations for common values
+              const getJapaneseValue = (key: string, englishValue: string) => {
+                const valueMap: Record<string, Record<string, string>> = {
+                  'applicant_age': {
+                    '15_over': '15歳以上',
+                    'under_15': '15歳未満'
+                  },
+                  'visitor_type': {
+                    'self': 'ご本人',
+                    'proxy': '代理人'
+                  },
+                  'proxy_reason': {
+                    'adult_guardian': '成年後見人',
+                    'conservatee': '被保佐人',
+                    'assisted_person': '被補助人',
+                    'voluntary_guardian': '任意後見人',
+                    'under_15': '15歳未満',
+                    'voluntary_proxy': '任意代理人',
+                    'same_household': '同一世帯員'
+                  },
+                  'application_method': {
+                    'online': 'オンライン申請',
+                    'photo_booth': '証明写真機',
+                    'mail': '郵送申請',
+                    'center': 'マイナンバーカードセンター',
+                    'mobile_service': '出張申請',
+                    'office_support': '区役所・支所サポート'
+                  },
+                  'mail_type': {
+                    'notification_form': '通知カード申請書',
+                    'handwritten_form': '手書き申請書'
+                  },
+                  'procedure': {
+                    'card_issuance': 'カードの申請・更新',
+                    'digital_cert': '電子証明書の発行・更新',
+                    'pin_change': 'PIN変更・初期化',
+                    'info_change': '氏名・住所の変更等',
+                    'card_lost': 'カードの紛失・発見',
+                    'card_return': 'カードの返納'
+                  }
+                };
+                return valueMap[key]?.[englishValue] || englishValue;
+              };
+
+              const japaneseKey = getJapaneseKey(key);
+              const japaneseValue = getJapaneseValue(key, String(value));
+              
+              return (
+                <div key={key} className="flex flex-wrap">
+                  <span className="font-medium text-yellow-700 min-w-[200px]">
+                    {key} ({japaneseKey}):
+                  </span>
+                  <span className="text-gray-600">
+                    {typeof value === 'object' ? JSON.stringify(value) : `${value} (${japaneseValue})`}
+                  </span>
+                </div>
+              );
+            })}
           </div>
         </div>
       )}
