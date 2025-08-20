@@ -21,6 +21,103 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
   );
   const [procedureCompleted, setProcedureCompleted] = useState(false);
   
+  // デバッグ用の選択パス生成
+  const generateSelectionPath = () => {
+    const path: string[] = [];
+    
+    // 手続きの種類
+    switch (answers.procedure) {
+      case "card_issuance":
+        if (answers.procedure_type === "application") {
+          path.push("カードの申請・更新");
+        } else {
+          path.push("カードの交付（受け取り）");
+        }
+        break;
+      case "digital_cert":
+        path.push("電子証明書の発行・更新");
+        break;
+      case "pin_change":
+        path.push("暗証番号の変更・初期化");
+        break;
+      case "info_change":
+        path.push("氏名・住所の変更等");
+        break;
+      case "card_lost":
+        path.push("カードの紛失・発見");
+        break;
+      case "card_return":
+        path.push("カードの返納");
+        break;
+    }
+    
+    // 申請・更新の詳細
+    if (answers.procedure === "card_issuance" && answers.procedure_type === "application") {
+      if (answers.issuance_type === "new") path.push("新規");
+      else if (answers.issuance_type === "renewal") path.push("更新");
+      
+      if (answers.current_card === "juki_card") path.push("住民基本台帳カード");
+      else if (answers.current_card === "paper_card") path.push("紙の通知カード");
+      else if (answers.current_card === "none") path.push("何も持っていない");
+      
+      if (answers.application_method === "online") path.push("オンラインで申請する");
+      else if (answers.application_method === "photo_booth") path.push("証明写真機で申請する");
+      else if (answers.application_method === "mail") {
+        path.push("郵送で申請する");
+        if (answers.mail_type === "notification_form") path.push("通知カード又は個人番号通知書に同封されているマイナンバーカード交付申請書による申請");
+        else if (answers.mail_type === "handwritten_form") path.push("手書き交付申請書による申請");
+      }
+      else if (answers.application_method === "center") path.push("マイナンバーカードセンターで申請する");
+      else if (answers.application_method === "mobile_service") {
+        path.push("出張申請窓口で申請する");
+        if (answers.mobile_service_type === "mobile_window") path.push("出張申請窓口");
+        else if (answers.mobile_service_type === "mobile_support") path.push("申請サポートブース");
+      }
+      else if (answers.application_method === "office_support") path.push("区役所・支所の窓口（マイナンバーカードセンター交付コーナー）");
+    }
+    
+    // 交付（受け取り）の詳細
+    if (answers.procedure === "card_issuance" && answers.procedure_type === "pickup") {
+      if (answers.pickup_type === "new") path.push("新規");
+      else if (answers.pickup_type === "renewal") path.push("更新");
+      
+      if (answers.visitor_type === "self") path.push("本人が受け取りに行く");
+      else if (answers.visitor_type === "proxy") path.push("代理人が受け取りに行く");
+    }
+    
+    // 電子証明書の詳細
+    if (answers.procedure === "digital_cert") {
+      if (answers.cert_type === "issuance") path.push("発行");
+      else if (answers.cert_type === "renewal") path.push("更新");
+      
+      if (answers.cert_visitor_type === "self") path.push("本人が手続きする");
+      else if (answers.cert_visitor_type === "proxy") path.push("代理人が手続きする");
+    }
+    
+    // 暗証番号変更の詳細
+    if (answers.procedure === "pin_change") {
+      if (answers.pin_type === "change") path.push("変更");
+      else if (answers.pin_type === "reset") path.push("初期化");
+      
+      if (answers.pin_visitor_type === "self") path.push("本人が手続きする");
+      else if (answers.pin_visitor_type === "proxy") path.push("代理人が手続きする");
+    }
+    
+    // 住所・氏名変更の詳細
+    if (answers.procedure === "info_change") {
+      if (answers.info_visitor_type === "self") path.push("本人が手続きする");
+      else if (answers.info_visitor_type === "proxy") path.push("代理人が手続きする");
+    }
+    
+    // カード紛失・発見の詳細
+    if (answers.procedure === "card_lost") {
+      if (answers.lost_situation === "lost") path.push("紛失した");
+      else if (answers.lost_situation === "found") path.push("発見した");
+    }
+    
+    return path.join(" ＞ ");
+  };
+  
   // Check if this is an application method result
   const isApplicationMethodResult = answers.application_method;
   
@@ -383,6 +480,13 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
       <div className="max-w-none mx-auto px-1 sm:px-4 py-8">
       {isApplicationMethodResult ? (
         <div>
+          {/* デバッグ用選択パス表示 */}
+          <div className="mb-6 p-3 bg-gray-100 border rounded-lg">
+            <div className="text-xs text-gray-600 font-mono">
+              <strong>選択パス:</strong> {generateSelectionPath()}
+            </div>
+          </div>
+          
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-kyoto-purple-dark mb-4">{getApplicationMethodContent().title}</h2>
             {answers.application_method === "mobile_service" && answers.mobile_service_type === "mobile_support" && (
@@ -965,6 +1069,13 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
         </>
       ) : (
         <>
+          {/* デバッグ用選択パス表示 */}
+          <div className="mb-6 p-3 bg-gray-100 border rounded-lg">
+            <div className="text-xs text-gray-600 font-mono">
+              <strong>選択パス:</strong> {generateSelectionPath()}
+            </div>
+          </div>
+          
           <div className="text-center mb-8">
             <i className="fas fa-check-circle text-kyoto-purple text-6xl mb-4"></i>
             <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-black mb-6">以下の内容に沿ってお手続きください</h2>
