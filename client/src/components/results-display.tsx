@@ -21,13 +21,128 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
   );
   const [procedureCompleted, setProcedureCompleted] = useState(false);
   
-  // デバッグ用の全回答表示
+  // デバッグ用の全回答表示（日本語対応）
   const generateAllAnswers = () => {
     const allAnswers: string[] = [];
     
+    // 日本語表示用のキー変換
+    const keyTranslations: { [key: string]: string } = {
+      procedure: "手続きの種類",
+      procedure_type: "手続きタイプ",
+      issuance_type: "発行タイプ",
+      pickup_type: "受け取りタイプ",
+      current_card: "現在のカード",
+      application_method: "申請方法",
+      mail_type: "郵送タイプ",
+      mobile_service_type: "出張サービスタイプ",
+      visitor_type: "来庁者タイプ",
+      applicant_age: "申請者年齢",
+      proxy_reason: "代理理由",
+      difficulty_reason: "来庁困難理由",
+      cohabitation_status: "同居状況",
+      domicile_location: "本籍地",
+      cert_type: "証明書タイプ",
+      cert_visitor_type: "証明書来庁者タイプ",
+      cert_proxy_reason: "証明書代理理由",
+      cert_difficulty_reason: "証明書来庁困難理由",
+      pin_type: "暗証番号タイプ",
+      pin_visitor_type: "暗証番号来庁者タイプ",
+      pin_proxy_reason: "暗証番号代理理由",
+      pin_cohabitation_status: "暗証番号同居状況",
+      reset_reason: "リセット理由",
+      info_visitor_type: "情報変更来庁者タイプ",
+      info_proxy_reason: "情報変更代理理由",
+      info_difficulty_reason: "情報変更来庁困難理由",
+      info_cohabitation_status: "情報変更同居状況",
+      lost_situation: "紛失状況"
+    };
+
+    // 値の日本語変換
+    const valueTranslations: { [key: string]: string } = {
+      // procedure
+      card_issuance: "マイナンバーカード",
+      digital_cert: "電子証明書",
+      pin_change: "暗証番号変更",
+      info_change: "住所氏名変更",
+      card_lost: "カード紛失",
+      card_return: "カード返納",
+      
+      // types
+      application: "申請",
+      pickup: "交付",
+      new: "新規",
+      renewal: "更新",
+      issuance: "発行",
+      change: "変更",
+      reset: "初期化",
+      
+      // cards
+      juki_card: "住民基本台帳カード",
+      paper_card: "紙の通知カード",
+      none: "なし",
+      
+      // methods
+      online: "オンライン",
+      photo_booth: "証明写真機",
+      mail: "郵送",
+      center: "マイナンバーカードセンター",
+      mobile_service: "出張申請窓口",
+      office_support: "区役所支所",
+      
+      // visitor types
+      self: "本人",
+      proxy: "代理人",
+      
+      // ages
+      under_15: "15歳未満",
+      "15_or_over": "15歳以上",
+      
+      // proxy reasons
+      adult_guardian: "成年被後見人",
+      conservatee: "被保佐人",
+      assisted_person: "被補助人",
+      voluntary_guardian: "任意後見人",
+      voluntary_proxy: "任意代理人",
+      same_household: "同一世帯員",
+      
+      // difficulty reasons
+      hospitalized: "入院中",
+      facility_resident: "施設入所中",
+      care_certified: "介護サービス受給中",
+      physical_disability: "身体障害",
+      hikikomori: "ひきこもり",
+      other: "その他",
+      
+      // cohabitation
+      cohabiting: "同居",
+      non_cohabiting: "別居",
+      
+      // domicile
+      kyoto: "京都市内",
+      outside_kyoto: "京都市外",
+      
+      // lost situation
+      lost: "紛失",
+      found: "発見",
+      
+      // reset reasons
+      forgot: "忘れた",
+      locked: "ロックされた",
+      
+      // mail types
+      notification_form: "通知カード同封申請書",
+      handwritten_form: "手書き申請書",
+      
+      // mobile service types
+      mobile_window: "出張申請窓口",
+      mobile_support: "申請サポートブース"
+    };
+    
     Object.entries(answers).forEach(([key, value]) => {
       if (value !== undefined && value !== null && value !== "") {
-        allAnswers.push(`${key}: ${value}`);
+        const japaneseKey = keyTranslations[key] || key;
+        const japaneseValue = valueTranslations[value] || value;
+        allAnswers.push(`${japaneseKey}: ${japaneseValue}`);
       }
     });
     
