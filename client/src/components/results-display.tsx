@@ -380,6 +380,64 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
 
   return (
     <>
+      {/* Debug Section at the top - small and gray */}
+      {!showQRCode && !showLostConfirmation && !isApplicationMethodResult && (
+        <div className="mb-4 p-2 bg-gray-100 border border-gray-300 rounded text-xs text-gray-600 max-w-4xl mx-auto">
+          <div className="font-medium text-gray-700 mb-2 text-xs">
+            デバッグ情報
+          </div>
+          <div className="space-y-1 text-xs text-gray-500">
+            {(() => {
+              const questionFlow: JSX.Element[] = [];
+              let questionNumber = 1;
+
+              // Simple answer mapping for debug display
+              const answerMap: Record<string, { question: string; options: Record<string, string> }> = {
+                'procedure': { question: 'お手続きの種類', options: { 'card_application': 'カードの申請・更新', 'card_issuance': 'カードの交付（受け取り）', 'digital_cert': '電子証明書', 'pin_change': '暗証番号変更', 'info_change': '住所・氏名変更', 'card_lost': 'カード紛失', 'card_return': 'カード返納' }},
+                'application_type': { question: 'お手続きの種類', options: { 'new': '新規', 'renewal': '更新', 'lost_reissue': '紛失再発行', 'other_reissue': 'その他再発行' }},
+                'application_method': { question: '申請方法', options: { 'online': 'オンライン', 'photo_booth': '証明写真機', 'mail': '郵送', 'center': 'センター', 'mobile_service': '出張', 'office_support': '区役所サポート' }},
+                'mail_type': { question: '郵送方法', options: { 'notification_form': '通知カード申請書', 'handwritten_form': '手書き申請書' }},
+                'applicant_age': { question: '申請者年齢', options: { '15_over': '15歳以上', 'under_15': '15歳未満' }},
+                'visitor_type': { question: '来庁者', options: { 'self': 'ご本人', 'proxy': '代理人' }},
+                'proxy_reason': { question: '代理人理由', options: { 'adult_guardian': '成年後見人', 'under_15': '15歳未満', 'voluntary_proxy': '任意代理人', 'same_household': '同一世帯員' }},
+                'cert_type': { question: '電子証明書手続き', options: { 'issuance': '発行', 'renewal': '更新' }},
+                'cert_visitor_type': { question: '来庁者', options: { 'self': 'ご本人', 'proxy': '代理人' }},
+                'pin_type': { question: '暗証番号手続き', options: { 'change': '変更', 'reset': '初期化' }},
+                'info_visitor_type': { question: '来庁者', options: { 'self': 'ご本人', 'proxy': '代理人' }},
+                'lost_situation': { question: 'カード状況', options: { 'lost': '紛失', 'found': '発見' }}
+              };
+
+              // Generate question flow
+              Object.entries(answers).forEach(([key, value]) => {
+                if (answerMap[key] && value) {
+                  const questionData = answerMap[key];
+                  const answerText = questionData.options[value] || value;
+                  
+                  questionFlow.push(
+                    <div key={key} className="text-gray-500">
+                      質問{questionNumber}: {questionData.question} → {answerText}
+                    </div>
+                  );
+                  questionNumber++;
+                }
+              });
+
+              // Add checkbox information
+              const checkedItemsArray = Object.entries(checkedItems).filter(([_, checked]) => checked);
+              if (checkedItemsArray.length > 0) {
+                questionFlow.push(
+                  <div key="checkboxes" className="text-gray-500 mt-1">
+                    チェック済み: {checkedItemsArray.map(([itemId, _]) => itemId).join(', ')}
+                  </div>
+                );
+              }
+
+              return questionFlow.length > 0 ? questionFlow : null;
+            })()}
+          </div>
+        </div>
+      )}
+
       <div className="max-w-none mx-auto px-1 sm:px-4 py-8">
       {isApplicationMethodResult ? (
         <div>
@@ -965,6 +1023,64 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
         </>
       ) : (
         <>
+          {/* Debug Section at the top of main results - small and gray */}
+          {!showQRCode && (
+            <div className="mb-4 p-2 bg-gray-100 border border-gray-300 rounded text-xs text-gray-600 max-w-4xl mx-auto">
+              <div className="font-medium text-gray-700 mb-2 text-xs">
+                デバッグ情報
+              </div>
+              <div className="space-y-1 text-xs text-gray-500">
+                {(() => {
+                  const questionFlow: JSX.Element[] = [];
+                  let questionNumber = 1;
+
+                  // Simple answer mapping for debug display
+                  const answerMap: Record<string, { question: string; options: Record<string, string> }> = {
+                    'procedure': { question: 'お手続きの種類', options: { 'card_application': 'カードの申請・更新', 'card_issuance': 'カードの交付（受け取り）', 'digital_cert': '電子証明書', 'pin_change': '暗証番号変更', 'info_change': '住所・氏名変更', 'card_lost': 'カード紛失', 'card_return': 'カード返納' }},
+                    'application_type': { question: 'お手続きの種類', options: { 'new': '新規', 'renewal': '更新', 'lost_reissue': '紛失再発行', 'other_reissue': 'その他再発行' }},
+                    'application_method': { question: '申請方法', options: { 'online': 'オンライン', 'photo_booth': '証明写真機', 'mail': '郵送', 'center': 'センター', 'mobile_service': '出張', 'office_support': '区役所サポート' }},
+                    'mail_type': { question: '郵送方法', options: { 'notification_form': '通知カード申請書', 'handwritten_form': '手書き申請書' }},
+                    'applicant_age': { question: '申請者年齢', options: { '15_over': '15歳以上', 'under_15': '15歳未満' }},
+                    'visitor_type': { question: '来庁者', options: { 'self': 'ご本人', 'proxy': '代理人' }},
+                    'proxy_reason': { question: '代理人理由', options: { 'adult_guardian': '成年後見人', 'under_15': '15歳未満', 'voluntary_proxy': '任意代理人', 'same_household': '同一世帯員' }},
+                    'cert_type': { question: '電子証明書手続き', options: { 'issuance': '発行', 'renewal': '更新' }},
+                    'cert_visitor_type': { question: '来庁者', options: { 'self': 'ご本人', 'proxy': '代理人' }},
+                    'pin_type': { question: '暗証番号手続き', options: { 'change': '変更', 'reset': '初期化' }},
+                    'info_visitor_type': { question: '来庁者', options: { 'self': 'ご本人', 'proxy': '代理人' }},
+                    'lost_situation': { question: 'カード状況', options: { 'lost': '紛失', 'found': '発見' }}
+                  };
+
+                  // Generate question flow
+                  Object.entries(answers).forEach(([key, value]) => {
+                    if (answerMap[key] && value) {
+                      const questionData = answerMap[key];
+                      const answerText = questionData.options[value] || value;
+                      
+                      questionFlow.push(
+                        <div key={key} className="text-gray-500">
+                          質問{questionNumber}: {questionData.question} → {answerText}
+                        </div>
+                      );
+                      questionNumber++;
+                    }
+                  });
+
+                  // Add checkbox information
+                  const checkedItemsArray = Object.entries(checkedItems).filter(([_, checked]) => checked);
+                  if (checkedItemsArray.length > 0) {
+                    questionFlow.push(
+                      <div key="checkboxes" className="text-gray-500 mt-1">
+                        チェック済み: {checkedItemsArray.map(([itemId, _]) => itemId).join(', ')}
+                      </div>
+                    );
+                  }
+
+                  return questionFlow.length > 0 ? questionFlow : null;
+                })()}
+              </div>
+            </div>
+          )}
+
           <div className="text-center mb-8">
             <i className="fas fa-check-circle text-kyoto-purple text-6xl mb-4"></i>
             <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-black mb-6">以下の内容に沿ってお手続きください</h2>
@@ -1408,207 +1524,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
         />
       )}
       
-      {/* Debug Section - Show all questions and answers */}
-      {!showQRCode && !showLostConfirmation && (
-        <div className="mt-8 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-          <h3 className="text-lg font-bold text-yellow-800 mb-4 flex items-center">
-            <i className="fas fa-bug mr-2"></i>デバッグ情報：選択した内容
-          </h3>
-          <div className="space-y-2 text-sm text-gray-800">
-            {(() => {
-              const questionFlow: JSX.Element[] = [];
-              let questionNumber = 1;
 
-              // Map answers to question-answer pairs
-              const answerMap: Record<string, { question: string; options: Record<string, string> }> = {
-                'procedure': {
-                  question: 'お手続きの種類をお選びください',
-                  options: {
-                    'card_application': 'カードの申請・更新',
-                    'card_issuance': 'カードの交付（受け取り）',
-                    'digital_cert': '電子証明書の発行・更新',
-                    'pin_change': '暗証番号の変更・初期化',
-                    'info_change': '住所・氏名等の変更',
-                    'card_lost': 'カードの紛失・紛失手続き後の発見',
-                    'card_return': 'カードの返納'
-                  }
-                },
-                'application_type': {
-                  question: 'お手続きの種類をお選びください',
-                  options: {
-                    'new': '新規',
-                    'renewal': '更新',
-                    'lost_reissue': '紛失による再発行',
-                    'other_reissue': '紛失以外の理由による再発行'
-                  }
-                },
-                'application_method': {
-                  question: '申請方法をお選びください',
-                  options: {
-                    'online': 'オンライン（スマートフォンやパソコン）で申請する',
-                    'photo_booth': 'まちなかの写真機から申請する',
-                    'mail': '郵送で申請する',
-                    'center': 'マイナンバーカードセンターで申請する',
-                    'mobile_service': '出張申請窓口又は出張申請サポートを利用する',
-                    'office_support': '区役所・支所の窓口での申請サポートを受ける'
-                  }
-                },
-                'mail_type': {
-                  question: '申請方法をお選びください',
-                  options: {
-                    'notification_form': '通知カード又は個人番号通知書に同封されているマイナンバーカード交付申請書による申請',
-                    'handwritten_form': '手書き交付申請書による申請'
-                  }
-                },
-                'applicant_age': {
-                  question: '申請者の年齢をお選びください',
-                  options: {
-                    '15_over': '15歳以上',
-                    'under_15': '15歳未満'
-                  }
-                },
-                'visitor_type': {
-                  question: 'どなたがお越しになりますか',
-                  options: {
-                    'self': 'ご本人',
-                    'proxy': '代理人'
-                  }
-                },
-                'proxy_reason': {
-                  question: '代理人の理由をお選びください',
-                  options: {
-                    'adult_guardian': '成年後見人',
-                    'conservatee': '被保佐人',
-                    'assisted_person': '被補助人',
-                    'voluntary_guardian': '任意後見人',
-                    'under_15': '15歳未満',
-                    'voluntary_proxy': '任意代理人',
-                    'same_household': '同一世帯員'
-                  }
-                },
-                'mobile_service_type': {
-                  question: '申請方法をお選びください',
-                  options: {
-                    'mobile_window': '出張申請窓口',
-                    'mobile_support': '出張申請サポート'
-                  }
-                },
-                'cert_type': {
-                  question: '電子証明書の手続きをお選びください',
-                  options: {
-                    'issuance': '電子証明書の発行',
-                    'renewal': '電子証明書の更新'
-                  }
-                },
-                'cert_visitor_type': {
-                  question: 'どなたがお越しになりますか',
-                  options: {
-                    'self': 'ご本人',
-                    'proxy': '代理人'
-                  }
-                },
-                'cert_proxy_reason': {
-                  question: '代理人の理由をお選びください',
-                  options: {
-                    'same_household': '同一世帯員',
-                    'voluntary_proxy': '任意代理人'
-                  }
-                },
-                'pin_type': {
-                  question: '暗証番号の手続きをお選びください',
-                  options: {
-                    'change': '暗証番号の変更',
-                    'reset': '暗証番号の初期化'
-                  }
-                },
-                'pin_visitor_type': {
-                  question: 'どなたがお越しになりますか',
-                  options: {
-                    'self': 'ご本人',
-                    'proxy': '代理人'
-                  }
-                },
-                'pin_proxy_reason': {
-                  question: '代理人の理由をお選びください',
-                  options: {
-                    'adult_guardian': '成年後見人',
-                    'conservatee': '被保佐人',
-                    'assisted_person': '被補助人',
-                    'voluntary_guardian': '任意後見人'
-                  }
-                },
-                'info_visitor_type': {
-                  question: 'どなたがお越しになりますか',
-                  options: {
-                    'self': 'ご本人',
-                    'proxy': '代理人'
-                  }
-                },
-                'info_proxy_reason': {
-                  question: '代理人の理由をお選びください',
-                  options: {
-                    'adult_guardian': '成年後見人',
-                    'conservatee': '被保佐人',
-                    'assisted_person': '被補助人',
-                    'voluntary_guardian': '任意後見人',
-                    'under_15': '15歳未満',
-                    'voluntary_proxy': '任意代理人',
-                    'same_household': '同一世帯員'
-                  }
-                },
-                'lost_situation': {
-                  question: 'カードの状況をお選びください',
-                  options: {
-                    'lost': 'カードを紛失した',
-                    'found': 'カードが見つかった'
-                  }
-                },
-                'return_reason': {
-                  question: 'カードを返納する理由をお選びください',
-                  options: {
-                    'death': '死亡',
-                    'foreign_resident': '外国人住民が国外転出',
-                    'other': 'その他'
-                  }
-                },
-                'procedure_type': {
-                  question: '手続きタイプをお選びください',
-                  options: {
-                    'new': '新規申請',
-                    'renewal': '更新申請',
-                    'reissue': '再発行申請'
-                  }
-                }
-              };
-
-              // Generate the question flow based on actual answers
-              Object.entries(answers).forEach(([key, value]) => {
-                if (answerMap[key] && value) {
-                  const questionData = answerMap[key];
-                  const answerText = questionData.options[value] || value;
-                  
-                  questionFlow.push(
-                    <div key={key} className="border-l-4 border-yellow-400 pl-3">
-                      <span className="font-medium text-yellow-700">
-                        質問{questionNumber}：{questionData.question}
-                      </span>
-                      <br />
-                      <span className="text-gray-600 ml-4">
-                        → {answerText}
-                      </span>
-                    </div>
-                  );
-                  questionNumber++;
-                }
-              });
-
-              return questionFlow.length > 0 ? questionFlow : (
-                <div className="text-gray-500">質問の回答が見つかりません</div>
-              );
-            })()}
-          </div>
-        </div>
-      )}
       </div>
 
       {/* Footer - Full width for all final pages */}
