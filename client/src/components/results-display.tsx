@@ -1578,6 +1578,112 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                     'renewal': '更新申請',
                     'reissue': '再発行申請'
                   }
+                },
+                'issuance_type': {
+                  question: 'お手続きの種類をお選びください',
+                  options: {
+                    'new': '新規',
+                    'renewal': '更新',
+                    'lost_reissue': '紛失による再発行',
+                    'other_reissue': '紛失以外の理由による再発行'
+                  }
+                },
+                'notification_card': {
+                  question: '交付通知書を持っていますか',
+                  options: {
+                    'yes': '持っている',
+                    'no': '持っていない'
+                  }
+                },
+                'return_documents': {
+                  question: '下記の書類をお持ちですか？お持ちの場合は返納していただきます。',
+                  options: {
+                    'basic_resident_card': '住民基本台帳カード',
+                    'mynumber_notification': 'マイナンバー通知カード又は個人番号通知書'
+                  }
+                },
+                'self_detail_type': {
+                  question: '手続きに来られる方をお選びください',
+                  options: {
+                    'self_only': '本人のみ',
+                    'with_proxy': '代理人が同行する'
+                  }
+                },
+                'self_proxy_reason': {
+                  question: '下記の中から理由を選択してください',
+                  options: {
+                    'adult_guardian': '成年被後見人',
+                    'conservatee': '被保佐人',
+                    'assisted_person': '被補助人',
+                    'voluntary_guardian': '任意被後見人',
+                    'under_15': '15歳未満'
+                  }
+                },
+                'self_cohabitation': {
+                  question: '申請者と代理人の同居の有無をお選びください',
+                  options: {
+                    'cohabiting': '同居',
+                    'not_cohabiting': '非同居'
+                  }
+                },
+                'self_domicile': {
+                  question: '申請者の方の本籍地についてお選びください',
+                  options: {
+                    'kyoto': '京都市内',
+                    'other': 'それ以外'
+                  }
+                },
+                'guardian_reason_15_over': {
+                  question: '下記の中から理由を選択してください',
+                  options: {
+                    'adult_guardian': '成年被後見人',
+                    'conservatee': '被保佐人',
+                    'assisted_person': '被補助人',
+                    'voluntary_guardian': '任意被後見人',
+                    'other': 'それ以外'
+                  }
+                },
+                'specific_reason': {
+                  question: '下記の中から理由を選択してください',
+                  options: {
+                    'over_75': '75歳以上',
+                    'disabled': '障害者',
+                    'hospitalized': '長期で入院されている',
+                    'facility_resident': '施設に入所されている',
+                    'care_certified': '要介護・要支援認定者',
+                    'pregnant': '妊婦',
+                    'study_abroad': '海外留学',
+                    'student': '中学生・高校生・高専生',
+                    'hikikomori': '社会的参加を回避し長期にわたって概ね家庭にとどまり続けている状態である'
+                  }
+                },
+                'cohabitation_status': {
+                  question: '申請者と代理人の同居の有無をお選びください',
+                  options: {
+                    'cohabiting': '同居',
+                    'not_cohabiting': '非同居'
+                  }
+                },
+                'koseki_location': {
+                  question: '申請者の方の本籍地についてお選びください',
+                  options: {
+                    'kyoto_city': '京都市内',
+                    'other': 'それ以外'
+                  }
+                },
+                'cert_cohabitation_status': {
+                  question: '申請者と代理人の同居の有無をお選びください',
+                  options: {
+                    'cohabiting': '同居',
+                    'not_cohabiting': '非同居'
+                  }
+                },
+                'cert_koseki_location': {
+                  question: '申請者の方の本籍地についてお選びください',
+                  options: {
+                    'kyoto_city': '京都市内',
+                    'other': 'それ以外'
+                  }
                 }
               };
 
