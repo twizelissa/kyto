@@ -1407,6 +1407,23 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
           onClose={() => setShowQRCode(false)} 
         />
       )}
+      
+      {/* Debug Section - Show all questions and answers */}
+      {!showQRCode && !showLostConfirmation && (
+        <div className="mt-8 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+          <h3 className="text-lg font-bold text-yellow-800 mb-4 flex items-center">
+            <i className="fas fa-bug mr-2"></i>デバッグ情報：選択した内容
+          </h3>
+          <div className="space-y-2 text-sm text-gray-800">
+            {Object.entries(answers).map(([key, value]) => (
+              <div key={key} className="flex flex-wrap">
+                <span className="font-medium text-yellow-700 min-w-[200px]">{key}:</span>
+                <span className="text-gray-600">{typeof value === 'object' ? JSON.stringify(value) : String(value)}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
       </div>
 
       {/* Footer - Full width for all final pages */}
