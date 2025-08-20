@@ -868,7 +868,20 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                       </p>
                     </div>
                   ) : answers.application_method === "mail" && answers.mail_type === "handwritten_form" ? (
-                    <p>交付申請書に必要事項を御記入いただき、顔写真を貼ってポストに投函してください。</p>
+                    <div className="space-y-3">
+                      <p>交付申請書に必要事項を御記入いただき、顔写真を貼ってポストに投函してください。</p>
+                      <p>※詳しい申請方法は
+                        <a 
+                          href="https://www.kojinbango-card.go.jp/apprec/apply/mail_apply/" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:text-blue-800 underline font-bold mx-1"
+                        >
+                          マイナンバーカード総合サイト
+                        </a>
+                        をご確認ください。
+                      </p>
+                    </div>
                   ) : answers.application_method === "center" ? (
                     <div className="space-y-3">
                       <p>写真撮影や申請書の記入方法の案内等、申請書の作成をお手伝いします。<br/>なお、完成した申請書はご自身でポストに投函いただきます（切手不要）。</p>
