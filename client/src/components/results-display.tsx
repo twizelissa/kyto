@@ -21,6 +21,19 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
   );
   const [procedureCompleted, setProcedureCompleted] = useState(false);
   
+  // デバッグ用の全回答表示
+  const generateAllAnswers = () => {
+    const allAnswers: string[] = [];
+    
+    Object.entries(answers).forEach(([key, value]) => {
+      if (value !== undefined && value !== null && value !== "") {
+        allAnswers.push(`${key}: ${value}`);
+      }
+    });
+    
+    return allAnswers;
+  };
+
   // デバッグ用の詳細選択パス生成
   const generateSelectionPath = () => {
     const path: string[] = [];
@@ -581,13 +594,22 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
       <div className="max-w-none mx-auto px-1 sm:px-4 py-8">
       {isApplicationMethodResult ? (
         <div>
-          {/* デバッグ用選択パス表示 */}
-          <div className="mb-6 p-3 bg-red-100 border border-red-300 rounded-lg">
-            <div className="text-sm text-red-800 font-mono">
-              <strong>DEBUG - 選択パス:</strong> {generateSelectionPath()}
+          {/* デバッグ用全選択表示 */}
+          <div className="mb-6 p-4 bg-red-100 border border-red-300 rounded-lg">
+            <div className="text-sm text-red-800 font-bold mb-2">
+              DEBUG - 全選択内容 ({generateAllAnswers().length}個)
             </div>
-            <div className="text-xs text-red-600 mt-1">
-              procedure: {answers.procedure}, procedure_type: {answers.procedure_type}
+            <div className="text-xs text-red-700 font-mono space-y-1 max-h-40 overflow-y-auto">
+              {generateAllAnswers().map((answer, index) => (
+                <div key={index} className="bg-red-50 p-1 rounded">
+                  {answer}
+                </div>
+              ))}
+            </div>
+            <div className="mt-3 pt-2 border-t border-red-300">
+              <div className="text-sm text-red-800 font-semibold">
+                選択パス: {generateSelectionPath()}
+              </div>
             </div>
           </div>
           
@@ -1173,13 +1195,22 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
         </>
       ) : (
         <>
-          {/* デバッグ用選択パス表示 */}
-          <div className="mb-6 p-3 bg-red-100 border border-red-300 rounded-lg">
-            <div className="text-sm text-red-800 font-mono">
-              <strong>DEBUG - 選択パス:</strong> {generateSelectionPath()}
+          {/* デバッグ用全選択表示 */}
+          <div className="mb-6 p-4 bg-red-100 border border-red-300 rounded-lg">
+            <div className="text-sm text-red-800 font-bold mb-2">
+              DEBUG - 全選択内容 ({generateAllAnswers().length}個)
             </div>
-            <div className="text-xs text-red-600 mt-1">
-              procedure: {answers.procedure}, visitor_type: {answers.visitor_type}
+            <div className="text-xs text-red-700 font-mono space-y-1 max-h-40 overflow-y-auto">
+              {generateAllAnswers().map((answer, index) => (
+                <div key={index} className="bg-red-50 p-1 rounded">
+                  {answer}
+                </div>
+              ))}
+            </div>
+            <div className="mt-3 pt-2 border-t border-red-300">
+              <div className="text-sm text-red-800 font-semibold">
+                選択パス: {generateSelectionPath()}
+              </div>
             </div>
           </div>
           
