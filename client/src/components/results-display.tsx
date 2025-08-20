@@ -582,9 +582,12 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
       {isApplicationMethodResult ? (
         <div>
           {/* デバッグ用選択パス表示 */}
-          <div className="mb-6 p-3 bg-gray-100 border rounded-lg">
-            <div className="text-xs text-gray-600 font-mono">
-              <strong>選択パス:</strong> {generateSelectionPath()}
+          <div className="mb-6 p-3 bg-red-100 border border-red-300 rounded-lg">
+            <div className="text-sm text-red-800 font-mono">
+              <strong>DEBUG - 選択パス:</strong> {generateSelectionPath()}
+            </div>
+            <div className="text-xs text-red-600 mt-1">
+              procedure: {answers.procedure}, procedure_type: {answers.procedure_type}
             </div>
           </div>
           
@@ -1171,9 +1174,12 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
       ) : (
         <>
           {/* デバッグ用選択パス表示 */}
-          <div className="mb-6 p-3 bg-gray-100 border rounded-lg">
-            <div className="text-xs text-gray-600 font-mono">
-              <strong>選択パス:</strong> {generateSelectionPath()}
+          <div className="mb-6 p-3 bg-red-100 border border-red-300 rounded-lg">
+            <div className="text-sm text-red-800 font-mono">
+              <strong>DEBUG - 選択パス:</strong> {generateSelectionPath()}
+            </div>
+            <div className="text-xs text-red-600 mt-1">
+              procedure: {answers.procedure}, visitor_type: {answers.visitor_type}
             </div>
           </div>
           
