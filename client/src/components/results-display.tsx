@@ -1416,11 +1416,11 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
           </h3>
           <div className="space-y-2 text-sm text-gray-800">
             {(() => {
-              const questionFlow = [];
+              const questionFlow: JSX.Element[] = [];
               let questionNumber = 1;
 
               // Map answers to question-answer pairs
-              const answerMap = {
+              const answerMap: Record<string, { question: string; options: Record<string, string> }> = {
                 'procedure': {
                   question: 'お手続きの種類をお選びください',
                   options: {
@@ -1472,6 +1472,111 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                   options: {
                     'self': 'ご本人',
                     'proxy': '代理人'
+                  }
+                },
+                'proxy_reason': {
+                  question: '代理人の理由をお選びください',
+                  options: {
+                    'adult_guardian': '成年後見人',
+                    'conservatee': '被保佐人',
+                    'assisted_person': '被補助人',
+                    'voluntary_guardian': '任意後見人',
+                    'under_15': '15歳未満',
+                    'voluntary_proxy': '任意代理人',
+                    'same_household': '同一世帯員'
+                  }
+                },
+                'mobile_service_type': {
+                  question: '申請方法をお選びください',
+                  options: {
+                    'mobile_window': '出張申請窓口',
+                    'mobile_support': '出張申請サポート'
+                  }
+                },
+                'cert_type': {
+                  question: '電子証明書の手続きをお選びください',
+                  options: {
+                    'issuance': '電子証明書の発行',
+                    'renewal': '電子証明書の更新'
+                  }
+                },
+                'cert_visitor_type': {
+                  question: 'どなたがお越しになりますか',
+                  options: {
+                    'self': 'ご本人',
+                    'proxy': '代理人'
+                  }
+                },
+                'cert_proxy_reason': {
+                  question: '代理人の理由をお選びください',
+                  options: {
+                    'same_household': '同一世帯員',
+                    'voluntary_proxy': '任意代理人'
+                  }
+                },
+                'pin_type': {
+                  question: '暗証番号の手続きをお選びください',
+                  options: {
+                    'change': '暗証番号の変更',
+                    'reset': '暗証番号の初期化'
+                  }
+                },
+                'pin_visitor_type': {
+                  question: 'どなたがお越しになりますか',
+                  options: {
+                    'self': 'ご本人',
+                    'proxy': '代理人'
+                  }
+                },
+                'pin_proxy_reason': {
+                  question: '代理人の理由をお選びください',
+                  options: {
+                    'adult_guardian': '成年後見人',
+                    'conservatee': '被保佐人',
+                    'assisted_person': '被補助人',
+                    'voluntary_guardian': '任意後見人'
+                  }
+                },
+                'info_visitor_type': {
+                  question: 'どなたがお越しになりますか',
+                  options: {
+                    'self': 'ご本人',
+                    'proxy': '代理人'
+                  }
+                },
+                'info_proxy_reason': {
+                  question: '代理人の理由をお選びください',
+                  options: {
+                    'adult_guardian': '成年後見人',
+                    'conservatee': '被保佐人',
+                    'assisted_person': '被補助人',
+                    'voluntary_guardian': '任意後見人',
+                    'under_15': '15歳未満',
+                    'voluntary_proxy': '任意代理人',
+                    'same_household': '同一世帯員'
+                  }
+                },
+                'lost_situation': {
+                  question: 'カードの状況をお選びください',
+                  options: {
+                    'lost': 'カードを紛失した',
+                    'found': 'カードが見つかった'
+                  }
+                },
+                'return_reason': {
+                  question: 'カードを返納する理由をお選びください',
+                  options: {
+                    'death': '死亡',
+                    'foreign_resident': '外国人住民が国外転出',
+                    'other': 'その他'
+                  }
+                },
+                'procedure_type': {
+                  question: '手続きタイプをお選びください',
+                  options: {
+                    'new': '新規申請',
+                    'renewal': '更新申請',
+                    'reissue': '再発行申請'
                   }
                 }
               };
