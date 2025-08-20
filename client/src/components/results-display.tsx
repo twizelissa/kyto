@@ -1410,11 +1410,11 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
       
       {/* Debug Section - Show all questions and answers */}
       {!showQRCode && !showLostConfirmation && (
-        <div className="mt-8 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-          <h3 className="text-lg font-bold text-yellow-800 mb-4 flex items-center">
+        <div className="mt-8 p-4 bg-gray-50 border border-gray-200 rounded-lg">
+          <h3 className="text-lg font-bold text-gray-600 mb-4 flex items-center">
             <i className="fas fa-bug mr-2"></i>デバッグ情報：選択した内容
           </h3>
-          <div className="space-y-2 text-sm text-gray-800">
+          <div className="space-y-2 text-sm text-gray-600">
             {(() => {
               const questionFlow: JSX.Element[] = [];
               let questionNumber = 1;
