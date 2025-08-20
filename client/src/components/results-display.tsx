@@ -1698,7 +1698,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                       <span className="font-medium text-gray-600">
                         質問{questionNumber}：{questionData.question} → 
                       </span>
-                      <span className="text-gray-500">
+                      <span className="text-red-500">
                         {answerText}
                       </span>
                     </div>
