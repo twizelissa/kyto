@@ -675,6 +675,135 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
             </CardContent>
           </Card>
 
+          {/* 手続場所について（カードの申請・更新用、郵送申請以外） */}
+          {answers.application_method !== "mail" && (
+          <Card className="shadow-lg border-gray-200 mb-8">
+            <CardContent className="p-2 sm:p-6">
+              <h3 className="text-xl font-bold text-kyoto-purple-dark mb-4 flex items-center">
+                <i className="fas fa-map-marker-alt mr-2"></i>手続場所について
+              </h3>
+              <div className="space-y-4 text-sm text-gray-800 leading-relaxed">
+                {answers.application_method === "online" ? (
+                  <div className="flex items-start space-x-3">
+                    <i className="fas fa-globe text-kyoto-purple text-lg mt-1"></i>
+                    <div>
+                      <div className="font-medium">オンライン申請サイト：</div>
+                      <a 
+                        href="https://net.kojinbango-card.go.jp/SS_SERVICE_OUT/FA01S001Action.do" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:text-blue-800 underline break-all"
+                      >
+                        https://net.kojinbango-card.go.jp/SS_SERVICE_OUT/FA01S001Action.do
+                      </a>
+                    </div>
+                  </div>
+                ) : answers.application_method === "photo_booth" ? (
+                  <div>
+                    <div className="flex items-start space-x-3">
+                      <i className="fas fa-camera text-kyoto-purple text-lg mt-1"></i>
+                      <div>
+                        <div className="font-medium">まちなかの証明写真機</div>
+                        <div className="text-xs text-gray-600 mt-1">※申請できるものとできないものがあります。</div>
+                      </div>
+                    </div>
+                    <div className="mt-3 bg-yellow-50 border-2 border-yellow-400 rounded-lg p-3">
+                      <div className="font-medium text-sm mb-2 text-yellow-700">＜対応しているまちなかの証明写真機＞</div>
+                      <ul className="text-sm space-y-1 ml-3 text-yellow-700">
+                        <li>• <a href="https://www.dnpphoto.jp/products/kirei/mynumber/" target="_blank" rel="noopener noreferrer" className="text-yellow-700 hover:text-yellow-800 underline">株式会社DNPフォトイメージングジャパン</a></li>
+                        <li>• <a href="https://me-group.jp/individual/photo-me#mynumber" target="_blank" rel="noopener noreferrer" className="text-yellow-700 hover:text-yellow-800 underline">ME Group Japan 株式会社</a></li>
+                        <li>• <a href="https://www.hokuryou.co.jp/id_photo.html" target="_blank" rel="noopener noreferrer" className="text-yellow-700 hover:text-yellow-800 underline">株式会社北菱プリントテクノロジー</a></li>
+                        <li>• <a href="https://www.miyoshi-jp.com" target="_blank" rel="noopener noreferrer" className="text-yellow-700 hover:text-yellow-800 underline">三吉工業株式会社</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                ) : answers.application_method === "mail" && answers.mail_type === "notification_form" ? (
+                  <div className="flex items-start space-x-3">
+                    <i className="fas fa-mailbox text-kyoto-purple text-lg mt-1"></i>
+                    <div>
+                      <div className="font-medium">お近くのポストに投函</div>
+                    </div>
+                  </div>
+                ) : answers.application_method === "mail" && answers.mail_type === "handwritten_form" ? (
+                  <div className="flex items-start space-x-3">
+                    <i className="fas fa-mailbox text-kyoto-purple text-lg mt-1"></i>
+                    <div>
+                      <div className="font-medium">お近くのポストに投函</div>
+                    </div>
+                  </div>
+                ) : answers.application_method === "center" ? (
+                  <div className="space-y-4">
+                    <div className="flex items-start space-x-3">
+                      <i className="fas fa-building text-kyoto-purple text-lg mt-1"></i>
+                      <div>
+                        <div className="font-medium">マイナンバーカードセンター</div>
+                        <div className="text-sm text-gray-600 mt-1">
+                          京都市下京区西洞院通塩小路上る東塩小路町608番地の8<br/>
+                          下京区総合庁舎内（平日9時～17時は3階、月・水曜日17時～19時及び土日は1階）
+                        </div>
+                      </div>
+                    </div>
+                    <div className="mt-3">
+                      <img 
+                        src="https://www.city.kyoto.lg.jp/bunshi/cmsfiles/contents/0000287/287997/kuyakusyo_annnai_zu.gif" 
+                        alt="下京区総合庁舎案内図" 
+                        className="max-w-full h-auto border border-gray-300 rounded"
+                      />
+                      <div className="mt-3 text-sm text-red-600 space-y-2">
+                        <p>※　駐輪場には数に限りがあります。また、一般用駐車場はありませんので、公共交通機関をご利用のうえお越しください。</p>
+                        <p>※　平日9時～17時は南側、月・水曜日17時～19時及び土日は北側の入り口からお入りください。</p>
+                      </div>
+                    </div>
+                  </div>
+                ) : answers.application_method === "mobile_service" && answers.mobile_service_type === "mobile_window" ? (
+                  <div className="space-y-4">
+                    <div className="flex items-start space-x-3">
+                      <i className="fas fa-store text-kyoto-purple text-lg mt-1"></i>
+                      <div>
+                        <div className="text-sm text-gray-800 leading-relaxed">
+                          商業施設等において、本人確認のうえ申請を受け付けるブースを開設します。<br/>
+                          今後の実施予定について、詳しくは<a 
+                            href="https://kyotomn-branch.com" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-blue-600 hover:text-blue-800 underline font-bold mx-1"
+                          >こちら</a>のホームページをご確認ください。
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ) : answers.application_method === "mobile_service" && answers.mobile_service_type === "mobile_support" ? (
+                  <div className="space-y-4">
+                    <div className="flex items-start space-x-3">
+                      <i className="fas fa-hands-helping text-kyoto-purple text-lg mt-1"></i>
+                      <div>
+                        <div className="text-sm text-gray-800 leading-relaxed">
+                          商業施設等において、申請のサポート（交付申請書の記入補助、顔写真の無料撮影）を行うブースを開設します。<br/>
+                          今後の実施予定など、詳しくは<a 
+                            href="https://kyotomn-branch.com" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-blue-600 hover:text-blue-800 underline font-bold mx-1"
+                          >こちら</a>のページをご確認ください。
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ) : answers.application_method === "office_support" ? (
+                  <div className="flex items-start space-x-3">
+                    <i className="fas fa-building text-kyoto-purple text-lg mt-1"></i>
+                    <div>
+                      <div className="font-medium">区役所・支所の窓口（マイナンバーカードセンター交付コーナー）</div>
+                    </div>
+                  </div>
+                ) : (
+                  <p>※他の申請方法の内容を後で追加します。</p>
+                )}
+              </div>
+            </CardContent>
+          </Card>
+          )}
+
 
 
           {/* 申請方法について（カードの申請・更新用） */}
