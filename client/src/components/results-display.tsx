@@ -1694,12 +1694,12 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                   const answerText = questionData.options[value] || value;
                   
                   questionFlow.push(
-                    <div key={key} className="border-l-4 border-yellow-400 pl-3">
-                      <span className="font-medium text-yellow-700">
+                    <div key={key} className="border-l-4 border-gray-400 pl-3">
+                      <span className="font-medium text-gray-600">
                         質問{questionNumber}：{questionData.question}
                       </span>
                       <br />
-                      <span className="text-gray-600 ml-4">
+                      <span className="text-gray-500 ml-4">
                         → {answerText}
                       </span>
                     </div>
