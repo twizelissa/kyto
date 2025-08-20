@@ -1322,7 +1322,6 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                   </div>
                   
                   <div className="space-y-2">
-                    <p>※　区役所・支所では予約を受け付けておりません。</p>
                     {/* カードの交付（受け取り）の場合のみ製造管理番号の注意事項を表示 */}
                     {answers.procedure === "card_issuance" && (
                       <>
