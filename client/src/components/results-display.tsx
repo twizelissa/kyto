@@ -1696,11 +1696,10 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
                   questionFlow.push(
                     <div key={key} className="border-l-4 border-gray-400 pl-3">
                       <span className="font-medium text-gray-600">
-                        質問{questionNumber}：{questionData.question}
+                        質問{questionNumber}：{questionData.question} → 
                       </span>
-                      <br />
-                      <span className="text-gray-500 ml-4">
-                        → {answerText}
+                      <span className="text-gray-500">
+                        {answerText}
                       </span>
                     </div>
                   );
