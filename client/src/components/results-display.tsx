@@ -1414,7 +1414,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
           <h3 className="text-lg font-bold text-gray-600 mb-4 flex items-center">
             <i className="fas fa-bug mr-2"></i>デバッグ情報：選択した内容
           </h3>
-          <div className="space-y-2 text-sm text-gray-600">
+          <div className="space-y-2 text-xs text-gray-600">
             {(() => {
               const questionFlow: JSX.Element[] = [];
               let questionNumber = 1;
