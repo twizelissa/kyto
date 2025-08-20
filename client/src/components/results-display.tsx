@@ -135,13 +135,51 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
       
       // mobile service types
       mobile_window: "出張申請窓口",
-      mobile_support: "申請サポートブース"
+      mobile_support: "申請サポートブース",
+      
+      // additional common values
+      "true": "はい",
+      "false": "いいえ",
+      yes: "はい",
+      no: "いいえ",
+      unknown: "不明",
+      undefined: "未定義",
+      null: "なし",
+      empty: "空",
+      
+      // boolean-like values
+      enabled: "有効",
+      disabled: "無効",
+      active: "アクティブ",
+      inactive: "非アクティブ",
+      
+      // status values
+      pending: "保留中",
+      completed: "完了",
+      processing: "処理中",
+      error: "エラー"
     };
     
     Object.entries(answers).forEach(([key, value]) => {
       if (value !== undefined && value !== null && value !== "") {
-        const japaneseKey = keyTranslations[key] || key;
-        const japaneseValue = valueTranslations[value] || value;
+        let japaneseKey = keyTranslations[key];
+        if (!japaneseKey) {
+          // キーが見つからない場合の日本語変換
+          japaneseKey = key
+            .replace(/_/g, ' ')
+            .replace(/([A-Z])/g, ' $1')
+            .trim();
+        }
+        
+        let japaneseValue = valueTranslations[value];
+        if (!japaneseValue) {
+          // 値が見つからない場合の日本語変換
+          japaneseValue = String(value)
+            .replace(/_/g, ' ')
+            .replace(/([A-Z])/g, ' $1')
+            .trim();
+        }
+        
         allAnswers.push(`${japaneseKey}: ${japaneseValue}`);
       }
     });
