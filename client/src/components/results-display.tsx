@@ -21,7 +21,7 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
   );
   const [procedureCompleted, setProcedureCompleted] = useState(false);
   
-  // デバッグ用の選択パス生成
+  // デバッグ用の詳細選択パス生成
   const generateSelectionPath = () => {
     const path: string[] = [];
     
@@ -82,7 +82,44 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
       else if (answers.pickup_type === "renewal") path.push("更新");
       
       if (answers.visitor_type === "self") path.push("本人が受け取りに行く");
-      else if (answers.visitor_type === "proxy") path.push("代理人が受け取りに行く");
+      else if (answers.visitor_type === "proxy") {
+        path.push("代理人が受け取りに行く");
+        
+        // 代理人の年齢
+        if (answers.applicant_age === "under_15") path.push("15歳未満");
+        else if (answers.applicant_age === "15_or_over") path.push("15歳以上");
+        
+        // 代理人の理由
+        if (answers.proxy_reason === "adult_guardian") path.push("成年被後見人");
+        else if (answers.proxy_reason === "conservatee") path.push("被保佐人");
+        else if (answers.proxy_reason === "assisted_person") path.push("被補助人");
+        else if (answers.proxy_reason === "voluntary_guardian") path.push("任意後見制度の被任意後見人");
+        else if (answers.proxy_reason === "under_15") path.push("15歳未満");
+        else if (answers.proxy_reason === "voluntary_proxy") path.push("任意代理人");
+        else if (answers.proxy_reason === "same_household") path.push("同一世帯員");
+        
+        // 来庁困難な理由（任意代理人の場合）
+        if (answers.proxy_reason === "voluntary_proxy" && answers.difficulty_reason) {
+          if (answers.difficulty_reason === "hospitalized") path.push("長期で入院している");
+          else if (answers.difficulty_reason === "facility_resident") path.push("介護施設等に長期で入所している");
+          else if (answers.difficulty_reason === "care_certified") path.push("在宅で保健医療サービス又は福祉サービスの提供を受けている");
+          else if (answers.difficulty_reason === "physical_disability") path.push("重度の身体障害がある");
+          else if (answers.difficulty_reason === "hikikomori") path.push("社会的ひきこもりの状態にある");
+          else if (answers.difficulty_reason === "other") path.push("その他やむを得ない理由がある");
+        }
+        
+        // 同居状況（15歳未満の場合）
+        if (answers.applicant_age === "under_15" && answers.cohabitation_status) {
+          if (answers.cohabitation_status === "cohabiting") path.push("同居");
+          else if (answers.cohabitation_status === "non_cohabiting") path.push("別居");
+        }
+        
+        // 本籍地（15歳未満・別居の場合）
+        if (answers.applicant_age === "under_15" && answers.cohabitation_status === "non_cohabiting" && answers.domicile_location) {
+          if (answers.domicile_location === "kyoto") path.push("京都市内に本籍がある");
+          else if (answers.domicile_location === "outside_kyoto") path.push("京都市外に本籍がある");
+        }
+      }
     }
     
     // 電子証明書の詳細
@@ -91,7 +128,23 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
       else if (answers.cert_type === "renewal") path.push("更新");
       
       if (answers.cert_visitor_type === "self") path.push("本人が手続きする");
-      else if (answers.cert_visitor_type === "proxy") path.push("代理人が手続きする");
+      else if (answers.cert_visitor_type === "proxy") {
+        path.push("代理人が手続きする");
+        
+        // 代理人の理由
+        if (answers.cert_proxy_reason === "same_household") path.push("同一世帯員");
+        else if (answers.cert_proxy_reason === "voluntary_proxy") path.push("任意代理人");
+        
+        // 来庁困難な理由（任意代理人の場合）
+        if (answers.cert_proxy_reason === "voluntary_proxy" && answers.cert_difficulty_reason) {
+          if (answers.cert_difficulty_reason === "hospitalized") path.push("長期で入院している");
+          else if (answers.cert_difficulty_reason === "facility_resident") path.push("介護施設等に長期で入所している");
+          else if (answers.cert_difficulty_reason === "care_certified") path.push("在宅で保健医療サービス又は福祉サービスの提供を受けている");
+          else if (answers.cert_difficulty_reason === "physical_disability") path.push("重度の身体障害がある");
+          else if (answers.cert_difficulty_reason === "hikikomori") path.push("社会的ひきこもりの状態にある");
+          else if (answers.cert_difficulty_reason === "other") path.push("その他やむを得ない理由がある");
+        }
+      }
     }
     
     // 暗証番号変更の詳細
@@ -100,13 +153,61 @@ export default function ResultsDisplay({ answers, onRestart, onBack }: ResultsDi
       else if (answers.pin_type === "reset") path.push("初期化");
       
       if (answers.pin_visitor_type === "self") path.push("本人が手続きする");
-      else if (answers.pin_visitor_type === "proxy") path.push("代理人が手続きする");
+      else if (answers.pin_visitor_type === "proxy") {
+        path.push("代理人が手続きする");
+        
+        // 代理人の理由
+        if (answers.pin_proxy_reason === "adult_guardian") path.push("成年被後見人");
+        else if (answers.pin_proxy_reason === "conservatee") path.push("被保佐人");
+        else if (answers.pin_proxy_reason === "assisted_person") path.push("被補助人");
+        else if (answers.pin_proxy_reason === "voluntary_guardian") path.push("任意後見制度の被任意後見人");
+        else if (answers.pin_proxy_reason === "under_15") path.push("15歳未満");
+        
+        // 同居状況（15歳未満の場合）
+        if (answers.pin_proxy_reason === "under_15" && answers.pin_cohabitation_status) {
+          if (answers.pin_cohabitation_status === "cohabiting") path.push("同居");
+          else if (answers.pin_cohabitation_status === "non_cohabiting") path.push("別居");
+        }
+      }
+      
+      // リセット理由（初期化の場合）
+      if (answers.pin_type === "reset" && answers.reset_reason) {
+        if (answers.reset_reason === "forgot") path.push("暗証番号を忘れた");
+        else if (answers.reset_reason === "locked") path.push("暗証番号がロックされた");
+      }
     }
     
     // 住所・氏名変更の詳細
     if (answers.procedure === "info_change") {
       if (answers.info_visitor_type === "self") path.push("本人が手続きする");
-      else if (answers.info_visitor_type === "proxy") path.push("代理人が手続きする");
+      else if (answers.info_visitor_type === "proxy") {
+        path.push("代理人が手続きする");
+        
+        // 代理人の理由
+        if (answers.info_proxy_reason === "adult_guardian") path.push("成年被後見人");
+        else if (answers.info_proxy_reason === "conservatee") path.push("被保佐人");
+        else if (answers.info_proxy_reason === "assisted_person") path.push("被補助人");
+        else if (answers.info_proxy_reason === "voluntary_guardian") path.push("任意後見制度の被任意後見人");
+        else if (answers.info_proxy_reason === "under_15") path.push("15歳未満");
+        else if (answers.info_proxy_reason === "voluntary_proxy") path.push("任意代理人");
+        else if (answers.info_proxy_reason === "same_household") path.push("同一世帯員");
+        
+        // 来庁困難な理由（任意代理人の場合）
+        if (answers.info_proxy_reason === "voluntary_proxy" && answers.info_difficulty_reason) {
+          if (answers.info_difficulty_reason === "hospitalized") path.push("長期で入院している");
+          else if (answers.info_difficulty_reason === "facility_resident") path.push("介護施設等に長期で入所している");
+          else if (answers.info_difficulty_reason === "care_certified") path.push("在宅で保健医療サービス又は福祉サービスの提供を受けている");
+          else if (answers.info_difficulty_reason === "physical_disability") path.push("重度の身体障害がある");
+          else if (answers.info_difficulty_reason === "hikikomori") path.push("社会的ひきこもりの状態にある");
+          else if (answers.info_difficulty_reason === "other") path.push("その他やむを得ない理由がある");
+        }
+        
+        // 同居状況（15歳未満の場合）
+        if (answers.info_proxy_reason === "under_15" && answers.info_cohabitation_status) {
+          if (answers.info_cohabitation_status === "cohabiting") path.push("同居");
+          else if (answers.info_cohabitation_status === "non_cohabiting") path.push("別居");
+        }
+      }
     }
     
     // カード紛失・発見の詳細
