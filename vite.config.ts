@@ -22,13 +22,12 @@ export default defineConfig({
   resolve: {
     alias: {
   "@": path.resolve(dirname, "client", "src"),
-  "@shared": path.resolve(dirname, "shared"),
   "@assets": path.resolve(dirname, "attached_assets"),
     },
   },
   root: path.resolve(dirname, "client"),
   build: {
-    outDir: path.resolve(dirname, "dist/public"),
+    outDir: path.resolve(dirname, "dist"),
     emptyOutDir: true,
   },
   server: {
